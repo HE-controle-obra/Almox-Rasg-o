@@ -263,6 +263,56 @@ tr:hover td{background:var(--bg2);}
 .miss-stat-card{flex:1;background:var(--bg2);padding:10px 16px;display:flex;flex-direction:column;gap:2px;}
 .miss-stat-card .lbl{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
 .miss-stat-card .val{font-size:20px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
+
+/* ── QUALIDADE / RNC ─────────────────────────────────────── */
+.rnc-layout{display:grid;grid-template-columns:1fr 340px;height:calc(100vh - 90px);overflow:hidden;}
+.rnc-main{overflow-y:auto;padding:20px 24px;}
+.rnc-sidebar{background:var(--bg2);border-left:2px solid var(--border2);overflow-y:auto;display:flex;flex-direction:column;}
+/* Cards de resumo */
+.rnc-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-bottom:1px solid var(--border);flex-shrink:0;}
+.rnc-sum-card{background:var(--bg2);padding:12px 16px;}
+.rnc-sum-lbl{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
+.rnc-sum-val{font-size:22px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1.2;}
+/* Fornecedor ranking */
+.rnc-sidebar-section{padding:12px 14px;border-bottom:1px solid var(--border);}
+.rnc-sidebar-section h4{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;}
+.rnc-forn-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);gap:8px;}
+.rnc-forn-row:last-child{border-bottom:none;}
+.rnc-forn-name{font-size:11px;color:var(--text);flex:1;}
+.rnc-forn-bar-wrap{width:80px;height:6px;background:var(--bg3);border-radius:3px;}
+.rnc-forn-bar{height:6px;border-radius:3px;background:var(--accent2);}
+.rnc-forn-count{font-size:11px;font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--accent);min-width:20px;text-align:right;}
+/* Toolbar */
+.rnc-toolbar{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+.rnc-toolbar input,.rnc-toolbar select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:5px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;}
+.rnc-toolbar input{width:220px;}
+/* Tabela RNC */
+.rnc-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.rnc-tbl th{background:var(--bg2);padding:8px 12px;text-align:left;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--border2);white-space:nowrap;}
+.rnc-tbl td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.rnc-tbl tr:hover td{background:var(--bg2);}
+.rnc-badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-family:'IBM Plex Mono',monospace;font-weight:600;white-space:nowrap;}
+.rnc-badge.inspecao{background:rgba(88,166,255,.15);color:#58a6ff;border:1px solid rgba(88,166,255,.3);}
+.rnc-badge.fabrica{background:rgba(188,140,255,.15);color:#bc8cff;border:1px solid rgba(188,140,255,.3);}
+.rnc-badge.aceitar{background:rgba(63,185,80,.15);color:var(--green);border:1px solid rgba(63,185,80,.3);}
+.rnc-badge.retrabalho{background:rgba(210,153,34,.15);color:var(--amber);border:1px solid rgba(210,153,34,.3);}
+.rnc-badge.rejeitar{background:rgba(248,81,73,.15);color:var(--red);border:1px solid rgba(248,81,73,.3);}
+.rnc-action-btn{font-size:10px;padding:3px 8px;border-radius:3px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .12s;}
+.rnc-action-btn:hover{border-color:var(--red);color:var(--red);}
+.rnc-empty{text-align:center;padding:48px 20px;color:var(--text3);font-size:13px;}
+/* Modal RNC */
+.rnc-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;display:flex;align-items:center;justify-content:center;}
+.rnc-modal{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;width:560px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.rnc-modal-hdr{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.rnc-modal-hdr h3{font-size:14px;font-weight:600;color:var(--text);}
+.rnc-modal-body{padding:20px;}
+.rnc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rnc-form-grid .full{grid-column:1/-1;}
+.rnc-field label{display:block;font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.rnc-field input,.rnc-field select,.rnc-field textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:5px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color .15s;}
+.rnc-field input:focus,.rnc-field select:focus,.rnc-field textarea:focus{border-color:var(--accent);}
+.rnc-field textarea{resize:vertical;min-height:70px;}
+.rnc-modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
 </style>
 </head>
 <body>
@@ -276,6 +326,7 @@ tr:hover td{background:var(--bg2);}
   <div class="nav-tab active" onclick="showPage('controle',this)">📋 Controle de Itens</div>
   <div class="nav-tab" onclick="showPage('romaneios',this)">📦 Romaneios</div>
   <div class="nav-tab" onclick="showPage('montagem',this)">🏗️ Montagem</div>
+  <div class="nav-tab" onclick="showPage('qualidade',this);renderRNC()">🔍 Qualidade</div>
 </div>
 
 <!-- CONTROLE PAGE -->
@@ -384,6 +435,146 @@ tr:hover td{background:var(--bg2);}
     <div class="miss-full" id="missingPanel"></div>
   </div>
 
+</div>
+
+
+<!-- QUALIDADE PAGE -->
+<div class="page" id="page-qualidade">
+  <div class="rnc-layout">
+
+    <!-- MAIN: lista + toolbar -->
+    <div class="rnc-main">
+      <div class="rnc-toolbar">
+        <button class="btn-primary" onclick="openRNCModal()">+ Nova RNC</button>
+        <input type="text" id="rncSearch" placeholder="Buscar por nº, produto, fornecedor..." oninput="renderRNC()">
+        <select id="rncFilterTipo" onchange="renderRNC()">
+          <option value="">Todos os tipos</option>
+          <option value="Inspeção">Inspeção</option>
+          <option value="Fábrica">Fábrica</option>
+        </select>
+        <select id="rncFilterDisp" onchange="renderRNC()">
+          <option value="">Todas as disposições</option>
+          <option value="Aceitar">Aceitar</option>
+          <option value="Retrabalho">Retrabalho</option>
+          <option value="Rejeitar">Rejeitar</option>
+        </select>
+      </div>
+      <table class="rnc-tbl">
+        <thead><tr>
+          <th style="width:80px">Nº RNC</th>
+          <th style="width:80px">Data</th>
+          <th style="width:90px">Tipo</th>
+          <th>Produto</th>
+          <th style="width:100px">Código</th>
+          <th style="width:160px">Fornecedor</th>
+          <th style="width:90px">Disposição</th>
+          <th style="width:130px">Arquivo PDF</th>
+          <th style="width:40px"></th>
+        </tr></thead>
+        <tbody id="rncTbody"></tbody>
+      </table>
+    </div>
+
+    <!-- SIDEBAR: resumo -->
+    <div class="rnc-sidebar">
+      <div class="rnc-summary" id="rncSummary"></div>
+      <div class="rnc-sidebar-section">
+        <h4>RNCs por tipo</h4>
+        <div id="rncByTipo"></div>
+      </div>
+      <div class="rnc-sidebar-section">
+        <h4>RNCs por fornecedor</h4>
+        <div id="rncByForn"></div>
+      </div>
+      <div class="rnc-sidebar-section">
+        <h4>RNCs por disposição</h4>
+        <div id="rncByDisp"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL RNC -->
+<div class="rnc-modal-overlay" id="rncModal" style="display:none" onclick="if(event.target===this)closeRNCModal()">
+  <div class="rnc-modal">
+    <div class="rnc-modal-hdr">
+      <h3 id="rncModalTitle">Nova RNC</h3>
+      <button class="btn-sec" style="padding:3px 10px;font-size:11px" onclick="closeRNCModal()">✕</button>
+    </div>
+    <div class="rnc-modal-body">
+      <!-- PDF TEXT PASTE AREA -->
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <label style="font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;">
+            📄 Cole o texto do PDF aqui
+          </label>
+          <span style="font-size:10px;color:var(--text3)">Abra o PDF → Ctrl+A → Ctrl+C → cole abaixo</span>
+        </div>
+        <textarea id="rncPdfPaste" rows="4"
+          style="width:100%;background:var(--bg3);border:2px dashed var(--border2);color:var(--text);padding:10px;border-radius:8px;font-size:11px;font-family:'IBM Plex Mono',monospace;resize:vertical;outline:none;transition:border-color .2s;"
+          placeholder="Cole aqui o texto copiado do PDF da RNC (Ctrl+A + Ctrl+C no PDF)..."
+          oninput="rncParsePaste(this.value)"
+          onfocus="this.style.borderColor='var(--accent)'"
+          onblur="this.style.borderColor='var(--border2)'"
+        ></textarea>
+        <div id="rncParseStatus" style="font-size:11px;margin-top:4px;color:var(--text3);font-family:'IBM Plex Mono',monospace;"></div>
+      </div>
+      <!-- FORM FIELDS -->
+      <div class="rnc-form-grid">
+        <div class="rnc-field">
+          <label>Nº RNC (Referência)</label>
+          <input type="text" id="rncF_num" placeholder="Ex: 1580">
+        </div>
+        <div class="rnc-field">
+          <label>Data</label>
+          <input type="date" id="rncF_data">
+        </div>
+        <div class="rnc-field">
+          <label>Tipo <span style="color:var(--amber);font-size:10px">▸ preencha manualmente</span></label>
+          <select id="rncF_tipo">
+            <option value="Inspeção">Inspeção</option>
+            <option value="Fábrica">Fábrica</option>
+          </select>
+        </div>
+        <div class="rnc-field">
+          <label>Disposição <span style="color:var(--amber);font-size:10px">▸ preencha manualmente</span></label>
+          <select id="rncF_disp">
+            <option value="Aceitar">Aceitar</option>
+            <option value="Retrabalho">Retrabalho</option>
+            <option value="Rejeitar">Rejeitar</option>
+          </select>
+        </div>
+        <div class="rnc-field full">
+          <label>Fornecedor</label>
+          <input type="text" id="rncF_forn" placeholder="Extraído do PDF...">
+        </div>
+        <div class="rnc-field full">
+          <label>Produto / Item afetado</label>
+          <input type="text" id="rncF_prod" placeholder="Extraído do PDF...">
+        </div>
+        <div class="rnc-field">
+          <label>Código do produto</label>
+          <input type="text" id="rncF_cod" placeholder="Extraído do PDF...">
+        </div>
+        <div class="rnc-field">
+          <label>Problema</label>
+          <input type="text" id="rncF_prob" placeholder="Extraído do PDF...">
+        </div>
+        <div class="rnc-field full">
+          <label>Descrição</label>
+          <textarea id="rncF_desc" placeholder="Extraído do PDF..."></textarea>
+        </div>
+        <div class="rnc-field full">
+          <label>Arquivo PDF</label>
+          <input type="text" id="rncF_pdf" placeholder="Nome do arquivo preenchido automaticamente" readonly style="color:var(--text3)">
+        </div>
+      </div>
+    </div>
+    <div class="rnc-modal-footer">
+      <button class="btn-sec" onclick="closeRNCModal()">Cancelar</button>
+      <button class="btn-primary" onclick="saveRNC()">Salvar RNC</button>
+    </div>
+  </div>
 </div>
 
 <!-- ROMANEIOS PAGE -->
@@ -1450,7 +1641,7 @@ function showNotif(msg,type='ok'){const n=document.getElementById('notif');n.tex
 // ── INIT ──────────────────────────────────────────────────
 document.getElementById('search-inp').addEventListener('input',renderControle);
 document.getElementById('fStatus').addEventListener('change',renderControle);
-loadData();buildConjTabs();renderControle();renderRomList();
+loadData();buildConjTabs();renderControle();renderRomList();loadRNCs();
 setTimeout(recalcThTop,10);
 window.addEventListener('resize',recalcThTop);
 
@@ -1720,6 +1911,292 @@ function mSetLoc(e, itemId, loc, ti){
   renderControle();
 }
 // ══ FIM MONTAGEM ═══════════════════════════════════════════════
+
+// ══ QUALIDADE / RNC ═══════════════════════════════════════════
+let rncs = [];
+let nextRncId = 1;
+let editRncId = null;
+
+function loadRNCs(){
+  try{
+    const raw = localStorage.getItem('uhe_rasgao_rnc_v1');
+    if(raw){ const d=JSON.parse(raw); rncs=d.rncs||[]; nextRncId=d.nextId||1; }
+  } catch(e){ rncs=[]; nextRncId=1; }
+}
+
+function saveRNCs(){
+  localStorage.setItem('uhe_rasgao_rnc_v1', JSON.stringify({rncs, nextId:nextRncId}));
+}
+
+function renderRNC(){
+  const search = (document.getElementById('rncSearch')||{}).value||'';
+  const filterTipo = (document.getElementById('rncFilterTipo')||{}).value||'';
+  const filterDisp = (document.getElementById('rncFilterDisp')||{}).value||'';
+  const q = search.toLowerCase();
+
+  const filtered = rncs.filter(r=>{
+    if(filterTipo && r.tipo!==filterTipo) return false;
+    if(filterDisp && r.disp!==filterDisp) return false;
+    if(q && !r.num.toLowerCase().includes(q) &&
+           !r.prod.toLowerCase().includes(q) &&
+           !r.forn.toLowerCase().includes(q) &&
+           !r.cod.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  // Table
+  const tbody = document.getElementById('rncTbody');
+  if(!tbody) return;
+  if(filtered.length===0){
+    tbody.innerHTML=`<tr><td colspan="9" class="rnc-empty">Nenhuma RNC cadastrada.</td></tr>`;
+  } else {
+    tbody.innerHTML = filtered.map(r=>{
+      const tipoCls = r.tipo==='Inspeção'?'inspecao':'fabrica';
+      const dispCls = r.disp==='Aceitar'?'aceitar':r.disp==='Retrabalho'?'retrabalho':'rejeitar';
+      const dataFmt = r.data ? new Date(r.data+'T00:00:00').toLocaleDateString('pt-BR') : '—';
+      const pdfCell = r.pdf
+        ? `<span title="${r.pdf}" style="font-size:10px;color:var(--text2);font-family:'IBM Plex Mono',monospace">📄 ${r.pdf.length>18?r.pdf.substring(0,16)+'…':r.pdf}</span>`
+        : '<span style="color:var(--text3);font-size:11px">—</span>';
+      return `<tr>
+        <td style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--accent)">${r.num}</td>
+        <td style="font-size:11px;color:var(--text2)">${dataFmt}</td>
+        <td><span class="rnc-badge ${tipoCls}">${r.tipo}</span></td>
+        <td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${r.prod}">${r.prod}</td>
+        <td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3)">${r.cod||'—'}</td>
+        <td style="font-size:11px" title="${r.forn}">${r.forn}</td>
+        <td><span class="rnc-badge ${dispCls}">${r.disp}</span></td>
+        <td>${pdfCell}</td>
+        <td><button class="rnc-action-btn" onclick="deleteRNC(${r.id})" title="Excluir">🗑</button></td>
+      </tr>`;
+    }).join('');
+  }
+
+  renderRNCSummary();
+}
+
+function renderRNCSummary(){
+  const total = rncs.length;
+  const insp  = rncs.filter(r=>r.tipo==='Inspeção').length;
+  const fab   = rncs.filter(r=>r.tipo==='Fábrica').length;
+
+  // Summary cards
+  const sumEl = document.getElementById('rncSummary');
+  if(sumEl) sumEl.innerHTML=`
+    <div class="rnc-sum-card"><div class="rnc-sum-lbl">Total RNCs</div><div class="rnc-sum-val" style="color:var(--accent)">${total}</div></div>
+    <div class="rnc-sum-card"><div class="rnc-sum-lbl">Inspeção</div><div class="rnc-sum-val" style="color:#58a6ff">${insp}</div></div>
+    <div class="rnc-sum-card"><div class="rnc-sum-lbl">Fábrica</div><div class="rnc-sum-val" style="color:#bc8cff">${fab}</div></div>`;
+
+  // By tipo
+  const tipoEl = document.getElementById('rncByTipo');
+  if(tipoEl){
+    const tipos = [
+      {label:'Inspeção', count:insp, color:'#58a6ff'},
+      {label:'Fábrica',  count:fab,  color:'#bc8cff'},
+    ];
+    tipoEl.innerHTML = tipos.map(t=>`
+      <div class="rnc-forn-row">
+        <span class="rnc-forn-name">${t.label}</span>
+        <div class="rnc-forn-bar-wrap"><div class="rnc-forn-bar" style="width:${total?Math.round(t.count/total*100):0}%;background:${t.color}"></div></div>
+        <span class="rnc-forn-count" style="color:${t.color}">${t.count}</span>
+      </div>`).join('');
+  }
+
+  // By fornecedor
+  const fornMap = {};
+  rncs.forEach(r=>{ fornMap[r.forn]=(fornMap[r.forn]||0)+1; });
+  const fornSorted = Object.entries(fornMap).sort((a,b)=>b[1]-a[1]);
+  const maxF = fornSorted.length ? fornSorted[0][1] : 1;
+  const fornEl = document.getElementById('rncByForn');
+  if(fornEl){
+    if(fornSorted.length===0){
+      fornEl.innerHTML='<p style="font-size:11px;color:var(--text3)">Nenhuma RNC cadastrada.</p>';
+    } else {
+      fornEl.innerHTML = fornSorted.map(([forn,cnt])=>`
+        <div class="rnc-forn-row">
+          <span class="rnc-forn-name" title="${forn}">${forn.length>22?forn.substring(0,20)+'…':forn}</span>
+          <div class="rnc-forn-bar-wrap"><div class="rnc-forn-bar" style="width:${Math.round(cnt/maxF*100)}%"></div></div>
+          <span class="rnc-forn-count">${cnt}</span>
+        </div>`).join('');
+    }
+  }
+
+  // By disposição
+  const disps = ['Aceitar','Retrabalho','Rejeitar'];
+  const dispColors = {Aceitar:'var(--green)',Retrabalho:'var(--amber)',Rejeitar:'var(--red)'};
+  const dispEl = document.getElementById('rncByDisp');
+  if(dispEl){
+    const maxD = Math.max(...disps.map(d=>rncs.filter(r=>r.disp===d).length), 1);
+    dispEl.innerHTML = disps.map(d=>{
+      const cnt = rncs.filter(r=>r.disp===d).length;
+      return `<div class="rnc-forn-row">
+        <span class="rnc-forn-name">${d}</span>
+        <div class="rnc-forn-bar-wrap"><div class="rnc-forn-bar" style="width:${Math.round(cnt/maxD*100)}%;background:${dispColors[d]}"></div></div>
+        <span class="rnc-forn-count" style="color:${dispColors[d]}">${cnt}</span>
+      </div>`;
+    }).join('');
+  }
+}
+
+function openRNCModal(id){
+  editRncId = id||null;
+  const r = id ? rncs.find(x=>x.id===id) : null;
+  document.getElementById('rncModalTitle').textContent = r ? 'Editar RNC' : 'Nova RNC';
+  document.getElementById('rncF_num').value  = r ? r.num  : '';
+  document.getElementById('rncF_data').value = r ? r.data : new Date().toISOString().slice(0,10);
+  document.getElementById('rncF_tipo').value = r ? r.tipo : 'Inspeção';
+  document.getElementById('rncF_disp').value = r ? r.disp : 'Aceitar';
+  document.getElementById('rncF_forn').value = r ? r.forn : '';
+  document.getElementById('rncF_prod').value = r ? r.prod : '';
+  document.getElementById('rncF_cod').value  = r ? r.cod  : '';
+  document.getElementById('rncF_prob').value = r ? r.prob : '';
+  document.getElementById('rncF_desc').value = r ? r.desc : '';
+  document.getElementById('rncF_pdf').value  = r ? r.pdf  : '';
+  document.getElementById('rncModal').style.display='flex';
+  const pa=document.getElementById('rncPdfPaste'); if(pa) pa.value='';
+  const ps=document.getElementById('rncParseStatus'); if(ps) ps.textContent='';
+}
+
+function closeRNCModal(){
+  document.getElementById('rncModal').style.display='none';
+  editRncId=null;
+}
+
+function saveRNC(){
+  const num  = document.getElementById('rncF_num').value.trim();
+  const forn = document.getElementById('rncF_forn').value.trim();
+  const prod = document.getElementById('rncF_prod').value.trim();
+  if(!num){ alert('Informe o número da RNC.'); return; }
+  if(!forn){ alert('Informe o fornecedor.'); return; }
+  if(!prod){ alert('Informe o produto.'); return; }
+
+  const obj = {
+    id:   editRncId || nextRncId++,
+    num,
+    data: document.getElementById('rncF_data').value,
+    tipo: document.getElementById('rncF_tipo').value,
+    disp: document.getElementById('rncF_disp').value,
+    forn,
+    prod,
+    cod:  document.getElementById('rncF_cod').value.trim(),
+    prob: document.getElementById('rncF_prob').value.trim(),
+    desc: document.getElementById('rncF_desc').value.trim(),
+    pdf:  document.getElementById('rncF_pdf').value.trim(),
+  };
+
+  if(editRncId){
+    const idx = rncs.findIndex(r=>r.id===editRncId);
+    if(idx>=0) rncs[idx]=obj;
+  } else {
+    rncs.push(obj);
+  }
+
+  saveRNCs();
+  closeRNCModal();
+  renderRNC();
+}
+
+function deleteRNC(id){
+  if(!confirm('Excluir esta RNC?')) return;
+  rncs = rncs.filter(r=>r.id!==id);
+  saveRNCs();
+  renderRNC();
+}
+
+// ── PDF PASTE PARSER ──────────────────────────────────────────
+function rncParsePaste(text){
+  if(!text || text.trim().length < 20){
+    document.getElementById('rncParseStatus').textContent = '';
+    return;
+  }
+
+  const parsed = rncParseText(text);
+  let filled = 0;
+
+  if(parsed.num){  document.getElementById('rncF_num').value  = parsed.num;  filled++; }
+  if(parsed.data){ document.getElementById('rncF_data').value = parsed.data; filled++; }
+  if(parsed.forn){ document.getElementById('rncF_forn').value = parsed.forn; filled++; }
+  if(parsed.prod){ document.getElementById('rncF_prod').value = parsed.prod; filled++; }
+  if(parsed.cod){  document.getElementById('rncF_cod').value  = parsed.cod;  filled++; }
+  if(parsed.prob){ document.getElementById('rncF_prob').value = parsed.prob; filled++; }
+  if(parsed.desc){ document.getElementById('rncF_desc').value = parsed.desc; filled++; }
+
+  const st = document.getElementById('rncParseStatus');
+  if(filled >= 4){
+    st.innerHTML = '<span style="color:var(--green)">✅ ' + filled + ' campos preenchidos automaticamente</span>';
+  } else if(filled > 0){
+    st.innerHTML = '<span style="color:var(--amber)">⚠️ ' + filled + ' campo(s) preenchido(s) — verifique os demais</span>';
+  } else {
+    st.innerHTML = '<span style="color:var(--red)">❌ Nenhum campo reconhecido — verifique o texto colado</span>';
+  }
+}
+
+function rncParseText(text){
+  // Normalize whitespace
+  text = text.replace(/\r/g,' ').replace(/\t/g,' ');
+
+  // Helper: get value between label and any of the stop words
+  const get = (labels, stops) => {
+    for(const label of labels){
+      const idx = text.indexOf(label);
+      if(idx === -1) continue;
+      let start = idx + label.length;
+      while(start < text.length && ' :\n'.includes(text[start])) start++;
+      let end = text.length;
+      for(const s of stops){
+        const si = text.indexOf(s, start);
+        if(si > start && si < end) end = si;
+      }
+      const val = text.slice(start, end).trim().replace(/\s+/g,' ');
+      if(val.length > 1) return val.substring(0, 300);
+    }
+    return '';
+  };
+
+  // Nº RNC / Referência
+  const numMatch = text.match(/Refer[eê]ncia[:\s]+(\d+)/)
+                || text.match(/N[°º\.\s]*RNC[:\s#\-]*(\d+)/i);
+  const num = numMatch ? numMatch[1].trim() : '';
+
+  // Data — prefer "Data de cadastro", fallback to "Data:"
+  const dateMatch = text.match(/Data de cadastro[:\s]+(\d{2})\/(\d{2})\/(\d{4})/)
+                 || text.match(/Data[:\s]+(\d{2})\/(\d{2})\/(\d{4})/);
+  const data = dateMatch ? dateMatch[3]+'-'+dateMatch[2]+'-'+dateMatch[1] : '';
+
+  // Fornecedor
+  const forn = get(
+    ['Fornecedor:','Fornecedor '],
+    ['Quantidade','Causa Raiz','Causa','Tempo','Custo','Descri','\n\n']
+  );
+
+  // Produto
+  const prod = get(
+    ['Produto:','Produto '],
+    ['C\u00f3digo Produto','Codigo Produto','Ordem:','Problema:','Fornecedor','\n\n']
+  );
+
+  // Código produto
+  const codMatch = text.match(/C[oó]digo\s+Produto[:\s]+([A-Z0-9][A-Z0-9\-]{4,})/i)
+                || text.match(/([A-Z0-9]{4,}[\-][A-Z0-9]{4,}[\-][0-9]{7})/);
+  const cod = codMatch ? codMatch[1].trim() : '';
+
+  // Problema
+  const prob = get(
+    ['Problema:','Problema '],
+    ['Data:','Identifica','Origem:','Fornecedor','Quantidade','\n\n']
+  );
+
+  // Descrição — from "Descrição:" to "Disposições" or "Responsável"
+  const descMatch = text.match(/Descri[çc][ãa]o[:\s]+([\s\S]+?)(?:Disposi[çc][õo]es|Responsável|\d+\s*\/\s*\d+|$)/i);
+  const desc = descMatch
+    ? descMatch[1].trim().replace(/\s+/g,' ').substring(0, 600)
+    : '';
+
+  return { num, data, forn, prod, cod, prob, desc };
+}
+
+// openRNCModal: also clear paste area when opening
+// ══ FIM QUALIDADE ═════════════════════════════════════════════
+
 
 </script>
 </body>
