@@ -6,20 +6,9 @@
 <title>Controle de Montagem — UHE Rasgão</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;
-  --border:#30363d;--border2:#444c56;
-  --text:#e6edf3;--text2:#8b949e;--text3:#6e7681;
-  --accent:#58a6ff;--accent2:#1f6feb;
-  --green:#3fb950;--green-bg:#0d2119;
-  --amber:#d29922;--amber-bg:#1f1600;
-  --red:#f85149;--red-bg:#210d0d;
-  --purple:#bc8cff;--cyan:#39c5cf;
-}
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--border2:#444c56;--text:#e6edf3;--text2:#8b949e;--text3:#6e7681;--accent:#58a6ff;--accent2:#1f6feb;--green:#3fb950;--green-bg:#0d2119;--amber:#d29922;--amber-bg:#1f1600;--red:#f85149;--red-bg:#210d0d;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;}
-
-/* TOPBAR */
 .topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:200;}
 .topbar-logo{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--accent2);padding:4px 10px;border-radius:4px;white-space:nowrap;}
 .topbar-title{font-size:13px;color:var(--text2);flex:1;}
@@ -28,21 +17,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .save-indicator.saved{color:var(--green);background:var(--green-bg);border:1px solid #143320;}
 .save-indicator.saving{color:var(--amber);background:var(--amber-bg);border:1px solid #3d2a00;}
 .topbar-badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 8px;border-radius:99px;white-space:nowrap;}
-
-/* NAV TABS */
 .nav-tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;padding:0 24px;position:sticky;top:49px;z-index:190;}
 .nav-tab{padding:10px 18px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);transition:all 0.15s;white-space:nowrap;user-select:none;}
 .nav-tab:hover{color:var(--text);}
 .nav-tab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500;}
-
-/* STATS */
 .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
 .stat-card{background:var(--bg2);padding:14px 20px;display:flex;flex-direction:column;gap:4px;}
 .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;font-family:'IBM Plex Mono',monospace;}
 .stat-val{font-size:26px;font-weight:600;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .stat-val.total{color:var(--accent);}.stat-val.pend{color:var(--amber);}.stat-val.ok{color:var(--green);}.stat-val.nc{color:var(--red);}
-
-/* TOOLBAR */
 .toolbar{padding:10px 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:97px;z-index:180;}
 .toolbar input,.toolbar select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:6px;font-size:13px;font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color 0.15s;}
 .toolbar input:focus,.toolbar select:focus{border-color:var(--accent);}
@@ -52,6 +35,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .ctab{font-size:11px;font-family:'IBM Plex Mono',monospace;padding:5px 10px;border-radius:4px;cursor:pointer;border:1px solid var(--border);color:var(--text2);background:transparent;transition:all 0.15s;white-space:nowrap;}
 .ctab:hover{border-color:var(--border2);color:var(--text);}
 .ctab.active{background:var(--accent2);border-color:var(--accent);color:var(--text);}
+/* Equipment tabs */
+.eq-tab{font-size:11px;font-family:'IBM Plex Mono',monospace;padding:5px 12px;border-radius:4px;cursor:pointer;border:1px solid var(--border);color:var(--text2);background:transparent;transition:all 0.15s;white-space:nowrap;font-weight:500;}
+.eq-tab:hover{border-color:var(--border2);color:var(--text);}
+.eq-tab.active-turbina{background:#0a1f12;border-color:#39c5cf;color:#39c5cf;}
+.eq-tab.active-gerador{background:#1a1740;border-color:#bc8cff;color:#bc8cff;}
 .btn-row{display:flex;gap:8px;margin-left:auto;}
 .btn-primary{background:var(--accent2);color:var(--text);border:none;padding:7px 14px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s;white-space:nowrap;}
 .btn-primary:hover{background:var(--accent);}
@@ -59,14 +47,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .btn-danger:hover{background:var(--red-bg);border-color:var(--red);}
 .btn-sec{background:transparent;border:1px solid var(--border);color:var(--text2);padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer;transition:all 0.12s;white-space:nowrap;}
 .btn-sec:hover{border-color:var(--border2);color:var(--text);}
-
-/* TABLE */
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:12.5px;}
 th{text-align:left;padding:8px 14px;font-size:11px;font-weight:500;font-family:'IBM Plex Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:160px;z-index:170;}
 td{padding:7px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 tr:hover td{background:var(--bg2);}
-
+/* Conjunto pills - Turbina */
 .conj-pill{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:0.04em;}
 .cp-425{background:#1a1740;color:#bc8cff;}.cp-428{background:#0a2016;color:#3fb950;}
 .cp-440{background:#1f1600;color:#d29922;}.cp-442{background:#1a0d08;color:#f0883e;}
@@ -74,7 +60,8 @@ tr:hover td{background:var(--bg2);}
 .cp-470{background:#0a1f12;color:#39c5cf;}.cp-472{background:#1f0d1a;color:#db61a2;}
 .cp-495{background:#0d1a30;color:#79c0ff;}.cp-509{background:#1f1200;color:#e3b341;}
 .cp-540{background:#0a1f0a;color:#56d364;}
-
+/* Conjunto pills - Gerador */
+.cp-EST{background:#1a1050;color:#b48eff;}.cp-ROT{background:#0d1a30;color:#58c4ff;}
 .dwg-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:1px 6px;border-radius:3px;}
 .code-sm{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);}
 .qty-ok{color:var(--green);font-weight:600;font-family:'IBM Plex Mono',monospace;}
@@ -88,13 +75,10 @@ tr:hover td{background:var(--bg2);}
 .act-btn-tbl{background:transparent;border:1px solid var(--border);color:var(--text3);padding:3px 8px;border-radius:4px;font-size:11px;cursor:pointer;transition:all 0.12s;}
 .act-btn-tbl:hover{border-color:var(--accent);color:var(--accent);}
 .empty-row td{text-align:center;padding:40px;color:var(--text3);font-style:italic;}
-
-/* PAGES */
 .page{display:none;}.page.active{display:block;}
-
-/* ROMANEIOS PAGE */
+/* ROMANEIOS */
 .rom-layout{display:grid;grid-template-columns:320px 1fr;min-height:calc(100vh - 150px);}
-.rom-sidebar{background:var(--bg2);border-right:1px solid var(--border);padding:0;}
+.rom-sidebar{background:var(--bg2);border-right:1px solid var(--border);}
 .rom-sidebar-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .rom-sidebar-header h3{font-size:13px;font-weight:500;}
 .rom-list{overflow-y:auto;max-height:calc(100vh - 210px);}
@@ -105,7 +89,6 @@ tr:hover td{background:var(--bg2);}
 .rom-item-meta{font-size:11px;color:var(--text3);margin-top:2px;}
 .rom-item-badges{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;}
 .rom-empty{padding:32px 16px;text-align:center;color:var(--text3);font-size:13px;}
-
 .rom-detail{padding:24px;}
 .rom-detail-header{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);}
 .rom-detail-header h2{font-size:16px;font-weight:600;margin-bottom:8px;}
@@ -116,14 +99,10 @@ tr:hover td{background:var(--bg2);}
 .qualidade-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;margin-top:10px;}
 .qb-ok{background:var(--green-bg);color:var(--green);border:1px solid #143320;}
 .qb-err{background:var(--red-bg);color:var(--red);border:1px solid #3d1212;}
-
-.rom-items-table th{top:0;position:relative;}
 .rom-match{color:var(--green);font-size:10px;font-family:'IBM Plex Mono',monospace;}
 .rom-nomatch{color:var(--text3);font-size:10px;font-family:'IBM Plex Mono',monospace;}
-.rom-other{color:var(--purple);font-size:10px;font-family:'IBM Plex Mono',monospace;}
+.rom-other{color:#bc8cff;font-size:10px;font-family:'IBM Plex Mono',monospace;}
 .rom-avulso{color:var(--amber);font-size:10px;font-family:'IBM Plex Mono',monospace;}
-
-/* FORM */
 .form-section{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px;}
 .form-section h3{font-size:13px;font-weight:500;margin-bottom:14px;color:var(--text2);text-transform:uppercase;letter-spacing:0.06em;font-family:'IBM Plex Mono',monospace;padding-bottom:10px;border-bottom:1px solid var(--border);}
 .field{margin-bottom:12px;}
@@ -136,14 +115,9 @@ tr:hover td{background:var(--bg2);}
 .radio-group{display:flex;gap:12px;margin-top:4px;}
 .radio-opt{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--text2);}
 .radio-opt input[type=radio]{accent-color:var(--accent);}
-.radio-opt.selected{color:var(--text);}
-
-/* qualidade erros */
 .erro-tipos{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
 .erro-chip{padding:5px 12px;border-radius:99px;font-size:11px;cursor:pointer;border:1px solid var(--border);color:var(--text2);background:transparent;transition:all 0.15s;user-select:none;}
 .erro-chip.selected{background:var(--red-bg);color:var(--red);border-color:var(--red);}
-
-/* PDF drop */
 .pdf-drop{border:2px dashed var(--border);border-radius:8px;padding:32px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--bg);}
 .pdf-drop:hover,.pdf-drop.dragover{border-color:var(--accent);background:#0d1f38;}
 .pdf-drop-icon{font-size:32px;margin-bottom:8px;}
@@ -151,52 +125,50 @@ tr:hover td{background:var(--bg2);}
 .pdf-drop-sub{font-size:11px;color:var(--text3);margin-top:4px;}
 .pdf-status{margin-top:10px;font-size:12px;font-family:'IBM Plex Mono',monospace;}
 .pdf-status.ok{color:var(--green);}.pdf-status.err{color:var(--red);}.pdf-status.loading{color:var(--amber);}
-
-/* itens do romaneio (form) */
 .rom-itens-form{margin-top:8px;}
 .rom-item-row{display:grid;grid-template-columns:1fr 2fr 70px 80px 30px;gap:8px;align-items:center;margin-bottom:6px;}
-.rom-item-row input,.rom-item-row select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:5px;font-size:12px;font-family:'IBM Plex Mono',monospace;outline:none;width:100%;}
-.rom-item-row input:focus,.rom-item-row select:focus{border-color:var(--accent);}
+.rom-item-row input{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:5px;font-size:12px;font-family:'IBM Plex Mono',monospace;outline:none;width:100%;}
+.rom-item-row input:focus{border-color:var(--accent);}
 .rom-item-header{display:grid;grid-template-columns:1fr 2fr 70px 80px 30px;gap:8px;margin-bottom:4px;}
 .rom-item-header span{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;}
 .del-row-btn{background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:4px;}
 .del-row-btn:hover{color:var(--red);}
 .add-row-btn{background:transparent;border:1px dashed var(--border);color:var(--text3);padding:6px 12px;border-radius:5px;font-size:12px;cursor:pointer;width:100%;margin-top:4px;transition:all 0.15s;}
 .add-row-btn:hover{border-color:var(--accent);color:var(--accent);}
-
-/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:300;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:24px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;}
 .modal h3{font-size:15px;font-weight:600;margin-bottom:16px;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:12px;}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-
-/* notif */
-.notif{position:fixed;bottom:24px;right:24px;z-index:999;padding:12px 18px;border-radius:8px;font-size:13px;font-weight:500;font-family:'IBM Plex Mono',monospace;display:none;animation:slideIn 0.2s ease;}
+.notif{position:fixed;bottom:24px;right:24px;z-index:999;padding:12px 18px;border-radius:8px;font-size:13px;font-weight:500;font-family:'IBM Plex Mono',monospace;display:none;}
 .notif.show{display:block;}
 .notif.ok{background:var(--green-bg);color:var(--green);border:1px solid #143320;}
 .notif.err{background:var(--red-bg);color:var(--red);border:1px solid #3d1212;}
-@keyframes slideIn{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-
 .footer{padding:12px 24px;font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;border-top:1px solid var(--border);background:var(--bg2);text-align:center;}
+/* Equipment selector bar */
+.eq-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:8px 24px;display:flex;gap:8px;align-items:center;}
+.eq-label{font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;margin-right:4px;}
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <div class="topbar-logo">UHE Rasgão</div>
-  <div class="topbar-title"><strong>Controle de Montagem em Campo</strong> — Turbina Francis Vertical · Q=65m³/s · H=22,75m · P=11.000kW</div>
+  <div class="topbar-title"><strong>Controle de Montagem em Campo</strong> — Turbina Francis Vertical + Gerador Síncrono Vertical</div>
   <div class="save-indicator saved" id="save-indicator">● Salvo</div>
-  <div class="topbar-badge" id="hdr-badge">11 conjuntos · 105 itens</div>
+  <div class="topbar-badge" id="hdr-badge">197 itens</div>
 </div>
-
 <div class="nav-tabs">
-  <div class="nav-tab active" onclick="showPage('controle')">📋 Controle de Itens</div>
-  <div class="nav-tab" onclick="showPage('romaneios')">📦 Romaneios</div>
+  <div class="nav-tab active" onclick="showPage('controle',this)">📋 Controle de Itens</div>
+  <div class="nav-tab" onclick="showPage('romaneios',this)">📦 Romaneios</div>
 </div>
 
-<!-- ══════════════════════════════════════════ CONTROLE PAGE -->
+<!-- CONTROLE PAGE -->
 <div class="page active" id="page-controle">
+  <div class="eq-bar">
+    <span class="eq-label">Equipamento:</span>
+    <button class="eq-tab active-turbina" id="eq-turbina" onclick="setEquip('turbina')">⚙️ Turbina Francis</button>
+    <button class="eq-tab" id="eq-gerador" onclick="setEquip('gerador')">⚡ Gerador Síncrono</button>
+  </div>
   <div class="stats-bar">
     <div class="stat-card"><div class="stat-label">Total de itens</div><div class="stat-val total" id="s-total">0</div></div>
     <div class="stat-card"><div class="stat-label">Pendentes</div><div class="stat-val pend" id="s-pend">0</div></div>
@@ -220,59 +192,51 @@ tr:hover td{background:var(--bg2);}
   </div>
   <div class="table-wrap">
     <table>
-      <thead><tr><th style="width:60px">Conj.</th><th style="width:36px">Pos.</th><th style="width:100px">Código</th><th>Descrição</th><th style="width:95px">Desenho</th><th style="width:50px;text-align:right">Prev.</th><th style="width:50px;text-align:right">Rec.</th><th style="width:120px">Status</th><th style="width:44px"></th></tr></thead>
+      <thead><tr>
+        <th style="width:65px">Conj.</th><th style="width:36px">Pos.</th>
+        <th style="width:110px">Código</th><th>Descrição</th>
+        <th style="width:90px">Desenho</th><th style="width:50px;text-align:right">Prev.</th>
+        <th style="width:50px;text-align:right">Rec.</th><th style="width:120px">Status</th><th style="width:44px"></th>
+      </tr></thead>
       <tbody id="tbody-controle"></tbody>
     </table>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ ROMANEIOS PAGE -->
+<!-- ROMANEIOS PAGE -->
 <div class="page" id="page-romaneios">
   <div class="rom-layout">
-
-    <!-- SIDEBAR -->
     <div class="rom-sidebar">
       <div class="rom-sidebar-header">
         <h3>Romaneios</h3>
         <button class="btn-primary" style="font-size:12px;padding:5px 10px" onclick="showRomaneioForm()">+ Novo</button>
       </div>
-      <div class="rom-list" id="rom-list">
-        <div class="rom-empty">Nenhum romaneio cadastrado.<br>Clique em + Novo para começar.</div>
-      </div>
+      <div class="rom-list" id="rom-list"><div class="rom-empty">Nenhum romaneio cadastrado.</div></div>
     </div>
-
-    <!-- DETAIL / FORM -->
     <div class="rom-detail" id="rom-detail">
-      <div style="text-align:center;padding:60px 24px;color:var(--text3)">
-        <div style="font-size:40px;margin-bottom:12px">📦</div>
-        <div style="font-size:14px">Selecione um romaneio ou cadastre um novo</div>
-      </div>
+      <div style="text-align:center;padding:60px 24px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📦</div><div style="font-size:14px">Selecione um romaneio ou cadastre um novo</div></div>
     </div>
-
   </div>
 </div>
 
-<!-- MODAL — editar item do controle -->
+<!-- MODAL item -->
 <div class="modal-overlay" id="item-modal">
   <div class="modal">
     <h3 id="item-modal-title">Editar item</h3>
     <div class="field-row">
-      <div class="field"><label>Conjunto</label>
-        <select id="f-conj">
-          <option value="425">425 – Tampa Superior</option><option value="428">428 – Tampa Inferior</option>
-          <option value="440">440 – Eixo</option><option value="442">442 – Rotor Francis</option>
-          <option value="467">467 – Palheta Diretriz</option><option value="468">468 – Mec. Regulação</option>
-          <option value="470">470 – Anel de Regulação</option><option value="472">472 – Servomotor</option>
-          <option value="495">495 – Mancal Guia</option><option value="509">509 – Tubulação Reg.</option>
-          <option value="540">540 – Disp. Montagem</option>
+      <div class="field"><label>Equipamento</label>
+        <select id="f-equip" onchange="updateConjSelect()">
+          <option value="turbina">Turbina Francis</option>
+          <option value="gerador">Gerador Síncrono</option>
         </select>
       </div>
-      <div class="field"><label>Posição</label><input id="f-pos" placeholder="Ex: 5"></div>
+      <div class="field"><label>Conjunto</label><select id="f-conj"></select></div>
     </div>
     <div class="field-row">
-      <div class="field"><label>Código</label><input id="f-cod" placeholder="Ex: 105380"></div>
+      <div class="field"><label>Posição</label><input id="f-pos" placeholder="Ex: 5"></div>
       <div class="field"><label>Desenho</label><input id="f-dwg" placeholder="Ex: 4251001"></div>
     </div>
+    <div class="field"><label>Código</label><input id="f-cod" placeholder="Ex: 105380"></div>
     <div class="field"><label>Descrição</label><input id="f-desc" placeholder="Descrição do item"></div>
     <div class="field-row">
       <div class="field"><label>Qtd. prevista</label><input id="f-prev" type="number" min="0"></div>
@@ -290,289 +254,393 @@ tr:hover td{background:var(--bg2);}
 
 <div class="notif" id="notif"></div>
 <div class="footer">
-  Ref. mestre: 0147TFV1-4161000 Rev.6 · Turbina Francis Vertical · Usina Geradora Rasgão · ASL/GEI/3515/01/2022
+  Turbina: 0147TFV1-4161000 Rev.6 · Gerador: 0147GSV1 · UHE Rasgão · ASL/GEI/3515/01/2022
   · <span id="last-save-label"></span>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-//  DATA
-// ═══════════════════════════════════════════════════════════
-const STORAGE_KEY = 'uhe_rasgao_v3';
-const conjuntos = {
-  "425":"Tampa Superior","428":"Tampa Inferior","440":"Eixo","442":"Rotor Francis",
-  "467":"Palheta Diretriz","468":"Mec. Regulação","470":"Anel de Regulação",
-  "472":"Servomotor","495":"Mancal Guia","509":"Tubulação Reg.","540":"Disp. Montagem"
-};
-const pillCls = {
-  "425":"cp-425","428":"cp-428","440":"cp-440","442":"cp-442","467":"cp-467",
-  "468":"cp-468","470":"cp-470","472":"cp-472","495":"cp-495","509":"cp-509","540":"cp-540"
-};
+const STORAGE_KEY = 'uhe_rasgao_v4';
 
-const DEFAULT_ITEMS = [
-  {id:1,conj:"425",pos:"1",cod:"—",desc:"Tampa Superior existente — ferro fundido, bipartida",dwg:"4251001",prev:1,rec:0,status:"Pendente"},
-  {id:2,conj:"425",pos:"2",cod:"105377",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M33",dwg:"4251001",prev:26,rec:0,status:"Pendente"},
-  {id:3,conj:"425",pos:"3",cod:"105380",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M33×120",dwg:"4251001",prev:26,rec:0,status:"Pendente"},
-  {id:4,conj:"425",pos:"4",cod:"700236",desc:"Massa epóxi Devcon Plastic Steel A 10120 — 1,8 kg",dwg:"4251001",prev:1,rec:0,status:"Pendente"},
-  {id:5,conj:"425",pos:"1",cod:"0147TFV1-4253001",desc:"Aro porta buchas intermediário fundido — ASTM A743 CA15",dwg:"4251002",prev:2,rec:0,status:"Pendente"},
-  {id:6,conj:"425",pos:"2",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4251002",prev:20,rec:0,status:"Pendente"},
-  {id:7,conj:"425",pos:"3",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4251002",prev:24,rec:0,status:"Pendente"},
-  {id:8,conj:"425",pos:"4",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4251002",prev:12,rec:0,status:"Pendente"},
-  {id:9,conj:"425",pos:"5",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4251002",prev:12,rec:0,status:"Pendente"},
-  {id:10,conj:"425",pos:"6",cod:"104311",desc:"Parafuso sext. inox AISI 304 A2-70 DIN 933 MA M24×80",dwg:"4251002",prev:80,rec:0,status:"Pendente"},
-  {id:11,conj:"425",pos:"7",cod:"103035",desc:"Pino guia paralelo c/ rosca interna inox AISI 304 DIN 7979 Ø25×80",dwg:"4251002",prev:8,rec:0,status:"Pendente"},
-  {id:12,conj:"425",pos:"8",cod:"104312",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M24",dwg:"4251002",prev:80,rec:0,status:"Pendente"},
-  {id:13,conj:"425",pos:"1",cod:"—",desc:"Pino guia da tampa — barra inox AISI 316 Ø38,10×160 mm",dwg:"4252001",prev:4,rec:0,status:"Pendente"},
-  {id:14,conj:"425",pos:"1",cod:"—",desc:"Aro porta buchas intermediário fundido — ASTM A743 CA15 (2.306 kg)",dwg:"4253001",prev:2,rec:0,status:"Pendente"},
-  {id:15,conj:"428",pos:"1",cod:"0147TFV1-4282001",desc:"Tampa inferior bi-partida",dwg:"4281000",prev:1,rec:0,status:"Pendente"},
-  {id:16,conj:"428",pos:"2",cod:"0147TFV1-4282002",desc:"Anel de desgaste estacionário — chapa inox ASTM A240-410 44,45 mm",dwg:"4281000",prev:2,rec:0,status:"Pendente"},
-  {id:17,conj:"428",pos:"3",cod:"0147TFV1-4282003",desc:"Bucha de inox — tubo centrifugado AISI 304 Ø170×Ø132 mm",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
-  {id:18,conj:"428",pos:"4",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
-  {id:19,conj:"428",pos:"5",cod:"0147TFV1-4282005",desc:"Pino guia da pista inferior — barra inox AISI 316 Ø38,10×145 mm",dwg:"4281000",prev:2,rec:0,status:"Pendente"},
-  {id:20,conj:"428",pos:"6",cod:"104320",desc:"Parafuso Allen inox AISI 316 A4-80 DIN 912 MA M16×30",dwg:"4281000",prev:40,rec:0,status:"Pendente"},
-  {id:21,conj:"428",pos:"7",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
-  {id:22,conj:"428",pos:"8",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4281000",prev:12,rec:0,status:"Pendente"},
-  {id:23,conj:"428",pos:"9",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4281000",prev:8,rec:0,status:"Pendente"},
-  {id:24,conj:"428",pos:"24",cod:"0147TFV1-4282004",desc:"Pino guia anel inferior/pré — barra inox AISI 420 Ø50,80×135 mm",dwg:"4282004",prev:2,rec:0,status:"Pendente"},
-  {id:25,conj:"440",pos:"9",cod:"0147TFV1-4401001",desc:"Eixo da turbina existente — usinagem + luva bronze ASTM B271 C90500",dwg:"4401001",prev:1,rec:0,status:"Pendente"},
-  {id:26,conj:"440",pos:"16",cod:"0147TFV1-4402001",desc:"Tirante de fixação do rotor — barra SAE 4340 Ø88,90×345 mm",dwg:"4402001",prev:4,rec:0,status:"Pendente"},
-  {id:27,conj:"442",pos:"2",cod:"0147TFV1-4421000",desc:"Rotor Francis existente — usinagem e restauração",dwg:"4421000",prev:1,rec:0,status:"Pendente"},
-  {id:28,conj:"442",pos:"1",cod:"0147TFV1-4422001",desc:"Anel de desgaste rotativo — ASTM A743 CA15 fund. (UG1) / chapa A240-410 (UG2)",dwg:"4421000",prev:1,rec:0,status:"Pendente"},
-  {id:29,conj:"442",pos:"2",cod:"104320",desc:"Parafuso Allen inox AISI 316 A4-80 DIN 912 MA M16×30",dwg:"4421000",prev:16,rec:0,status:"Pendente"},
-  {id:30,conj:"442",pos:"1",cod:"0147TFV1-4423001",desc:"Anel de desgaste rotativo fundido — ASTM A743 CA15 matéria-prima",dwg:"4423001",prev:1,rec:0,status:"Pendente"},
-  {id:31,conj:"467",pos:"1",cod:"0147TFV1-4672001",desc:"Palheta diretriz fundida — ASTM A743 GR. CA6NM",dwg:"4671001",prev:20,rec:0,status:"Pendente"},
-  {id:32,conj:"467",pos:"2",cod:"0147TFV1-4672002",desc:"Fechamento lateral (maior) — ASTM A743 GR. CA6NM",dwg:"4671001",prev:40,rec:0,status:"Pendente"},
-  {id:33,conj:"467",pos:"3",cod:"0147TFV1-4672003",desc:"Fechamento lateral (menor) — ASTM A743 GR. CA6NM",dwg:"4671001",prev:40,rec:0,status:"Pendente"},
-  {id:34,conj:"467",pos:"4",cod:"0147TFV1-4672004",desc:"Vedação — borracha EPDM 75 Shore A perfil trapezoidal L=1217,60 mm",dwg:"4671001",prev:20,rec:0,status:"Pendente"},
-  {id:35,conj:"468",pos:"1",cod:"0147TFV1-4682001",desc:"Caixa de mancal superior da palheta diretriz",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
-  {id:36,conj:"468",pos:"2",cod:"0147TFV1-4682006",desc:"Bucha do mancal — tubo VMEC 134AP Ø153×10,40 mm, L=160 mm",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
-  {id:37,conj:"468",pos:"3",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
-  {id:38,conj:"468",pos:"4",cod:"0147TFV1-4683002",desc:"Disco de escora — THORDON SXL",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
-  {id:39,conj:"468",pos:"1",cod:"0147TFV1-4682002",desc:"Biela do distribuidor",dwg:"4681002",prev:20,rec:0,status:"Pendente"},
-  {id:40,conj:"468",pos:"2",cod:"0147TFV1-4683003",desc:"Bucha da biela — THORDON THORPLAS",dwg:"4681002",prev:20,rec:0,status:"Pendente"},
-  {id:41,conj:"468",pos:"3",cod:"0147TFV1-4683004",desc:"Bucha da biela/alavanca — THORDON THORPLAS",dwg:"4681002",prev:20,rec:0,status:"Pendente"},
-  {id:42,conj:"468",pos:"18",cod:"0147TFV1-4682003",desc:"Pino biela/anel de regulação — inox AISI 420 Ø63,50×165 mm",dwg:"4682003",prev:20,rec:0,status:"Pendente"},
-  {id:43,conj:"468",pos:"15",cod:"0147TFV1-4682004",desc:"Pino biela/alavanca — inox AISI 420 Ø63,50×185 mm",dwg:"4682004",prev:20,rec:0,status:"Pendente"},
-  {id:44,conj:"468",pos:"7",cod:"0147TFV1-4682005",desc:"Prensa gaxeta",dwg:"4682005",prev:20,rec:0,status:"Pendente"},
-  {id:45,conj:"468",pos:"21",cod:"0147TFV1-4682007",desc:"Trava (menor) — chapa ASTM A36 16 mm, 63×30 mm",dwg:"4682007",prev:40,rec:0,status:"Pendente"},
-  {id:46,conj:"468",pos:"22",cod:"0147TFV1-4682008",desc:"Tirante da palheta — barra ASTM A36 Ø63,50×180 mm",dwg:"4682008",prev:20,rec:0,status:"Pendente"},
-  {id:47,conj:"468",pos:"25",cod:"0147TFV1-4682009",desc:"Tirante 1\" UNC — barra roscada zincada L=140 mm",dwg:"4682009",prev:80,rec:0,status:"Pendente"},
-  {id:48,conj:"468",pos:"26",cod:"0147TFV1-4682010",desc:"Tirante 5/8\" UNC — barra roscada zincada L=110 mm",dwg:"4682010",prev:60,rec:0,status:"Pendente"},
-  {id:49,conj:"468",pos:"28",cod:"0147TFV1-4682011",desc:"Tirante 1\" UNC — barra roscada inox AISI 304 L=120 mm",dwg:"4682011",prev:16,rec:0,status:"Pendente"},
-  {id:50,conj:"468",pos:"29",cod:"0147TFV1-4682012",desc:"Tirante 1\" UNC — barra roscada zincada L=250 mm",dwg:"4682012",prev:2,rec:0,status:"Pendente"},
-  {id:51,conj:"468",pos:"31",cod:"0147TFV1-4682014",desc:"Arruela M45 especial — inox AISI 420 Ø88,90 mm",dwg:"4682014",prev:20,rec:0,status:"Pendente"},
-  {id:52,conj:"468",pos:"32",cod:"0147TFV1-4682015",desc:"Porca M45 especial — ASTM A36 Ø88,90 mm (zincada)",dwg:"4682015",prev:20,rec:0,status:"Pendente"},
-  {id:53,conj:"468",pos:"33",cod:"0147TFV1-4682016",desc:"Porca baixa M45 especial — ASTM A36 Ø88,90 mm (zincada)",dwg:"4682016",prev:20,rec:0,status:"Pendente"},
-  {id:54,conj:"470",pos:"1",cod:"0147TFV1-4702004",desc:"Anel de regulação existente",dwg:"4701001",prev:1,rec:0,status:"Pendente"},
-  {id:55,conj:"470",pos:"2",cod:"0147TFV1-4702001",desc:"Sapata axial — THORDON SXL",dwg:"4701001",prev:6,rec:0,status:"Pendente"},
-  {id:56,conj:"470",pos:"3",cod:"0147TFV1-4702002",desc:"Sapata radial inferior — THORDON SXL",dwg:"4701001",prev:10,rec:0,status:"Pendente"},
-  {id:57,conj:"470",pos:"4",cod:"0147TFV1-4702003",desc:"Sapata radial superior — THORDON SXL",dwg:"4701001",prev:6,rec:0,status:"Pendente"},
-  {id:58,conj:"470",pos:"5",cod:"105203",desc:"Parafuso Allen cab. escareada inox AISI 304 DIN 7991 MA M12×30",dwg:"4701001",prev:154,rec:0,status:"Pendente"},
-  {id:59,conj:"470",pos:"6",cod:"101975",desc:"Porca sext. zincada classe 8 DIN 934 MA M36",dwg:"4701001",prev:10,rec:0,status:"Pendente"},
-  {id:60,conj:"470",pos:"7",cod:"105365",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M36×160",dwg:"4701001",prev:8,rec:0,status:"Pendente"},
-  {id:61,conj:"470",pos:"8",cod:"105366",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M36×200",dwg:"4701001",prev:2,rec:0,status:"Pendente"},
-  {id:62,conj:"470",pos:"9",cod:"100200",desc:"Arruela lisa zincada DIN 125A M36",dwg:"4701001",prev:20,rec:0,status:"Pendente"},
-  {id:63,conj:"470",pos:"10",cod:"105731",desc:"Parafuso Allen s/ cabeça ponta plana inox AISI 304 ASME B18.3 UNC 1/2\"×1\"",dwg:"4701001",prev:154,rec:0,status:"Pendente"},
-  {id:64,conj:"472",pos:"1",cod:"0147TFV1-4722001",desc:"Biela do servomotor",dwg:"4721001",prev:2,rec:0,status:"Pendente"},
-  {id:65,conj:"472",pos:"2",cod:"0147TFV1-4723001",desc:"Bucha da biela do servomotor — THORDON THORPLAS",dwg:"4721001",prev:4,rec:0,status:"Pendente"},
-  {id:66,conj:"472",pos:"19",cod:"0147TFV1-4722002",desc:"Pino biela/servomotor — barra inox AISI 420 Ø101,60×265 mm",dwg:"4722002",prev:2,rec:0,status:"Pendente"},
-  {id:67,conj:"472",pos:"20",cod:"0147TFV1-4722003",desc:"Pino biela/anel de regulação (servomotor) — inox AISI 420 Ø101,60×340 mm",dwg:"4722003",prev:2,rec:0,status:"Pendente"},
-  {id:68,conj:"472",pos:"23",cod:"0147TFV1-4722004",desc:"Trava do pino biela/servomotor — chapa ASTM A36 16 mm, 70×30 mm",dwg:"4722004",prev:4,rec:0,status:"Pendente"},
-  {id:69,conj:"472",pos:"11",cod:"0147TFV1-4722005",desc:"Olhal do cilindro existente — usinagem regularização",dwg:"4722005",prev:2,rec:0,status:"Pendente"},
-  {id:70,conj:"495",pos:"1",cod:"—",desc:"Carcaça do mancal (existente — usinagem e restauração)",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
-  {id:71,conj:"495",pos:"2",cod:"0147TFV1-4951002",desc:"Tampa do mancal (existente — usinagem)",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
-  {id:72,conj:"495",pos:"3",cod:"0147TFV1-4953001",desc:"Bucha do mancal guia — composto PU/D",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
-  {id:73,conj:"495",pos:"4",cod:"0147TFV1-4952001",desc:"Sapata superior — chapa inox ASTM A240-304L 16 mm, 154×80 mm",dwg:"4951001",prev:6,rec:0,status:"Pendente"},
-  {id:74,conj:"495",pos:"5",cod:"0147TFV1-4952002",desc:"Sapata intermediária — chapa inox ASTM A240-304L 16 mm, 200×155 mm",dwg:"4951001",prev:6,rec:0,status:"Pendente"},
-  {id:75,conj:"495",pos:"6",cod:"0147TFV1-4952003",desc:"Sapata inferior — chapa inox ASTM A240-304L 16 mm, 155×133 mm",dwg:"4951001",prev:6,rec:0,status:"Pendente"},
-  {id:76,conj:"495",pos:"7",cod:"0147TFV1-4952008",desc:"Tirante 3/4\" UNC — barra roscada zincada classe 8, L=150 mm",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:77,conj:"495",pos:"8",cod:"0147TFV1-4952009",desc:"Pino guia da tampa do mancal — barra inox AISI 316 Ø25,40 mm, L=155 mm",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
-  {id:78,conj:"495",pos:"9",cod:"0147TFV1-4952010",desc:"Pino guia do mancal — barra inox AISI 316 Ø31,75 mm, L=155 mm",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
-  {id:79,conj:"495",pos:"10",cod:"0147TFV1-4952007",desc:"Prensa vedação novo",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
-  {id:80,conj:"495",pos:"11",cod:"104941",desc:"Gaxeta quadrada modelo 2200 fios de carbono 25,40 mm, L=1740 mm",dwg:"4951001",prev:3,rec:0,status:"Pendente"},
-  {id:81,conj:"495",pos:"12",cod:"101688",desc:"Parafuso Allen inox AISI 304 A2-70 DIN 912 MA M12×30",dwg:"4951001",prev:84,rec:0,status:"Pendente"},
-  {id:82,conj:"495",pos:"13",cod:"100190",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M20",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:83,conj:"495",pos:"14",cod:"105314",desc:"Porca sext. inox AISI 304 ASME B18.2.2 UNC 3/4\"",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:84,conj:"495",pos:"15",cod:"105381",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 933 MA M20×100",dwg:"4951001",prev:12,rec:0,status:"Pendente"},
-  {id:85,conj:"495",pos:"16",cod:"105384",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M20",dwg:"4951001",prev:12,rec:0,status:"Pendente"},
-  {id:86,conj:"495",pos:"17",cod:"105386",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M20",dwg:"4951001",prev:24,rec:0,status:"Pendente"},
-  {id:87,conj:"495",pos:"18",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4951001",prev:24,rec:0,status:"Pendente"},
-  {id:88,conj:"495",pos:"19",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:89,conj:"495",pos:"20",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4951001",prev:16,rec:0,status:"Pendente"},
-  {id:90,conj:"495",pos:"21",cod:"105382",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M16",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:91,conj:"495",pos:"22",cod:"105383",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M16",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:92,conj:"495",pos:"23",cod:"100189",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M16",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
-  {id:93,conj:"495",pos:"24",cod:"101964",desc:"Porca sext. inox AISI 304 A2-70 DIN 934 MA M16",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
-  {id:94,conj:"495",pos:"25",cod:"101770",desc:"Parafuso sext. inox AISI 304 A2-70 DIN 933 MA M16×60",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
-  {id:95,conj:"495",pos:"1",cod:"0147TFV1-4952006",desc:"Encosto da gaxeta — latão fundido",dwg:"4951004",prev:2,rec:0,status:"Pendente"},
-  {id:96,conj:"509",pos:"1",cod:"0147TFV1-5092001",desc:"Bloco para tubulação — barra quadrada alumínio 6351-T6, 76,20 mm, L=127 mm",dwg:"5091001",prev:1,rec:0,status:"Pendente"},
-  {id:97,conj:"509",pos:"2",cod:"100614",desc:"Bujão macho c/ sext. interno inox 1/2\" BSPP-ED série universal",dwg:"5091001",prev:2,rec:0,status:"Pendente"},
-  {id:98,conj:"509",pos:"3",cod:"105033",desc:"Bujão macho c/ sext. interno inox 3/8\" BSPP-ED série universal",dwg:"5091001",prev:2,rec:0,status:"Pendente"},
-  {id:99,conj:"509",pos:"4",cod:"101720",desc:"Parafuso Allen s/ cabeça ponta plana preto classe 12.9 DIN 913 MA M16×20",dwg:"5091001",prev:4,rec:0,status:"Pendente"},
-  {id:100,conj:"540",pos:"1",cod:"0147TFV1-5401002",desc:"Haste guia (disp. alinhamento tampas) — tubo VMEC 134AP Ø127×20,70 mm, L=2250 mm",dwg:"5401001",prev:4,rec:0,status:"Pendente"},
-  {id:101,conj:"540",pos:"1",cod:"0147TFV1-5402001",desc:"Tubo da haste guia — VMEC 134AP Ø127,00×20,70 mm, L=2270 mm",dwg:"5401002",prev:4,rec:0,status:"Pendente"},
-  {id:102,conj:"540",pos:"2",cod:"0147TFV1-5402002",desc:"Disco da haste guia — chapa ASTM A36 19 mm, 100×100 mm",dwg:"5401002",prev:4,rec:0,status:"Pendente"},
-  {id:103,conj:"540",pos:"1",cod:"0147TFV1-5401004",desc:"Haste guia menor (disp. verificação buchas) — tubo VMEC 134AP Ø127×20,70 mm, L=680 mm",dwg:"5401003",prev:4,rec:0,status:"Pendente"},
-  {id:104,conj:"540",pos:"1",cod:"0147TFV1-5402003",desc:"Tubo da haste guia menor — VMEC 134AP Ø127,00×20,70 mm, L=680 mm",dwg:"5401004",prev:4,rec:0,status:"Pendente"},
-  {id:105,conj:"540",pos:"2",cod:"0147TFV1-5402002",desc:"Disco da haste guia menor — chapa ASTM A36 19 mm, 100×100 mm",dwg:"5401004",prev:4,rec:0,status:"Pendente"},
+const CONJUNTOS_TURBINA = {"425":"Tampa Superior","428":"Tampa Inferior","440":"Eixo","442":"Rotor Francis","467":"Palheta Diretriz","468":"Mec. Regulação","470":"Anel de Regulação","472":"Servomotor","495":"Mancal Guia","509":"Tubulação Reg.","540":"Disp. Montagem"};
+const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor"};
+
+const PILL_CLS_TFV = {"425":"cp-425","428":"cp-428","440":"cp-440","442":"cp-442","467":"cp-467","468":"cp-468","470":"cp-470","472":"cp-472","495":"cp-495","509":"cp-509","540":"cp-540"};
+const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT"};
+
+// ── DADOS TURBINA ──────────────────────────────────────────
+const DEFAULT_TURBINA = [
+  {id:1,eq:"turbina",conj:"425",pos:"1",cod:"—",desc:"Tampa Superior existente — ferro fundido, bipartida",dwg:"4251001",prev:1,rec:0,status:"Pendente"},
+  {id:2,eq:"turbina",conj:"425",pos:"2",cod:"105377",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M33",dwg:"4251001",prev:26,rec:0,status:"Pendente"},
+  {id:3,eq:"turbina",conj:"425",pos:"3",cod:"105380",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M33×120",dwg:"4251001",prev:26,rec:0,status:"Pendente"},
+  {id:4,eq:"turbina",conj:"425",pos:"4",cod:"700236",desc:"Massa epóxi Devcon Plastic Steel A 10120 — 1,8 kg",dwg:"4251001",prev:1,rec:0,status:"Pendente"},
+  {id:5,eq:"turbina",conj:"425",pos:"1",cod:"0147TFV1-4253001",desc:"Aro porta buchas intermediário fundido — ASTM A743 CA15",dwg:"4251002",prev:2,rec:0,status:"Pendente"},
+  {id:6,eq:"turbina",conj:"425",pos:"2",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4251002",prev:20,rec:0,status:"Pendente"},
+  {id:7,eq:"turbina",conj:"425",pos:"3",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4251002",prev:24,rec:0,status:"Pendente"},
+  {id:8,eq:"turbina",conj:"425",pos:"4",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4251002",prev:12,rec:0,status:"Pendente"},
+  {id:9,eq:"turbina",conj:"425",pos:"5",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4251002",prev:12,rec:0,status:"Pendente"},
+  {id:10,eq:"turbina",conj:"425",pos:"6",cod:"104311",desc:"Parafuso sext. inox AISI 304 A2-70 DIN 933 MA M24×80",dwg:"4251002",prev:80,rec:0,status:"Pendente"},
+  {id:11,eq:"turbina",conj:"425",pos:"7",cod:"103035",desc:"Pino guia paralelo c/ rosca interna inox AISI 304 DIN 7979 Ø25×80",dwg:"4251002",prev:8,rec:0,status:"Pendente"},
+  {id:12,eq:"turbina",conj:"425",pos:"8",cod:"104312",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M24",dwg:"4251002",prev:80,rec:0,status:"Pendente"},
+  {id:13,eq:"turbina",conj:"425",pos:"1",cod:"—",desc:"Pino guia da tampa — barra inox AISI 316 Ø38,10×160 mm",dwg:"4252001",prev:4,rec:0,status:"Pendente"},
+  {id:14,eq:"turbina",conj:"425",pos:"1",cod:"—",desc:"Aro porta buchas intermediário fundido — ASTM A743 CA15 (2.306 kg)",dwg:"4253001",prev:2,rec:0,status:"Pendente"},
+  {id:15,eq:"turbina",conj:"428",pos:"1",cod:"0147TFV1-4282001",desc:"Tampa inferior bi-partida",dwg:"4281000",prev:1,rec:0,status:"Pendente"},
+  {id:16,eq:"turbina",conj:"428",pos:"2",cod:"0147TFV1-4282002",desc:"Anel de desgaste estacionário — chapa inox ASTM A240-410 44,45 mm",dwg:"4281000",prev:2,rec:0,status:"Pendente"},
+  {id:17,eq:"turbina",conj:"428",pos:"3",cod:"0147TFV1-4282003",desc:"Bucha de inox — tubo centrifugado AISI 304 Ø170×Ø132 mm",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
+  {id:18,eq:"turbina",conj:"428",pos:"4",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
+  {id:19,eq:"turbina",conj:"428",pos:"5",cod:"0147TFV1-4282005",desc:"Pino guia da pista inferior — barra inox AISI 316 Ø38,10×145 mm",dwg:"4281000",prev:2,rec:0,status:"Pendente"},
+  {id:20,eq:"turbina",conj:"428",pos:"6",cod:"104320",desc:"Parafuso Allen inox AISI 316 A4-80 DIN 912 MA M16×30",dwg:"4281000",prev:40,rec:0,status:"Pendente"},
+  {id:21,eq:"turbina",conj:"428",pos:"7",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
+  {id:22,eq:"turbina",conj:"428",pos:"8",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4281000",prev:12,rec:0,status:"Pendente"},
+  {id:23,eq:"turbina",conj:"428",pos:"9",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4281000",prev:8,rec:0,status:"Pendente"},
+  {id:24,eq:"turbina",conj:"428",pos:"24",cod:"0147TFV1-4282004",desc:"Pino guia anel inferior/pré — barra inox AISI 420 Ø50,80×135 mm",dwg:"4282004",prev:2,rec:0,status:"Pendente"},
+  {id:25,eq:"turbina",conj:"440",pos:"9",cod:"0147TFV1-4401001",desc:"Eixo da turbina existente — usinagem + luva bronze ASTM B271 C90500",dwg:"4401001",prev:1,rec:0,status:"Pendente"},
+  {id:26,eq:"turbina",conj:"440",pos:"16",cod:"0147TFV1-4402001",desc:"Tirante de fixação do rotor — barra SAE 4340 Ø88,90×345 mm",dwg:"4402001",prev:4,rec:0,status:"Pendente"},
+  {id:27,eq:"turbina",conj:"442",pos:"2",cod:"0147TFV1-4421000",desc:"Rotor Francis existente — usinagem e restauração",dwg:"4421000",prev:1,rec:0,status:"Pendente"},
+  {id:28,eq:"turbina",conj:"442",pos:"1",cod:"0147TFV1-4422001",desc:"Anel de desgaste rotativo — ASTM A743 CA15 fund. (UG1) / chapa A240-410 (UG2)",dwg:"4421000",prev:1,rec:0,status:"Pendente"},
+  {id:29,eq:"turbina",conj:"442",pos:"2",cod:"104320",desc:"Parafuso Allen inox AISI 316 A4-80 DIN 912 MA M16×30",dwg:"4421000",prev:16,rec:0,status:"Pendente"},
+  {id:30,eq:"turbina",conj:"442",pos:"1",cod:"0147TFV1-4423001",desc:"Anel de desgaste rotativo fundido — ASTM A743 CA15 matéria-prima",dwg:"4423001",prev:1,rec:0,status:"Pendente"},
+  {id:31,eq:"turbina",conj:"467",pos:"1",cod:"0147TFV1-4672001",desc:"Palheta diretriz fundida — ASTM A743 GR. CA6NM",dwg:"4671001",prev:20,rec:0,status:"Pendente"},
+  {id:32,eq:"turbina",conj:"467",pos:"2",cod:"0147TFV1-4672002",desc:"Fechamento lateral (maior) — ASTM A743 GR. CA6NM",dwg:"4671001",prev:40,rec:0,status:"Pendente"},
+  {id:33,eq:"turbina",conj:"467",pos:"3",cod:"0147TFV1-4672003",desc:"Fechamento lateral (menor) — ASTM A743 GR. CA6NM",dwg:"4671001",prev:40,rec:0,status:"Pendente"},
+  {id:34,eq:"turbina",conj:"467",pos:"4",cod:"0147TFV1-4672004",desc:"Vedação — borracha EPDM 75 Shore A perfil trapezoidal L=1217,60 mm",dwg:"4671001",prev:20,rec:0,status:"Pendente"},
+  {id:35,eq:"turbina",conj:"468",pos:"1",cod:"0147TFV1-4682001",desc:"Caixa de mancal superior da palheta diretriz",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
+  {id:36,eq:"turbina",conj:"468",pos:"2",cod:"0147TFV1-4682006",desc:"Bucha do mancal — tubo VMEC 134AP Ø153×10,40 mm, L=160 mm",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
+  {id:37,eq:"turbina",conj:"468",pos:"3",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
+  {id:38,eq:"turbina",conj:"468",pos:"4",cod:"0147TFV1-4683002",desc:"Disco de escora — THORDON SXL",dwg:"4681001",prev:20,rec:0,status:"Pendente"},
+  {id:39,eq:"turbina",conj:"468",pos:"1",cod:"0147TFV1-4682002",desc:"Biela do distribuidor",dwg:"4681002",prev:20,rec:0,status:"Pendente"},
+  {id:40,eq:"turbina",conj:"468",pos:"2",cod:"0147TFV1-4683003",desc:"Bucha da biela — THORDON THORPLAS",dwg:"4681002",prev:20,rec:0,status:"Pendente"},
+  {id:41,eq:"turbina",conj:"468",pos:"3",cod:"0147TFV1-4683004",desc:"Bucha da biela/alavanca — THORDON THORPLAS",dwg:"4681002",prev:20,rec:0,status:"Pendente"},
+  {id:42,eq:"turbina",conj:"468",pos:"18",cod:"0147TFV1-4682003",desc:"Pino biela/anel de regulação — inox AISI 420 Ø63,50×165 mm",dwg:"4682003",prev:20,rec:0,status:"Pendente"},
+  {id:43,eq:"turbina",conj:"468",pos:"15",cod:"0147TFV1-4682004",desc:"Pino biela/alavanca — inox AISI 420 Ø63,50×185 mm",dwg:"4682004",prev:20,rec:0,status:"Pendente"},
+  {id:44,eq:"turbina",conj:"468",pos:"7",cod:"0147TFV1-4682005",desc:"Prensa gaxeta",dwg:"4682005",prev:20,rec:0,status:"Pendente"},
+  {id:45,eq:"turbina",conj:"468",pos:"21",cod:"0147TFV1-4682007",desc:"Trava (menor) — chapa ASTM A36 16 mm, 63×30 mm",dwg:"4682007",prev:40,rec:0,status:"Pendente"},
+  {id:46,eq:"turbina",conj:"468",pos:"22",cod:"0147TFV1-4682008",desc:"Tirante da palheta — barra ASTM A36 Ø63,50×180 mm",dwg:"4682008",prev:20,rec:0,status:"Pendente"},
+  {id:47,eq:"turbina",conj:"468",pos:"25",cod:"0147TFV1-4682009",desc:"Tirante 1\" UNC — barra roscada zincada L=140 mm",dwg:"4682009",prev:80,rec:0,status:"Pendente"},
+  {id:48,eq:"turbina",conj:"468",pos:"26",cod:"0147TFV1-4682010",desc:"Tirante 5/8\" UNC — barra roscada zincada L=110 mm",dwg:"4682010",prev:60,rec:0,status:"Pendente"},
+  {id:49,eq:"turbina",conj:"468",pos:"28",cod:"0147TFV1-4682011",desc:"Tirante 1\" UNC — barra roscada inox AISI 304 L=120 mm",dwg:"4682011",prev:16,rec:0,status:"Pendente"},
+  {id:50,eq:"turbina",conj:"468",pos:"29",cod:"0147TFV1-4682012",desc:"Tirante 1\" UNC — barra roscada zincada L=250 mm",dwg:"4682012",prev:2,rec:0,status:"Pendente"},
+  {id:51,eq:"turbina",conj:"468",pos:"31",cod:"0147TFV1-4682014",desc:"Arruela M45 especial — inox AISI 420 Ø88,90 mm",dwg:"4682014",prev:20,rec:0,status:"Pendente"},
+  {id:52,eq:"turbina",conj:"468",pos:"32",cod:"0147TFV1-4682015",desc:"Porca M45 especial — ASTM A36 Ø88,90 mm (zincada)",dwg:"4682015",prev:20,rec:0,status:"Pendente"},
+  {id:53,eq:"turbina",conj:"468",pos:"33",cod:"0147TFV1-4682016",desc:"Porca baixa M45 especial — ASTM A36 Ø88,90 mm (zincada)",dwg:"4682016",prev:20,rec:0,status:"Pendente"},
+  {id:54,eq:"turbina",conj:"470",pos:"1",cod:"0147TFV1-4702004",desc:"Anel de regulação existente",dwg:"4701001",prev:1,rec:0,status:"Pendente"},
+  {id:55,eq:"turbina",conj:"470",pos:"2",cod:"0147TFV1-4702001",desc:"Sapata axial — THORDON SXL",dwg:"4701001",prev:6,rec:0,status:"Pendente"},
+  {id:56,eq:"turbina",conj:"470",pos:"3",cod:"0147TFV1-4702002",desc:"Sapata radial inferior — THORDON SXL",dwg:"4701001",prev:10,rec:0,status:"Pendente"},
+  {id:57,eq:"turbina",conj:"470",pos:"4",cod:"0147TFV1-4702003",desc:"Sapata radial superior — THORDON SXL",dwg:"4701001",prev:6,rec:0,status:"Pendente"},
+  {id:58,eq:"turbina",conj:"470",pos:"5",cod:"105203",desc:"Parafuso Allen cab. escareada inox AISI 304 DIN 7991 MA M12×30",dwg:"4701001",prev:154,rec:0,status:"Pendente"},
+  {id:59,eq:"turbina",conj:"470",pos:"6",cod:"101975",desc:"Porca sext. zincada classe 8 DIN 934 MA M36",dwg:"4701001",prev:10,rec:0,status:"Pendente"},
+  {id:60,eq:"turbina",conj:"470",pos:"7",cod:"105365",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M36×160",dwg:"4701001",prev:8,rec:0,status:"Pendente"},
+  {id:61,eq:"turbina",conj:"470",pos:"8",cod:"105366",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M36×200",dwg:"4701001",prev:2,rec:0,status:"Pendente"},
+  {id:62,eq:"turbina",conj:"470",pos:"9",cod:"100200",desc:"Arruela lisa zincada DIN 125A M36",dwg:"4701001",prev:20,rec:0,status:"Pendente"},
+  {id:63,eq:"turbina",conj:"470",pos:"10",cod:"105731",desc:"Parafuso Allen s/ cabeça ponta plana inox AISI 304 ASME B18.3 UNC 1/2\"×1\"",dwg:"4701001",prev:154,rec:0,status:"Pendente"},
+  {id:64,eq:"turbina",conj:"472",pos:"1",cod:"0147TFV1-4722001",desc:"Biela do servomotor",dwg:"4721001",prev:2,rec:0,status:"Pendente"},
+  {id:65,eq:"turbina",conj:"472",pos:"2",cod:"0147TFV1-4723001",desc:"Bucha da biela do servomotor — THORDON THORPLAS",dwg:"4721001",prev:4,rec:0,status:"Pendente"},
+  {id:66,eq:"turbina",conj:"472",pos:"19",cod:"0147TFV1-4722002",desc:"Pino biela/servomotor — barra inox AISI 420 Ø101,60×265 mm",dwg:"4722002",prev:2,rec:0,status:"Pendente"},
+  {id:67,eq:"turbina",conj:"472",pos:"20",cod:"0147TFV1-4722003",desc:"Pino biela/anel de regulação (servomotor) — inox AISI 420 Ø101,60×340 mm",dwg:"4722003",prev:2,rec:0,status:"Pendente"},
+  {id:68,eq:"turbina",conj:"472",pos:"23",cod:"0147TFV1-4722004",desc:"Trava do pino biela/servomotor — chapa ASTM A36 16 mm, 70×30 mm",dwg:"4722004",prev:4,rec:0,status:"Pendente"},
+  {id:69,eq:"turbina",conj:"472",pos:"11",cod:"0147TFV1-4722005",desc:"Olhal do cilindro existente — usinagem regularização",dwg:"4722005",prev:2,rec:0,status:"Pendente"},
+  {id:70,eq:"turbina",conj:"495",pos:"1",cod:"—",desc:"Carcaça do mancal (existente — usinagem e restauração)",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
+  {id:71,eq:"turbina",conj:"495",pos:"2",cod:"0147TFV1-4951002",desc:"Tampa do mancal (existente — usinagem)",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
+  {id:72,eq:"turbina",conj:"495",pos:"3",cod:"0147TFV1-4953001",desc:"Bucha do mancal guia — composto PU/D",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
+  {id:73,eq:"turbina",conj:"495",pos:"4",cod:"0147TFV1-4952001",desc:"Sapata superior — chapa inox ASTM A240-304L 16 mm, 154×80 mm",dwg:"4951001",prev:6,rec:0,status:"Pendente"},
+  {id:74,eq:"turbina",conj:"495",pos:"5",cod:"0147TFV1-4952002",desc:"Sapata intermediária — chapa inox ASTM A240-304L 16 mm, 200×155 mm",dwg:"4951001",prev:6,rec:0,status:"Pendente"},
+  {id:75,eq:"turbina",conj:"495",pos:"6",cod:"0147TFV1-4952003",desc:"Sapata inferior — chapa inox ASTM A240-304L 16 mm, 155×133 mm",dwg:"4951001",prev:6,rec:0,status:"Pendente"},
+  {id:76,eq:"turbina",conj:"495",pos:"7",cod:"0147TFV1-4952008",desc:"Tirante 3/4\" UNC — barra roscada zincada classe 8, L=150 mm",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:77,eq:"turbina",conj:"495",pos:"8",cod:"0147TFV1-4952009",desc:"Pino guia da tampa do mancal — barra inox AISI 316 Ø25,40 mm, L=155 mm",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
+  {id:78,eq:"turbina",conj:"495",pos:"9",cod:"0147TFV1-4952010",desc:"Pino guia do mancal — barra inox AISI 316 Ø31,75 mm, L=155 mm",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
+  {id:79,eq:"turbina",conj:"495",pos:"10",cod:"0147TFV1-4952007",desc:"Prensa vedação novo",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
+  {id:80,eq:"turbina",conj:"495",pos:"11",cod:"104941",desc:"Gaxeta quadrada modelo 2200 fios de carbono 25,40 mm, L=1740 mm",dwg:"4951001",prev:3,rec:0,status:"Pendente"},
+  {id:81,eq:"turbina",conj:"495",pos:"12",cod:"101688",desc:"Parafuso Allen inox AISI 304 A2-70 DIN 912 MA M12×30",dwg:"4951001",prev:84,rec:0,status:"Pendente"},
+  {id:82,eq:"turbina",conj:"495",pos:"13",cod:"100190",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M20",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:83,eq:"turbina",conj:"495",pos:"14",cod:"105314",desc:"Porca sext. inox AISI 304 ASME B18.2.2 UNC 3/4\"",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:84,eq:"turbina",conj:"495",pos:"15",cod:"105381",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 933 MA M20×100",dwg:"4951001",prev:12,rec:0,status:"Pendente"},
+  {id:85,eq:"turbina",conj:"495",pos:"16",cod:"105384",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M20",dwg:"4951001",prev:12,rec:0,status:"Pendente"},
+  {id:86,eq:"turbina",conj:"495",pos:"17",cod:"105386",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M20",dwg:"4951001",prev:24,rec:0,status:"Pendente"},
+  {id:87,eq:"turbina",conj:"495",pos:"18",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4951001",prev:24,rec:0,status:"Pendente"},
+  {id:88,eq:"turbina",conj:"495",pos:"19",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:89,eq:"turbina",conj:"495",pos:"20",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4951001",prev:16,rec:0,status:"Pendente"},
+  {id:90,eq:"turbina",conj:"495",pos:"21",cod:"105382",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M16",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:91,eq:"turbina",conj:"495",pos:"22",cod:"105383",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M16",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:92,eq:"turbina",conj:"495",pos:"23",cod:"100189",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M16",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
+  {id:93,eq:"turbina",conj:"495",pos:"24",cod:"101964",desc:"Porca sext. inox AISI 304 A2-70 DIN 934 MA M16",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
+  {id:94,eq:"turbina",conj:"495",pos:"25",cod:"101770",desc:"Parafuso sext. inox AISI 304 A2-70 DIN 933 MA M16×60",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
+  {id:95,eq:"turbina",conj:"495",pos:"1",cod:"0147TFV1-4952006",desc:"Encosto da gaxeta — latão fundido",dwg:"4951004",prev:2,rec:0,status:"Pendente"},
+  {id:96,eq:"turbina",conj:"509",pos:"1",cod:"0147TFV1-5092001",desc:"Bloco para tubulação — barra quadrada alumínio 6351-T6, 76,20 mm, L=127 mm",dwg:"5091001",prev:1,rec:0,status:"Pendente"},
+  {id:97,eq:"turbina",conj:"509",pos:"2",cod:"100614",desc:"Bujão macho c/ sext. interno inox 1/2\" BSPP-ED série universal",dwg:"5091001",prev:2,rec:0,status:"Pendente"},
+  {id:98,eq:"turbina",conj:"509",pos:"3",cod:"105033",desc:"Bujão macho c/ sext. interno inox 3/8\" BSPP-ED série universal",dwg:"5091001",prev:2,rec:0,status:"Pendente"},
+  {id:99,eq:"turbina",conj:"509",pos:"4",cod:"101720",desc:"Parafuso Allen s/ cabeça ponta plana preto classe 12.9 DIN 913 MA M16×20",dwg:"5091001",prev:4,rec:0,status:"Pendente"},
+  {id:100,eq:"turbina",conj:"540",pos:"1",cod:"0147TFV1-5401002",desc:"Haste guia (disp. alinhamento tampas) — tubo VMEC 134AP Ø127×20,70 mm, L=2250 mm",dwg:"5401001",prev:4,rec:0,status:"Pendente"},
+  {id:101,eq:"turbina",conj:"540",pos:"1",cod:"0147TFV1-5402001",desc:"Tubo da haste guia — VMEC 134AP Ø127,00×20,70 mm, L=2270 mm",dwg:"5401002",prev:4,rec:0,status:"Pendente"},
+  {id:102,eq:"turbina",conj:"540",pos:"2",cod:"0147TFV1-5402002",desc:"Disco da haste guia — chapa ASTM A36 19 mm, 100×100 mm",dwg:"5401002",prev:4,rec:0,status:"Pendente"},
+  {id:103,eq:"turbina",conj:"540",pos:"1",cod:"0147TFV1-5401004",desc:"Haste guia menor (disp. verificação buchas) — tubo VMEC 134AP Ø127×20,70 mm, L=680 mm",dwg:"5401003",prev:4,rec:0,status:"Pendente"},
+  {id:104,eq:"turbina",conj:"540",pos:"1",cod:"0147TFV1-5402003",desc:"Tubo da haste guia menor — VMEC 134AP Ø127,00×20,70 mm, L=680 mm",dwg:"5401004",prev:4,rec:0,status:"Pendente"},
+  {id:105,eq:"turbina",conj:"540",pos:"2",cod:"0147TFV1-5402002",desc:"Disco da haste guia menor — chapa ASTM A36 19 mm, 100×100 mm",dwg:"5401004",prev:4,rec:0,status:"Pendente"},
 ];
 
-let items = [], romaneios = [], nextItemId = 106, nextRomId = 1;
-let activeConj = 'all', editItemId = null, activeRomId = null;
+// ── DADOS GERADOR — ESTATOR ────────────────────────────────
+const DEFAULT_GERADOR = [
+  {id:201,eq:"gerador",conj:"EST",pos:"1",cod:"0147GSV1-1511000",desc:"Núcleo estatórico",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:202,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1601001",desc:"Bobina estatórica",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:203,eq:"gerador",conj:"EST",pos:"3",cod:"103197",desc:"TVE DIM 3,00×14,00×685,00 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:204,eq:"gerador",conj:"EST",pos:"4",cod:"800006",desc:"Termoresistência P0K1.202.6W.A.010",dwg:"1201000",prev:12,rec:0,status:"Pendente"},
+  {id:205,eq:"gerador",conj:"EST",pos:"5",cod:"103196",desc:"TVE G11 F882 0,50×15,20×685 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:206,eq:"gerador",conj:"EST",pos:"6",cod:"103187",desc:"Side Ripple Spring 0,80×33,50×665 mm",dwg:"1201000",prev:816,rec:0,status:"Pendente"},
+  {id:207,eq:"gerador",conj:"EST",pos:"7",cod:"103199",desc:"TVE G11 F882 0,50×14,00×685 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:208,eq:"gerador",conj:"EST",pos:"8",cod:"103186",desc:"Top Ripple Spring 0,90×14,00×665 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:209,eq:"gerador",conj:"EST",pos:"9",cod:"103198",desc:"TVE G11 F882 0,30×14,00×685 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:210,eq:"gerador",conj:"EST",pos:"10",cod:"0147GSV1-1202001",desc:"Cunha de fechamento magnética — 234×19,89×4 mm",dwg:"1201000",prev:1224,rec:0,status:"Pendente"},
+  {id:211,eq:"gerador",conj:"EST",pos:"11",cod:"0147GSV1-3252001",desc:"Chapa base — chapa ASTM A36 37,50 mm, 642×215 mm",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
+  {id:212,eq:"gerador",conj:"EST",pos:"12",cod:"0147GSV1-3252002",desc:"Pino guia Ø40×60 — barra redonda SAE 1045",dwg:"1201000",prev:16,rec:0,status:"Pendente"},
+  {id:213,eq:"gerador",conj:"EST",pos:"13",cod:"0147GSV1-3252003",desc:"Arruela deslizante M16 — chapa UHMW verde 5 mm, 50×50 mm",dwg:"1201000",prev:32,rec:0,status:"Pendente"},
+  {id:214,eq:"gerador",conj:"EST",pos:"14",cod:"0147GSV1-3252004",desc:"Chapa deslizante — chapa UHMW verde 5 mm, 642×260 mm",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
+  {id:215,eq:"gerador",conj:"EST",pos:"15",cod:"0147GSV1-3252005",desc:"Posicionador do estator — chapa ASTM A36 50 mm, 150×55 mm",dwg:"1201000",prev:4,rec:0,status:"Pendente"},
+  {id:216,eq:"gerador",conj:"EST",pos:"16",cod:"0147GSV1-1201001",desc:"Bloco de aterramento 100 mm²",dwg:"1201000",prev:2,rec:0,status:"Pendente"},
+  {id:217,eq:"gerador",conj:"EST",pos:"17",cod:"103542",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø30×150 mm — SAE 52100",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
+  {id:218,eq:"gerador",conj:"EST",pos:"18",cod:"100196",desc:"Arruela lisa zincada DIN 125A M16",dwg:"1201000",prev:32,rec:0,status:"Pendente"},
+  {id:219,eq:"gerador",conj:"EST",pos:"19",cod:"103603",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M16×110",dwg:"1201000",prev:32,rec:0,status:"Pendente"},
+  {id:220,eq:"gerador",conj:"EST",pos:"20",cod:"102656",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M30×120",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
+  {id:221,eq:"gerador",conj:"EST",pos:"21",cod:"104371",desc:"Parafuso Allen preto classe 10.9 DIN 912 MA M16×60",dwg:"1201000",prev:40,rec:0,status:"Pendente"},
+  {id:222,eq:"gerador",conj:"EST",pos:"22",cod:"0147GSV1-1621000",desc:"Enrolamento estatórico",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:223,eq:"gerador",conj:"EST",pos:"23",cod:"0147GSV1-1202005",desc:"Fechamento das janelas auxiliares — chapa ASTM A36 3 mm, 400×400 mm",dwg:"1201000",prev:7,rec:0,status:"Pendente"},
+  {id:224,eq:"gerador",conj:"EST",pos:"24",cod:"0147GSV1-1202013",desc:"Fechamento das janelas dos cabos — chapa ASTM A36 3 mm, 400×400 mm",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:225,eq:"gerador",conj:"EST",pos:"25",cod:"0147GSV1-1202004",desc:"Fechamento da carcaça-fundação — chapa ASTM A36 3 mm, 1277×120 mm",dwg:"1201000",prev:16,rec:0,status:"Pendente"},
+  {id:226,eq:"gerador",conj:"EST",pos:"26",cod:"100194",desc:"Arruela lisa zincada DIN 125A M10",dwg:"1201000",prev:66,rec:0,status:"Pendente"},
+  {id:227,eq:"gerador",conj:"EST",pos:"27",cod:"101792",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×20",dwg:"1201000",prev:66,rec:0,status:"Pendente"},
+  {id:228,eq:"gerador",conj:"EST",pos:"28",cod:"0147GSV1-1202008",desc:"Tala da guia de ar — chapa ASTM A36 19 mm, 2036×271 mm",dwg:"1201000",prev:6,rec:0,status:"Pendente"},
+  {id:229,eq:"gerador",conj:"EST",pos:"29",cod:"0147GSV1-1202009",desc:"Segmento-tala da guia de ar — chapa ASTM A36 19 mm, 983×147 mm",dwg:"1201000",prev:4,rec:0,status:"Pendente"},
+  {id:230,eq:"gerador",conj:"EST",pos:"30",cod:"0147GSV1-1202010",desc:"Suporte do PT100 — chapa ASTM A36 3 mm, 179×55 mm",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:231,eq:"gerador",conj:"EST",pos:"31",cod:"P001STP0001000",desc:"Sensor de temperatura PT-100 Ø8×50 mm G1/2 — inox AISI 304",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:232,eq:"gerador",conj:"EST",pos:"32",cod:"104970",desc:"Contraporca sext. inox AISI 304 150 LBS 1/2\" BSP",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:233,eq:"gerador",conj:"EST",pos:"33",cod:"0147GSV1-1202011",desc:"Suporte do eletroduto — chapa ASTM A36 4,75 mm, 356×50 mm",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
+  {id:234,eq:"gerador",conj:"EST",pos:"34",cod:"100003",desc:"Abraçadeira para eletroduto tipo D galvanizada 2\"",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
+  {id:235,eq:"gerador",conj:"EST",pos:"35",cod:"0147GSV1-1202012",desc:"Eletroduto galvanizado 2\", L=2250 mm",dwg:"1201000",prev:7,rec:0,status:"Pendente"},
+  {id:236,eq:"gerador",conj:"EST",pos:"36",cod:"103017",desc:"Condulete alumínio c/ tampa s/ rosca fixo tipo LL 2\"",dwg:"1201000",prev:2,rec:0,status:"Pendente"},
+  {id:237,eq:"gerador",conj:"EST",pos:"37",cod:"103016",desc:"Condulete alumínio c/ tampa s/ rosca fixo tipo T 2\"",dwg:"1201000",prev:7,rec:0,status:"Pendente"},
+  {id:238,eq:"gerador",conj:"EST",pos:"38",cod:"100164",desc:"Arruela de pressão bicromatizada DIN 127B M12",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
+  {id:239,eq:"gerador",conj:"EST",pos:"39",cod:"103022",desc:"Parafuso sext. bicromatizado classe 8.8 DIN 933 MA M12×20",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
+  {id:240,eq:"gerador",conj:"EST",pos:"40",cod:"100167",desc:"Arruela de pressão bicromatizada DIN 127B M6",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
+  {id:241,eq:"gerador",conj:"EST",pos:"41",cod:"101756",desc:"Parafuso sext. bicromatizado classe 8.8 DIN 933 MA M6×16",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
+  // ROTOR
+  {id:301,eq:"gerador",conj:"ROT",pos:"1",cod:"0147GSV1-1971000",desc:"Aranha do rotor",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:302,eq:"gerador",conj:"ROT",pos:"2",cod:"0147GSV1-2391001",desc:"Pólo A",dwg:"1901000",prev:27,rec:0,status:"Pendente"},
+  {id:303,eq:"gerador",conj:"ROT",pos:"3",cod:"0147GSV1-2391002",desc:"Pólo B",dwg:"1901000",prev:27,rec:0,status:"Pendente"},
+  {id:304,eq:"gerador",conj:"ROT",pos:"4",cod:"0147GSV1-2391003",desc:"Pólo C",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:305,eq:"gerador",conj:"ROT",pos:"5",cod:"0147GSV1-2391004",desc:"Pólo D",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:306,eq:"gerador",conj:"ROT",pos:"6",cod:"0147GSV1-1902004",desc:"Calço do núcleo polar — chapa SAE 1008/1010 0,90 mm, 670×58 mm",dwg:"1901000",prev:112,rec:0,status:"Pendente"},
+  {id:307,eq:"gerador",conj:"ROT",pos:"7",cod:"0147GSV1-2072001",desc:"Cunha do pólo — barra quadrada trefilada SAE 1045 15,88 mm, L=790 mm",dwg:"1901000",prev:224,rec:0,status:"Pendente"},
+  {id:308,eq:"gerador",conj:"ROT",pos:"8",cod:"0147GSV1-2072002",desc:"Trava da cunha polar-LA — chapa ASTM A36 16 mm, 130×55 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:309,eq:"gerador",conj:"ROT",pos:"9",cod:"0147GSV1-2072003",desc:"Trava da cunha polar-LNA — chapa ASTM A36 16 mm, 130×40 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:310,eq:"gerador",conj:"ROT",pos:"10",cod:"P003CPR0002005",desc:"Arruela especial M12 — chapa SAE 1008/1010 0,90 mm, 52×22 mm",dwg:"1901000",prev:224,rec:0,status:"Pendente"},
+  {id:311,eq:"gerador",conj:"ROT",pos:"11",cod:"101799",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×30",dwg:"1901000",prev:232,rec:0,status:"Pendente"},
+  {id:312,eq:"gerador",conj:"ROT",pos:"12",cod:"101971",desc:"Porca sext. zincada classe 8 DIN 934 MA M16",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:313,eq:"gerador",conj:"ROT",pos:"13",cod:"101808",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×60",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:314,eq:"gerador",conj:"ROT",pos:"14",cod:"0147GSV1-2382001",desc:"Ligação polar superior — barra chata cobre C11000 38,10×1,58 mm, L=53 mm",dwg:"1901000",prev:84,rec:0,status:"Pendente"},
+  {id:315,eq:"gerador",conj:"ROT",pos:"15",cod:"0147GSV1-2382002",desc:"Ligação polar inferior — barra chata cobre C11000 38,10×1,58 mm, L=43 mm",dwg:"1901000",prev:81,rec:0,status:"Pendente"},
+  {id:316,eq:"gerador",conj:"ROT",pos:"16",cod:"100167",desc:"Arruela de pressão bicromatizada DIN 127B M6",dwg:"1901000",prev:440,rec:0,status:"Pendente"},
+  {id:317,eq:"gerador",conj:"ROT",pos:"17",cod:"101960",desc:"Porca sext. bicromatizada classe 8 DIN 934 MA M6",dwg:"1901000",prev:220,rec:0,status:"Pendente"},
+  {id:318,eq:"gerador",conj:"ROT",pos:"18",cod:"101757",desc:"Parafuso sext. bicromatizado classe 8.8 DIN 933 MA M6×20",dwg:"1901000",prev:220,rec:0,status:"Pendente"},
+  {id:319,eq:"gerador",conj:"ROT",pos:"19",cod:"0147GSV1-2121000",desc:"Ventilador centrífugo",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:320,eq:"gerador",conj:"ROT",pos:"20",cod:"P003CPR0002006",desc:"Arruela especial M20 — chapa SAE 1008/1010 1,20 mm, 65×40 mm",dwg:"1901000",prev:28,rec:0,status:"Pendente"},
+  {id:321,eq:"gerador",conj:"ROT",pos:"21",cod:"101813",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M20×120",dwg:"1901000",prev:28,rec:0,status:"Pendente"},
+  {id:322,eq:"gerador",conj:"ROT",pos:"22",cod:"0147GSV1-2032001",desc:"Pista de frenagem — chapa ASTM A36 44,45 mm, 941×303 mm",dwg:"1901000",prev:12,rec:0,status:"Pendente"},
+  {id:323,eq:"gerador",conj:"ROT",pos:"23",cod:"0147GSV1-2032002",desc:"Arruela especial de aba dupla M16 — chapa ASTM A36 0,90 mm, 46×30 mm",dwg:"1901000",prev:72,rec:0,status:"Pendente"},
+  {id:324,eq:"gerador",conj:"ROT",pos:"24",cod:"0147GSV1-1952001",desc:"Eixo do gerador — forjado, 4255×1018 mm",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:325,eq:"gerador",conj:"ROT",pos:"25",cod:"0147GSV1-1902002",desc:"Anel de apoio — chapa ASTM A572 Gr.50 75 mm, 700×700 mm",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:326,eq:"gerador",conj:"ROT",pos:"26",cod:"0147GSV1-1902001",desc:"Chaveta do rotor — barra trefilada SAE 1045 DIN 6885B 100×50 mm, L=600 mm",dwg:"1901000",prev:2,rec:0,status:"Pendente"},
+  {id:327,eq:"gerador",conj:"ROT",pos:"27",cod:"0147GSV1-1902003",desc:"Cunha da chaveta do rotor — barra quadrada trefilada SAE 1045 25,40 mm, L=550 mm",dwg:"1901000",prev:8,rec:0,status:"Pendente"},
+  {id:328,eq:"gerador",conj:"ROT",pos:"28",cod:"0147GSV1-1902005",desc:"Trava da aranha — chapa ASTM A36 25 mm, 241×70 mm",dwg:"1901000",prev:4,rec:0,status:"Pendente"},
+  {id:329,eq:"gerador",conj:"ROT",pos:"29",cod:"0147GSV1-1901001",desc:"Fechamento da aranha",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:330,eq:"gerador",conj:"ROT",pos:"30",cod:"0147GSV1-1901002",desc:"Fechamento do ventilador",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:331,eq:"gerador",conj:"ROT",pos:"31",cod:"0147GSV1-2551000",desc:"Anéis coletores",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:332,eq:"gerador",conj:"ROT",pos:"32",cod:"0147GSV1-2122007",desc:"Pá superior — chapa ASTM A572 Gr.50 4,75 mm, 430×226 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:333,eq:"gerador",conj:"ROT",pos:"33",cod:"0147GSV1-2122008",desc:"Pá inferior — chapa ASTM A572 Gr.50 4,75 mm, 430×226 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:334,eq:"gerador",conj:"ROT",pos:"34",cod:"0147GSV1-2382005",desc:"Trava do cabeamento 185 mm² — barra chata ASTM A36 76,20×25,40 mm, L=50 mm",dwg:"1901000",prev:14,rec:0,status:"Pendente"},
+  {id:335,eq:"gerador",conj:"ROT",pos:"35",cod:"0147GSV1-2382006",desc:"Trava superior do cabeamento 185 mm² — barra chata ASTM A36 76,20×25,40 mm, L=30 mm",dwg:"1901000",prev:14,rec:0,status:"Pendente"},
+  {id:336,eq:"gerador",conj:"ROT",pos:"36",cod:"0147GSV1-3861002",desc:"Roda dentada — ASTM A36",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:337,eq:"gerador",conj:"ROT",pos:"37",cod:"P001CPR0002014",desc:"Arruela dupla especial M8 — chapa SAE 1008/1010 0,60 mm, 97×20 mm",dwg:"1901000",prev:14,rec:0,status:"Pendente"},
+  {id:338,eq:"gerador",conj:"ROT",pos:"38",cod:"100653",desc:"Cabo de cobre flexível 0,6/1kV HEPR 90°C 185 mm² — 11000 mm",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:339,eq:"gerador",conj:"ROT",pos:"39",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"1901000",prev:232,rec:0,status:"Pendente"},
+  {id:340,eq:"gerador",conj:"ROT",pos:"40",cod:"103622",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×20",dwg:"1901000",prev:224,rec:0,status:"Pendente"},
+  {id:341,eq:"gerador",conj:"ROT",pos:"41",cod:"101837",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×20",dwg:"1901000",prev:28,rec:0,status:"Pendente"},
+  {id:342,eq:"gerador",conj:"ROT",pos:"42",cod:"103500",desc:"Parafuso Allen preto classe 12.9 DIN 912 MA M12×60",dwg:"1901000",prev:6,rec:0,status:"Pendente"},
+  {id:343,eq:"gerador",conj:"ROT",pos:"43",cod:"100200",desc:"Arruela lisa zincada DIN 125A M36",dwg:"1901000",prev:8,rec:0,status:"Pendente"},
+  {id:344,eq:"gerador",conj:"ROT",pos:"44",cod:"101827",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M36×110",dwg:"1901000",prev:8,rec:0,status:"Pendente"},
+  {id:345,eq:"gerador",conj:"ROT",pos:"45",cod:"102251",desc:"Terminal compressão em cobre estanhado 185 mm² 1 furo FM12",dwg:"1901000",prev:4,rec:0,status:"Pendente"},
+  {id:346,eq:"gerador",conj:"ROT",pos:"46",cod:"100164",desc:"Arruela de pressão bicromatizada DIN 127B M12",dwg:"1901000",prev:6,rec:0,status:"Pendente"},
+  {id:347,eq:"gerador",conj:"ROT",pos:"47",cod:"101748",desc:"Parafuso sext. bicromatizado classe 8.8 DIN 933 MA M12×30",dwg:"1901000",prev:4,rec:0,status:"Pendente"},
+  {id:348,eq:"gerador",conj:"ROT",pos:"48",cod:"101957",desc:"Porca sext. bicromatizada classe 8 DIN 934 MA M12",dwg:"1901000",prev:2,rec:0,status:"Pendente"},
+  {id:349,eq:"gerador",conj:"ROT",pos:"49",cod:"101807",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×50",dwg:"1901000",prev:72,rec:0,status:"Pendente"},
+  {id:350,eq:"gerador",conj:"ROT",pos:"50",cod:"0147GSV1-1902014",desc:"Acabamento da cabeça de martelo — chapa SAE 1008/1010 0,90 mm, 135×120 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:351,eq:"gerador",conj:"ROT",pos:"51",cod:"0147GSV1-1902015",desc:"Acabamento da cabeça de martelo inferior — chapa SAE 1008/1010 0,90 mm, 135×120 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+];
 
-// ═══════════════════════════════════════════════════════════
-//  STORAGE
-// ═══════════════════════════════════════════════════════════
-function loadData() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const d = JSON.parse(raw);
-      if (d.items) { items = d.items; nextItemId = Math.max(...items.map(i=>i.id))+1; }
-      if (d.romaneios) { romaneios = d.romaneios; if(romaneios.length) nextRomId = Math.max(...romaneios.map(r=>r.id))+1; }
-      updateLastSaveLabel(d.savedAt);
-      return;
+const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR];
+
+let items=[], romaneios=[], nextItemId=400, nextRomId=1;
+let activeEquip='turbina', activeConj='all', editItemId=null, activeRomId=null, erroTipos=[], romItens=[];
+
+// ── STORAGE ────────────────────────────────────────────────
+function loadData(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const d=JSON.parse(raw);
+      if(d.items){items=d.items;nextItemId=Math.max(...items.map(i=>i.id))+1;}
+      if(d.romaneios){romaneios=d.romaneios;if(romaneios.length)nextRomId=Math.max(...romaneios.map(r=>r.id))+1;}
+      updateLastSaveLabel(d.savedAt);return;
     }
-  } catch(e){}
-  items = JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+  }catch(e){}
+  items=JSON.parse(JSON.stringify(DEFAULT_ITEMS));
 }
-
-function saveData() {
-  const ind = document.getElementById('save-indicator');
-  ind.className = 'save-indicator saving'; ind.textContent = '● Salvando...';
-  try {
-    const now = new Date().toISOString();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({items, romaneios, savedAt:now}));
-    setTimeout(()=>{ ind.className='save-indicator saved'; ind.textContent='● Salvo'; updateLastSaveLabel(now); }, 400);
-  } catch(e) { ind.textContent='✗ Erro ao salvar'; }
+function saveData(){
+  const ind=document.getElementById('save-indicator');
+  ind.className='save-indicator saving';ind.textContent='● Salvando...';
+  try{
+    const now=new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY,JSON.stringify({items,romaneios,savedAt:now}));
+    setTimeout(()=>{ind.className='save-indicator saved';ind.textContent='● Salvo';updateLastSaveLabel(now);},400);
+  }catch(e){ind.textContent='✗ Erro';}
 }
-
-function updateLastSaveLabel(iso) {
-  if (!iso) return;
-  const d = new Date(iso);
-  document.getElementById('last-save-label').textContent =
-    `Último save: ${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR')}`;
+function updateLastSaveLabel(iso){
+  if(!iso)return;
+  const d=new Date(iso);
+  document.getElementById('last-save-label').textContent=`Último save: ${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR')}`;
 }
-
-function resetData() {
-  if (!confirm('Apagar TODAS as alterações e restaurar dados originais?')) return;
+function resetData(){
+  if(!confirm('Apagar TODAS as alterações e restaurar dados originais?'))return;
   localStorage.removeItem(STORAGE_KEY);
-  items = JSON.parse(JSON.stringify(DEFAULT_ITEMS));
-  romaneios = []; nextItemId = 106; nextRomId = 1;
-  renderControle(); renderRomList();
+  items=JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+  romaneios=[];nextItemId=400;nextRomId=1;
+  buildConjTabs();renderControle();renderRomList();
   showNotif('Dados restaurados','ok');
 }
 
-// ═══════════════════════════════════════════════════════════
-//  NAV
-// ═══════════════════════════════════════════════════════════
-function showPage(p) {
-  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(el=>el.classList.remove('active'));
+// ── NAV ────────────────────────────────────────────────────
+function showPage(p,el){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
   document.getElementById('page-'+p).classList.add('active');
-  event.target.classList.add('active');
+  el.classList.add('active');
 }
 
-// ═══════════════════════════════════════════════════════════
-//  CONTROLE RENDER
-// ═══════════════════════════════════════════════════════════
-function pill(c){ return `<span class="conj-pill ${pillCls[c]||''}">${c}</span>`; }
-function statusBadge(s){
-  if(s==="Pendente") return `<span class="badge b-pend">Pendente</span>`;
-  if(s==="Em andamento") return `<span class="badge b-and">Em andamento</span>`;
-  if(s==="Concluído") return `<span class="badge b-ok">Concluído</span>`;
-  return `<span class="badge b-nc">Não conformidade</span>`;
+// ── EQUIP SWITCH ──────────────────────────────────────────
+function setEquip(eq){
+  activeEquip=eq;activeConj='all';
+  document.getElementById('eq-turbina').className='eq-tab'+(eq==='turbina'?' active-turbina':'');
+  document.getElementById('eq-gerador').className='eq-tab'+(eq==='gerador'?' active-gerador':'');
+  buildConjTabs();renderControle();
 }
 
+// ── CONJ TABS ─────────────────────────────────────────────
 function buildConjTabs(){
-  document.getElementById('conj-tabs').innerHTML =
-    `<button class="ctab ${activeConj==='all'?'active':''}" onclick="setConj('all')">Todos</button>` +
-    Object.keys(conjuntos).map(k=>
-      `<button class="ctab ${activeConj===k?'active':''}" onclick="setConj('${k}')">${k}</button>`
+  const conjs=activeEquip==='turbina'?CONJUNTOS_TURBINA:CONJUNTOS_GERADOR;
+  document.getElementById('conj-tabs').innerHTML=
+    `<button class="ctab ${activeConj==='all'?'active':''}" onclick="setConj('all')">Todos</button>`+
+    Object.entries(conjs).map(([k,v])=>
+      `<button class="ctab ${activeConj===k?'active':''}" onclick="setConj('${k}')">${k} – ${v}</button>`
     ).join('');
 }
-function setConj(c){ activeConj=c; buildConjTabs(); renderControle(); }
+function setConj(c){activeConj=c;buildConjTabs();renderControle();}
 
-function renderControle(){
-  const q = document.getElementById('search-inp').value.toLowerCase();
-  const fs = document.getElementById('fStatus').value;
-  const filtered = items.filter(i=>
-    (activeConj==='all'||i.conj===activeConj) &&
-    (!q||i.desc.toLowerCase().includes(q)||i.cod.toLowerCase().includes(q)) &&
-    (!fs||i.status===fs)
-  );
-  const tb = document.getElementById('tbody-controle');
-  tb.innerHTML = filtered.length===0
-    ? '<tr class="empty-row"><td colspan="9">Nenhum item encontrado.</td></tr>'
-    : filtered.map(i=>`<tr>
-        <td>${pill(i.conj)}</td>
-        <td style="color:#6e7681;font-family:'IBM Plex Mono',monospace;font-size:11px">${i.pos}</td>
-        <td class="code-sm" title="${i.cod}">${i.cod}</td>
-        <td title="${i.desc}" style="max-width:260px">${i.desc}</td>
-        <td><span class="dwg-tag">${i.dwg}</span></td>
-        <td class="qty-num" style="text-align:right">${i.prev}</td>
-        <td style="text-align:right" class="${i.rec>=i.prev&&i.rec>0?'qty-ok':i.rec>0?'qty-warn':'qty-num'}">${i.rec}</td>
-        <td>${statusBadge(i.status)}</td>
-        <td><button class="act-btn-tbl" onclick="openItemModal(${i.id})">✎</button></td>
-      </tr>`).join('');
-
-  const scope = activeConj==='all'?items:items.filter(i=>i.conj===activeConj);
-  document.getElementById('s-total').textContent = scope.length;
-  document.getElementById('s-pend').textContent  = scope.filter(i=>i.status==='Pendente').length;
-  document.getElementById('s-ok').textContent    = scope.filter(i=>i.status==='Concluído').length;
-  document.getElementById('s-nc').textContent    = scope.filter(i=>i.status==='Não conformidade').length;
-  document.getElementById('hdr-badge').textContent = `${Object.keys(conjuntos).length} conjuntos · ${items.length} itens · ${romaneios.length} romaneios`;
+// ── PILL ──────────────────────────────────────────────────
+function pill(eq,c){
+  const cls=eq==='turbina'?(PILL_CLS_TFV[c]||''):(PILL_CLS_GSV[c]||'');
+  return `<span class="conj-pill ${cls}">${c}</span>`;
+}
+function statusBadge(s){
+  if(s==="Pendente")return`<span class="badge b-pend">Pendente</span>`;
+  if(s==="Em andamento")return`<span class="badge b-and">Em andamento</span>`;
+  if(s==="Concluído")return`<span class="badge b-ok">Concluído</span>`;
+  return`<span class="badge b-nc">Não conformidade</span>`;
 }
 
-// item modal
+// ── RENDER CONTROLE ───────────────────────────────────────
+function renderControle(){
+  const q=document.getElementById('search-inp').value.toLowerCase();
+  const fs=document.getElementById('fStatus').value;
+  const filtered=items.filter(i=>
+    i.eq===activeEquip&&
+    (activeConj==='all'||i.conj===activeConj)&&
+    (!q||i.desc.toLowerCase().includes(q)||i.cod.toLowerCase().includes(q))&&
+    (!fs||i.status===fs)
+  );
+  const tb=document.getElementById('tbody-controle');
+  tb.innerHTML=filtered.length===0
+    ?'<tr class="empty-row"><td colspan="9">Nenhum item encontrado.</td></tr>'
+    :filtered.map(i=>`<tr>
+      <td>${pill(i.eq,i.conj)}</td>
+      <td style="color:#6e7681;font-family:'IBM Plex Mono',monospace;font-size:11px">${i.pos}</td>
+      <td class="code-sm" title="${i.cod}">${i.cod}</td>
+      <td title="${i.desc}" style="max-width:260px">${i.desc}</td>
+      <td><span class="dwg-tag">${i.dwg}</span></td>
+      <td class="qty-num" style="text-align:right">${i.prev}</td>
+      <td style="text-align:right" class="${i.rec>=i.prev&&i.rec>0?'qty-ok':i.rec>0?'qty-warn':'qty-num'}">${i.rec}</td>
+      <td>${statusBadge(i.status)}</td>
+      <td><button class="act-btn-tbl" onclick="openItemModal(${i.id})">✎</button></td>
+    </tr>`).join('');
+
+  const scope=activeConj==='all'?items.filter(i=>i.eq===activeEquip):items.filter(i=>i.eq===activeEquip&&i.conj===activeConj);
+  document.getElementById('s-total').textContent=scope.length;
+  document.getElementById('s-pend').textContent=scope.filter(i=>i.status==='Pendente').length;
+  document.getElementById('s-ok').textContent=scope.filter(i=>i.status==='Concluído').length;
+  document.getElementById('s-nc').textContent=scope.filter(i=>i.status==='Não conformidade').length;
+  const totalAll=items.length;
+  document.getElementById('hdr-badge').textContent=`${totalAll} itens · ${romaneios.length} romaneios`;
+}
+
+// ── ITEM MODAL ────────────────────────────────────────────
+function updateConjSelect(){
+  const eq=document.getElementById('f-equip').value;
+  const conjs=eq==='turbina'?CONJUNTOS_TURBINA:CONJUNTOS_GERADOR;
+  document.getElementById('f-conj').innerHTML=Object.entries(conjs).map(([k,v])=>`<option value="${k}">${k} – ${v}</option>`).join('');
+}
 function openItemModal(id=null){
   editItemId=id;
+  updateConjSelect();
   if(id){
     const i=items.find(x=>x.id===id);
     document.getElementById('item-modal-title').textContent='Editar item';
-    document.getElementById('f-conj').value=i.conj; document.getElementById('f-pos').value=i.pos;
-    document.getElementById('f-cod').value=i.cod; document.getElementById('f-dwg').value=i.dwg;
-    document.getElementById('f-desc').value=i.desc; document.getElementById('f-prev').value=i.prev;
-    document.getElementById('f-rec').value=i.rec; document.getElementById('f-status').value=i.status;
-  } else {
+    document.getElementById('f-equip').value=i.eq;
+    updateConjSelect();
+    document.getElementById('f-conj').value=i.conj;
+    document.getElementById('f-pos').value=i.pos;
+    document.getElementById('f-dwg').value=i.dwg;
+    document.getElementById('f-cod').value=i.cod;
+    document.getElementById('f-desc').value=i.desc;
+    document.getElementById('f-prev').value=i.prev;
+    document.getElementById('f-rec').value=i.rec;
+    document.getElementById('f-status').value=i.status;
+  }else{
     document.getElementById('item-modal-title').textContent='Novo item';
-    ['f-pos','f-cod','f-dwg','f-desc','f-prev','f-rec'].forEach(x=>document.getElementById(x).value='');
-    document.getElementById('f-conj').value=activeConj!=='all'?activeConj:'425';
+    ['f-pos','f-dwg','f-cod','f-desc','f-prev','f-rec'].forEach(x=>document.getElementById(x).value='');
+    document.getElementById('f-equip').value=activeEquip;
+    updateConjSelect();
     document.getElementById('f-status').value='Pendente';
   }
   document.getElementById('item-modal').classList.add('open');
 }
-function closeItemModal(){ document.getElementById('item-modal').classList.remove('open'); }
-document.getElementById('item-modal').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeItemModal(); });
-
+function closeItemModal(){document.getElementById('item-modal').classList.remove('open');}
+document.getElementById('item-modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeItemModal();});
 function saveItemModal(){
   const desc=document.getElementById('f-desc').value.trim();
   if(!desc){alert('Informe a descrição.');return;}
-  const obj={conj:document.getElementById('f-conj').value,pos:document.getElementById('f-pos').value||'—',
-    cod:document.getElementById('f-cod').value||'—',dwg:document.getElementById('f-dwg').value||'—',
-    desc,prev:parseInt(document.getElementById('f-prev').value)||0,
+  const obj={eq:document.getElementById('f-equip').value,conj:document.getElementById('f-conj').value,
+    pos:document.getElementById('f-pos').value||'—',dwg:document.getElementById('f-dwg').value||'—',
+    cod:document.getElementById('f-cod').value||'—',desc,
+    prev:parseInt(document.getElementById('f-prev').value)||0,
     rec:parseInt(document.getElementById('f-rec').value)||0,
     status:document.getElementById('f-status').value};
-  if(editItemId) items[items.findIndex(x=>x.id===editItemId)]={...obj,id:editItemId};
+  if(editItemId)items[items.findIndex(x=>x.id===editItemId)]={...obj,id:editItemId};
   else items.push({...obj,id:nextItemId++});
-  closeItemModal(); saveData(); buildConjTabs(); renderControle();
+  closeItemModal();saveData();buildConjTabs();renderControle();
 }
 
-// ═══════════════════════════════════════════════════════════
-//  ROMANEIOS
-// ═══════════════════════════════════════════════════════════
-let romItens = []; // temp rows while filling form
-let erroTipos = [];
-
+// ── ROMANEIOS ─────────────────────────────────────────────
 function renderRomList(){
-  const el = document.getElementById('rom-list');
-  if(!romaneios.length){
-    el.innerHTML='<div class="rom-empty">Nenhum romaneio cadastrado.<br>Clique em + Novo para começar.</div>';
-    return;
-  }
-  el.innerHTML = romaneios.slice().reverse().map(r=>{
-    const corr = r.correto ? '<span class="badge b-ok">✓ Correto</span>' : '<span class="badge b-nc">✗ Erros</span>';
-    return `<div class="rom-item ${activeRomId===r.id?'active':''}" onclick="viewRomaneio(${r.id})">
+  const el=document.getElementById('rom-list');
+  if(!romaneios.length){el.innerHTML='<div class="rom-empty">Nenhum romaneio cadastrado.<br>Clique em + Novo para começar.</div>';return;}
+  el.innerHTML=romaneios.slice().reverse().map(r=>{
+    const corr=r.correto?'<span class="badge b-ok">✓ Correto</span>':'<span class="badge b-nc">✗ Erros</span>';
+    return`<div class="rom-item ${activeRomId===r.id?'active':''}" onclick="viewRomaneio(${r.id})">
       <div class="rom-item-num">ROM-${String(r.id).padStart(3,'0')}</div>
       <div class="rom-item-meta">${r.dataEmbarque||'—'} · ${r.transportadora||'—'}</div>
       <div class="rom-item-meta">${r.itens.length} itens · Peso: ${r.pesoBruto||'—'}</div>
@@ -580,32 +648,19 @@ function renderRomList(){
     </div>`;
   }).join('');
 }
-
 function viewRomaneio(id){
-  activeRomId = id;
-  renderRomList();
-  const r = romaneios.find(x=>x.id===id);
-  const corBadge = r.correto
-    ? `<span class="qualidade-badge qb-ok">✓ Romaneio correto</span>`
-    : `<span class="qualidade-badge qb-err">✗ ${r.qtdErros} item(ns) com erro — Tipos: ${(r.tiposErro||[]).join(', ')}</span>`;
-
-  const linhas = r.itens.map(it=>{
-    let match='', matchClass='rom-nomatch', matchLabel='—';
-    const ctrl = items.find(x=> x.cod && x.cod!=='—' && x.cod.trim().toUpperCase()===it.cod.trim().toUpperCase());
+  activeRomId=id;renderRomList();
+  const r=romaneios.find(x=>x.id===id);
+  const corBadge=r.correto?`<span class="qualidade-badge qb-ok">✓ Romaneio correto</span>`:`<span class="qualidade-badge qb-err">✗ ${r.qtdErros} item(ns) com erro — Tipos: ${(r.tiposErro||[]).join(', ')}</span>`;
+  const linhas=r.itens.map(it=>{
+    let matchClass='rom-nomatch',matchLabel='—';
+    const ctrl=items.find(x=>x.cod&&x.cod!=='—'&&x.cod.trim().toUpperCase()===it.cod.trim().toUpperCase());
     if(!it.cod||it.cod==='—'){matchClass='rom-avulso';matchLabel='Avulso';}
-    else if(it.cod.toUpperCase().includes('GSV')){matchClass='rom-other';matchLabel='Outro projeto';}
-    else if(ctrl){matchClass='rom-match';matchLabel=`✓ ${ctrl.conj} – ${ctrl.desc.substring(0,30)}...`;}
-    else{matchClass='rom-nomatch';matchLabel='Sem correspondência';}
-    return `<tr>
-      <td class="code-sm">${it.cod||'—'}</td>
-      <td title="${it.desc}">${it.desc}</td>
-      <td class="qty-num" style="text-align:right">${it.qtd}</td>
-      <td style="color:var(--text3);font-size:11px">${it.statusRom||'—'}</td>
-      <td class="${matchClass}">${matchLabel}</td>
-    </tr>`;
+    else if(it.cod.toUpperCase().includes('GSV')&&!ctrl){matchClass='rom-other';matchLabel='Outro projeto';}
+    else if(ctrl){matchClass='rom-match';matchLabel=`✓ ${ctrl.conj} – ${ctrl.desc.substring(0,28)}...`;}
+    return`<tr><td class="code-sm">${it.cod||'—'}</td><td title="${it.desc}">${it.desc}</td><td class="qty-num" style="text-align:right">${it.qtd}</td><td style="color:var(--text3);font-size:11px">${it.statusRom||'—'}</td><td class="${matchClass}">${matchLabel}</td></tr>`;
   }).join('');
-
-  document.getElementById('rom-detail').innerHTML = `
+  document.getElementById('rom-detail').innerHTML=`
     <div class="rom-detail-header">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
         <h2>ROM-${String(r.id).padStart(3,'0')}</h2>
@@ -619,45 +674,30 @@ function viewRomaneio(id){
         <div class="rom-meta-item"><div class="rom-meta-label">Volumes</div><div class="rom-meta-val">${r.volumes||'—'}</div></div>
         <div class="rom-meta-item"><div class="rom-meta-label">Placa</div><div class="rom-meta-val">${r.placa||'—'}</div></div>
         <div class="rom-meta-item" style="grid-column:span 3"><div class="rom-meta-label">Transportadora</div><div class="rom-meta-val">${r.transportadora||'—'}</div></div>
-      </div>
-      ${corBadge}
+      </div>${corBadge}
     </div>
-    <div class="table-wrap">
-      <table class="rom-items-table">
-        <thead><tr><th style="width:130px">Código</th><th>Descrição</th><th style="width:60px;text-align:right">Qtd</th><th style="width:90px">Status Rom.</th><th style="width:220px">Controle</th></tr></thead>
-        <tbody>${linhas}</tbody>
-      </table>
-    </div>`;
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th style="width:130px;top:0;position:relative">Código</th><th style="top:0;position:relative">Descrição</th><th style="width:60px;text-align:right;top:0;position:relative">Qtd</th><th style="width:90px;top:0;position:relative">Status Rom.</th><th style="width:220px;top:0;position:relative">Controle</th></tr></thead>
+      <tbody>${linhas}</tbody>
+    </table></div>`;
 }
-
 function deleteRomaneio(id){
-  if(!confirm('Excluir este romaneio? As quantidades recebidas atualizadas por ele serão mantidas.')) return;
-  romaneios = romaneios.filter(r=>r.id!==id);
-  activeRomId = null;
-  document.getElementById('rom-detail').innerHTML = `<div style="text-align:center;padding:60px 24px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📦</div><div style="font-size:14px">Selecione um romaneio ou cadastre um novo</div></div>`;
-  saveData(); renderRomList();
-  showNotif('Romaneio excluído','ok');
+  if(!confirm('Excluir este romaneio?'))return;
+  romaneios=romaneios.filter(r=>r.id!==id);activeRomId=null;
+  document.getElementById('rom-detail').innerHTML=`<div style="text-align:center;padding:60px 24px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📦</div><div>Selecione um romaneio ou cadastre um novo</div></div>`;
+  saveData();renderRomList();showNotif('Romaneio excluído','ok');
 }
-
-// ── FORM ────────────────────────────────────────────────────
 function showRomaneioForm(){
-  romItens = [{cod:'',desc:'',qtd:'',statusRom:''}];
-  erroTipos = [];
-  activeRomId = null;
-  renderRomList();
-  document.getElementById('rom-detail').innerHTML = buildRomForm();
-  attachPdfDrop();
+  romItens=[{cod:'',desc:'',qtd:'',statusRom:''}];erroTipos=[];activeRomId=null;renderRomList();
+  document.getElementById('rom-detail').innerHTML=buildRomForm();
+  attachPdfDrop();renderRomItemRows();
 }
-
 function buildRomForm(){
-  return `
-  <div style="max-width:760px">
+  return`<div style="max-width:760px">
     <h2 style="font-size:16px;font-weight:600;margin-bottom:20px">Novo Romaneio</h2>
-
-    <div class="form-section">
-      <h3>Cabeçalho</h3>
+    <div class="form-section"><h3>Cabeçalho</h3>
       <div class="field-row3">
-        <div class="field"><label>Nº Contrato</label><input id="rf-contrato" placeholder="ASL_GEI_3515_01_2022" value="ASL_GEI_3515_01_2022"></div>
+        <div class="field"><label>Nº Contrato</label><input id="rf-contrato" value="ASL_GEI_3515_01_2022"></div>
         <div class="field"><label>NF</label><input id="rf-nf" placeholder="Número da NF"></div>
         <div class="field"><label>Data de Embarque</label><input id="rf-data" type="date"></div>
       </div>
@@ -668,9 +708,7 @@ function buildRomForm(){
       </div>
       <div class="field"><label>Transportadora</label><input id="rf-transp" placeholder="Ex: MAMUTH"></div>
     </div>
-
-    <div class="form-section">
-      <h3>Importar PDF do Romaneio</h3>
+    <div class="form-section"><h3>Importar PDF do Romaneio</h3>
       <div class="pdf-drop" id="pdf-drop" onclick="document.getElementById('pdf-file').click()">
         <div class="pdf-drop-icon">📄</div>
         <div class="pdf-drop-text">Clique ou arraste o PDF aqui</div>
@@ -679,29 +717,21 @@ function buildRomForm(){
       </div>
       <input type="file" id="pdf-file" accept="application/pdf" style="display:none" onchange="handlePdfFile(this.files[0])">
     </div>
-
-    <div class="form-section">
-      <h3>Itens do Romaneio</h3>
-      <div class="rom-item-header">
-        <span>Código (Item Filho)</span><span>Descrição</span><span>Qtd</span><span>Status Rom.</span><span></span>
-      </div>
+    <div class="form-section"><h3>Itens do Romaneio</h3>
+      <div class="rom-item-header"><span>Código</span><span>Descrição</span><span>Qtd</span><span>Status</span><span></span></div>
       <div class="rom-itens-form" id="rom-itens-form"></div>
       <button class="add-row-btn" onclick="addRomItemRow()">+ Adicionar item</button>
     </div>
-
-    <div class="form-section">
-      <h3>Qualidade do Romaneio</h3>
-      <div class="field">
-        <label>O romaneio veio 100% correto?</label>
+    <div class="form-section"><h3>Qualidade do Romaneio</h3>
+      <div class="field"><label>O romaneio veio 100% correto?</label>
         <div class="radio-group">
-          <label class="radio-opt" id="lbl-sim"><input type="radio" name="correto" value="sim" onchange="toggleErro(false)" checked> Sim, está correto</label>
-          <label class="radio-opt" id="lbl-nao"><input type="radio" name="correto" value="nao" onchange="toggleErro(true)"> Não, há erros</label>
+          <label class="radio-opt"><input type="radio" name="correto" value="sim" onchange="toggleErro(false)" checked> Sim, está correto</label>
+          <label class="radio-opt"><input type="radio" name="correto" value="nao" onchange="toggleErro(true)"> Não, há erros</label>
         </div>
       </div>
       <div id="erro-section" style="display:none">
         <div class="field"><label>Quantos itens estavam errados?</label><input id="rf-qtd-erros" type="number" min="1" placeholder="Ex: 2" style="max-width:150px"></div>
-        <div class="field">
-          <label>Tipo(s) de erro</label>
+        <div class="field"><label>Tipo(s) de erro</label>
           <div class="erro-tipos">
             <div class="erro-chip" onclick="toggleErroTipo(this,'Quantidade errada')">Quantidade errada</div>
             <div class="erro-chip" onclick="toggleErroTipo(this,'Código errado')">Código errado</div>
@@ -711,229 +741,108 @@ function buildRomForm(){
         </div>
       </div>
     </div>
-
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
       <button class="btn-sec" onclick="cancelRomForm()">Cancelar</button>
       <button class="btn-primary" onclick="saveRomaneio()">💾 Salvar Romaneio</button>
     </div>
   </div>`;
 }
-
 function renderRomItemRows(){
-  document.getElementById('rom-itens-form').innerHTML = romItens.map((it,i)=>`
-    <div class="rom-item-row" id="rom-row-${i}">
-      <input placeholder="Código" value="${it.cod}" onchange="romItens[${i}].cod=this.value">
-      <input placeholder="Descrição" value="${it.desc}" onchange="romItens[${i}].desc=this.value">
-      <input placeholder="Qtd" value="${it.qtd}" onchange="romItens[${i}].qtd=this.value">
-      <input placeholder="Status" value="${it.statusRom}" onchange="romItens[${i}].statusRom=this.value">
-      <button class="del-row-btn" onclick="removeRomItemRow(${i})">✕</button>
-    </div>`).join('');
+  const el=document.getElementById('rom-itens-form');if(!el)return;
+  el.innerHTML=romItens.map((it,i)=>`<div class="rom-item-row" id="rom-row-${i}">
+    <input placeholder="Código" value="${it.cod}" onchange="romItens[${i}].cod=this.value">
+    <input placeholder="Descrição" value="${it.desc}" onchange="romItens[${i}].desc=this.value">
+    <input placeholder="Qtd" value="${it.qtd}" onchange="romItens[${i}].qtd=this.value">
+    <input placeholder="Status" value="${it.statusRom}" onchange="romItens[${i}].statusRom=this.value">
+    <button class="del-row-btn" onclick="removeRomItemRow(${i})">✕</button>
+  </div>`).join('');
 }
-
-function addRomItemRow(){
-  romItens.push({cod:'',desc:'',qtd:'',statusRom:''});
-  renderRomItemRows();
-}
-function removeRomItemRow(i){
-  romItens.splice(i,1);
-  renderRomItemRows();
-}
-
-// collect current row values from DOM before save
+function addRomItemRow(){romItens.push({cod:'',desc:'',qtd:'',statusRom:''});renderRomItemRows();}
+function removeRomItemRow(i){romItens.splice(i,1);renderRomItemRows();}
 function collectRomItems(){
-  const rows = document.querySelectorAll('#rom-itens-form .rom-item-row');
-  romItens = Array.from(rows).map((_,i)=>{
-    const inputs = document.querySelectorAll(`#rom-row-${i} input`);
-    return {cod:inputs[0].value.trim(), desc:inputs[1].value.trim(), qtd:inputs[2].value.trim(), statusRom:inputs[3].value.trim()};
+  const rows=document.querySelectorAll('#rom-itens-form .rom-item-row');
+  romItens=Array.from(rows).map((_,i)=>{
+    const inputs=document.querySelectorAll(`#rom-row-${i} input`);
+    return{cod:inputs[0].value.trim(),desc:inputs[1].value.trim(),qtd:inputs[2].value.trim(),statusRom:inputs[3].value.trim()};
   });
 }
-
-function toggleErro(show){
-  document.getElementById('erro-section').style.display = show?'block':'none';
-  if(!show) erroTipos=[];
-}
-function toggleErroTipo(el, tipo){
-  el.classList.toggle('selected');
-  if(erroTipos.includes(tipo)) erroTipos=erroTipos.filter(x=>x!==tipo);
-  else erroTipos.push(tipo);
-}
-function cancelRomForm(){
-  document.getElementById('rom-detail').innerHTML=`<div style="text-align:center;padding:60px 24px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📦</div><div style="font-size:14px">Selecione um romaneio ou cadastre um novo</div></div>`;
-}
-
+function toggleErro(show){document.getElementById('erro-section').style.display=show?'block':'none';if(!show)erroTipos=[];}
+function toggleErroTipo(el,tipo){el.classList.toggle('selected');if(erroTipos.includes(tipo))erroTipos=erroTipos.filter(x=>x!==tipo);else erroTipos.push(tipo);}
+function cancelRomForm(){document.getElementById('rom-detail').innerHTML=`<div style="text-align:center;padding:60px 24px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px">📦</div><div>Selecione um romaneio ou cadastre um novo</div></div>`;}
 function saveRomaneio(){
   collectRomItems();
-  const correto = document.querySelector('input[name="correto"]:checked').value==='sim';
-  const qtdErros = correto ? 0 : parseInt(document.getElementById('rf-qtd-erros').value)||0;
-  if(!correto && qtdErros===0){ alert('Informe quantos itens estavam errados.'); return; }
-  if(!correto && erroTipos.length===0){ alert('Selecione pelo menos um tipo de erro.'); return; }
-
-  const rom = {
-    id: nextRomId++,
-    contrato: document.getElementById('rf-contrato').value.trim(),
-    nf: document.getElementById('rf-nf').value.trim(),
-    dataEmbarque: document.getElementById('rf-data').value,
-    pesoBruto: document.getElementById('rf-peso').value.trim(),
-    volumes: document.getElementById('rf-volumes').value.trim(),
-    placa: document.getElementById('rf-placa').value.trim(),
-    transportadora: document.getElementById('rf-transp').value.trim(),
-    correto, qtdErros, tiposErro: [...erroTipos],
-    itens: romItens.filter(x=>x.desc||x.cod),
-    criadoEm: new Date().toISOString()
-  };
-
-  // cruzar e atualizar qtd recebida
-  let atualizados = 0;
+  const correto=document.querySelector('input[name="correto"]:checked').value==='sim';
+  const qtdErros=correto?0:parseInt(document.getElementById('rf-qtd-erros').value)||0;
+  if(!correto&&qtdErros===0){alert('Informe quantos itens estavam errados.');return;}
+  if(!correto&&erroTipos.length===0){alert('Selecione pelo menos um tipo de erro.');return;}
+  const rom={id:nextRomId++,contrato:document.getElementById('rf-contrato').value.trim(),nf:document.getElementById('rf-nf').value.trim(),dataEmbarque:document.getElementById('rf-data').value,pesoBruto:document.getElementById('rf-peso').value.trim(),volumes:document.getElementById('rf-volumes').value.trim(),placa:document.getElementById('rf-placa').value.trim(),transportadora:document.getElementById('rf-transp').value.trim(),correto,qtdErros,tiposErro:[...erroTipos],itens:romItens.filter(x=>x.desc||x.cod),criadoEm:new Date().toISOString()};
+  let atualizados=0;
   rom.itens.forEach(it=>{
-    if(!it.cod||it.cod==='—') return;
-    const ctrl = items.find(x=> x.cod && x.cod!=='—' && x.cod.trim().toUpperCase()===it.cod.trim().toUpperCase());
-    if(ctrl){
-      const qtd = parseFloat(it.qtd)||0;
-      ctrl.rec = (ctrl.rec||0) + qtd;
-      if(ctrl.rec >= ctrl.prev && ctrl.prev > 0) ctrl.status='Concluído';
-      else if(ctrl.rec > 0) ctrl.status='Em andamento';
-      atualizados++;
-    }
+    if(!it.cod||it.cod==='—')return;
+    const ctrl=items.find(x=>x.cod&&x.cod!=='—'&&x.cod.trim().toUpperCase()===it.cod.trim().toUpperCase());
+    if(ctrl){ctrl.rec=(ctrl.rec||0)+(parseFloat(it.qtd)||0);if(ctrl.rec>=ctrl.prev&&ctrl.prev>0)ctrl.status='Concluído';else if(ctrl.rec>0)ctrl.status='Em andamento';atualizados++;}
   });
-
-  romaneios.push(rom);
-  activeRomId = rom.id;
-  saveData();
-  renderRomList();
-  viewRomaneio(rom.id);
-  renderControle();
-  showNotif(`Romaneio salvo! ${atualizados} item(ns) atualizados no controle.`, 'ok');
+  romaneios.push(rom);activeRomId=rom.id;
+  saveData();renderRomList();viewRomaneio(rom.id);renderControle();
+  showNotif(`Romaneio salvo! ${atualizados} item(ns) atualizados.`,'ok');
 }
-
-// ── PDF ─────────────────────────────────────────────────────
 function attachPdfDrop(){
-  const drop = document.getElementById('pdf-drop');
-  if(!drop) return;
+  const drop=document.getElementById('pdf-drop');if(!drop)return;
   drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('dragover');});
   drop.addEventListener('dragleave',()=>drop.classList.remove('dragover'));
-  drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('dragover');if(e.dataTransfer.files[0]) handlePdfFile(e.dataTransfer.files[0]);});
+  drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('dragover');if(e.dataTransfer.files[0])handlePdfFile(e.dataTransfer.files[0]);});
 }
-
 function handlePdfFile(file){
-  if(!file||file.type!=='application/pdf'){
-    document.getElementById('pdf-status').className='pdf-status err';
-    document.getElementById('pdf-status').textContent='✗ Arquivo inválido. Selecione um PDF.';
-    return;
-  }
-  const st = document.getElementById('pdf-status');
-  st.className='pdf-status loading'; st.textContent='⏳ Lendo PDF...';
-
-  const reader = new FileReader();
-  reader.onload = async function(e){
-    try {
-      // Use PDF.js from CDN
-      if(!window.pdfjsLib){
-        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
-        pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-      }
-      const pdf = await pdfjsLib.getDocument({data: e.target.result}).promise;
-      let fullText = '';
-      for(let p=1;p<=pdf.numPages;p++){
-        const page = await pdf.getPage(p);
-        const tc = await page.getTextContent();
-        fullText += tc.items.map(i=>i.str).join(' ') + '\n';
-      }
-      parseRomaneioText(fullText, st);
-    } catch(err){
-      st.className='pdf-status err';
-      st.textContent='✗ Erro ao ler PDF. Verifique se não é um scan/imagem.';
-    }
+  if(!file||file.type!=='application/pdf'){document.getElementById('pdf-status').className='pdf-status err';document.getElementById('pdf-status').textContent='✗ Arquivo inválido.';return;}
+  const st=document.getElementById('pdf-status');st.className='pdf-status loading';st.textContent='⏳ Lendo PDF...';
+  const reader=new FileReader();
+  reader.onload=async function(e){
+    try{
+      if(!window.pdfjsLib){await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';}
+      const pdf=await pdfjsLib.getDocument({data:e.target.result}).promise;
+      let fullText='';
+      for(let p=1;p<=pdf.numPages;p++){const page=await pdf.getPage(p);const tc=await page.getTextContent();fullText+=tc.items.map(i=>i.str).join(' ')+'\n';}
+      parseRomaneioText(fullText,st);
+    }catch(err){st.className='pdf-status err';st.textContent='✗ Erro ao ler PDF. Verifique se não é um scan.';}
   };
   reader.readAsArrayBuffer(file);
 }
-
-function loadScript(src){
-  return new Promise((res,rej)=>{
-    const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);
-  });
-}
-
-function parseRomaneioText(text, st){
-  // Try to extract header fields
-  const pesoMatch = text.match(/Peso\s*Bruto[:\s]*([\d.,]+\s*KG)/i);
-  const nfMatch   = text.match(/NF[:\s]*([A-Z0-9\-\/]+)/i);
-  const placaMatch= text.match(/PLACA[:\s]*([A-Z0-9]+)/i);
+function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+function parseRomaneioText(text,st){
+  const pesoMatch=text.match(/Peso\s*Bruto[:\s]*([\d.,]+\s*KG)/i);
+  const nfMatch=text.match(/NF[:\s]*([A-Z0-9\-\/]+)/i);
+  const placaMatch=text.match(/PLACA[:\s]*([A-Z0-9]+)/i);
   const transpMatch=text.match(/TRANSPORTADORA[:\s]*([A-Z0-9\s]+?)(?:\n|DATA|VOLUME|$)/i);
-  const volMatch  = text.match(/Volumes[:\s]*(\d+)/i);
-  const dataMatch = text.match(/(\d{2}\/\d{2}\/\d{4})/);
-
-  if(pesoMatch && document.getElementById('rf-peso')) document.getElementById('rf-peso').value=pesoMatch[1].trim();
-  if(nfMatch && document.getElementById('rf-nf')) document.getElementById('rf-nf').value=nfMatch[1].trim();
-  if(placaMatch && document.getElementById('rf-placa')) document.getElementById('rf-placa').value=placaMatch[1].trim();
-  if(transpMatch && document.getElementById('rf-transp')) document.getElementById('rf-transp').value=transpMatch[1].trim();
-  if(volMatch && document.getElementById('rf-volumes')) document.getElementById('rf-volumes').value=volMatch[1].trim();
-  if(dataMatch && document.getElementById('rf-data')){
-    const [d,m,a]=dataMatch[1].split('/');
-    document.getElementById('rf-data').value=`${a}-${m}-${d}`;
-  }
-
-  // Extract items: lines containing a code pattern 0147xxx or numeric codes
-  const lines = text.split(/\n/).map(l=>l.trim()).filter(Boolean);
-  const extracted = [];
-  const codeRe = /\b(0147[A-Z0-9\-]+|[1-9]\d{4,6})\b/;
-
+  const volMatch=text.match(/Volumes[:\s]*(\d+)/i);
+  const dataMatch=text.match(/(\d{2}\/\d{2}\/\d{4})/);
+  if(pesoMatch&&document.getElementById('rf-peso'))document.getElementById('rf-peso').value=pesoMatch[1].trim();
+  if(nfMatch&&document.getElementById('rf-nf'))document.getElementById('rf-nf').value=nfMatch[1].trim();
+  if(placaMatch&&document.getElementById('rf-placa'))document.getElementById('rf-placa').value=placaMatch[1].trim();
+  if(transpMatch&&document.getElementById('rf-transp'))document.getElementById('rf-transp').value=transpMatch[1].trim();
+  if(volMatch&&document.getElementById('rf-volumes'))document.getElementById('rf-volumes').value=volMatch[1].trim();
+  if(dataMatch&&document.getElementById('rf-data')){const[d,m,a]=dataMatch[1].split('/');document.getElementById('rf-data').value=`${a}-${m}-${d}`;}
+  const lines=text.split(/\n/).map(l=>l.trim()).filter(Boolean);
+  const extracted=[];
+  const codeRe=/\b(0147[A-Z0-9\-]+|[1-9]\d{4,6})\b/;
   lines.forEach(line=>{
-    const cm = line.match(codeRe);
-    if(!cm) return;
-    const cod = cm[1];
-    // qtd: last number that looks like quantity
-    const nums = [...line.matchAll(/\b(\d+)\b/g)].map(m=>parseInt(m[1]));
-    const qtd = nums.filter(n=>n>0&&n<10000).pop()||'';
-    // desc: text after code, before numbers
-    const afterCode = line.substring(line.indexOf(cod)+cod.length).replace(/\d[\d.,]*/g,'').trim();
-    const desc = afterCode.replace(/\s+/g,' ').trim().substring(0,80)||line.substring(0,60);
-    // status: last word-ish text
-    const statusM = line.match(/\b(ok|OK|Ok|ENVIADO.*|pendente|PENDENTE)\b/i);
-    const statusRom = statusM?statusM[0].trim():'';
-    extracted.push({cod,desc,qtd:String(qtd),statusRom});
+    const cm=line.match(codeRe);if(!cm)return;
+    const cod=cm[1];
+    const nums=[...line.matchAll(/\b(\d+)\b/g)].map(m=>parseInt(m[1]));
+    const qtd=nums.filter(n=>n>0&&n<10000).pop()||'';
+    const afterCode=line.substring(line.indexOf(cod)+cod.length).replace(/\d[\d.,]*/g,'').trim();
+    const desc=afterCode.replace(/\s+/g,' ').trim().substring(0,80)||line.substring(0,60);
+    const statusM=line.match(/\b(ok|OK|Ok|ENVIADO.*|pendente|PENDENTE)\b/i);
+    extracted.push({cod,desc,qtd:String(qtd),statusRom:statusM?statusM[0].trim():''});
   });
-
-  if(extracted.length>0){
-    romItens = extracted;
-    renderRomItemRows();
-    st.className='pdf-status ok';
-    st.textContent=`✓ ${extracted.length} item(ns) extraído(s). Revise abaixo antes de salvar.`;
-  } else {
-    st.className='pdf-status err';
-    st.textContent='✗ Não foi possível extrair itens automaticamente. Preencha manualmente abaixo.';
-    renderRomItemRows();
-  }
+  if(extracted.length>0){romItens=extracted;renderRomItemRows();st.className='pdf-status ok';st.textContent=`✓ ${extracted.length} item(ns) extraído(s). Revise antes de salvar.`;}
+  else{st.className='pdf-status err';st.textContent='✗ Não foi possível extrair itens. Preencha manualmente.';}
 }
+function showNotif(msg,type='ok'){const n=document.getElementById('notif');n.textContent=msg;n.className=`notif show ${type}`;setTimeout(()=>n.classList.remove('show'),3500);}
 
-// ── NOTIF ──────────────────────────────────────────────────
-function showNotif(msg, type='ok'){
-  const n=document.getElementById('notif');
-  n.textContent=msg; n.className=`notif show ${type}`;
-  setTimeout(()=>n.classList.remove('show'),3500);
-}
-
-// ── INIT ───────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────
 document.getElementById('search-inp').addEventListener('input',renderControle);
 document.getElementById('fStatus').addEventListener('change',renderControle);
-
-loadData();
-buildConjTabs();
-renderControle();
-renderRomList();
-
-// helper: attach after form render
-function renderRomItemRows(){
-  const el=document.getElementById('rom-itens-form');
-  if(!el) return;
-  el.innerHTML = romItens.map((it,i)=>`
-    <div class="rom-item-row" id="rom-row-${i}">
-      <input placeholder="Código" value="${it.cod}" onchange="romItens[${i}].cod=this.value">
-      <input placeholder="Descrição" value="${it.desc}" onchange="romItens[${i}].desc=this.value">
-      <input placeholder="Qtd" value="${it.qtd}" onchange="romItens[${i}].qtd=this.value">
-      <input placeholder="Status" value="${it.statusRom}" onchange="romItens[${i}].statusRom=this.value">
-      <button class="del-row-btn" onclick="removeRomItemRow(${i})">✕</button>
-    </div>`).join('');
-}
+loadData();buildConjTabs();renderControle();renderRomList();
 </script>
 </body>
 </html>
