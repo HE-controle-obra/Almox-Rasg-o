@@ -62,6 +62,7 @@ tr:hover td{background:var(--bg2);}
 .cp-540{background:#0a1f0a;color:#56d364;}
 /* Conjunto pills - Gerador */
 .cp-EST{background:#1a1050;color:#b48eff;}.cp-ROT{background:#0d1a30;color:#58c4ff;}
+.cp-ACP{background:#0d2020;color:#2dd4bf;}.cp-EIX{background:#1a1200;color:#fbbf24;}.cp-CRZ{background:#1a0d20;color:#e879f9;}.cp-CRI{background:#1a1010;color:#fb923c;}.cp-MFL{background:#0d1a10;color:#4ade80;}.cp-PFL{background:#1a1520;color:#a78bfa;}.cp-MCS{background:#1a1000;color:#f59e0b;}
 .dwg-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:1px 6px;border-radius:3px;}
 .code-sm{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);}
 .qty-ok{color:var(--green);font-weight:600;font-family:'IBM Plex Mono',monospace;}
@@ -155,7 +156,7 @@ tr:hover td{background:var(--bg2);}
   <div class="topbar-logo">UHE Rasgão</div>
   <div class="topbar-title"><strong>Controle de Montagem em Campo</strong> — Turbina Francis Vertical + Gerador Síncrono Vertical</div>
   <div class="save-indicator saved" id="save-indicator">● Salvo</div>
-  <div class="topbar-badge" id="hdr-badge">197 itens</div>
+  <div class="topbar-badge" id="hdr-badge">469 itens</div>
 </div>
 <div class="nav-tabs">
   <div class="nav-tab active" onclick="showPage('controle',this)">📋 Controle de Itens</div>
@@ -259,13 +260,13 @@ tr:hover td{background:var(--bg2);}
 </div>
 
 <script>
-const STORAGE_KEY = 'uhe_rasgao_v4';
+const STORAGE_KEY = 'uhe_rasgao_v9';
 
 const CONJUNTOS_TURBINA = {"425":"Tampa Superior","428":"Tampa Inferior","440":"Eixo","442":"Rotor Francis","467":"Palheta Diretriz","468":"Mec. Regulação","470":"Anel de Regulação","472":"Servomotor","495":"Mancal Guia","509":"Tubulação Reg.","540":"Disp. Montagem"};
-const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor"};
+const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor","ACP":"Acoplamento","EIX":"Eixo do Gerador","CRZ":"Cruzeta Superior","CRI":"Cruzeta Inferior","MFL":"Macaco Freio/Levant.","PFL":"Painel Frenagem/Levant.","MCS":"Mancal Comb. Superior"};
 
 const PILL_CLS_TFV = {"425":"cp-425","428":"cp-428","440":"cp-440","442":"cp-442","467":"cp-467","468":"cp-468","470":"cp-470","472":"cp-472","495":"cp-495","509":"cp-509","540":"cp-540"};
-const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT"};
+const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT","ACP":"cp-ACP","EIX":"cp-EIX","CRZ":"cp-CRZ","CRI":"cp-CRI","MFL":"cp-MFL","PFL":"cp-PFL","MCS":"cp-MCS"};
 
 // ── DADOS TURBINA ──────────────────────────────────────────
 const DEFAULT_TURBINA = [
@@ -473,9 +474,335 @@ const DEFAULT_GERADOR = [
   {id:351,eq:"gerador",conj:"ROT",pos:"51",cod:"0147GSV1-1902015",desc:"Acabamento da cabeça de martelo inferior — chapa SAE 1008/1010 0,90 mm, 135×120 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
 ];
 
-const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR];
+// ── DADOS GERADOR — ACOPLAMENTO ───────────────────────────
+const DEFAULT_GERADOR_ACP = [
+  {id:401,eq:"gerador",conj:"ACP",pos:"—",cod:"0147GSV1-1911000",desc:"Acoplamento entre eixos — conjunto e detalhes",dwg:"1911000",prev:1,rec:0,status:"Pendente"},
+  {id:402,eq:"gerador",conj:"ACP",pos:"1",cod:"0147GSV1-1912001",desc:"Disco intermediário — aço ASTM A668 Cl.E, Ø1015×150 mm, 624,61 kg",dwg:"1911000",prev:1,rec:0,status:"Pendente"},
+  {id:403,eq:"gerador",conj:"ACP",pos:"2",cod:"0147GSV1-1912002",desc:"Tirante de acoplamento — SAE 4340 Ø101,60 mm, L=600(UG2)/610(UG1) mm, 25,85 kg",dwg:"1911000",prev:12,rec:0,status:"Pendente"},
+  {id:404,eq:"gerador",conj:"ACP",pos:"3",cod:"0147GSV1-1912003",desc:"Porca sextavada especial M80×4,0 — SAE 4140 Ø152,40 mm, L=100 mm, 6,83 kg",dwg:"1911000",prev:24,rec:0,status:"Pendente"},
+  {id:405,eq:"gerador",conj:"ACP",pos:"4",cod:"0147GSV1-1912004",desc:"Inserto de bronze — bronze TM-23 Ø15,87 mm, L=6 mm",dwg:"1911000",prev:24,rec:0,status:"Pendente"},
+  {id:406,eq:"gerador",conj:"ACP",pos:"—",cod:"0147GSV1-1913001",desc:"Disco forjado (MP disco intermediário) — aço ASTM A668 Cl.E, 1025×150 mm, 971,62 kg",dwg:"1913001",prev:1,rec:0,status:"Pendente"},
+  {id:407,eq:"gerador",conj:"ACP",pos:"5",cod:"103440",desc:"Parafuso Allen s/ cabeça ponta plana Inox A2-70 DIN 913 M20×80",dwg:"1911000",prev:4,rec:0,status:"Pendente"},
+  {id:408,eq:"gerador",conj:"ACP",pos:"6",cod:"105080",desc:"Parafuso Allen s/ cabeça ponta côncava Inox A2-70 DIN 916 M20×20",dwg:"1911000",prev:36,rec:0,status:"Pendente"},
+  {id:409,eq:"gerador",conj:"ACP",pos:"7",cod:"105548",desc:"Parafuso sextavado zincado Cl.8.8 DIN 931 M24×160",dwg:"1911000",prev:2,rec:0,status:"Pendente"},
+];
 
-let items=[], romaneios=[], nextItemId=400, nextRomId=1;
+// ── DADOS GERADOR — EIXO ─────────────────────────────────
+const DEFAULT_GERADOR_EIX = [
+  {id:411,eq:"gerador",conj:"EIX",pos:"—",cod:"0147GSV1-1952001",desc:"Eixo do gerador (usinado) — aço ASTM A668 Cl.E, Ø1018×4100±2 mm, 7307,52 kg",dwg:"1952001",prev:1,rec:0,status:"Pendente"},
+  {id:412,eq:"gerador",conj:"EIX",pos:"—",cod:"0147GSV1-1953001",desc:"Eixo do gerador forjado (mat.-prima) — aço ASTM A668 Cl.E, Ø1018×4255 mm, 8793,88 kg bruto",dwg:"1953001",prev:1,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — CRUZETA SUPERIOR ─────────────────────
+const DEFAULT_GERADOR_CRZ = [
+  {id:421,eq:"gerador",conj:"CRZ",pos:"—",cod:"0147GSV1-2801000",desc:"Cruzeta superior — conjunto, 10163,25 kg",dwg:"2801000",prev:1,rec:0,status:"Pendente"},
+  {id:422,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2801001",desc:"Cuba da cruzeta superior — subconj. soldado ASTM A36, 5581,91 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:423,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2801002",desc:"Perna da cruzeta superior — subconj. soldado ASTM A36, 525,82 kg",dwg:"2801002",prev:8,rec:0,status:"Pendente"},
+  {id:424,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2801003",desc:"Flange da janela de inspeção — subconj. soldado ASTM A36, 22,33 kg",dwg:"2801003",prev:4,rec:0,status:"Pendente"},
+  {id:425,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2801004",desc:"Tampa da cuba — subconj. ASTM A36, 26,68 kg",dwg:"2801004",prev:4,rec:0,status:"Pendente"},
+  {id:426,eq:"gerador",conj:"CRZ",pos:"4",cod:"0147GSV1-2802023",desc:"Sapata — chapa A36 37,5 mm, 300×125 mm, 8,68 kg",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
+  {id:427,eq:"gerador",conj:"CRZ",pos:"5",cod:"0147GSV1-2802024",desc:"Chaveta — barra trefilada SAE 1045 DIN 6885B 50×28 mm, L=125 mm",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
+  {id:428,eq:"gerador",conj:"CRZ",pos:"6",cod:"0147GSV1-2802025",desc:"Calço deslizante — chapa UHMW verde 5 mm, 125×125 mm",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
+  {id:429,eq:"gerador",conj:"CRZ",pos:"7",cod:"0147GSV1-2802026",desc:"Arruela deslizante — chapa UHMW verde 10 mm, Ø75×Ø33 mm",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
+  {id:430,eq:"gerador",conj:"CRZ",pos:"8",cod:"0147GSV1-2802027",desc:"Calço de ajuste — chapa A36 19 mm, 300×125 mm",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
+  {id:431,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2802001",desc:"Chapa calandrada (cuba) — A36 19 mm, 6222×525 mm, 377,60 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:432,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2802002",desc:"Chapa intermediária (cuba) — A36 25 mm, 2000×2000 mm, 311,19 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:433,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2802003",desc:"Chapa de apoio (cuba) — A36 50 mm, 1400×1400 mm, 485,75 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:434,eq:"gerador",conj:"CRZ",pos:"4",cod:"0147GSV1-2802004",desc:"Chapa superior (cuba) — A36 50 mm, 2633×2633 mm, 932,18 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:435,eq:"gerador",conj:"CRZ",pos:"5",cod:"0147GSV1-2802005",desc:"Alojamento do parafuso de ajuste — A36 152,4 mm, 570×220 mm, 123,82 kg",dwg:"2801001",prev:8,rec:0,status:"Pendente"},
+  {id:436,eq:"gerador",conj:"CRZ",pos:"6",cod:"0147GSV1-2802006",desc:"Chapa calandrada inferior (cuba) — A36 25 mm, 3375×300 mm, 198,12 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:437,eq:"gerador",conj:"CRZ",pos:"7",cod:"0147GSV1-2802007",desc:"Chapa inferior (cuba) — A36 50 mm, 1400×1400 mm, 485,57 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:438,eq:"gerador",conj:"CRZ",pos:"12",cod:"0147GSV1-2802019",desc:"Chapa calandrada da bacia — A36 9,5 mm, 1539×280 mm, 32,14 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:439,eq:"gerador",conj:"CRZ",pos:"14",cod:"0147GSV1-2802029",desc:"Tubo retorno óleo cuba — tubo c/ costura NBR 5590 Sch.40 Ø60,30×3,91 mm, L=115 mm",dwg:"2801001",prev:4,rec:0,status:"Pendente"},
+  {id:440,eq:"gerador",conj:"CRZ",pos:"29",cod:"0147GSV1-2802031",desc:"Bloco centralizador — chapa A36 25 mm, 30×30 mm",dwg:"2801001",prev:4,rec:0,status:"Pendente"},
+  {id:441,eq:"gerador",conj:"CRZ",pos:"33",cod:"0147GSV1-2802032",desc:"Conexão 1\" BSP — barra quadrada A36 □50,80 mm, L=170 mm, 2,61 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
+  {id:442,eq:"gerador",conj:"CRZ",pos:"35",cod:"0147GSV1-2802034",desc:"Tarugo roscado M12 — chapa A36 37,5 mm, 120×50 mm, 1,72 kg",dwg:"2801001",prev:8,rec:0,status:"Pendente"},
+  {id:443,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2802012",desc:"Alma (perna) — A36 19 mm, 1800×705 mm, 165,26 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:444,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2802013",desc:"Chapa superior (perna) — A36 25 mm, 1700×300 mm, 99,88 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:445,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2802014",desc:"Chapa inferior (perna) — A36 25 mm, 1550×300 mm, 91,26 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:446,eq:"gerador",conj:"CRZ",pos:"4",cod:"0147GSV1-2802015",desc:"Flange (perna) — A36 50 mm, 875×300 mm, 103,03 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:447,eq:"gerador",conj:"CRZ",pos:"5",cod:"0147GSV1-2802016",desc:"Sapata (perna) — A36 50 mm, 300×210 mm, 24,48 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:448,eq:"gerador",conj:"CRZ",pos:"6",cod:"0147GSV1-2802017",desc:"Aleta da perna — A36 19 mm, 675×125 mm, 12,21 kg",dwg:"2801002",prev:4,rec:0,status:"Pendente"},
+  {id:449,eq:"gerador",conj:"CRZ",pos:"7",cod:"0147GSV1-2802018",desc:"Reforço (perna) — A36 50 mm, 250×150 mm, 8,00 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:450,eq:"gerador",conj:"CRZ",pos:"9",cod:"0147GSV1-2802030",desc:"Tarugo roscado M30 (perna) — barra quadrada A36 □63,5 mm, L=60 mm, 1,64 kg",dwg:"2801002",prev:1,rec:0,status:"Pendente"},
+  {id:451,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2802020",desc:"Chapa dobrada (flange janela inspeção) — A36 12,5 mm, 1439×100 mm, 12,37 kg",dwg:"2801003",prev:1,rec:0,status:"Pendente"},
+  {id:452,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2802021",desc:"Chapa (flange janela inspeção) — A36 19 mm, 540×370 mm, 12,07 kg",dwg:"2801003",prev:1,rec:0,status:"Pendente"},
+  {id:453,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2802022",desc:"Chapa da tampa — A36 19 mm, 540×370 mm, 26,45 kg",dwg:"2801004",prev:1,rec:0,status:"Pendente"},
+  {id:454,eq:"gerador",conj:"CRZ",pos:"2",cod:"P001ALP0002001",desc:"Alça 120×50×Ø9,52 — barra redonda ASTM A36 Ø9,52 mm, L=220 mm",dwg:"2801004",prev:2,rec:0,status:"Pendente"},
+  {id:455,eq:"gerador",conj:"CRZ",pos:"9",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"2801000",prev:80,rec:0,status:"Pendente"},
+  {id:456,eq:"gerador",conj:"CRZ",pos:"10",cod:"101800",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M12×40",dwg:"2801000",prev:80,rec:0,status:"Pendente"},
+  {id:457,eq:"gerador",conj:"CRZ",pos:"11",cod:"100524",desc:"Borracha perfil redondo NBR 65/75 Shore A Ø7 mm, L=5930 mm",dwg:"2801000",prev:1,rec:0,status:"Pendente"},
+  {id:458,eq:"gerador",conj:"CRZ",pos:"12",cod:"103533",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø25×200 mm",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
+  {id:459,eq:"gerador",conj:"CRZ",pos:"13",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2801000",prev:128,rec:0,status:"Pendente"},
+  {id:460,eq:"gerador",conj:"CRZ",pos:"14",cod:"101790",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M30×150",dwg:"2801000",prev:64,rec:0,status:"Pendente"},
+  {id:461,eq:"gerador",conj:"CRZ",pos:"15",cod:"101974",desc:"Porca sextavada zincada Cl.8 DIN 934 M30",dwg:"2801000",prev:80,rec:0,status:"Pendente"},
+  {id:462,eq:"gerador",conj:"CRZ",pos:"16",cod:"104447",desc:"Arruela de trava estriada zincada DIN 25201 M36",dwg:"2801000",prev:32,rec:0,status:"Pendente"},
+  {id:463,eq:"gerador",conj:"CRZ",pos:"17",cod:"103615",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M36×150",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
+  {id:464,eq:"gerador",conj:"CRZ",pos:"18",cod:"101975",desc:"Porca sextavada zincada Cl.8 DIN 934 M36",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
+  {id:465,eq:"gerador",conj:"CRZ",pos:"19",cod:"100199",desc:"Arruela lisa zincada DIN 125A M30",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
+  {id:466,eq:"gerador",conj:"CRZ",pos:"20",cod:"101688",desc:"Parafuso Allen Inox A2-70 DIN 912 M12×30",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
+  {id:467,eq:"gerador",conj:"CRZ",pos:"21",cod:"104781",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M30×180",dwg:"2801000",prev:24,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — CRUZETA INFERIOR ─────────────────────
+const DEFAULT_GERADOR_CRI = [
+  // Conjunto raiz
+  {id:501,eq:"gerador",conj:"CRI",pos:"—",cod:"0147GSV1-2811000",desc:"Cruzeta inferior — conjunto, 4209,99 kg",dwg:"2811000",prev:1,rec:0,status:"Pendente"},
+  // Subconjuntos nível 1
+  {id:502,eq:"gerador",conj:"CRI",pos:"1",cod:"0147GSV1-2811001",desc:"Cuba da cruzeta inferior — subconj. soldado ASTM A36, 2094,66 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
+  {id:503,eq:"gerador",conj:"CRI",pos:"2",cod:"0147GSV1-2811002",desc:"Perna da cruzeta inferior — subconj. soldado ASTM A36, 333,49 kg",dwg:"2811002",prev:6,rec:0,status:"Pendente"},
+  // Fabricados diretos nível 1
+  {id:504,eq:"gerador",conj:"CRI",pos:"3",cod:"0147GSV1-3252006",desc:"Pino guia Ø30×150 — barra redonda SAE 4340 Ø31,75 mm, L=150 mm",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
+  {id:505,eq:"gerador",conj:"CRI",pos:"4",cod:"0147GSV1-3252007",desc:"Calço da cruzeta inferior — chapa A36 12,5 mm, 320×200 mm",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
+  {id:506,eq:"gerador",conj:"CRI",pos:"5",cod:"0147GSV1-3252008",desc:"Arruela especial 1.1/2\" — chapa A36 12,5 mm, 110×110 mm",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
+  // Comerciais diretos nível 1
+  {id:507,eq:"gerador",conj:"CRI",pos:"6",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2811000",prev:48,rec:0,status:"Pendente"},
+  {id:508,eq:"gerador",conj:"CRI",pos:"7",cod:"103618",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M30×130",dwg:"2811000",prev:24,rec:0,status:"Pendente"},
+  {id:509,eq:"gerador",conj:"CRI",pos:"8",cod:"101974",desc:"Porca sextavada zincada Cl.8 DIN 934 M30",dwg:"2811000",prev:24,rec:0,status:"Pendente"},
+  {id:510,eq:"gerador",conj:"CRI",pos:"9",cod:"104447",desc:"Arruela de trava estriada zincada DIN 25201 M36",dwg:"2811000",prev:24,rec:0,status:"Pendente"},
+  {id:511,eq:"gerador",conj:"CRI",pos:"10",cod:"103615",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M36×150",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
+  {id:512,eq:"gerador",conj:"CRI",pos:"11",cod:"101975",desc:"Porca sextavada zincada M36-8 DIN 934",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
+  {id:513,eq:"gerador",conj:"CRI",pos:"12",cod:"101897",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø20×100 mm",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
+  {id:514,eq:"gerador",conj:"CRI",pos:"13",cod:"104745",desc:"Parafuso sext. zincado Grau 5 ANSI B18.2.1 UNC 1.1/2\"×5.1/2\"",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
+  {id:515,eq:"gerador",conj:"CRI",pos:"14",cod:"101812",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M20×100",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
+  // Subitens da Cuba (nível 2)
+  {id:521,eq:"gerador",conj:"CRI",pos:"1",cod:"0147GSV1-2812001",desc:"Chapa calandrada (cuba inf.) — A36 25 mm, 4946×400 mm, 349,93 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
+  {id:522,eq:"gerador",conj:"CRI",pos:"2",cod:"0147GSV1-2812002",desc:"Chapa inferior (cuba inf.) — A36 37,5 mm, 2000×1882 mm, 567,31 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
+  {id:523,eq:"gerador",conj:"CRI",pos:"3",cod:"0147GSV1-2812003",desc:"Chapa superior (cuba inf.) — A36 37,5 mm, 2100×1969 mm, 442,76 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
+  {id:524,eq:"gerador",conj:"CRI",pos:"8",cod:"0147GSV1-2812008",desc:"Anel calandrado interno — A36 16 mm, 713×350 mm, 28,71 kg",dwg:"2811001",prev:6,rec:0,status:"Pendente"},
+  {id:525,eq:"gerador",conj:"CRI",pos:"—",cod:"0147GSV1-2812009",desc:"Tubo de drenagem — tubo c/ costura NBR 5590 Sch.40 Ø60,30×3,91 mm, L=50 mm",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
+  // Subitens da Perna (nível 2)
+  {id:531,eq:"gerador",conj:"CRI",pos:"1",cod:"0147GSV1-2812015",desc:"Flange (perna inf.) — A36 50 mm, 425×300 mm, 50,04 kg",dwg:"2811002",prev:1,rec:0,status:"Pendente"},
+  {id:532,eq:"gerador",conj:"CRI",pos:"2",cod:"0147GSV1-2812010",desc:"Alma (perna inf.) — A36 25 mm, 1125×400 mm, 66,96 kg",dwg:"2811002",prev:1,rec:0,status:"Pendente"},
+  {id:533,eq:"gerador",conj:"CRI",pos:"3",cod:"0147GSV1-2812011",desc:"Chapa superior (perna inf.) — A36 37,5 mm, 1025×300 mm, 90,52 kg",dwg:"2811002",prev:1,rec:0,status:"Pendente"},
+  {id:534,eq:"gerador",conj:"CRI",pos:"4",cod:"0147GSV1-2812012",desc:"Sapata (perna inf.) — A36 75 mm, 400×300 mm, 64,63 kg",dwg:"2811002",prev:1,rec:0,status:"Pendente"},
+  {id:535,eq:"gerador",conj:"CRI",pos:"5",cod:"0147GSV1-2812013",desc:"Chapa inferior (perna inf.) — A36 25 mm, 1331×300 mm, 78,75 kg",dwg:"2811002",prev:1,rec:0,status:"Pendente"},
+  {id:536,eq:"gerador",conj:"CRI",pos:"6",cod:"0147GSV1-2812014",desc:"Suporte do macaco de freio — A36 19 mm, 250×250 mm, 9,32 kg",dwg:"2811002",prev:1,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — MACACO DE FREIO E LEVANTAMENTO ───────
+const DEFAULT_GERADOR_MFL = [
+  // Conjunto raiz
+  {id:601,eq:"gerador",conj:"MFL",pos:"—",cod:"0147GSV1-2821000",desc:"Macaco de freio e levantamento — conjunto, 32,40 kg total",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  // Fabricados
+  {id:602,eq:"gerador",conj:"MFL",pos:"1",cod:"0147GSV1-2822014",desc:"Camisa fundida — aço fundido ASTM A148 Gr.90-60, 31,99 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:603,eq:"gerador",conj:"MFL",pos:"2",cod:"0147GSV1-2822003",desc:"Êmbolo — barra redonda forjada SAE 1045 Ø165,10 mm, L=175 mm, 21,19 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:604,eq:"gerador",conj:"MFL",pos:"3",cod:"0147GSV1-2822004",desc:"Mola — fio SAE 6150 jateado e fosfatizado Ø6,35 mm, k=16,67 N/mm, L0=125 mm",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:605,eq:"gerador",conj:"MFL",pos:"4",cod:"0147GSV1-2822005",desc:"Batente — chapa inox ASTM A240-304L 16 mm, 200×50 mm, 1,13 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:606,eq:"gerador",conj:"MFL",pos:"5",cod:"0147GSV1-2822006",desc:"Sapata — chapa A36 50 mm, 240×340 mm, 18,72 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:607,eq:"gerador",conj:"MFL",pos:"6",cod:"0147GSV1-2822007",desc:"Lona de freio — lona trançada LT-867 s/ metal, 220×280×19 mm, 1,17 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:608,eq:"gerador",conj:"MFL",pos:"7",cod:"0147GSV1-2822008",desc:"Fixador — barra redonda Inox AISI 420 Ø38,10 mm, L=20 mm, 0,05 kg",dwg:"2821000",prev:24,rec:0,status:"Pendente"},
+  {id:609,eq:"gerador",conj:"MFL",pos:"8",cod:"0147GSV1-2822009",desc:"Porca trava M215×6 — tubo mecânico VMEC 134AP Ø259×30 mm, L=100 mm, 9,58 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:610,eq:"gerador",conj:"MFL",pos:"9",cod:"0147GSV1-2822010",desc:"Manípulo — barra redonda Inox AISI 304 Ø19,05 mm, L=75 mm, 0,14 kg",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+  {id:611,eq:"gerador",conj:"MFL",pos:"10",cod:"0147GSV1-2822011",desc:"Anteparo — chapa Inox ASTM A240-304L 4,75 mm, 65×40 mm, 0,09 kg",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+  {id:612,eq:"gerador",conj:"MFL",pos:"11",cod:"0147GSV1-2822012",desc:"Suporte — chapa Inox ASTM A240-304L 4,75 mm, 262×40 mm, 0,38 kg",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+  {id:613,eq:"gerador",conj:"MFL",pos:"—",cod:"0147GSV1-2822013",desc:"Calço do macaco — chapa Inox ASTM A240-304L 1 mm, 240×240 mm, 0,45 kg",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  // Comerciais
+  {id:614,eq:"gerador",conj:"MFL",pos:"12",cod:"103160",desc:"Gaxeta para êmbolo modelo OMK-MR PTFE+NBR 70 Shore A Ø160×Ø139×7,7 mm",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:615,eq:"gerador",conj:"MFL",pos:"13",cod:"101425",desc:"Graxeira reta zincada 1/4\" BSP — DIN 71412",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:616,eq:"gerador",conj:"MFL",pos:"14",cod:"100630",desc:"Bujão macho c/ sext. interno zincado DIN 906 1/8\" NPTF série universal",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
+  {id:617,eq:"gerador",conj:"MFL",pos:"15",cod:"100621",desc:"Bujão macho c/ sext. interno zincado 1/2\" BSPP-ED série universal",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+  {id:618,eq:"gerador",conj:"MFL",pos:"16",cod:"100173",desc:"Arruela de pressão zincada DIN 127B M16",dwg:"2821000",prev:24,rec:0,status:"Pendente"},
+  {id:619,eq:"gerador",conj:"MFL",pos:"17",cod:"101806",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M16×40",dwg:"2821000",prev:24,rec:0,status:"Pendente"},
+  {id:620,eq:"gerador",conj:"MFL",pos:"18",cod:"102641",desc:"Parafuso Allen cab. escareada Inox AISI 304 M10×30 — DIN 7991",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+  {id:621,eq:"gerador",conj:"MFL",pos:"19",cod:"100177",desc:"Arruela de pressão zincada DIN 127B M6",dwg:"2821000",prev:72,rec:0,status:"Pendente"},
+  {id:622,eq:"gerador",conj:"MFL",pos:"20",cod:"101832",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M6×16",dwg:"2821000",prev:72,rec:0,status:"Pendente"},
+  {id:623,eq:"gerador",conj:"MFL",pos:"21",cod:"102151",desc:"Sensor de proximidade indutivo M12 10-30VDC NA+NF PNP IF5904/NBN4-12GM50-A2-V1",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — PAINEL DE FRENAGEM E LEVANTAMENTO ────
+const DEFAULT_GERADOR_PFL = [
+  // Conjunto raiz — Unidade de Frenagem (painel hidráulico)
+  {id:701,eq:"gerador",conj:"PFL",pos:"1",cod:"0147GSV1-2831000",desc:"Unidade de frenagem e levantamento — painel hidráulico HYDAC, 220 kg",dwg:"2831000",prev:1,rec:0,status:"Pendente"},
+  // Conjunto Tubulação dos Macacos
+  {id:702,eq:"gerador",conj:"PFL",pos:"—",cod:"0147GSV1-2831002",desc:"Tubulação dos macacos de freio e levantamento — conjunto, 881,69 kg",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  // Fabricados dentro da tubulação
+  {id:703,eq:"gerador",conj:"PFL",pos:"24",cod:"0147GSV1-2822013",desc:"Calço do macaco — chapa Inox ASTM A240-304L 1 mm, 240×240 mm (tubulação)",dwg:"2831002",prev:60,rec:0,status:"Pendente"},
+  {id:704,eq:"gerador",conj:"PFL",pos:"13",cod:"P017SPT0002001",desc:"Base — chapa A36 3 mm, 100×38 mm",dwg:"2831002",prev:11,rec:0,status:"Pendente"},
+  {id:705,eq:"gerador",conj:"PFL",pos:"11",cod:"P022SPT0002001",desc:"Base 3 — chapa A36 3 mm, 150×38 mm",dwg:"2831002",prev:9,rec:0,status:"Pendente"},
+  // Comerciais — tubulação (pos. 2 a 22 exceto fabricados)
+  {id:706,eq:"gerador",conj:"PFL",pos:"2",cod:"101040",desc:"Conexão banjo zincada 1/2\" BSPP-ED × tubo 18 série leve",dwg:"2831002",prev:2,rec:0,status:"Pendente"},
+  {id:707,eq:"gerador",conj:"PFL",pos:"3",cod:"101105",desc:"Conexão reta zincada macho 1/2\" BSPP-ED × tubo 18 série leve",dwg:"2831002",prev:36,rec:0,status:"Pendente"},
+  {id:708,eq:"gerador",conj:"PFL",pos:"4",cod:"102546",desc:"Válvula de esfera tipo bloco 2 vias aço zincado PN 500 bar fêmea 1/2\" BSP",dwg:"2831002",prev:12,rec:0,status:"Pendente"},
+  {id:709,eq:"gerador",conj:"PFL",pos:"5",cod:"101129",desc:"Conexão tee igual zincada tubo 18 série leve",dwg:"2831002",prev:10,rec:0,status:"Pendente"},
+  {id:710,eq:"gerador",conj:"PFL",pos:"6",cod:"100008",desc:"Abraçadeira p/ tubo simples c/ base p/ solda completa série leve DIN 3015-1 Ø18 (arco interno)",dwg:"2831002",prev:18,rec:0,status:"Pendente"},
+  {id:711,eq:"gerador",conj:"PFL",pos:"7",cod:"103906",desc:"Chumbador Parabolt tipo PB zincado 3/8\"×2.3/4\"",dwg:"2831002",prev:4,rec:0,status:"Pendente"},
+  {id:712,eq:"gerador",conj:"PFL",pos:"8",cod:"103583",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M6×70",dwg:"2831002",prev:22,rec:0,status:"Pendente"},
+  {id:713,eq:"gerador",conj:"PFL",pos:"9",cod:"100008",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø18 (arco externo)",dwg:"2831002",prev:11,rec:0,status:"Pendente"},
+  {id:714,eq:"gerador",conj:"PFL",pos:"10",cod:"100008",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø18 (travessa)",dwg:"2831002",prev:11,rec:0,status:"Pendente"},
+  {id:715,eq:"gerador",conj:"PFL",pos:"12",cod:"100860",desc:"Chumbador Parabolt tipo PB zincado 5/16\"×3.1/4\"",dwg:"2831002",prev:28,rec:0,status:"Pendente"},
+  {id:716,eq:"gerador",conj:"PFL",pos:"14",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=9100 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  {id:717,eq:"gerador",conj:"PFL",pos:"15",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=140 mm",dwg:"2831002",prev:4,rec:0,status:"Pendente"},
+  {id:718,eq:"gerador",conj:"PFL",pos:"16",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=920 mm",dwg:"2831002",prev:6,rec:0,status:"Pendente"},
+  {id:719,eq:"gerador",conj:"PFL",pos:"17",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=6000 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  {id:720,eq:"gerador",conj:"PFL",pos:"18",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=9650 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  {id:721,eq:"gerador",conj:"PFL",pos:"19",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=140 mm (retorno)",dwg:"2831002",prev:4,rec:0,status:"Pendente"},
+  {id:722,eq:"gerador",conj:"PFL",pos:"20",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=920 mm (retorno)",dwg:"2831002",prev:6,rec:0,status:"Pendente"},
+  {id:723,eq:"gerador",conj:"PFL",pos:"21",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=5780 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  {id:724,eq:"gerador",conj:"PFL",pos:"22",cod:"700828",desc:"Óleo lubrificante TEXSA Hidráulico HD ISO VG 68 HL — 40 L",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  {id:725,eq:"gerador",conj:"PFL",pos:"23",cod:"102151",desc:"Sensor de proximidade indutivo M12 10-30VDC NA+NF PNP IF5904/NBN4-12GM50-A2-V1",dwg:"2831002",prev:2,rec:0,status:"Pendente"},
+  {id:726,eq:"gerador",conj:"PFL",pos:"25",cod:"100174",desc:"Arruela de pressão zincada DIN 127B M20",dwg:"2831002",prev:24,rec:0,status:"Pendente"},
+  {id:727,eq:"gerador",conj:"PFL",pos:"26",cod:"101813",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M20×120",dwg:"2831002",prev:24,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — MANCAL COMBINADO SUPERIOR ─────────────
+const DEFAULT_GERADOR_MCS = [
+  // Conjunto raiz
+  {id:801,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971000",desc:"Mancal combinado superior — conjunto, 5404,59 kg s/ óleo. Óleo ISO VG-100 HL, cuba 1000 L, vazão 140 L/min, folga nominal Ø0,40 mm",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  // Fabricados com desenho próprio
+  {id:802,eq:"gerador",conj:"MCS",pos:"1",cod:"0147GSV1-2972001",desc:"Colar de escora — aço carbono SAE 1045 fundido, 1993,87 kg. DE-UGR-U1e2-GER-041",dwg:"2972001",prev:1,rec:0,status:"Pendente"},
+  {id:803,eq:"gerador",conj:"MCS",pos:"2",cod:"0147GSV1-2972002",desc:"Anel de escora — chapa SAE 1045 130 mm, 1250×1250, 735,92 kg. DE-UGR-U1e2-GER-042",dwg:"2972002",prev:1,rec:0,status:"Pendente"},
+  {id:804,eq:"gerador",conj:"MCS",pos:"3",cod:"0147GSV1-2972003",desc:"Chaveta axial do colar — chapa A36 75 mm, 520×520, bipartida, 55,61 kg",dwg:"2972003",prev:1,rec:0,status:"Pendente"},
+  {id:805,eq:"gerador",conj:"MCS",pos:"4",cod:"0147GSV1-2972004",desc:"Trava da chaveta axial — chapa A36 25 mm, 650×650, 25,83 kg",dwg:"2972004",prev:1,rec:0,status:"Pendente"},
+  {id:806,eq:"gerador",conj:"MCS",pos:"5",cod:"0147GSV1-2972005",desc:"Chaveta radial do colar — barra trefilada SAE 1045 DIN 6885B 50×28, L=149 mm, 1,58 kg",dwg:"2972005",prev:1,rec:0,status:"Pendente"},
+  {id:807,eq:"gerador",conj:"MCS",pos:"6",cod:"0147GSV1-2972006",desc:"Pino do anel de escora — barra redonda SAE 1045 Ø63,50 mm, L=60 mm, 0,91 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:808,eq:"gerador",conj:"MCS",pos:"7",cod:"0147GSV1-2972007",desc:"Tirante do colar — barra redonda trefilada SAE 1045 Ø30 mm, L=610 mm, 3,29 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:809,eq:"gerador",conj:"MCS",pos:"8",cod:"0147GSV1-2971003",desc:"Conjunto de cilíndros equilibradores — 778,23 kg. Teste pressão 100 bar/24h. DE-UGR-U1-e2-GER-32",dwg:"2971003",prev:1,rec:0,status:"Pendente"},
+  {id:810,eq:"gerador",conj:"MCS",pos:"9",cod:"0147GSV1-2971001",desc:"Tampa de vedação inferior — chapa A36, 107,45 kg. DE-UGR-U1-e2-GER-40",dwg:"2971001",prev:1,rec:0,status:"Pendente"},
+  {id:811,eq:"gerador",conj:"MCS",pos:"10",cod:"0147GSV1-2972008",desc:"Defletor — chapa A36 63 mm, 550×550, 27,56 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:812,eq:"gerador",conj:"MCS",pos:"11",cod:"0147GSV1-2972009",desc:"Anel isolante — chapa NEMA G11 5 mm, 440×300, 0,98 kg (×8)",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:813,eq:"gerador",conj:"MCS",pos:"12",cod:"0147GSV1-2972034",desc:"Parafuso de ajuste do patim guia — barra SAE 4140 Ø76,20 mm, L=180 mm, 3,17 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:814,eq:"gerador",conj:"MCS",pos:"13",cod:"0147GSV1-2972035",desc:"Porca de apoio — barra SAE 4140 Ø127 mm, L=90 mm, 3,87 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:815,eq:"gerador",conj:"MCS",pos:"14",cod:"0147GSV1-2971004",desc:"Patim de guia — conjunto, 34,73 kg. DE-UGR-U1e2-GER-35",dwg:"2971004",prev:8,rec:0,status:"Pendente"},
+  {id:816,eq:"gerador",conj:"MCS",pos:"15",cod:"0147GSV1-2971006",desc:"Tampa distribuidora de óleo — 654,70 kg. DE-UGR-U1-e2-GER-37",dwg:"2971006",prev:1,rec:0,status:"Pendente"},
+  {id:817,eq:"gerador",conj:"MCS",pos:"16",cod:"0147GSV1-2971002",desc:"Defletor de óleo — 87,98 kg. DE-UGR-U1-e2-GER-33",dwg:"2971002",prev:1,rec:0,status:"Pendente"},
+  {id:818,eq:"gerador",conj:"MCS",pos:"17",cod:"0147GSV1-2972036",desc:"Porca de vedação — barra SAE 4140 Ø114,30 mm, L=50 mm, 0,88 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:819,eq:"gerador",conj:"MCS",pos:"18",cod:"0147GSV1-2972037",desc:"Tirante tensionador — barra roscada Cl.8.8 M36, L=650 mm, 5,16 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:820,eq:"gerador",conj:"MCS",pos:"19",cod:"0147GSV1-2972038",desc:"Porca tensionadora — barra SAE 4140 Ø114,30 mm, L=50 mm, 2,40 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:821,eq:"gerador",conj:"MCS",pos:"20",cod:"0147GSV1-2972039",desc:"Limitador vertical do patim — chapa A36 9,50 mm, 241×200, 2,98 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:822,eq:"gerador",conj:"MCS",pos:"21",cod:"0147GSV1-2982006",desc:"Prisioneiro M20 — barra roscada Cl.8.8 M20, L=135 mm, 0,30 kg",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
+  {id:823,eq:"gerador",conj:"MCS",pos:"22",cod:"0147GSV1-2982012",desc:"Trava da porca tensionadora — barra quadrada A36 25,40 mm, L=50 mm, 0,14 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:824,eq:"gerador",conj:"MCS",pos:"23",cod:"0147GSV1-2971010",desc:"Tampa de vedação superior — 93,89 kg. DE-UGR-U1-e2-GER-39",dwg:"2971010",prev:1,rec:0,status:"Pendente"},
+  {id:825,eq:"gerador",conj:"MCS",pos:"24",cod:"0147GSV1-2971008",desc:"Conjunto de injeção de alta pressão — 16,83 kg. DE-UGR-U1-e2-GER-36",dwg:"2971008",prev:1,rec:0,status:"Pendente"},
+  {id:826,eq:"gerador",conj:"MCS",pos:"25",cod:"0147GSV1-2971007",desc:"Reservatório de nível — 18,34 kg",dwg:"2971007",prev:1,rec:0,status:"Pendente"},
+  {id:827,eq:"gerador",conj:"MCS",pos:"26",cod:"0147GSV1-2972048",desc:"Tubo de injeção de óleo — tubo NBR 5590 Sch40 Ø33,40×3,38 mm, L=410 mm, 1,02 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:828,eq:"gerador",conj:"MCS",pos:"27",cod:"0147GSV1-2972049",desc:"Painel do termômetro a gás — chapa A36 4,75 mm, 600×485, 10,76 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:829,eq:"gerador",conj:"MCS",pos:"28",cod:"0147GSV1-2982033",desc:"Suporte do sensor da cuba — chapa A36 6,30 mm, 100×80, 0,24 kg",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:830,eq:"gerador",conj:"MCS",pos:"29",cod:"0147GSV1-2982019",desc:"Tampa do reservatório de nível — chapa A36 25 mm, 185×185, 5,19 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:831,eq:"gerador",conj:"MCS",pos:"30",cod:"0147GSV1-2971014",desc:"Conjunto selo flutuante Ø1050×15×10 — PTFE, 1,43 kg",dwg:"2971014",prev:1,rec:0,status:"Pendente"},
+  {id:832,eq:"gerador",conj:"MCS",pos:"31",cod:"0147GSV1-2972061",desc:"Suporte do sensor de vibração radial — chapa A36 6,30 mm, 146×60, 0,35 kg",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:833,eq:"gerador",conj:"MCS",pos:"32",cod:"0147GSV1-2972060",desc:"Suporte do sensor de vibração axial — chapa A36 6,30 mm, 205×60, 0,59 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:834,eq:"gerador",conj:"MCS",pos:"33",cod:"0147GSV1-2971012",desc:"Tampa de fechamento superior — 241,63 kg. DE-UGR-U1-e2-GER-38",dwg:"2971012",prev:1,rec:0,status:"Pendente"},
+  {id:835,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971009",desc:"Tampa de vedação superior — segmento (×2), chapa A36 88,90 mm, 88,25 kg cada",dwg:"2971009",prev:2,rec:0,status:"Pendente"},
+  {id:836,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971013",desc:"Tampa bipartida da válvula — fundida 220×112×47 mm, 4,20 kg",dwg:"2971013",prev:2,rec:0,status:"Pendente"},
+  {id:837,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971015",desc:"Tampa bipartida excêntrica — chapa A36 50 mm, 230×120, 4,41 kg",dwg:"2971015",prev:1,rec:0,status:"Pendente"},
+  {id:838,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971005",desc:"Sapata de escora — conjunto, 66,27 kg. DE-UGR-U1-e2-GER-34 (usado no cjto cilíndros equil.)",dwg:"2971005",prev:8,rec:0,status:"Pendente"},
+  // Instrumentação e sensores
+  {id:839,eq:"gerador",conj:"MCS",pos:"70",cod:"104457",desc:"Sensor de nível e temperatura eletrônico capacitivo Ø16×728 mm 18-30VDC — IFM LK8124",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:840,eq:"gerador",conj:"MCS",pos:"71",cod:"104974",desc:"Sensor de proximidade indutivo M18 18-30VDC 0-20mA/0-10V 2-8 mm — ANT2-8 2084/85 V1",dwg:"2971000",prev:5,rec:0,status:"Pendente"},
+  {id:841,eq:"gerador",conj:"MCS",pos:"72",cod:"106265",desc:"Sensor de aceleração piezoelétrico ±50G 2-10000Hz 10-12VDC M8/1/4\"UNF — IFM VSP001",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:842,eq:"gerador",conj:"MCS",pos:"73",cod:"105037",desc:"Termômetro a gás vertical Ø100 mm 0/100°C haste Ø9,53×150 mm capilar L1=1000 mm — WIKA TGS73",dwg:"2971000",prev:3,rec:0,status:"Pendente"},
+  {id:843,eq:"gerador",conj:"MCS",pos:"74",cod:"105036",desc:"Termômetro a gás vertical Ø100 mm 0/100°C haste Ø9,53×250 mm capilar L1=1500 mm — WIKA TGS73",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:844,eq:"gerador",conj:"MCS",pos:"75",cod:"P033STP0001000",desc:"Sensor de temperatura PT-100 Ø10×250 mm comprimento 4000 mm",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:845,eq:"gerador",conj:"MCS",pos:"76",cod:"P034STP0001000",desc:"Sensor de temperatura PT-100 Ø10×150 mm comprimento 4000 mm",dwg:"2971000",prev:5,rec:0,status:"Pendente"},
+  {id:846,eq:"gerador",conj:"MCS",pos:"84",cod:"P001STP0001000",desc:"Sensor de temperatura PT-100 Ø8×50 mm G1/2 — Inox AISI 304",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:847,eq:"gerador",conj:"MCS",pos:"67",cod:"104841",desc:"Visor de nível vertical 381 mm — HYDAC FSA 381",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:848,eq:"gerador",conj:"MCS",pos:"69",cod:"101332",desc:"Filtro de ar ELF P 30 F 3 W 1.0/AS — SATAUFF/HYDAC",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  // Comerciais estruturais principais
+  {id:849,eq:"gerador",conj:"MCS",pos:"81",cod:"0147GSV1-2972074",desc:"Tala de vedação — chapa A36 12,50 mm, 520×520, 5,48 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:850,eq:"gerador",conj:"MCS",pos:"60",cod:"104879",desc:"Mangueira SAE 100 R1AT 1/2\" reto fêmea 7/8\" JIC × curvo 90° fêmea 7/8\" JIC, L=2500 mm",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:851,eq:"gerador",conj:"MCS",pos:"62",cod:"100524",desc:"Borracha perfil redondo NBR 65/75 Shore A Ø7 mm, L=19500 mm",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  // ── Fabricados novos (PDFs enviados) ──────────────────────
+  {id:852,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972010",desc:"Sapata de escora — chapa SAE 1045 152,40 mm, 334×292 mm, 65,65 kg. Metal Patente ASTM B23 L.2. DE-UGR-U1e2-GER-43",dwg:"2972010",prev:8,rec:0,status:"Pendente"},
+  {id:853,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972011",desc:"Bloco de injeção da sapata — barra chata Al 6351-T6 50,80×38,10 mm, L=70 mm, 0,25 kg. DE-UGR-U1-e2-GER-34",dwg:"2972011",prev:8,rec:0,status:"Pendente"},
+  {id:854,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972012",desc:"Disco isolante — barra redonda NEMA G11 Ø50 mm, L=50 mm, 0,06 kg. DE-UGR-U1-e2-GER-34",dwg:"2972012",prev:8,rec:0,status:"Pendente"},
+  {id:855,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972013",desc:"Bucha isolante — barra redonda NEMA G11 Ø25 mm, L=35 mm, 0,005 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:856,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972014",desc:"Arruela isolante — barra redonda NEMA G11 Ø25 mm, L=5 mm, 0,001 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:857,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972015",desc:"Cilindro equilibrador — chapa SAE 1045 101,60 mm, 420×280 mm, 25,25 kg. DE-UGR-U1-e2-GER-44",dwg:"2972015",prev:8,rec:0,status:"Pendente"},
+  {id:858,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972016",desc:"Bloco de injeção — barra quadrada ASTM A36 50,80 mm, L=80 mm, 1,22 kg",dwg:"2972016",prev:8,rec:0,status:"Pendente"},
+  {id:859,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972017",desc:"Bloco de conexão com vedação — barra quadrada ASTM A36 50,80 mm, L=25 mm, 0,37 kg",dwg:"2972017",prev:8,rec:0,status:"Pendente"},
+  {id:860,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972018",desc:"Bloco de conexão — barra quadrada ASTM A36 50,80 mm, L=25 mm, 0,40 kg",dwg:"2972018",prev:8,rec:0,status:"Pendente"},
+  {id:861,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972019",desc:"Bloco de distribuição — barra quadrada ASTM A36 50,80 mm, L=80 mm, 1,02 kg",dwg:"2972019",prev:8,rec:0,status:"Pendente"},
+  {id:862,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972020",desc:"Bloco de injeção do coletor — barra redonda ASTM A36 Ø50,80 mm, L=80 mm, 0,64 kg",dwg:"2972020",prev:8,rec:0,status:"Pendente"},
+  {id:863,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972022",desc:"Bucha isolante Ø50 — barra redonda NEMA G11 Ø50 mm, L=40 mm, 0,03 kg",dwg:"2972022",prev:8,rec:0,status:"Pendente"},
+  {id:864,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972024",desc:"Guia do tubo — barra quadrada ASTM A36 38,10 mm, L=150 mm, 0,78 kg",dwg:"2972024",prev:8,rec:0,status:"Pendente"},
+  {id:865,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972025",desc:"Tubo de suporte — tubo NBR 5590 Sch40 Ø21,30×2,77 mm, L=680 mm, 0,85 kg",dwg:"2972025",prev:8,rec:0,status:"Pendente"},
+  {id:866,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972026",desc:"Haste indicadora de posição — barra redonda ASTM A36 Ø12,70 mm, L=750 mm, 0,74 kg",dwg:"2972026",prev:8,rec:0,status:"Pendente"},
+  {id:867,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972027",desc:"Suporte do sensor/parafuso — chapa ASTM A36 3 mm, 188×50 mm, 0,19 kg",dwg:"2972027",prev:8,rec:0,status:"Pendente"},
+  // ── Comerciais novos da lista geral DWG 2971000 rev.4 ─────
+  {id:868,eq:"gerador",conj:"MCS",pos:"34",cod:"P002AHE0002001",desc:"Conexão G1/2 — barra redonda ASTM A36 Ø38,10 mm, L=25 mm",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:869,eq:"gerador",conj:"MCS",pos:"35",cod:"P033STP0002002",desc:"Conexão 1/2\" BSP × tubo Ø10 — barra redonda Inox AISI 304 Ø25,40 mm, L=40 mm",dwg:"2971000",prev:14,rec:0,status:"Pendente"},
+  {id:870,eq:"gerador",conj:"MCS",pos:"36",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2971000",prev:12,rec:0,status:"Pendente"},
+  {id:871,eq:"gerador",conj:"MCS",pos:"37",cod:"101974",desc:"Porca sext. zincada classe 8 DIN 934 MA M30",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:872,eq:"gerador",conj:"MCS",pos:"38",cod:"103620",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M30×80",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:873,eq:"gerador",conj:"MCS",pos:"39",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"2971000",prev:36,rec:0,status:"Pendente"},
+  {id:874,eq:"gerador",conj:"MCS",pos:"40",cod:"101801",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×50",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
+  {id:875,eq:"gerador",conj:"MCS",pos:"41",cod:"100622",desc:"Bujão macho c/ sext. interno zincado 1/4\" BSPP-ED série universal",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:876,eq:"gerador",conj:"MCS",pos:"43",cod:"101722",desc:"Parafuso Allen s/ cabeça ponta plana preto classe 12.9 DIN 913 MA M6×10",dwg:"2971000",prev:14,rec:0,status:"Pendente"},
+  {id:877,eq:"gerador",conj:"MCS",pos:"44",cod:"102474",desc:"Tubo redondo c/ costura preto NBR 5590 Sch40 Ø21,30×2,77 mm, L=170 mm",dwg:"2971000",prev:17,rec:0,status:"Pendente"},
+  {id:878,eq:"gerador",conj:"MCS",pos:"45",cod:"102927",desc:"Arruela lisa zincada DIN 125A M4",dwg:"2971000",prev:15,rec:0,status:"Pendente"},
+  {id:879,eq:"gerador",conj:"MCS",pos:"46",cod:"101829",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M4×10",dwg:"2971000",prev:15,rec:0,status:"Pendente"},
+  {id:880,eq:"gerador",conj:"MCS",pos:"47",cod:"101807",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×50",dwg:"2971000",prev:60,rec:0,status:"Pendente"},
+  {id:881,eq:"gerador",conj:"MCS",pos:"48",cod:"101799",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×30",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
+  {id:882,eq:"gerador",conj:"MCS",pos:"49",cod:"101970",desc:"Porca sext. zincada classe 8 DIN 934 MA M12",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
+  {id:883,eq:"gerador",conj:"MCS",pos:"50",cod:"101972",desc:"Porca sext. zincada classe 8 DIN 934 MA M20",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
+  {id:884,eq:"gerador",conj:"MCS",pos:"51",cod:"100194",desc:"Arruela lisa zincada DIN 125A M10",dwg:"2971000",prev:55,rec:0,status:"Pendente"},
+  {id:885,eq:"gerador",conj:"MCS",pos:"52",cod:"100195",desc:"Arruela lisa zincada DIN 125A M12",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:886,eq:"gerador",conj:"MCS",pos:"53",cod:"103622",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×20",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:887,eq:"gerador",conj:"MCS",pos:"54",cod:"101793",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×30",dwg:"2971000",prev:48,rec:0,status:"Pendente"},
+  {id:888,eq:"gerador",conj:"MCS",pos:"55",cod:"103792",desc:"Anel O-ring NBR 70 Shore A Ø72,62×Ø3,53 mm — Parker 2-237",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:889,eq:"gerador",conj:"MCS",pos:"56",cod:"104878",desc:"Anel O-ring NBR 70 Shore A Ø50,39×Ø3,53 mm — Parker 2-225",dwg:"2971000",prev:10,rec:0,status:"Pendente"},
+  {id:890,eq:"gerador",conj:"MCS",pos:"57",cod:"105665",desc:"Anel O-ring NBR 70 Shore A Ø164,69×Ø3,53 mm — Parker 2-260",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:891,eq:"gerador",conj:"MCS",pos:"58",cod:"101809",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×70",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:892,eq:"gerador",conj:"MCS",pos:"59",cod:"100074",desc:"Adaptador zincado macho 1/2\" BSPP-ED × macho 7/8\" JIC 37° série universal",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:893,eq:"gerador",conj:"MCS",pos:"61",cod:"100009",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø22",dwg:"2971000",prev:3,rec:0,status:"Pendente"},
+  {id:894,eq:"gerador",conj:"MCS",pos:"63",cod:"100205",desc:"Arruela lisa zincada DIN 125A M8",dwg:"2971000",prev:38,rec:0,status:"Pendente"},
+  {id:895,eq:"gerador",conj:"MCS",pos:"64",cod:"101837",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×20",dwg:"2971000",prev:6,rec:0,status:"Pendente"},
+  {id:896,eq:"gerador",conj:"MCS",pos:"65",cod:"101800",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×40",dwg:"2971000",prev:20,rec:0,status:"Pendente"},
+  {id:897,eq:"gerador",conj:"MCS",pos:"66",cod:"101880",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø10×30 mm",dwg:"2971000",prev:6,rec:0,status:"Pendente"},
+  {id:898,eq:"gerador",conj:"MCS",pos:"68",cod:"102970",desc:"Adaptador para sensor 1\" BSP E430041 — IFM E43004",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:899,eq:"gerador",conj:"MCS",pos:"77",cod:"100621",desc:"Bujão macho c/ sext. interno zincado 1/2\" BSPP-ED série universal",dwg:"2971000",prev:10,rec:0,status:"Pendente"},
+  {id:900,eq:"gerador",conj:"MCS",pos:"78",cod:"103626",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×16",dwg:"2971000",prev:3,rec:0,status:"Pendente"},
+  {id:901,eq:"gerador",conj:"MCS",pos:"79",cod:"100068",desc:"Adaptador zincado macho 1/2\" BSPP-ED × fêmea 1/4\" BSPP série pesada",dwg:"2971000",prev:9,rec:0,status:"Pendente"},
+  {id:902,eq:"gerador",conj:"MCS",pos:"80",cod:"101839",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×30",dwg:"2971000",prev:32,rec:0,status:"Pendente"},
+  {id:903,eq:"gerador",conj:"MCS",pos:"82",cod:"105567",desc:"Anel O-ring NBR 70 Shore A Ø34,52×Ø3,53 mm — Parker 2-220",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:904,eq:"gerador",conj:"MCS",pos:"83",cod:"103836",desc:"Anel O-ring NBR 70 Shore A Ø20,22×Ø3,53 mm — Parker 2-211",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:905,eq:"gerador",conj:"MCS",pos:"85",cod:"104970",desc:"Contraporca sext. inox AISI 304 150 LBS 1/2\" BSP",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:906,eq:"gerador",conj:"MCS",pos:"86",cod:"101795",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×40",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  // ── Fabricados novos — lotes 2 e 3 ───────────────────────
+  // Subconjunto Patim de Guia (DE-UGR-U1e2-GER-35 / 2971004)
+  {id:907,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972030",desc:"Patim de guia — chapa A36 100 mm, 240×200 mm, 33,18 kg. Metal Patente ASTM B23 L.2. DE-UGR-U1e2-GER-45",dwg:"2972030",prev:8,rec:0,status:"Pendente"},
+  {id:908,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972031",desc:"Bloco de apoio — patim guia — barra redonda SAE 8640 Ø101,60 mm, L=35 mm, 1,37 kg. T.T.: 50 HRC",dwg:"2972031",prev:8,rec:0,status:"Pendente"},
+  {id:909,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972032",desc:"Bucha isolante — bloco de apoio — barra redonda NEMA G11 Ø100 mm, L=20 mm, 0,03 kg",dwg:"2972032",prev:8,rec:0,status:"Pendente"},
+  {id:910,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972033",desc:"Arruela isolante — bloco de apoio — chapa NEMA G11 3 mm, 100×100 mm, 0,05 kg",dwg:"2972033",prev:8,rec:0,status:"Pendente"},
+  {id:911,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972028",desc:"Suporte do tubo — chapa ASTM A36 6,30 mm, 110×40 mm, 0,21 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:912,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972029",desc:"Flange isolante — chapa NEMA G11 12 mm, 100×100 mm, 0,13 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  // Subconjunto Tampa de Fechamento Superior (2971012)
+  {id:913,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972050",desc:"Tampa de fechamento superior — chapa A36 25 mm, Ø1850×Ø1100 mm, 341,02 kg",dwg:"2972050",prev:1,rec:0,status:"Pendente"},
+  {id:914,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972052",desc:"Anel interno — chapa A36 9,50 mm, 6369×100 mm calandrado, 46,53 kg. DE-UGR-U1-e2-GER-37",dwg:"2972052",prev:1,rec:0,status:"Pendente"},
+  {id:915,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972053",desc:"Anel externo — chapa A36 9,50 mm, 7006×100 mm calandrado, 52,25 kg",dwg:"2972053",prev:1,rec:0,status:"Pendente"},
+  {id:916,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972054",desc:"Chapa superior — chapa A36 25 mm, 2290×2290 mm, 342,19 kg",dwg:"2972054",prev:1,rec:0,status:"Pendente"},
+  {id:917,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972055",desc:"Chapa frontal — chapa A36 4,75 mm, 810×401 mm dobrada, 12,07 kg",dwg:"2972055",prev:1,rec:0,status:"Pendente"},
+  {id:918,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972056",desc:"Chapa calandrada — chapa A36 9,50 mm, 1944×595 mm, Ø610/629, 86,27 kg",dwg:"2972056",prev:1,rec:0,status:"Pendente"},
+  {id:919,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972058",desc:"Chapa traseira — chapa A36 4,75 mm, 900×100 mm dobrada, 3,28 kg",dwg:"2972058",prev:1,rec:0,status:"Pendente"},
+  // Anel calandrado (dentro do conjunto cilindros equilibradores 2971003)
+  {id:920,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972040",desc:"Anel calandrado — chapa A36 9,50 mm, 4305×50 mm, 15,81 kg",dwg:"2972040",prev:1,rec:0,status:"Pendente"},
+  {id:921,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972042",desc:"Anel calandrado menor — chapa A36 19 mm, 4017×80 mm, 47,93 kg",dwg:"2972042",prev:1,rec:0,status:"Pendente"},
+  // Selo flutuante (já referenciado como 2971014 no conjunto raiz — detalhe da peça)
+  {id:922,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972043",desc:"Selo flutuante Ø1050×15×10 — PTFE, bipartido, 0,92 kg",dwg:"2972043",prev:1,rec:0,status:"Pendente"},
+  // Bucha guia (dentro do conjunto de cilindros equilibradores)
+  {id:923,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972044",desc:"Bucha guia — barra redonda trefilada SAE 1045 Ø50 mm, L=60 mm, 0,24 kg",dwg:"2972044",prev:8,rec:0,status:"Pendente"},
+  // Suporte sensor vibração axial (já referenciado como 2972060 — confirma prev=1)
+  {id:924,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972062",desc:"Tarugo — injeção de óleo — barra redonda ASTM A36 Ø50,80 mm, L=150 mm, 2,21 kg",dwg:"2972062",prev:8,rec:0,status:"Pendente"},
+  {id:925,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972063",desc:"Bloco de injeção de alta pressão — barra quadrada Al 6351-T6 76,20 mm, L=80 mm, 1,10 kg",dwg:"2972063",prev:8,rec:0,status:"Pendente"},
+  {id:926,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972064",desc:"Bucha isolante — barra redonda NEMA G11 Ø50 mm, L=30 mm, 0,02 kg",dwg:"2972064",prev:8,rec:0,status:"Pendente"},
+  {id:927,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972066",desc:"Diafragma 0,50 mm — 1/8\" NPT — bujão zincado DIN 906 1/8\" NPTF modificado Ø0,50 mm",dwg:"2972066",prev:8,rec:0,status:"Pendente"},
+  {id:928,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972067",desc:"Pino guia — barra redonda SAE 1045 Ø31,75 mm, L=50 mm, 0,25 kg",dwg:"2972067",prev:4,rec:0,status:"Pendente"},
+  {id:929,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972069",desc:"Suporte — chapa A36 12,50 mm, 120×80 mm, 0,82 kg",dwg:"2972069",prev:2,rec:0,status:"Pendente"},
+  {id:930,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972070",desc:"Suporte — chapa A36 12,50 mm, 122×50 mm dobrada, 0,53 kg",dwg:"2972070",prev:2,rec:0,status:"Pendente"},
+  {id:931,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972075",desc:"Tampa bipartida aletada — fundida SAE 1020, 220×112×47 mm, 2,49 kg",dwg:"2972075",prev:2,rec:0,status:"Pendente"},
+  {id:932,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972077",desc:"Mola de tração Ø1 mm × Ø4 mm × 790 mm — aço mola SAE 1070, 0,51 kg",dwg:"2972077",prev:8,rec:0,status:"Pendente"},
+  {id:933,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972078",desc:"Tampa bipartida excêntrica-1 — chapa A36 50 mm, 230×120 mm, 3,12 kg",dwg:"2972078",prev:1,rec:0,status:"Pendente"},
+  {id:934,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972079",desc:"Tampa bipartida excêntrica-2 — chapa A36 50 mm, 230×120 mm, 3,12 kg",dwg:"2972079",prev:1,rec:0,status:"Pendente"},
+  {id:935,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972080",desc:"Suporte dobrado da haste — chapa A36 4,75 mm, 136×50 mm dobrada, 0,24 kg",dwg:"2972080",prev:8,rec:0,status:"Pendente"},
+  {id:936,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972081",desc:"Suporte do sensor de vibração radial 10° — chapa A36 6,30 mm, 146×120 mm dobrada, 0,81 kg",dwg:"2972081",prev:2,rec:0,status:"Pendente"},
+  // Matéria-prima do colar de escora (desenho de fundição)
+  {id:937,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2973001",desc:"Colar de escora — fundido SAE 1045, 2419,66 kg bruto (matéria-prima para 0147GSV1-2972001)",dwg:"2973001",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR, ...DEFAULT_GERADOR_ACP, ...DEFAULT_GERADOR_EIX, ...DEFAULT_GERADOR_CRZ, ...DEFAULT_GERADOR_CRI, ...DEFAULT_GERADOR_MFL, ...DEFAULT_GERADOR_PFL, ...DEFAULT_GERADOR_MCS];
+
+let items=[], romaneios=[], nextItemId=500, nextRomId=1;
 let activeEquip='turbina', activeConj='all', editItemId=null, activeRomId=null, erroTipos=[], romItens=[];
 
 // ── STORAGE ────────────────────────────────────────────────
