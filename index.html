@@ -26,7 +26,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;font-family:'IBM Plex Mono',monospace;}
 .stat-val{font-size:26px;font-weight:600;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .stat-val.total{color:var(--accent);}.stat-val.pend{color:var(--amber);}.stat-val.ok{color:var(--green);}.stat-val.nc{color:var(--red);}
-.toolbar{padding:10px 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:97px;z-index:180;}
+.toolbar{padding:10px 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:97px;z-index:180;transition:top 0s;}
 .toolbar input,.toolbar select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:6px;font-size:13px;font-family:'IBM Plex Sans',sans-serif;outline:none;transition:border-color 0.15s;}
 .toolbar input:focus,.toolbar select:focus{border-color:var(--accent);}
 .toolbar input{width:210px;}
@@ -47,9 +47,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .btn-danger:hover{background:var(--red-bg);border-color:var(--red);}
 .btn-sec{background:transparent;border:1px solid var(--border);color:var(--text2);padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer;transition:all 0.12s;white-space:nowrap;}
 .btn-sec:hover{border-color:var(--border2);color:var(--text);}
-.table-wrap{overflow-x:auto;}
+.table-wrap{overflow-x:auto;}.table-wrap table{margin-top:0;}
 table{width:100%;border-collapse:collapse;font-size:12.5px;}
-th{text-align:left;padding:8px 14px;font-size:11px;font-weight:500;font-family:'IBM Plex Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:160px;z-index:170;}
+.table-header-wrap{position:sticky;top:var(--toolbar-bottom,160px);z-index:170;background:var(--bg2);border-bottom:1px solid var(--border);}
+.table-header-fixed{width:100%;border-collapse:collapse;font-size:12.5px;}
+.table-body-only{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{text-align:left;padding:8px 14px;font-size:11px;font-weight:500;font-family:'IBM Plex Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;background:var(--bg2);white-space:nowrap;}
 td{padding:7px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 tr:hover td{background:var(--bg2);}
 /* Conjunto pills - Turbina */
@@ -62,7 +65,7 @@ tr:hover td{background:var(--bg2);}
 .cp-540{background:#0a1f0a;color:#56d364;}
 /* Conjunto pills - Gerador */
 .cp-EST{background:#1a1050;color:#b48eff;}.cp-ROT{background:#0d1a30;color:#58c4ff;}
-.cp-ACP{background:#0d2020;color:#2dd4bf;}.cp-EIX{background:#1a1200;color:#fbbf24;}.cp-CRZ{background:#1a0d20;color:#e879f9;}.cp-CRI{background:#1a1010;color:#fb923c;}.cp-MFL{background:#0d1a10;color:#4ade80;}.cp-PFL{background:#1a1520;color:#a78bfa;}.cp-MCS{background:#1a1000;color:#f59e0b;}
+.cp-ACP{background:#0d2020;color:#2dd4bf;}.cp-EIX{background:#1a1200;color:#fbbf24;}.cp-CRZ{background:#1a0d20;color:#e879f9;}.cp-CRI{background:#1a1010;color:#fb923c;}.cp-MFL{background:#0d1a10;color:#4ade80;}.cp-PFL{background:#1a1520;color:#a78bfa;}.cp-MCS{background:#1a1000;color:#f59e0b;}.cp-MGI{background:#0d1520;color:#38bdf8;}
 .dwg-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:1px 6px;border-radius:3px;}
 .code-sm{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);}
 .qty-ok{color:var(--green);font-weight:600;font-family:'IBM Plex Mono',monospace;}
@@ -149,6 +152,117 @@ tr:hover td{background:var(--bg2);}
 /* Equipment selector bar */
 .eq-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:8px 24px;display:flex;gap:8px;align-items:center;}
 .eq-label{font-size:11px;color:var(--text3);font-family:'IBM Plex Mono',monospace;margin-right:4px;}
+
+
+/* MONTAGEM */
+.g-wrap{width:100%;overflow:auto;}
+.g-tbl{border-collapse:collapse;font-size:12px;table-layout:fixed;}
+.g-tbl th{background:var(--bg2);padding:5px 3px;border:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;text-align:center;white-space:nowrap;width:26px;}
+.g-tbl td{border:1px solid var(--border);padding:3px;height:32px;vertical-align:middle;}
+.g-lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:260px;min-width:260px;max-width:260px;padding:4px 8px!important;}
+.g-lbl-eq{font-size:9px;color:var(--text3);font-family:'IBM Plex Mono',monospace;}
+.g-lbl-nm{font-size:11px;color:var(--text);font-weight:500;}
+.g-pct-col{width:40px;min-width:40px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;}
+.g-bar{height:18px;border-radius:3px;margin:1px 2px;}
+.g-done{background:#238636;}
+.g-active{background:#1f6feb;}
+.g-ok{background:#9e6a03;opacity:.8;}
+.g-crit{background:#da3633;}
+.g-today-col{background:rgba(88,166,255,.12)!important;}
+.g-today-hdr{color:var(--accent)!important;font-weight:700!important;}
+.g-we{background:rgba(255,255,255,.025);}
+.g-newm{border-left:2px solid var(--border2)!important;}
+.mont-top{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--bg2);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px;}
+.mont-lgd{display:flex;gap:14px;flex-wrap:wrap;}
+.mont-lgd span{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);font-family:'IBM Plex Mono',monospace;}
+.mont-lgd i{width:12px;height:12px;border-radius:2px;flex-shrink:0;}
+.mont-nav-row{display:flex;align-items:center;gap:8px;}
+.mont-period{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--text);min-width:160px;text-align:center;}
+.mont-detail-box{background:var(--bg2);border-top:2px solid var(--border2);padding:16px 20px;max-height:40vh;overflow-y:auto;}
+.mont-detail-box h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
+.mont-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.mont-stat{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.mont-stat span:last-child{font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.miss-item{display:flex;align-items:center;gap:8px;padding:5px 8px;background:var(--bg3);border-radius:4px;margin-bottom:3px;font-size:11px;}
+.miss-cod{font-family:'IBM Plex Mono',monospace;color:var(--text3);font-size:10px;white-space:nowrap;}
+.miss-desc{flex:1;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.miss-qty{font-family:'IBM Plex Mono',monospace;color:var(--red);font-weight:700;white-space:nowrap;}
+.miss-eta{font-size:10px;color:var(--amber);font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+.alert-strip{padding:8px 12px;border-radius:6px;font-size:12px;margin-bottom:10px;font-weight:500;}
+.a-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red);}
+.a-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber);}
+.a-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green);}
+.prog-wrap{background:var(--bg3);border-radius:4px;height:6px;margin-top:4px;}
+.prog-fill{height:6px;border-radius:4px;}
+
+/* MONTAGEM - Painel itens faltantes */
+.mont-body{display:grid;grid-template-columns:1fr 380px;height:calc(100vh - 135px);overflow:hidden;}
+.mont-gantt-col{overflow:auto;border-right:2px solid var(--border2);}
+.mont-missing-col{display:flex;flex-direction:column;overflow:hidden;background:var(--bg2);}
+.miss-col-hdr{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.miss-col-hdr h3{font-size:12px;font-weight:600;color:var(--text);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
+.miss-col-body{overflow-y:auto;flex:1;padding:8px;}
+.miss-conj-block{margin-bottom:12px;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.miss-conj-hdr{padding:7px 12px;background:var(--bg3);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.miss-conj-name{font-size:11px;font-weight:600;color:var(--text);}
+.miss-conj-date{font-size:10px;font-family:'IBM Plex Mono',monospace;}
+.miss-conj-date.ok{color:var(--green);}
+.miss-conj-date.warn{color:var(--amber);}
+.miss-conj-date.crit{color:var(--red);}
+.miss-conj-items{padding:6px 8px;}
+.miss-row{display:flex;align-items:center;gap:6px;padding:4px 4px;border-bottom:1px solid var(--border);font-size:11px;}
+.miss-row:last-child{border-bottom:none;}
+.miss-row .miss-cod{font-family:'IBM Plex Mono',monospace;color:var(--text3);font-size:10px;white-space:nowrap;min-width:120px;}
+.miss-row .miss-desc{flex:1;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.miss-row .miss-qty{font-family:'IBM Plex Mono',monospace;font-weight:700;white-space:nowrap;font-size:11px;}
+.miss-row .miss-qty.parcial{color:var(--amber);}
+.miss-row .miss-qty.zero{color:var(--red);}
+.miss-eta-tag{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--amber);background:rgba(210,153,34,.12);border:1px solid rgba(210,153,34,.3);border-radius:3px;padding:1px 5px;white-space:nowrap;}
+.miss-eta-btn{font-size:10px;padding:2px 6px;border-radius:3px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;flex-shrink:0;}
+.miss-eta-btn:hover{border-color:var(--amber);color:var(--amber);}
+.miss-eta-btn.active{border-color:var(--amber);color:var(--amber);background:rgba(210,153,34,.1);}
+.miss-empty{padding:20px;text-align:center;color:var(--text3);font-size:12px;}
+
+/* MONTAGEM SUB-ABAS */
+.mont-subtabs{display:flex;gap:0;background:var(--bg3);border-bottom:1px solid var(--border);padding:0 20px;}
+.mont-stab{padding:8px 18px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:var(--text2);transition:all .15s;white-space:nowrap;user-select:none;font-family:'IBM Plex Mono',monospace;}
+.mont-stab:hover{color:var(--text);}
+.mont-stab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600;}
+.mont-subpage{display:none;}
+.mont-subpage.active{display:block;}
+/* Missing panel full width */
+.miss-full{padding:12px 20px;max-height:calc(100vh - 175px);overflow-y:auto;}
+.miss-conj-block2{margin-bottom:14px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.miss-conj-hdr2{padding:9px 14px;background:var(--bg3);display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;}
+.miss-conj-hdr2:hover{background:var(--bg2);}
+.miss-conj-info{display:flex;align-items:center;gap:10px;}
+.miss-conj-tag{font-size:10px;font-family:'IBM Plex Mono',monospace;padding:2px 8px;border-radius:3px;background:var(--bg2);color:var(--text3);border:1px solid var(--border);}
+.miss-conj-name2{font-size:12px;font-weight:600;color:var(--text);}
+.miss-conj-meta{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.miss-conj-prog{font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--text2);}
+.miss-conj-dl{font-size:11px;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.miss-conj-dl.ok{color:var(--green);}
+.miss-conj-dl.warn{color:var(--amber);}
+.miss-conj-dl.crit{color:var(--red);}
+/* Item rows full width */
+.miss-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.miss-tbl th{background:var(--bg2);padding:6px 12px;text-align:left;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);}
+.miss-tbl td{padding:7px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.miss-tbl tr:last-child td{border-bottom:none;}
+.miss-tbl tr:hover td{background:var(--bg3);}
+.miss-status-btn{font-size:10px;padding:3px 9px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;transition:all .12s;white-space:nowrap;}
+.miss-status-btn:hover{border-color:var(--border2);color:var(--text);}
+.miss-status-btn.caminho{border-color:var(--amber);color:var(--amber);background:rgba(210,153,34,.1);}
+.miss-status-btn.usina{border-color:var(--green);color:var(--green);background:rgba(63,185,80,.1);}
+.miss-loc-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-family:'IBM Plex Mono',monospace;padding:2px 7px;border-radius:3px;white-space:nowrap;}
+.miss-loc-tag.caminho{color:var(--amber);background:rgba(210,153,34,.1);border:1px solid rgba(210,153,34,.3);}
+.miss-loc-tag.usina{color:var(--green);background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.3);}
+.miss-filter-row{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--bg2);border-bottom:1px solid var(--border);}
+.miss-filter-row select,.miss-filter-row input{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:5px;font-size:12px;font-family:'IBM Plex Sans',sans-serif;}
+.miss-stats-strip{display:flex;gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
+.miss-stat-card{flex:1;background:var(--bg2);padding:10px 16px;display:flex;flex-direction:column;gap:2px;}
+.miss-stat-card .lbl{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
+.miss-stat-card .val{font-size:20px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
 </style>
 </head>
 <body>
@@ -156,11 +270,12 @@ tr:hover td{background:var(--bg2);}
   <div class="topbar-logo">UHE Rasgão</div>
   <div class="topbar-title"><strong>Controle de Montagem em Campo</strong> — Turbina Francis Vertical + Gerador Síncrono Vertical</div>
   <div class="save-indicator saved" id="save-indicator">● Salvo</div>
-  <div class="topbar-badge" id="hdr-badge">469 itens</div>
+  <div class="topbar-badge" id="hdr-badge">535 itens</div>
 </div>
 <div class="nav-tabs">
   <div class="nav-tab active" onclick="showPage('controle',this)">📋 Controle de Itens</div>
   <div class="nav-tab" onclick="showPage('romaneios',this)">📦 Romaneios</div>
+  <div class="nav-tab" onclick="showPage('montagem',this)">🏗️ Montagem</div>
 </div>
 
 <!-- CONTROLE PAGE -->
@@ -191,17 +306,84 @@ tr:hover td{background:var(--bg2);}
       <button class="btn-primary" onclick="openItemModal()">+ Novo item</button>
     </div>
   </div>
-  <div class="table-wrap">
-    <table>
+  <div class="table-header-wrap">
+    <table class="table-header-fixed">
       <thead><tr>
         <th style="width:65px">Conj.</th><th style="width:36px">Pos.</th>
         <th style="width:110px">Código</th><th>Descrição</th>
         <th style="width:90px">Desenho</th><th style="width:50px;text-align:right">Prev.</th>
         <th style="width:50px;text-align:right">Rec.</th><th style="width:120px">Status</th><th style="width:44px"></th>
       </tr></thead>
+    </table>
+  </div>
+  <div class="table-wrap">
+    <table class="table-body-only">
+      <colgroup>
+        <col style="width:65px"><col style="width:36px">
+        <col style="width:110px"><col>
+        <col style="width:90px"><col style="width:50px">
+        <col style="width:50px"><col style="width:120px"><col style="width:44px">
+      </colgroup>
       <tbody id="tbody-controle"></tbody>
     </table>
   </div>
+</div>
+
+
+<!-- MONTAGEM PAGE -->
+<div class="page" id="page-montagem">
+
+  <!-- SUB-ABAS -->
+  <div class="mont-subtabs">
+    <div class="mont-stab active" onclick="mSetTab('gantt',this)">📅 Gantt</div>
+    <div class="mont-stab" onclick="mSetTab('missing',this)">📦 Itens Faltantes</div>
+  </div>
+
+  <!-- TOP BAR (shared) -->
+  <div class="mont-top" id="montTop">
+    <div class="mont-lgd">
+      <span><i style="background:#238636"></i>Concluído</span>
+      <span><i style="background:#1f6feb"></i>Em andamento</span>
+      <span><i style="background:#9e6a03"></i>Futuro — material OK</span>
+      <span><i style="background:#da3633"></i>Futuro — material crítico</span>
+    </div>
+    <div class="mont-nav-row">
+      <button class="btn-sec" onclick="mShift(-1)">◀</button>
+      <span class="mont-period" id="mPeriod"></span>
+      <button class="btn-sec" onclick="mShift(1)">▶</button>
+      <button class="btn-primary" style="padding:5px 12px" onclick="mToday()">Hoje</button>
+    </div>
+  </div>
+
+  <!-- SUB-PÁGINA: GANTT -->
+  <div class="mont-subpage active" id="mpage-gantt">
+    <div class="g-wrap" id="gWrap"></div>
+    <div id="mDetail" style="display:none" class="mont-detail-box"></div>
+  </div>
+
+  <!-- SUB-PÁGINA: ITENS FALTANTES -->
+  <div class="mont-subpage" id="mpage-missing">
+    <!-- Stats strip -->
+    <div class="miss-stats-strip" id="missStats"></div>
+    <!-- Filters -->
+    <div class="miss-filter-row">
+      <select id="missFilterEq" onchange="renderMissingPanel()">
+        <option value="">Todos os equipamentos</option>
+        <option value="turbina">Turbina Francis</option>
+        <option value="gerador">Gerador Síncrono</option>
+      </select>
+      <select id="missFilterLoc" onchange="renderMissingPanel()">
+        <option value="">Todos os status</option>
+        <option value="missing">Faltando</option>
+        <option value="caminho">A caminho</option>
+        <option value="usina">Na usina</option>
+      </select>
+      <input type="text" id="missSearch" placeholder="Buscar código ou descrição..." style="width:280px" oninput="renderMissingPanel()">
+    </div>
+    <!-- List -->
+    <div class="miss-full" id="missingPanel"></div>
+  </div>
+
 </div>
 
 <!-- ROMANEIOS PAGE -->
@@ -263,10 +445,10 @@ tr:hover td{background:var(--bg2);}
 const STORAGE_KEY = 'uhe_rasgao_v9';
 
 const CONJUNTOS_TURBINA = {"425":"Tampa Superior","428":"Tampa Inferior","440":"Eixo","442":"Rotor Francis","467":"Palheta Diretriz","468":"Mec. Regulação","470":"Anel de Regulação","472":"Servomotor","495":"Mancal Guia","509":"Tubulação Reg.","540":"Disp. Montagem"};
-const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor","ACP":"Acoplamento","EIX":"Eixo do Gerador","CRZ":"Cruzeta Superior","CRI":"Cruzeta Inferior","MFL":"Macaco Freio/Levant.","PFL":"Painel Frenagem/Levant.","MCS":"Mancal Comb. Superior"};
+const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor","ACP":"Acoplamento","EIX":"Eixo do Gerador","CRZ":"Cruzeta Superior","CRI":"Cruzeta Inferior","MFL":"Macaco Freio/Levant.","PFL":"Painel Frenagem/Levant.","MCS":"Mancal Comb. Superior","MGI":"Mancal Guia Inferior"};
 
 const PILL_CLS_TFV = {"425":"cp-425","428":"cp-428","440":"cp-440","442":"cp-442","467":"cp-467","468":"cp-468","470":"cp-470","472":"cp-472","495":"cp-495","509":"cp-509","540":"cp-540"};
-const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT","ACP":"cp-ACP","EIX":"cp-EIX","CRZ":"cp-CRZ","CRI":"cp-CRI","MFL":"cp-MFL","PFL":"cp-PFL","MCS":"cp-MCS"};
+const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT","ACP":"cp-ACP","EIX":"cp-EIX","CRZ":"cp-CRZ","CRI":"cp-CRI","MFL":"cp-MFL","PFL":"cp-PFL","MCS":"cp-MCS","MGI":"cp-MGI"};
 
 // ── DADOS TURBINA ──────────────────────────────────────────
 const DEFAULT_TURBINA = [
@@ -276,8 +458,8 @@ const DEFAULT_TURBINA = [
   {id:4,eq:"turbina",conj:"425",pos:"4",cod:"700236",desc:"Massa epóxi Devcon Plastic Steel A 10120 — 1,8 kg",dwg:"4251001",prev:1,rec:0,status:"Pendente"},
   {id:5,eq:"turbina",conj:"425",pos:"1",cod:"0147TFV1-4253001",desc:"Aro porta buchas intermediário fundido — ASTM A743 CA15",dwg:"4251002",prev:2,rec:0,status:"Pendente"},
   {id:6,eq:"turbina",conj:"425",pos:"2",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4251002",prev:20,rec:0,status:"Pendente"},
-  {id:7,eq:"turbina",conj:"425",pos:"3",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4251002",prev:24,rec:0,status:"Pendente"},
-  {id:8,eq:"turbina",conj:"425",pos:"4",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4251002",prev:12,rec:0,status:"Pendente"},
+  {id:7,eq:"turbina",conj:"425",pos:"3",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4251002",prev:24,rec:41,status:"OK"},
+  {id:8,eq:"turbina",conj:"425",pos:"4",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4251002",prev:12,rec:13,status:"OK"},
   {id:9,eq:"turbina",conj:"425",pos:"5",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4251002",prev:12,rec:0,status:"Pendente"},
   {id:10,eq:"turbina",conj:"425",pos:"6",cod:"104311",desc:"Parafuso sext. inox AISI 304 A2-70 DIN 933 MA M24×80",dwg:"4251002",prev:80,rec:0,status:"Pendente"},
   {id:11,eq:"turbina",conj:"425",pos:"7",cod:"103035",desc:"Pino guia paralelo c/ rosca interna inox AISI 304 DIN 7979 Ø25×80",dwg:"4251002",prev:8,rec:0,status:"Pendente"},
@@ -290,8 +472,8 @@ const DEFAULT_TURBINA = [
   {id:18,eq:"turbina",conj:"428",pos:"4",cod:"0147TFV1-4683001",desc:"Bucha dos mancais da palheta diretriz — TRORDON HPSXL",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
   {id:19,eq:"turbina",conj:"428",pos:"5",cod:"0147TFV1-4282005",desc:"Pino guia da pista inferior — barra inox AISI 316 Ø38,10×145 mm",dwg:"4281000",prev:2,rec:0,status:"Pendente"},
   {id:20,eq:"turbina",conj:"428",pos:"6",cod:"104320",desc:"Parafuso Allen inox AISI 316 A4-80 DIN 912 MA M16×30",dwg:"4281000",prev:40,rec:0,status:"Pendente"},
-  {id:21,eq:"turbina",conj:"428",pos:"7",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4281000",prev:20,rec:0,status:"Pendente"},
-  {id:22,eq:"turbina",conj:"428",pos:"8",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4281000",prev:12,rec:0,status:"Pendente"},
+  {id:21,eq:"turbina",conj:"428",pos:"7",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4281000",prev:20,rec:41,status:"OK"},
+  {id:22,eq:"turbina",conj:"428",pos:"8",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4281000",prev:12,rec:13,status:"OK"},
   {id:23,eq:"turbina",conj:"428",pos:"9",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4281000",prev:8,rec:0,status:"Pendente"},
   {id:24,eq:"turbina",conj:"428",pos:"24",cod:"0147TFV1-4282004",desc:"Pino guia anel inferior/pré — barra inox AISI 420 Ø50,80×135 mm",dwg:"4282004",prev:2,rec:0,status:"Pendente"},
   {id:25,eq:"turbina",conj:"440",pos:"9",cod:"0147TFV1-4401001",desc:"Eixo da turbina existente — usinagem + luva bronze ASTM B271 C90500",dwg:"4401001",prev:1,rec:0,status:"Pendente"},
@@ -350,19 +532,19 @@ const DEFAULT_TURBINA = [
   {id:78,eq:"turbina",conj:"495",pos:"9",cod:"0147TFV1-4952010",desc:"Pino guia do mancal — barra inox AISI 316 Ø31,75 mm, L=155 mm",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
   {id:79,eq:"turbina",conj:"495",pos:"10",cod:"0147TFV1-4952007",desc:"Prensa vedação novo",dwg:"4951001",prev:1,rec:0,status:"Pendente"},
   {id:80,eq:"turbina",conj:"495",pos:"11",cod:"104941",desc:"Gaxeta quadrada modelo 2200 fios de carbono 25,40 mm, L=1740 mm",dwg:"4951001",prev:3,rec:0,status:"Pendente"},
-  {id:81,eq:"turbina",conj:"495",pos:"12",cod:"101688",desc:"Parafuso Allen inox AISI 304 A2-70 DIN 912 MA M12×30",dwg:"4951001",prev:84,rec:0,status:"Pendente"},
-  {id:82,eq:"turbina",conj:"495",pos:"13",cod:"100190",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M20",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
+  {id:81,eq:"turbina",conj:"495",pos:"12",cod:"101688",desc:"Parafuso Allen inox AISI 304 A2-70 DIN 912 MA M12×30",dwg:"4951001",prev:84,rec:16,status:"Parcial"},
+  {id:82,eq:"turbina",conj:"495",pos:"13",cod:"100190",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M20",dwg:"4951001",prev:8,rec:14,status:"OK"},
   {id:83,eq:"turbina",conj:"495",pos:"14",cod:"105314",desc:"Porca sext. inox AISI 304 ASME B18.2.2 UNC 3/4\"",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
   {id:84,eq:"turbina",conj:"495",pos:"15",cod:"105381",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 933 MA M20×100",dwg:"4951001",prev:12,rec:0,status:"Pendente"},
-  {id:85,eq:"turbina",conj:"495",pos:"16",cod:"105384",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M20",dwg:"4951001",prev:12,rec:0,status:"Pendente"},
+  {id:85,eq:"turbina",conj:"495",pos:"16",cod:"105384",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M20",dwg:"4951001",prev:12,rec:12,status:"OK"},
   {id:86,eq:"turbina",conj:"495",pos:"17",cod:"105386",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M20",dwg:"4951001",prev:24,rec:0,status:"Pendente"},
-  {id:87,eq:"turbina",conj:"495",pos:"18",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4951001",prev:24,rec:0,status:"Pendente"},
+  {id:87,eq:"turbina",conj:"495",pos:"18",cod:"105375",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M24",dwg:"4951001",prev:24,rec:41,status:"OK"},
   {id:88,eq:"turbina",conj:"495",pos:"19",cod:"105374",desc:"Parafuso sext. inox AISI 316 A4-80 DIN 931 MA M24×120",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:89,eq:"turbina",conj:"495",pos:"20",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4951001",prev:16,rec:0,status:"Pendente"},
+  {id:89,eq:"turbina",conj:"495",pos:"20",cod:"105379",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M24",dwg:"4951001",prev:16,rec:13,status:"Parcial"},
   {id:90,eq:"turbina",conj:"495",pos:"21",cod:"105382",desc:"Arruela lisa inox AISI 316 A4-80 DIN 125A M16",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
   {id:91,eq:"turbina",conj:"495",pos:"22",cod:"105383",desc:"Porca sext. inox AISI 316 A4-80 DIN 934 MA M16",dwg:"4951001",prev:8,rec:0,status:"Pendente"},
-  {id:92,eq:"turbina",conj:"495",pos:"23",cod:"100189",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M16",dwg:"4951001",prev:4,rec:0,status:"Pendente"},
-  {id:93,eq:"turbina",conj:"495",pos:"24",cod:"101964",desc:"Porca sext. inox AISI 304 A2-70 DIN 934 MA M16",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
+  {id:92,eq:"turbina",conj:"495",pos:"23",cod:"100189",desc:"Arruela lisa inox AISI 304 A2-70 DIN 125A M16",dwg:"4951001",prev:4,rec:66,status:"OK"},
+  {id:93,eq:"turbina",conj:"495",pos:"24",cod:"101964",desc:"Porca sext. inox AISI 304 A2-70 DIN 934 MA M16",dwg:"4951001",prev:2,rec:64,status:"OK"},
   {id:94,eq:"turbina",conj:"495",pos:"25",cod:"101770",desc:"Parafuso sext. inox AISI 304 A2-70 DIN 933 MA M16×60",dwg:"4951001",prev:2,rec:0,status:"Pendente"},
   {id:95,eq:"turbina",conj:"495",pos:"1",cod:"0147TFV1-4952006",desc:"Encosto da gaxeta — latão fundido",dwg:"4951004",prev:2,rec:0,status:"Pendente"},
   {id:96,eq:"turbina",conj:"509",pos:"1",cod:"0147TFV1-5092001",desc:"Bloco para tubulação — barra quadrada alumínio 6351-T6, 76,20 mm, L=127 mm",dwg:"5091001",prev:1,rec:0,status:"Pendente"},
@@ -396,7 +578,7 @@ const DEFAULT_GERADOR = [
   {id:215,eq:"gerador",conj:"EST",pos:"15",cod:"0147GSV1-3252005",desc:"Posicionador do estator — chapa ASTM A36 50 mm, 150×55 mm",dwg:"1201000",prev:4,rec:0,status:"Pendente"},
   {id:216,eq:"gerador",conj:"EST",pos:"16",cod:"0147GSV1-1201001",desc:"Bloco de aterramento 100 mm²",dwg:"1201000",prev:2,rec:0,status:"Pendente"},
   {id:217,eq:"gerador",conj:"EST",pos:"17",cod:"103542",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø30×150 mm — SAE 52100",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
-  {id:218,eq:"gerador",conj:"EST",pos:"18",cod:"100196",desc:"Arruela lisa zincada DIN 125A M16",dwg:"1201000",prev:32,rec:0,status:"Pendente"},
+  {id:218,eq:"gerador",conj:"EST",pos:"18",cod:"100196",desc:"Arruela lisa zincada DIN 125A M16",dwg:"1201000",prev:32,rec:289,status:"OK"},
   {id:219,eq:"gerador",conj:"EST",pos:"19",cod:"103603",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M16×110",dwg:"1201000",prev:32,rec:0,status:"Pendente"},
   {id:220,eq:"gerador",conj:"EST",pos:"20",cod:"102656",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M30×120",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
   {id:221,eq:"gerador",conj:"EST",pos:"21",cod:"104371",desc:"Parafuso Allen preto classe 10.9 DIN 912 MA M16×60",dwg:"1201000",prev:40,rec:0,status:"Pendente"},
@@ -404,13 +586,13 @@ const DEFAULT_GERADOR = [
   {id:223,eq:"gerador",conj:"EST",pos:"23",cod:"0147GSV1-1202005",desc:"Fechamento das janelas auxiliares — chapa ASTM A36 3 mm, 400×400 mm",dwg:"1201000",prev:7,rec:0,status:"Pendente"},
   {id:224,eq:"gerador",conj:"EST",pos:"24",cod:"0147GSV1-1202013",desc:"Fechamento das janelas dos cabos — chapa ASTM A36 3 mm, 400×400 mm",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
   {id:225,eq:"gerador",conj:"EST",pos:"25",cod:"0147GSV1-1202004",desc:"Fechamento da carcaça-fundação — chapa ASTM A36 3 mm, 1277×120 mm",dwg:"1201000",prev:16,rec:0,status:"Pendente"},
-  {id:226,eq:"gerador",conj:"EST",pos:"26",cod:"100194",desc:"Arruela lisa zincada DIN 125A M10",dwg:"1201000",prev:66,rec:0,status:"Pendente"},
+  {id:226,eq:"gerador",conj:"EST",pos:"26",cod:"100194",desc:"Arruela lisa zincada DIN 125A M10",dwg:"1201000",prev:66,rec:34,status:"Parcial"},
   {id:227,eq:"gerador",conj:"EST",pos:"27",cod:"101792",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×20",dwg:"1201000",prev:66,rec:0,status:"Pendente"},
   {id:228,eq:"gerador",conj:"EST",pos:"28",cod:"0147GSV1-1202008",desc:"Tala da guia de ar — chapa ASTM A36 19 mm, 2036×271 mm",dwg:"1201000",prev:6,rec:0,status:"Pendente"},
   {id:229,eq:"gerador",conj:"EST",pos:"29",cod:"0147GSV1-1202009",desc:"Segmento-tala da guia de ar — chapa ASTM A36 19 mm, 983×147 mm",dwg:"1201000",prev:4,rec:0,status:"Pendente"},
   {id:230,eq:"gerador",conj:"EST",pos:"30",cod:"0147GSV1-1202010",desc:"Suporte do PT100 — chapa ASTM A36 3 mm, 179×55 mm",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
   {id:231,eq:"gerador",conj:"EST",pos:"31",cod:"P001STP0001000",desc:"Sensor de temperatura PT-100 Ø8×50 mm G1/2 — inox AISI 304",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
-  {id:232,eq:"gerador",conj:"EST",pos:"32",cod:"104970",desc:"Contraporca sext. inox AISI 304 150 LBS 1/2\" BSP",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:232,eq:"gerador",conj:"EST",pos:"32",cod:"104970",desc:"Contraporca sext. inox AISI 304 150 LBS 1/2\" BSP",dwg:"1201000",prev:1,rec:1,status:"Pendente"},
   {id:233,eq:"gerador",conj:"EST",pos:"33",cod:"0147GSV1-1202011",desc:"Suporte do eletroduto — chapa ASTM A36 4,75 mm, 356×50 mm",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
   {id:234,eq:"gerador",conj:"EST",pos:"34",cod:"100003",desc:"Abraçadeira para eletroduto tipo D galvanizada 2\"",dwg:"1201000",prev:14,rec:0,status:"Pendente"},
   {id:235,eq:"gerador",conj:"EST",pos:"35",cod:"0147GSV1-1202012",desc:"Eletroduto galvanizado 2\", L=2250 mm",dwg:"1201000",prev:7,rec:0,status:"Pendente"},
@@ -431,9 +613,9 @@ const DEFAULT_GERADOR = [
   {id:308,eq:"gerador",conj:"ROT",pos:"8",cod:"0147GSV1-2072002",desc:"Trava da cunha polar-LA — chapa ASTM A36 16 mm, 130×55 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
   {id:309,eq:"gerador",conj:"ROT",pos:"9",cod:"0147GSV1-2072003",desc:"Trava da cunha polar-LNA — chapa ASTM A36 16 mm, 130×40 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
   {id:310,eq:"gerador",conj:"ROT",pos:"10",cod:"P003CPR0002005",desc:"Arruela especial M12 — chapa SAE 1008/1010 0,90 mm, 52×22 mm",dwg:"1901000",prev:224,rec:0,status:"Pendente"},
-  {id:311,eq:"gerador",conj:"ROT",pos:"11",cod:"101799",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×30",dwg:"1901000",prev:232,rec:0,status:"Pendente"},
-  {id:312,eq:"gerador",conj:"ROT",pos:"12",cod:"101971",desc:"Porca sext. zincada classe 8 DIN 934 MA M16",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
-  {id:313,eq:"gerador",conj:"ROT",pos:"13",cod:"101808",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×60",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
+  {id:311,eq:"gerador",conj:"ROT",pos:"11",cod:"101799",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×30",dwg:"1901000",prev:232,rec:31,status:"Parcial"},
+  {id:312,eq:"gerador",conj:"ROT",pos:"12",cod:"101971",desc:"Porca sext. zincada classe 8 DIN 934 MA M16",dwg:"1901000",prev:56,rec:89,status:"OK"},
+  {id:313,eq:"gerador",conj:"ROT",pos:"13",cod:"101808",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×60",dwg:"1901000",prev:56,rec:7,status:"Parcial"},
   {id:314,eq:"gerador",conj:"ROT",pos:"14",cod:"0147GSV1-2382001",desc:"Ligação polar superior — barra chata cobre C11000 38,10×1,58 mm, L=53 mm",dwg:"1901000",prev:84,rec:0,status:"Pendente"},
   {id:315,eq:"gerador",conj:"ROT",pos:"15",cod:"0147GSV1-2382002",desc:"Ligação polar inferior — barra chata cobre C11000 38,10×1,58 mm, L=43 mm",dwg:"1901000",prev:81,rec:0,status:"Pendente"},
   {id:316,eq:"gerador",conj:"ROT",pos:"16",cod:"100167",desc:"Arruela de pressão bicromatizada DIN 127B M6",dwg:"1901000",prev:440,rec:0,status:"Pendente"},
@@ -450,7 +632,7 @@ const DEFAULT_GERADOR = [
   {id:327,eq:"gerador",conj:"ROT",pos:"27",cod:"0147GSV1-1902003",desc:"Cunha da chaveta do rotor — barra quadrada trefilada SAE 1045 25,40 mm, L=550 mm",dwg:"1901000",prev:8,rec:0,status:"Pendente"},
   {id:328,eq:"gerador",conj:"ROT",pos:"28",cod:"0147GSV1-1902005",desc:"Trava da aranha — chapa ASTM A36 25 mm, 241×70 mm",dwg:"1901000",prev:4,rec:0,status:"Pendente"},
   {id:329,eq:"gerador",conj:"ROT",pos:"29",cod:"0147GSV1-1901001",desc:"Fechamento da aranha",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
-  {id:330,eq:"gerador",conj:"ROT",pos:"30",cod:"0147GSV1-1901002",desc:"Fechamento do ventilador",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
+  {id:330,eq:"gerador",conj:"ROT",pos:"30",cod:"0147GSV1-1901002",desc:"Fechamento do ventilador",dwg:"1901000",prev:1,rec:98,status:"OK"},
   {id:331,eq:"gerador",conj:"ROT",pos:"31",cod:"0147GSV1-2551000",desc:"Anéis coletores",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
   {id:332,eq:"gerador",conj:"ROT",pos:"32",cod:"0147GSV1-2122007",desc:"Pá superior — chapa ASTM A572 Gr.50 4,75 mm, 430×226 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
   {id:333,eq:"gerador",conj:"ROT",pos:"33",cod:"0147GSV1-2122008",desc:"Pá inferior — chapa ASTM A572 Gr.50 4,75 mm, 430×226 mm",dwg:"1901000",prev:56,rec:0,status:"Pendente"},
@@ -459,9 +641,9 @@ const DEFAULT_GERADOR = [
   {id:336,eq:"gerador",conj:"ROT",pos:"36",cod:"0147GSV1-3861002",desc:"Roda dentada — ASTM A36",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
   {id:337,eq:"gerador",conj:"ROT",pos:"37",cod:"P001CPR0002014",desc:"Arruela dupla especial M8 — chapa SAE 1008/1010 0,60 mm, 97×20 mm",dwg:"1901000",prev:14,rec:0,status:"Pendente"},
   {id:338,eq:"gerador",conj:"ROT",pos:"38",cod:"100653",desc:"Cabo de cobre flexível 0,6/1kV HEPR 90°C 185 mm² — 11000 mm",dwg:"1901000",prev:1,rec:0,status:"Pendente"},
-  {id:339,eq:"gerador",conj:"ROT",pos:"39",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"1901000",prev:232,rec:0,status:"Pendente"},
-  {id:340,eq:"gerador",conj:"ROT",pos:"40",cod:"103622",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×20",dwg:"1901000",prev:224,rec:0,status:"Pendente"},
-  {id:341,eq:"gerador",conj:"ROT",pos:"41",cod:"101837",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×20",dwg:"1901000",prev:28,rec:0,status:"Pendente"},
+  {id:339,eq:"gerador",conj:"ROT",pos:"39",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"1901000",prev:232,rec:68,status:"Parcial"},
+  {id:340,eq:"gerador",conj:"ROT",pos:"40",cod:"103622",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×20",dwg:"1901000",prev:224,rec:8,status:"Parcial"},
+  {id:341,eq:"gerador",conj:"ROT",pos:"41",cod:"101837",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×20",dwg:"1901000",prev:28,rec:48,status:"OK"},
   {id:342,eq:"gerador",conj:"ROT",pos:"42",cod:"103500",desc:"Parafuso Allen preto classe 12.9 DIN 912 MA M12×60",dwg:"1901000",prev:6,rec:0,status:"Pendente"},
   {id:343,eq:"gerador",conj:"ROT",pos:"43",cod:"100200",desc:"Arruela lisa zincada DIN 125A M36",dwg:"1901000",prev:8,rec:0,status:"Pendente"},
   {id:344,eq:"gerador",conj:"ROT",pos:"44",cod:"101827",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M36×110",dwg:"1901000",prev:8,rec:0,status:"Pendente"},
@@ -476,7 +658,7 @@ const DEFAULT_GERADOR = [
 
 // ── DADOS GERADOR — ACOPLAMENTO ───────────────────────────
 const DEFAULT_GERADOR_ACP = [
-  {id:401,eq:"gerador",conj:"ACP",pos:"—",cod:"0147GSV1-1911000",desc:"Acoplamento entre eixos — conjunto e detalhes",dwg:"1911000",prev:1,rec:0,status:"Pendente"},
+  {id:401,eq:"gerador",conj:"ACP",pos:"—",cod:"0147GSV1-1911000",desc:"Acoplamento entre eixos — conjunto e detalhes",dwg:"1911000",prev:1,rec:4,status:"OK"},
   {id:402,eq:"gerador",conj:"ACP",pos:"1",cod:"0147GSV1-1912001",desc:"Disco intermediário — aço ASTM A668 Cl.E, Ø1015×150 mm, 624,61 kg",dwg:"1911000",prev:1,rec:0,status:"Pendente"},
   {id:403,eq:"gerador",conj:"ACP",pos:"2",cod:"0147GSV1-1912002",desc:"Tirante de acoplamento — SAE 4340 Ø101,60 mm, L=600(UG2)/610(UG1) mm, 25,85 kg",dwg:"1911000",prev:12,rec:0,status:"Pendente"},
   {id:404,eq:"gerador",conj:"ACP",pos:"3",cod:"0147GSV1-1912003",desc:"Porca sextavada especial M80×4,0 — SAE 4140 Ø152,40 mm, L=100 mm, 6,83 kg",dwg:"1911000",prev:24,rec:0,status:"Pendente"},
@@ -496,15 +678,15 @@ const DEFAULT_GERADOR_EIX = [
 // ── DADOS GERADOR — CRUZETA SUPERIOR ─────────────────────
 const DEFAULT_GERADOR_CRZ = [
   {id:421,eq:"gerador",conj:"CRZ",pos:"—",cod:"0147GSV1-2801000",desc:"Cruzeta superior — conjunto, 10163,25 kg",dwg:"2801000",prev:1,rec:0,status:"Pendente"},
-  {id:422,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2801001",desc:"Cuba da cruzeta superior — subconj. soldado ASTM A36, 5581,91 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
-  {id:423,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2801002",desc:"Perna da cruzeta superior — subconj. soldado ASTM A36, 525,82 kg",dwg:"2801002",prev:8,rec:0,status:"Pendente"},
+  {id:422,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2801001",desc:"Cuba da cruzeta superior — subconj. soldado ASTM A36, 5581,91 kg",dwg:"2801001",prev:1,rec:1,status:"OK"},
+  {id:423,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2801002",desc:"Perna da cruzeta superior — subconj. soldado ASTM A36, 525,82 kg",dwg:"2801002",prev:8,rec:1,status:"Parcial"},
   {id:424,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2801003",desc:"Flange da janela de inspeção — subconj. soldado ASTM A36, 22,33 kg",dwg:"2801003",prev:4,rec:0,status:"Pendente"},
-  {id:425,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2801004",desc:"Tampa da cuba — subconj. ASTM A36, 26,68 kg",dwg:"2801004",prev:4,rec:0,status:"Pendente"},
+  {id:425,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2801004",desc:"Tampa da cuba — subconj. ASTM A36, 26,68 kg",dwg:"2801004",prev:4,rec:4,status:"OK"},
   {id:426,eq:"gerador",conj:"CRZ",pos:"4",cod:"0147GSV1-2802023",desc:"Sapata — chapa A36 37,5 mm, 300×125 mm, 8,68 kg",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
-  {id:427,eq:"gerador",conj:"CRZ",pos:"5",cod:"0147GSV1-2802024",desc:"Chaveta — barra trefilada SAE 1045 DIN 6885B 50×28 mm, L=125 mm",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
-  {id:428,eq:"gerador",conj:"CRZ",pos:"6",cod:"0147GSV1-2802025",desc:"Calço deslizante — chapa UHMW verde 5 mm, 125×125 mm",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
-  {id:429,eq:"gerador",conj:"CRZ",pos:"7",cod:"0147GSV1-2802026",desc:"Arruela deslizante — chapa UHMW verde 10 mm, Ø75×Ø33 mm",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
-  {id:430,eq:"gerador",conj:"CRZ",pos:"8",cod:"0147GSV1-2802027",desc:"Calço de ajuste — chapa A36 19 mm, 300×125 mm",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
+  {id:427,eq:"gerador",conj:"CRZ",pos:"5",cod:"0147GSV1-2802024",desc:"Chaveta — barra trefilada SAE 1045 DIN 6885B 50×28 mm, L=125 mm",dwg:"2801000",prev:8,rec:8,status:"OK"},
+  {id:428,eq:"gerador",conj:"CRZ",pos:"6",cod:"0147GSV1-2802025",desc:"Calço deslizante — chapa UHMW verde 5 mm, 125×125 mm",dwg:"2801000",prev:16,rec:16,status:"OK"},
+  {id:429,eq:"gerador",conj:"CRZ",pos:"7",cod:"0147GSV1-2802026",desc:"Arruela deslizante — chapa UHMW verde 10 mm, Ø75×Ø33 mm",dwg:"2801000",prev:16,rec:16,status:"OK"},
+  {id:430,eq:"gerador",conj:"CRZ",pos:"8",cod:"0147GSV1-2802027",desc:"Calço de ajuste — chapa A36 19 mm, 300×125 mm",dwg:"2801000",prev:8,rec:8,status:"OK"},
   {id:431,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2802001",desc:"Chapa calandrada (cuba) — A36 19 mm, 6222×525 mm, 377,60 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
   {id:432,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2802002",desc:"Chapa intermediária (cuba) — A36 25 mm, 2000×2000 mm, 311,19 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
   {id:433,eq:"gerador",conj:"CRZ",pos:"3",cod:"0147GSV1-2802003",desc:"Chapa de apoio (cuba) — A36 50 mm, 1400×1400 mm, 485,75 kg",dwg:"2801001",prev:1,rec:0,status:"Pendente"},
@@ -529,19 +711,19 @@ const DEFAULT_GERADOR_CRZ = [
   {id:452,eq:"gerador",conj:"CRZ",pos:"2",cod:"0147GSV1-2802021",desc:"Chapa (flange janela inspeção) — A36 19 mm, 540×370 mm, 12,07 kg",dwg:"2801003",prev:1,rec:0,status:"Pendente"},
   {id:453,eq:"gerador",conj:"CRZ",pos:"1",cod:"0147GSV1-2802022",desc:"Chapa da tampa — A36 19 mm, 540×370 mm, 26,45 kg",dwg:"2801004",prev:1,rec:0,status:"Pendente"},
   {id:454,eq:"gerador",conj:"CRZ",pos:"2",cod:"P001ALP0002001",desc:"Alça 120×50×Ø9,52 — barra redonda ASTM A36 Ø9,52 mm, L=220 mm",dwg:"2801004",prev:2,rec:0,status:"Pendente"},
-  {id:455,eq:"gerador",conj:"CRZ",pos:"9",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"2801000",prev:80,rec:0,status:"Pendente"},
-  {id:456,eq:"gerador",conj:"CRZ",pos:"10",cod:"101800",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M12×40",dwg:"2801000",prev:80,rec:0,status:"Pendente"},
-  {id:457,eq:"gerador",conj:"CRZ",pos:"11",cod:"100524",desc:"Borracha perfil redondo NBR 65/75 Shore A Ø7 mm, L=5930 mm",dwg:"2801000",prev:1,rec:0,status:"Pendente"},
-  {id:458,eq:"gerador",conj:"CRZ",pos:"12",cod:"103533",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø25×200 mm",dwg:"2801000",prev:8,rec:0,status:"Pendente"},
-  {id:459,eq:"gerador",conj:"CRZ",pos:"13",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2801000",prev:128,rec:0,status:"Pendente"},
+  {id:455,eq:"gerador",conj:"CRZ",pos:"9",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"2801000",prev:80,rec:68,status:"Parcial"},
+  {id:456,eq:"gerador",conj:"CRZ",pos:"10",cod:"101800",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M12×40",dwg:"2801000",prev:80,rec:129,status:"OK"},
+  {id:457,eq:"gerador",conj:"CRZ",pos:"11",cod:"100524",desc:"Borracha perfil redondo NBR 65/75 Shore A Ø7 mm, L=5930 mm",dwg:"2801000",prev:1,rec:3,status:"OK"},
+  {id:458,eq:"gerador",conj:"CRZ",pos:"12",cod:"103533",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø25×200 mm",dwg:"2801000",prev:8,rec:8,status:"OK"},
+  {id:459,eq:"gerador",conj:"CRZ",pos:"13",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2801000",prev:128,rec:12,status:"Parcial"},
   {id:460,eq:"gerador",conj:"CRZ",pos:"14",cod:"101790",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M30×150",dwg:"2801000",prev:64,rec:0,status:"Pendente"},
-  {id:461,eq:"gerador",conj:"CRZ",pos:"15",cod:"101974",desc:"Porca sextavada zincada Cl.8 DIN 934 M30",dwg:"2801000",prev:80,rec:0,status:"Pendente"},
+  {id:461,eq:"gerador",conj:"CRZ",pos:"15",cod:"101974",desc:"Porca sextavada zincada Cl.8 DIN 934 M30",dwg:"2801000",prev:80,rec:28,status:"Parcial"},
   {id:462,eq:"gerador",conj:"CRZ",pos:"16",cod:"104447",desc:"Arruela de trava estriada zincada DIN 25201 M36",dwg:"2801000",prev:32,rec:0,status:"Pendente"},
   {id:463,eq:"gerador",conj:"CRZ",pos:"17",cod:"103615",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M36×150",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
   {id:464,eq:"gerador",conj:"CRZ",pos:"18",cod:"101975",desc:"Porca sextavada zincada Cl.8 DIN 934 M36",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
-  {id:465,eq:"gerador",conj:"CRZ",pos:"19",cod:"100199",desc:"Arruela lisa zincada DIN 125A M30",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
-  {id:466,eq:"gerador",conj:"CRZ",pos:"20",cod:"101688",desc:"Parafuso Allen Inox A2-70 DIN 912 M12×30",dwg:"2801000",prev:16,rec:0,status:"Pendente"},
-  {id:467,eq:"gerador",conj:"CRZ",pos:"21",cod:"104781",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M30×180",dwg:"2801000",prev:24,rec:0,status:"Pendente"},
+  {id:465,eq:"gerador",conj:"CRZ",pos:"19",cod:"100199",desc:"Arruela lisa zincada DIN 125A M30",dwg:"2801000",prev:16,rec:16,status:"OK"},
+  {id:466,eq:"gerador",conj:"CRZ",pos:"20",cod:"101688",desc:"Parafuso Allen Inox A2-70 DIN 912 M12×30",dwg:"2801000",prev:16,rec:16,status:"OK"},
+  {id:467,eq:"gerador",conj:"CRZ",pos:"21",cod:"104781",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M30×180",dwg:"2801000",prev:24,rec:16,status:"Parcial"},
 ];
 
 // ── DADOS GERADOR — CRUZETA INFERIOR ─────────────────────
@@ -549,22 +731,22 @@ const DEFAULT_GERADOR_CRI = [
   // Conjunto raiz
   {id:501,eq:"gerador",conj:"CRI",pos:"—",cod:"0147GSV1-2811000",desc:"Cruzeta inferior — conjunto, 4209,99 kg",dwg:"2811000",prev:1,rec:0,status:"Pendente"},
   // Subconjuntos nível 1
-  {id:502,eq:"gerador",conj:"CRI",pos:"1",cod:"0147GSV1-2811001",desc:"Cuba da cruzeta inferior — subconj. soldado ASTM A36, 2094,66 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
-  {id:503,eq:"gerador",conj:"CRI",pos:"2",cod:"0147GSV1-2811002",desc:"Perna da cruzeta inferior — subconj. soldado ASTM A36, 333,49 kg",dwg:"2811002",prev:6,rec:0,status:"Pendente"},
+  {id:502,eq:"gerador",conj:"CRI",pos:"1",cod:"0147GSV1-2811001",desc:"Cuba da cruzeta inferior — subconj. soldado ASTM A36, 2094,66 kg",dwg:"2811001",prev:1,rec:1,status:"OK"},
+  {id:503,eq:"gerador",conj:"CRI",pos:"2",cod:"0147GSV1-2811002",desc:"Perna da cruzeta inferior — subconj. soldado ASTM A36, 333,49 kg",dwg:"2811002",prev:6,rec:6,status:"OK"},
   // Fabricados diretos nível 1
   {id:504,eq:"gerador",conj:"CRI",pos:"3",cod:"0147GSV1-3252006",desc:"Pino guia Ø30×150 — barra redonda SAE 4340 Ø31,75 mm, L=150 mm",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
-  {id:505,eq:"gerador",conj:"CRI",pos:"4",cod:"0147GSV1-3252007",desc:"Calço da cruzeta inferior — chapa A36 12,5 mm, 320×200 mm",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
+  {id:505,eq:"gerador",conj:"CRI",pos:"4",cod:"0147GSV1-3252007",desc:"Calço da cruzeta inferior — chapa A36 12,5 mm, 320×200 mm",dwg:"2811000",prev:6,rec:6,status:"OK"},
   {id:506,eq:"gerador",conj:"CRI",pos:"5",cod:"0147GSV1-3252008",desc:"Arruela especial 1.1/2\" — chapa A36 12,5 mm, 110×110 mm",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
   // Comerciais diretos nível 1
-  {id:507,eq:"gerador",conj:"CRI",pos:"6",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2811000",prev:48,rec:0,status:"Pendente"},
+  {id:507,eq:"gerador",conj:"CRI",pos:"6",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2811000",prev:48,rec:12,status:"Parcial"},
   {id:508,eq:"gerador",conj:"CRI",pos:"7",cod:"103618",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M30×130",dwg:"2811000",prev:24,rec:0,status:"Pendente"},
-  {id:509,eq:"gerador",conj:"CRI",pos:"8",cod:"101974",desc:"Porca sextavada zincada Cl.8 DIN 934 M30",dwg:"2811000",prev:24,rec:0,status:"Pendente"},
+  {id:509,eq:"gerador",conj:"CRI",pos:"8",cod:"101974",desc:"Porca sextavada zincada Cl.8 DIN 934 M30",dwg:"2811000",prev:24,rec:28,status:"OK"},
   {id:510,eq:"gerador",conj:"CRI",pos:"9",cod:"104447",desc:"Arruela de trava estriada zincada DIN 25201 M36",dwg:"2811000",prev:24,rec:0,status:"Pendente"},
   {id:511,eq:"gerador",conj:"CRI",pos:"10",cod:"103615",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M36×150",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
   {id:512,eq:"gerador",conj:"CRI",pos:"11",cod:"101975",desc:"Porca sextavada zincada M36-8 DIN 934",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
-  {id:513,eq:"gerador",conj:"CRI",pos:"12",cod:"101897",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø20×100 mm",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
-  {id:514,eq:"gerador",conj:"CRI",pos:"13",cod:"104745",desc:"Parafuso sext. zincado Grau 5 ANSI B18.2.1 UNC 1.1/2\"×5.1/2\"",dwg:"2811000",prev:6,rec:0,status:"Pendente"},
-  {id:515,eq:"gerador",conj:"CRI",pos:"14",cod:"101812",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M20×100",dwg:"2811000",prev:12,rec:0,status:"Pendente"},
+  {id:513,eq:"gerador",conj:"CRI",pos:"12",cod:"101897",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø20×100 mm",dwg:"2811000",prev:6,rec:6,status:"OK"},
+  {id:514,eq:"gerador",conj:"CRI",pos:"13",cod:"104745",desc:"Parafuso sext. zincado Grau 5 ANSI B18.2.1 UNC 1.1/2\"×5.1/2\"",dwg:"2811000",prev:6,rec:6,status:"Pendente"},
+  {id:515,eq:"gerador",conj:"CRI",pos:"14",cod:"101812",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M20×100",dwg:"2811000",prev:12,rec:12,status:"OK"},
   // Subitens da Cuba (nível 2)
   {id:521,eq:"gerador",conj:"CRI",pos:"1",cod:"0147GSV1-2812001",desc:"Chapa calandrada (cuba inf.) — A36 25 mm, 4946×400 mm, 349,93 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
   {id:522,eq:"gerador",conj:"CRI",pos:"2",cod:"0147GSV1-2812002",desc:"Chapa inferior (cuba inf.) — A36 37,5 mm, 2000×1882 mm, 567,31 kg",dwg:"2811001",prev:1,rec:0,status:"Pendente"},
@@ -601,7 +783,7 @@ const DEFAULT_GERADOR_MFL = [
   {id:614,eq:"gerador",conj:"MFL",pos:"12",cod:"103160",desc:"Gaxeta para êmbolo modelo OMK-MR PTFE+NBR 70 Shore A Ø160×Ø139×7,7 mm",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
   {id:615,eq:"gerador",conj:"MFL",pos:"13",cod:"101425",desc:"Graxeira reta zincada 1/4\" BSP — DIN 71412",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
   {id:616,eq:"gerador",conj:"MFL",pos:"14",cod:"100630",desc:"Bujão macho c/ sext. interno zincado DIN 906 1/8\" NPTF série universal",dwg:"2821000",prev:6,rec:0,status:"Pendente"},
-  {id:617,eq:"gerador",conj:"MFL",pos:"15",cod:"100621",desc:"Bujão macho c/ sext. interno zincado 1/2\" BSPP-ED série universal",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
+  {id:617,eq:"gerador",conj:"MFL",pos:"15",cod:"100621",desc:"Bujão macho c/ sext. interno zincado 1/2\" BSPP-ED série universal",dwg:"2821000",prev:12,rec:5,status:"Pendente"},
   {id:618,eq:"gerador",conj:"MFL",pos:"16",cod:"100173",desc:"Arruela de pressão zincada DIN 127B M16",dwg:"2821000",prev:24,rec:0,status:"Pendente"},
   {id:619,eq:"gerador",conj:"MFL",pos:"17",cod:"101806",desc:"Parafuso sext. zincado Cl.8.8 DIN 933 M16×40",dwg:"2821000",prev:24,rec:0,status:"Pendente"},
   {id:620,eq:"gerador",conj:"MFL",pos:"18",cod:"102641",desc:"Parafuso Allen cab. escareada Inox AISI 304 M10×30 — DIN 7991",dwg:"2821000",prev:12,rec:0,status:"Pendente"},
@@ -621,24 +803,24 @@ const DEFAULT_GERADOR_PFL = [
   {id:704,eq:"gerador",conj:"PFL",pos:"13",cod:"P017SPT0002001",desc:"Base — chapa A36 3 mm, 100×38 mm",dwg:"2831002",prev:11,rec:0,status:"Pendente"},
   {id:705,eq:"gerador",conj:"PFL",pos:"11",cod:"P022SPT0002001",desc:"Base 3 — chapa A36 3 mm, 150×38 mm",dwg:"2831002",prev:9,rec:0,status:"Pendente"},
   // Comerciais — tubulação (pos. 2 a 22 exceto fabricados)
-  {id:706,eq:"gerador",conj:"PFL",pos:"2",cod:"101040",desc:"Conexão banjo zincada 1/2\" BSPP-ED × tubo 18 série leve",dwg:"2831002",prev:2,rec:0,status:"Pendente"},
-  {id:707,eq:"gerador",conj:"PFL",pos:"3",cod:"101105",desc:"Conexão reta zincada macho 1/2\" BSPP-ED × tubo 18 série leve",dwg:"2831002",prev:36,rec:0,status:"Pendente"},
+  {id:706,eq:"gerador",conj:"PFL",pos:"2",cod:"101040",desc:"Conexão banjo zincada 1/2\" BSPP-ED × tubo 18 série leve",dwg:"2831002",prev:2,rec:1,status:"Pendente"},
+  {id:707,eq:"gerador",conj:"PFL",pos:"3",cod:"101105",desc:"Conexão reta zincada macho 1/2\" BSPP-ED × tubo 18 série leve",dwg:"2831002",prev:36,rec:27,status:"Pendente"},
   {id:708,eq:"gerador",conj:"PFL",pos:"4",cod:"102546",desc:"Válvula de esfera tipo bloco 2 vias aço zincado PN 500 bar fêmea 1/2\" BSP",dwg:"2831002",prev:12,rec:0,status:"Pendente"},
-  {id:709,eq:"gerador",conj:"PFL",pos:"5",cod:"101129",desc:"Conexão tee igual zincada tubo 18 série leve",dwg:"2831002",prev:10,rec:0,status:"Pendente"},
+  {id:709,eq:"gerador",conj:"PFL",pos:"5",cod:"101129",desc:"Conexão tee igual zincada tubo 18 série leve",dwg:"2831002",prev:10,rec:9,status:"Parcial"},
   {id:710,eq:"gerador",conj:"PFL",pos:"6",cod:"100008",desc:"Abraçadeira p/ tubo simples c/ base p/ solda completa série leve DIN 3015-1 Ø18 (arco interno)",dwg:"2831002",prev:18,rec:0,status:"Pendente"},
   {id:711,eq:"gerador",conj:"PFL",pos:"7",cod:"103906",desc:"Chumbador Parabolt tipo PB zincado 3/8\"×2.3/4\"",dwg:"2831002",prev:4,rec:0,status:"Pendente"},
-  {id:712,eq:"gerador",conj:"PFL",pos:"8",cod:"103583",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M6×70",dwg:"2831002",prev:22,rec:0,status:"Pendente"},
+  {id:712,eq:"gerador",conj:"PFL",pos:"8",cod:"103583",desc:"Parafuso sext. zincado Cl.8.8 DIN 931 M6×70",dwg:"2831002",prev:22,rec:22,status:"OK"},
   {id:713,eq:"gerador",conj:"PFL",pos:"9",cod:"100008",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø18 (arco externo)",dwg:"2831002",prev:11,rec:0,status:"Pendente"},
   {id:714,eq:"gerador",conj:"PFL",pos:"10",cod:"100008",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø18 (travessa)",dwg:"2831002",prev:11,rec:0,status:"Pendente"},
   {id:715,eq:"gerador",conj:"PFL",pos:"12",cod:"100860",desc:"Chumbador Parabolt tipo PB zincado 5/16\"×3.1/4\"",dwg:"2831002",prev:28,rec:0,status:"Pendente"},
-  {id:716,eq:"gerador",conj:"PFL",pos:"14",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=9100 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
-  {id:717,eq:"gerador",conj:"PFL",pos:"15",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=140 mm",dwg:"2831002",prev:4,rec:0,status:"Pendente"},
-  {id:718,eq:"gerador",conj:"PFL",pos:"16",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=920 mm",dwg:"2831002",prev:6,rec:0,status:"Pendente"},
-  {id:719,eq:"gerador",conj:"PFL",pos:"17",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=6000 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
-  {id:720,eq:"gerador",conj:"PFL",pos:"18",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=9650 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
-  {id:721,eq:"gerador",conj:"PFL",pos:"19",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=140 mm (retorno)",dwg:"2831002",prev:4,rec:0,status:"Pendente"},
-  {id:722,eq:"gerador",conj:"PFL",pos:"20",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=920 mm (retorno)",dwg:"2831002",prev:6,rec:0,status:"Pendente"},
-  {id:723,eq:"gerador",conj:"PFL",pos:"21",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=5780 mm",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
+  {id:716,eq:"gerador",conj:"PFL",pos:"14",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=9100 mm",dwg:"2831002",prev:1,rec:13,status:"OK"},
+  {id:717,eq:"gerador",conj:"PFL",pos:"15",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=140 mm",dwg:"2831002",prev:4,rec:13,status:"OK"},
+  {id:718,eq:"gerador",conj:"PFL",pos:"16",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=920 mm",dwg:"2831002",prev:6,rec:13,status:"OK"},
+  {id:719,eq:"gerador",conj:"PFL",pos:"17",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=6000 mm",dwg:"2831002",prev:1,rec:13,status:"OK"},
+  {id:720,eq:"gerador",conj:"PFL",pos:"18",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=9650 mm",dwg:"2831002",prev:1,rec:13,status:"OK"},
+  {id:721,eq:"gerador",conj:"PFL",pos:"19",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=140 mm (retorno)",dwg:"2831002",prev:4,rec:13,status:"OK"},
+  {id:722,eq:"gerador",conj:"PFL",pos:"20",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=920 mm (retorno)",dwg:"2831002",prev:6,rec:13,status:"OK"},
+  {id:723,eq:"gerador",conj:"PFL",pos:"21",cod:"102493",desc:"Tubo trefilado s/ costura zincado ST37.4 NBK DIN 2391 Ø18×2 mm — L=5780 mm",dwg:"2831002",prev:1,rec:13,status:"OK"},
   {id:724,eq:"gerador",conj:"PFL",pos:"22",cod:"700828",desc:"Óleo lubrificante TEXSA Hidráulico HD ISO VG 68 HL — 40 L",dwg:"2831002",prev:1,rec:0,status:"Pendente"},
   {id:725,eq:"gerador",conj:"PFL",pos:"23",cod:"102151",desc:"Sensor de proximidade indutivo M12 10-30VDC NA+NF PNP IF5904/NBN4-12GM50-A2-V1",dwg:"2831002",prev:2,rec:0,status:"Pendente"},
   {id:726,eq:"gerador",conj:"PFL",pos:"25",cod:"100174",desc:"Arruela de pressão zincada DIN 127B M20",dwg:"2831002",prev:24,rec:0,status:"Pendente"},
@@ -648,41 +830,41 @@ const DEFAULT_GERADOR_PFL = [
 // ── DADOS GERADOR — MANCAL COMBINADO SUPERIOR ─────────────
 const DEFAULT_GERADOR_MCS = [
   // Conjunto raiz
-  {id:801,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971000",desc:"Mancal combinado superior — conjunto, 5404,59 kg s/ óleo. Óleo ISO VG-100 HL, cuba 1000 L, vazão 140 L/min, folga nominal Ø0,40 mm",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:801,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971000",desc:"Mancal combinado superior — conjunto, 5404,59 kg s/ óleo. Óleo ISO VG-100 HL, cuba 1000 L, vazão 140 L/min, folga nominal Ø0,40 mm",dwg:"2971000",prev:1,rec:22,status:"OK"},
   // Fabricados com desenho próprio
   {id:802,eq:"gerador",conj:"MCS",pos:"1",cod:"0147GSV1-2972001",desc:"Colar de escora — aço carbono SAE 1045 fundido, 1993,87 kg. DE-UGR-U1e2-GER-041",dwg:"2972001",prev:1,rec:0,status:"Pendente"},
   {id:803,eq:"gerador",conj:"MCS",pos:"2",cod:"0147GSV1-2972002",desc:"Anel de escora — chapa SAE 1045 130 mm, 1250×1250, 735,92 kg. DE-UGR-U1e2-GER-042",dwg:"2972002",prev:1,rec:0,status:"Pendente"},
-  {id:804,eq:"gerador",conj:"MCS",pos:"3",cod:"0147GSV1-2972003",desc:"Chaveta axial do colar — chapa A36 75 mm, 520×520, bipartida, 55,61 kg",dwg:"2972003",prev:1,rec:0,status:"Pendente"},
-  {id:805,eq:"gerador",conj:"MCS",pos:"4",cod:"0147GSV1-2972004",desc:"Trava da chaveta axial — chapa A36 25 mm, 650×650, 25,83 kg",dwg:"2972004",prev:1,rec:0,status:"Pendente"},
-  {id:806,eq:"gerador",conj:"MCS",pos:"5",cod:"0147GSV1-2972005",desc:"Chaveta radial do colar — barra trefilada SAE 1045 DIN 6885B 50×28, L=149 mm, 1,58 kg",dwg:"2972005",prev:1,rec:0,status:"Pendente"},
-  {id:807,eq:"gerador",conj:"MCS",pos:"6",cod:"0147GSV1-2972006",desc:"Pino do anel de escora — barra redonda SAE 1045 Ø63,50 mm, L=60 mm, 0,91 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:808,eq:"gerador",conj:"MCS",pos:"7",cod:"0147GSV1-2972007",desc:"Tirante do colar — barra redonda trefilada SAE 1045 Ø30 mm, L=610 mm, 3,29 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:804,eq:"gerador",conj:"MCS",pos:"3",cod:"0147GSV1-2972003",desc:"Chaveta axial do colar — chapa A36 75 mm, 520×520, bipartida, 55,61 kg",dwg:"2972003",prev:1,rec:1,status:"OK"},
+  {id:805,eq:"gerador",conj:"MCS",pos:"4",cod:"0147GSV1-2972004",desc:"Trava da chaveta axial — chapa A36 25 mm, 650×650, 25,83 kg",dwg:"2972004",prev:1,rec:1,status:"OK"},
+  {id:806,eq:"gerador",conj:"MCS",pos:"5",cod:"0147GSV1-2972005",desc:"Chaveta radial do colar — barra trefilada SAE 1045 DIN 6885B 50×28, L=149 mm, 1,58 kg",dwg:"2972005",prev:1,rec:1,status:"OK"},
+  {id:807,eq:"gerador",conj:"MCS",pos:"6",cod:"0147GSV1-2972006",desc:"Pino do anel de escora — barra redonda SAE 1045 Ø63,50 mm, L=60 mm, 0,91 kg",dwg:"2971000",prev:1,rec:1,status:"OK"},
+  {id:808,eq:"gerador",conj:"MCS",pos:"7",cod:"0147GSV1-2972007",desc:"Tirante do colar — barra redonda trefilada SAE 1045 Ø30 mm, L=610 mm, 3,29 kg",dwg:"2971000",prev:8,rec:8,status:"OK"},
   {id:809,eq:"gerador",conj:"MCS",pos:"8",cod:"0147GSV1-2971003",desc:"Conjunto de cilíndros equilibradores — 778,23 kg. Teste pressão 100 bar/24h. DE-UGR-U1-e2-GER-32",dwg:"2971003",prev:1,rec:0,status:"Pendente"},
-  {id:810,eq:"gerador",conj:"MCS",pos:"9",cod:"0147GSV1-2971001",desc:"Tampa de vedação inferior — chapa A36, 107,45 kg. DE-UGR-U1-e2-GER-40",dwg:"2971001",prev:1,rec:0,status:"Pendente"},
-  {id:811,eq:"gerador",conj:"MCS",pos:"10",cod:"0147GSV1-2972008",desc:"Defletor — chapa A36 63 mm, 550×550, 27,56 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:810,eq:"gerador",conj:"MCS",pos:"9",cod:"0147GSV1-2971001",desc:"Tampa de vedação inferior — chapa A36, 107,45 kg. DE-UGR-U1-e2-GER-40",dwg:"2971001",prev:1,rec:2,status:"OK"},
+  {id:811,eq:"gerador",conj:"MCS",pos:"10",cod:"0147GSV1-2972008",desc:"Defletor — chapa A36 63 mm, 550×550, 27,56 kg",dwg:"2971000",prev:1,rec:1,status:"OK"},
   {id:812,eq:"gerador",conj:"MCS",pos:"11",cod:"0147GSV1-2972009",desc:"Anel isolante — chapa NEMA G11 5 mm, 440×300, 0,98 kg (×8)",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
   {id:813,eq:"gerador",conj:"MCS",pos:"12",cod:"0147GSV1-2972034",desc:"Parafuso de ajuste do patim guia — barra SAE 4140 Ø76,20 mm, L=180 mm, 3,17 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
   {id:814,eq:"gerador",conj:"MCS",pos:"13",cod:"0147GSV1-2972035",desc:"Porca de apoio — barra SAE 4140 Ø127 mm, L=90 mm, 3,87 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:815,eq:"gerador",conj:"MCS",pos:"14",cod:"0147GSV1-2971004",desc:"Patim de guia — conjunto, 34,73 kg. DE-UGR-U1e2-GER-35",dwg:"2971004",prev:8,rec:0,status:"Pendente"},
-  {id:816,eq:"gerador",conj:"MCS",pos:"15",cod:"0147GSV1-2971006",desc:"Tampa distribuidora de óleo — 654,70 kg. DE-UGR-U1-e2-GER-37",dwg:"2971006",prev:1,rec:0,status:"Pendente"},
-  {id:817,eq:"gerador",conj:"MCS",pos:"16",cod:"0147GSV1-2971002",desc:"Defletor de óleo — 87,98 kg. DE-UGR-U1-e2-GER-33",dwg:"2971002",prev:1,rec:0,status:"Pendente"},
+  {id:815,eq:"gerador",conj:"MCS",pos:"14",cod:"0147GSV1-2971004",desc:"Patim de guia — conjunto, 34,73 kg. DE-UGR-U1e2-GER-35",dwg:"2971004",prev:8,rec:8,status:"OK"},
+  {id:816,eq:"gerador",conj:"MCS",pos:"15",cod:"0147GSV1-2971006",desc:"Tampa distribuidora de óleo — 654,70 kg. DE-UGR-U1-e2-GER-37",dwg:"2971006",prev:1,rec:1,status:"OK"},
+  {id:817,eq:"gerador",conj:"MCS",pos:"16",cod:"0147GSV1-2971002",desc:"Defletor de óleo — 87,98 kg. DE-UGR-U1-e2-GER-33",dwg:"2971002",prev:1,rec:1,status:"OK"},
   {id:818,eq:"gerador",conj:"MCS",pos:"17",cod:"0147GSV1-2972036",desc:"Porca de vedação — barra SAE 4140 Ø114,30 mm, L=50 mm, 0,88 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
   {id:819,eq:"gerador",conj:"MCS",pos:"18",cod:"0147GSV1-2972037",desc:"Tirante tensionador — barra roscada Cl.8.8 M36, L=650 mm, 5,16 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
   {id:820,eq:"gerador",conj:"MCS",pos:"19",cod:"0147GSV1-2972038",desc:"Porca tensionadora — barra SAE 4140 Ø114,30 mm, L=50 mm, 2,40 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:821,eq:"gerador",conj:"MCS",pos:"20",cod:"0147GSV1-2972039",desc:"Limitador vertical do patim — chapa A36 9,50 mm, 241×200, 2,98 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:822,eq:"gerador",conj:"MCS",pos:"21",cod:"0147GSV1-2982006",desc:"Prisioneiro M20 — barra roscada Cl.8.8 M20, L=135 mm, 0,30 kg",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
-  {id:823,eq:"gerador",conj:"MCS",pos:"22",cod:"0147GSV1-2982012",desc:"Trava da porca tensionadora — barra quadrada A36 25,40 mm, L=50 mm, 0,14 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:824,eq:"gerador",conj:"MCS",pos:"23",cod:"0147GSV1-2971010",desc:"Tampa de vedação superior — 93,89 kg. DE-UGR-U1-e2-GER-39",dwg:"2971010",prev:1,rec:0,status:"Pendente"},
-  {id:825,eq:"gerador",conj:"MCS",pos:"24",cod:"0147GSV1-2971008",desc:"Conjunto de injeção de alta pressão — 16,83 kg. DE-UGR-U1-e2-GER-36",dwg:"2971008",prev:1,rec:0,status:"Pendente"},
-  {id:826,eq:"gerador",conj:"MCS",pos:"25",cod:"0147GSV1-2971007",desc:"Reservatório de nível — 18,34 kg",dwg:"2971007",prev:1,rec:0,status:"Pendente"},
-  {id:827,eq:"gerador",conj:"MCS",pos:"26",cod:"0147GSV1-2972048",desc:"Tubo de injeção de óleo — tubo NBR 5590 Sch40 Ø33,40×3,38 mm, L=410 mm, 1,02 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:821,eq:"gerador",conj:"MCS",pos:"20",cod:"0147GSV1-2972039",desc:"Limitador vertical do patim — chapa A36 9,50 mm, 241×200, 2,98 kg",dwg:"2971000",prev:8,rec:8,status:"OK"},
+  {id:822,eq:"gerador",conj:"MCS",pos:"21",cod:"0147GSV1-2982006",desc:"Prisioneiro M20 — barra roscada Cl.8.8 M20, L=135 mm, 0,30 kg",dwg:"2971000",prev:16,rec:40,status:"OK"},
+  {id:823,eq:"gerador",conj:"MCS",pos:"22",cod:"0147GSV1-2982012",desc:"Trava da porca tensionadora — barra quadrada A36 25,40 mm, L=50 mm, 0,14 kg",dwg:"2971000",prev:8,rec:14,status:"OK"},
+  {id:824,eq:"gerador",conj:"MCS",pos:"23",cod:"0147GSV1-2971010",desc:"Tampa de vedação superior — 93,89 kg. DE-UGR-U1-e2-GER-39",dwg:"2971010",prev:1,rec:2,status:"OK"},
+  {id:825,eq:"gerador",conj:"MCS",pos:"24",cod:"0147GSV1-2971008",desc:"Conjunto de injeção de alta pressão — 16,83 kg. DE-UGR-U1-e2-GER-36",dwg:"2971008",prev:1,rec:1,status:"OK"},
+  {id:826,eq:"gerador",conj:"MCS",pos:"25",cod:"0147GSV1-2971007",desc:"Reservatório de nível — 18,34 kg",dwg:"2971007",prev:1,rec:1,status:"OK"},
+  {id:827,eq:"gerador",conj:"MCS",pos:"26",cod:"0147GSV1-2972048",desc:"Tubo de injeção de óleo — tubo NBR 5590 Sch40 Ø33,40×3,38 mm, L=410 mm, 1,02 kg",dwg:"2971000",prev:8,rec:8,status:"OK"},
   {id:828,eq:"gerador",conj:"MCS",pos:"27",cod:"0147GSV1-2972049",desc:"Painel do termômetro a gás — chapa A36 4,75 mm, 600×485, 10,76 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
   {id:829,eq:"gerador",conj:"MCS",pos:"28",cod:"0147GSV1-2982033",desc:"Suporte do sensor da cuba — chapa A36 6,30 mm, 100×80, 0,24 kg",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
-  {id:830,eq:"gerador",conj:"MCS",pos:"29",cod:"0147GSV1-2982019",desc:"Tampa do reservatório de nível — chapa A36 25 mm, 185×185, 5,19 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:831,eq:"gerador",conj:"MCS",pos:"30",cod:"0147GSV1-2971014",desc:"Conjunto selo flutuante Ø1050×15×10 — PTFE, 1,43 kg",dwg:"2971014",prev:1,rec:0,status:"Pendente"},
+  {id:830,eq:"gerador",conj:"MCS",pos:"29",cod:"0147GSV1-2982019",desc:"Tampa do reservatório de nível — chapa A36 25 mm, 185×185, 5,19 kg",dwg:"2971000",prev:1,rec:3,status:"OK"},
+  {id:831,eq:"gerador",conj:"MCS",pos:"30",cod:"0147GSV1-2971014",desc:"Conjunto selo flutuante Ø1050×15×10 — PTFE, 1,43 kg",dwg:"2971014",prev:1,rec:2,status:"OK"},
   {id:832,eq:"gerador",conj:"MCS",pos:"31",cod:"0147GSV1-2972061",desc:"Suporte do sensor de vibração radial — chapa A36 6,30 mm, 146×60, 0,35 kg",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
-  {id:833,eq:"gerador",conj:"MCS",pos:"32",cod:"0147GSV1-2972060",desc:"Suporte do sensor de vibração axial — chapa A36 6,30 mm, 205×60, 0,59 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:834,eq:"gerador",conj:"MCS",pos:"33",cod:"0147GSV1-2971012",desc:"Tampa de fechamento superior — 241,63 kg. DE-UGR-U1-e2-GER-38",dwg:"2971012",prev:1,rec:0,status:"Pendente"},
+  {id:833,eq:"gerador",conj:"MCS",pos:"32",cod:"0147GSV1-2972060",desc:"Suporte do sensor de vibração axial — chapa A36 6,30 mm, 205×60, 0,59 kg",dwg:"2971000",prev:1,rec:1,status:"OK"},
+  {id:834,eq:"gerador",conj:"MCS",pos:"33",cod:"0147GSV1-2971012",desc:"Tampa de fechamento superior — 241,63 kg. DE-UGR-U1-e2-GER-38",dwg:"2971012",prev:1,rec:1,status:"OK"},
   {id:835,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971009",desc:"Tampa de vedação superior — segmento (×2), chapa A36 88,90 mm, 88,25 kg cada",dwg:"2971009",prev:2,rec:0,status:"Pendente"},
   {id:836,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971013",desc:"Tampa bipartida da válvula — fundida 220×112×47 mm, 4,20 kg",dwg:"2971013",prev:2,rec:0,status:"Pendente"},
   {id:837,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2971015",desc:"Tampa bipartida excêntrica — chapa A36 50 mm, 230×120, 4,41 kg",dwg:"2971015",prev:1,rec:0,status:"Pendente"},
@@ -696,18 +878,18 @@ const DEFAULT_GERADOR_MCS = [
   {id:844,eq:"gerador",conj:"MCS",pos:"75",cod:"P033STP0001000",desc:"Sensor de temperatura PT-100 Ø10×250 mm comprimento 4000 mm",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
   {id:845,eq:"gerador",conj:"MCS",pos:"76",cod:"P034STP0001000",desc:"Sensor de temperatura PT-100 Ø10×150 mm comprimento 4000 mm",dwg:"2971000",prev:5,rec:0,status:"Pendente"},
   {id:846,eq:"gerador",conj:"MCS",pos:"84",cod:"P001STP0001000",desc:"Sensor de temperatura PT-100 Ø8×50 mm G1/2 — Inox AISI 304",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:847,eq:"gerador",conj:"MCS",pos:"67",cod:"104841",desc:"Visor de nível vertical 381 mm — HYDAC FSA 381",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:848,eq:"gerador",conj:"MCS",pos:"69",cod:"101332",desc:"Filtro de ar ELF P 30 F 3 W 1.0/AS — SATAUFF/HYDAC",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
+  {id:847,eq:"gerador",conj:"MCS",pos:"67",cod:"104841",desc:"Visor de nível vertical 381 mm — HYDAC FSA 381",dwg:"2971000",prev:1,rec:1,status:"OK"},
+  {id:848,eq:"gerador",conj:"MCS",pos:"69",cod:"101332",desc:"Filtro de ar ELF P 30 F 3 W 1.0/AS — SATAUFF/HYDAC",dwg:"2971000",prev:2,rec:4,status:"OK"},
   // Comerciais estruturais principais
-  {id:849,eq:"gerador",conj:"MCS",pos:"81",cod:"0147GSV1-2972074",desc:"Tala de vedação — chapa A36 12,50 mm, 520×520, 5,48 kg",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:850,eq:"gerador",conj:"MCS",pos:"60",cod:"104879",desc:"Mangueira SAE 100 R1AT 1/2\" reto fêmea 7/8\" JIC × curvo 90° fêmea 7/8\" JIC, L=2500 mm",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:851,eq:"gerador",conj:"MCS",pos:"62",cod:"100524",desc:"Borracha perfil redondo NBR 65/75 Shore A Ø7 mm, L=19500 mm",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
+  {id:849,eq:"gerador",conj:"MCS",pos:"81",cod:"0147GSV1-2972074",desc:"Tala de vedação — chapa A36 12,50 mm, 520×520, 5,48 kg",dwg:"2971000",prev:1,rec:1,status:"OK"},
+  {id:850,eq:"gerador",conj:"MCS",pos:"60",cod:"104879",desc:"Mangueira SAE 100 R1AT 1/2\" reto fêmea 7/8\" JIC × curvo 90° fêmea 7/8\" JIC, L=2500 mm",dwg:"2971000",prev:1,rec:1,status:"Pendente"},
+  {id:851,eq:"gerador",conj:"MCS",pos:"62",cod:"100524",desc:"Borracha perfil redondo NBR 65/75 Shore A Ø7 mm, L=19500 mm",dwg:"2971000",prev:1,rec:3,status:"OK"},
   // ── Fabricados novos (PDFs enviados) ──────────────────────
   {id:852,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972010",desc:"Sapata de escora — chapa SAE 1045 152,40 mm, 334×292 mm, 65,65 kg. Metal Patente ASTM B23 L.2. DE-UGR-U1e2-GER-43",dwg:"2972010",prev:8,rec:0,status:"Pendente"},
   {id:853,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972011",desc:"Bloco de injeção da sapata — barra chata Al 6351-T6 50,80×38,10 mm, L=70 mm, 0,25 kg. DE-UGR-U1-e2-GER-34",dwg:"2972011",prev:8,rec:0,status:"Pendente"},
   {id:854,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972012",desc:"Disco isolante — barra redonda NEMA G11 Ø50 mm, L=50 mm, 0,06 kg. DE-UGR-U1-e2-GER-34",dwg:"2972012",prev:8,rec:0,status:"Pendente"},
-  {id:855,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972013",desc:"Bucha isolante — barra redonda NEMA G11 Ø25 mm, L=35 mm, 0,005 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:856,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972014",desc:"Arruela isolante — barra redonda NEMA G11 Ø25 mm, L=5 mm, 0,001 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
+  {id:855,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972013",desc:"Bucha isolante — barra redonda NEMA G11 Ø25 mm, L=35 mm, 0,005 kg",dwg:"2971000",prev:8,rec:2,status:"Parcial"},
+  {id:856,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972014",desc:"Arruela isolante — barra redonda NEMA G11 Ø25 mm, L=5 mm, 0,001 kg",dwg:"2971000",prev:8,rec:2,status:"Parcial"},
   {id:857,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972015",desc:"Cilindro equilibrador — chapa SAE 1045 101,60 mm, 420×280 mm, 25,25 kg. DE-UGR-U1-e2-GER-44",dwg:"2972015",prev:8,rec:0,status:"Pendente"},
   {id:858,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972016",desc:"Bloco de injeção — barra quadrada ASTM A36 50,80 mm, L=80 mm, 1,22 kg",dwg:"2972016",prev:8,rec:0,status:"Pendente"},
   {id:859,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972017",desc:"Bloco de conexão com vedação — barra quadrada ASTM A36 50,80 mm, L=25 mm, 0,37 kg",dwg:"2972017",prev:8,rec:0,status:"Pendente"},
@@ -720,51 +902,51 @@ const DEFAULT_GERADOR_MCS = [
   {id:866,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972026",desc:"Haste indicadora de posição — barra redonda ASTM A36 Ø12,70 mm, L=750 mm, 0,74 kg",dwg:"2972026",prev:8,rec:0,status:"Pendente"},
   {id:867,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972027",desc:"Suporte do sensor/parafuso — chapa ASTM A36 3 mm, 188×50 mm, 0,19 kg",dwg:"2972027",prev:8,rec:0,status:"Pendente"},
   // ── Comerciais novos da lista geral DWG 2971000 rev.4 ─────
-  {id:868,eq:"gerador",conj:"MCS",pos:"34",cod:"P002AHE0002001",desc:"Conexão G1/2 — barra redonda ASTM A36 Ø38,10 mm, L=25 mm",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
-  {id:869,eq:"gerador",conj:"MCS",pos:"35",cod:"P033STP0002002",desc:"Conexão 1/2\" BSP × tubo Ø10 — barra redonda Inox AISI 304 Ø25,40 mm, L=40 mm",dwg:"2971000",prev:14,rec:0,status:"Pendente"},
-  {id:870,eq:"gerador",conj:"MCS",pos:"36",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2971000",prev:12,rec:0,status:"Pendente"},
-  {id:871,eq:"gerador",conj:"MCS",pos:"37",cod:"101974",desc:"Porca sext. zincada classe 8 DIN 934 MA M30",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:872,eq:"gerador",conj:"MCS",pos:"38",cod:"103620",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M30×80",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
-  {id:873,eq:"gerador",conj:"MCS",pos:"39",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"2971000",prev:36,rec:0,status:"Pendente"},
-  {id:874,eq:"gerador",conj:"MCS",pos:"40",cod:"101801",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×50",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
-  {id:875,eq:"gerador",conj:"MCS",pos:"41",cod:"100622",desc:"Bujão macho c/ sext. interno zincado 1/4\" BSPP-ED série universal",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:876,eq:"gerador",conj:"MCS",pos:"43",cod:"101722",desc:"Parafuso Allen s/ cabeça ponta plana preto classe 12.9 DIN 913 MA M6×10",dwg:"2971000",prev:14,rec:0,status:"Pendente"},
-  {id:877,eq:"gerador",conj:"MCS",pos:"44",cod:"102474",desc:"Tubo redondo c/ costura preto NBR 5590 Sch40 Ø21,30×2,77 mm, L=170 mm",dwg:"2971000",prev:17,rec:0,status:"Pendente"},
-  {id:878,eq:"gerador",conj:"MCS",pos:"45",cod:"102927",desc:"Arruela lisa zincada DIN 125A M4",dwg:"2971000",prev:15,rec:0,status:"Pendente"},
+  {id:868,eq:"gerador",conj:"MCS",pos:"34",cod:"P002AHE0002001",desc:"Conexão G1/2 — barra redonda ASTM A36 Ø38,10 mm, L=25 mm",dwg:"2971000",prev:2,rec:2,status:"OK"},
+  {id:869,eq:"gerador",conj:"MCS",pos:"35",cod:"P033STP0002002",desc:"Conexão 1/2\" BSP × tubo Ø10 — barra redonda Inox AISI 304 Ø25,40 mm, L=40 mm",dwg:"2971000",prev:14,rec:21,status:"Pendente"},
+  {id:870,eq:"gerador",conj:"MCS",pos:"36",cod:"102649",desc:"Arruela de trava estriada zincada DIN 25201 M30",dwg:"2971000",prev:12,rec:12,status:"OK"},
+  {id:871,eq:"gerador",conj:"MCS",pos:"37",cod:"101974",desc:"Porca sext. zincada classe 8 DIN 934 MA M30",dwg:"2971000",prev:8,rec:28,status:"OK"},
+  {id:872,eq:"gerador",conj:"MCS",pos:"38",cod:"103620",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M30×80",dwg:"2971000",prev:4,rec:4,status:"OK"},
+  {id:873,eq:"gerador",conj:"MCS",pos:"39",cod:"100172",desc:"Arruela de pressão zincada DIN 127B M12",dwg:"2971000",prev:36,rec:68,status:"OK"},
+  {id:874,eq:"gerador",conj:"MCS",pos:"40",cod:"101801",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×50",dwg:"2971000",prev:16,rec:36,status:"OK"},
+  {id:875,eq:"gerador",conj:"MCS",pos:"41",cod:"100622",desc:"Bujão macho c/ sext. interno zincado 1/4\" BSPP-ED série universal",dwg:"2971000",prev:1,rec:2,status:"Pendente"},
+  {id:876,eq:"gerador",conj:"MCS",pos:"43",cod:"101722",desc:"Parafuso Allen s/ cabeça ponta plana preto classe 12.9 DIN 913 MA M6×10",dwg:"2971000",prev:14,rec:21,status:"OK"},
+  {id:877,eq:"gerador",conj:"MCS",pos:"44",cod:"102474",desc:"Tubo redondo c/ costura preto NBR 5590 Sch40 Ø21,30×2,77 mm, L=170 mm",dwg:"2971000",prev:17,rec:39,status:"OK"},
+  {id:878,eq:"gerador",conj:"MCS",pos:"45",cod:"102927",desc:"Arruela lisa zincada DIN 125A M4",dwg:"2971000",prev:15,rec:24,status:"OK"},
   {id:879,eq:"gerador",conj:"MCS",pos:"46",cod:"101829",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M4×10",dwg:"2971000",prev:15,rec:0,status:"Pendente"},
   {id:880,eq:"gerador",conj:"MCS",pos:"47",cod:"101807",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×50",dwg:"2971000",prev:60,rec:0,status:"Pendente"},
-  {id:881,eq:"gerador",conj:"MCS",pos:"48",cod:"101799",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×30",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
-  {id:882,eq:"gerador",conj:"MCS",pos:"49",cod:"101970",desc:"Porca sext. zincada classe 8 DIN 934 MA M12",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
-  {id:883,eq:"gerador",conj:"MCS",pos:"50",cod:"101972",desc:"Porca sext. zincada classe 8 DIN 934 MA M20",dwg:"2971000",prev:16,rec:0,status:"Pendente"},
-  {id:884,eq:"gerador",conj:"MCS",pos:"51",cod:"100194",desc:"Arruela lisa zincada DIN 125A M10",dwg:"2971000",prev:55,rec:0,status:"Pendente"},
-  {id:885,eq:"gerador",conj:"MCS",pos:"52",cod:"100195",desc:"Arruela lisa zincada DIN 125A M12",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
-  {id:886,eq:"gerador",conj:"MCS",pos:"53",cod:"103622",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×20",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:881,eq:"gerador",conj:"MCS",pos:"48",cod:"101799",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×30",dwg:"2971000",prev:16,rec:31,status:"OK"},
+  {id:882,eq:"gerador",conj:"MCS",pos:"49",cod:"101970",desc:"Porca sext. zincada classe 8 DIN 934 MA M12",dwg:"2971000",prev:16,rec:60,status:"OK"},
+  {id:883,eq:"gerador",conj:"MCS",pos:"50",cod:"101972",desc:"Porca sext. zincada classe 8 DIN 934 MA M20",dwg:"2971000",prev:16,rec:56,status:"OK"},
+  {id:884,eq:"gerador",conj:"MCS",pos:"51",cod:"100194",desc:"Arruela lisa zincada DIN 125A M10",dwg:"2971000",prev:55,rec:34,status:"Parcial"},
+  {id:885,eq:"gerador",conj:"MCS",pos:"52",cod:"100195",desc:"Arruela lisa zincada DIN 125A M12",dwg:"2971000",prev:4,rec:24,status:"OK"},
+  {id:886,eq:"gerador",conj:"MCS",pos:"53",cod:"103622",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×20",dwg:"2971000",prev:4,rec:8,status:"OK"},
   {id:887,eq:"gerador",conj:"MCS",pos:"54",cod:"101793",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×30",dwg:"2971000",prev:48,rec:0,status:"Pendente"},
-  {id:888,eq:"gerador",conj:"MCS",pos:"55",cod:"103792",desc:"Anel O-ring NBR 70 Shore A Ø72,62×Ø3,53 mm — Parker 2-237",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
-  {id:889,eq:"gerador",conj:"MCS",pos:"56",cod:"104878",desc:"Anel O-ring NBR 70 Shore A Ø50,39×Ø3,53 mm — Parker 2-225",dwg:"2971000",prev:10,rec:0,status:"Pendente"},
-  {id:890,eq:"gerador",conj:"MCS",pos:"57",cod:"105665",desc:"Anel O-ring NBR 70 Shore A Ø164,69×Ø3,53 mm — Parker 2-260",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
-  {id:891,eq:"gerador",conj:"MCS",pos:"58",cod:"101809",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×70",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
-  {id:892,eq:"gerador",conj:"MCS",pos:"59",cod:"100074",desc:"Adaptador zincado macho 1/2\" BSPP-ED × macho 7/8\" JIC 37° série universal",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
-  {id:893,eq:"gerador",conj:"MCS",pos:"61",cod:"100009",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø22",dwg:"2971000",prev:3,rec:0,status:"Pendente"},
-  {id:894,eq:"gerador",conj:"MCS",pos:"63",cod:"100205",desc:"Arruela lisa zincada DIN 125A M8",dwg:"2971000",prev:38,rec:0,status:"Pendente"},
-  {id:895,eq:"gerador",conj:"MCS",pos:"64",cod:"101837",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×20",dwg:"2971000",prev:6,rec:0,status:"Pendente"},
-  {id:896,eq:"gerador",conj:"MCS",pos:"65",cod:"101800",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×40",dwg:"2971000",prev:20,rec:0,status:"Pendente"},
-  {id:897,eq:"gerador",conj:"MCS",pos:"66",cod:"101880",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø10×30 mm",dwg:"2971000",prev:6,rec:0,status:"Pendente"},
+  {id:888,eq:"gerador",conj:"MCS",pos:"55",cod:"103792",desc:"Anel O-ring NBR 70 Shore A Ø72,62×Ø3,53 mm — Parker 2-237",dwg:"2971000",prev:8,rec:8,status:"OK"},
+  {id:889,eq:"gerador",conj:"MCS",pos:"56",cod:"104878",desc:"Anel O-ring NBR 70 Shore A Ø50,39×Ø3,53 mm — Parker 2-225",dwg:"2971000",prev:10,rec:10,status:"OK"},
+  {id:890,eq:"gerador",conj:"MCS",pos:"57",cod:"105665",desc:"Anel O-ring NBR 70 Shore A Ø164,69×Ø3,53 mm — Parker 2-260",dwg:"2971000",prev:2,rec:2,status:"OK"},
+  {id:891,eq:"gerador",conj:"MCS",pos:"58",cod:"101809",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×70",dwg:"2971000",prev:4,rec:28,status:"OK"},
+  {id:892,eq:"gerador",conj:"MCS",pos:"59",cod:"100074",desc:"Adaptador zincado macho 1/2\" BSPP-ED × macho 7/8\" JIC 37° série universal",dwg:"2971000",prev:2,rec:4,status:"Pendente"},
+  {id:893,eq:"gerador",conj:"MCS",pos:"61",cod:"100009",desc:"Abraçadeira p/ tubo simples c/ base p/ solda série leve DIN 3015-1 Ø22",dwg:"2971000",prev:3,rec:3,status:"OK"},
+  {id:894,eq:"gerador",conj:"MCS",pos:"63",cod:"100205",desc:"Arruela lisa zincada DIN 125A M8",dwg:"2971000",prev:38,rec:20,status:"Parcial"},
+  {id:895,eq:"gerador",conj:"MCS",pos:"64",cod:"101837",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×20",dwg:"2971000",prev:6,rec:48,status:"OK"},
+  {id:896,eq:"gerador",conj:"MCS",pos:"65",cod:"101800",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M12×40",dwg:"2971000",prev:20,rec:129,status:"OK"},
+  {id:897,eq:"gerador",conj:"MCS",pos:"66",cod:"101880",desc:"Pino guia paralelo c/ rosca interna DIN 7979 Ø10×30 mm",dwg:"2971000",prev:6,rec:15,status:"OK"},
   {id:898,eq:"gerador",conj:"MCS",pos:"68",cod:"102970",desc:"Adaptador para sensor 1\" BSP E430041 — IFM E43004",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:899,eq:"gerador",conj:"MCS",pos:"77",cod:"100621",desc:"Bujão macho c/ sext. interno zincado 1/2\" BSPP-ED série universal",dwg:"2971000",prev:10,rec:0,status:"Pendente"},
-  {id:900,eq:"gerador",conj:"MCS",pos:"78",cod:"103626",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×16",dwg:"2971000",prev:3,rec:0,status:"Pendente"},
-  {id:901,eq:"gerador",conj:"MCS",pos:"79",cod:"100068",desc:"Adaptador zincado macho 1/2\" BSPP-ED × fêmea 1/4\" BSPP série pesada",dwg:"2971000",prev:9,rec:0,status:"Pendente"},
-  {id:902,eq:"gerador",conj:"MCS",pos:"80",cod:"101839",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×30",dwg:"2971000",prev:32,rec:0,status:"Pendente"},
+  {id:899,eq:"gerador",conj:"MCS",pos:"77",cod:"100621",desc:"Bujão macho c/ sext. interno zincado 1/2\" BSPP-ED série universal",dwg:"2971000",prev:10,rec:5,status:"Pendente"},
+  {id:900,eq:"gerador",conj:"MCS",pos:"78",cod:"103626",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×16",dwg:"2971000",prev:3,rec:3,status:"OK"},
+  {id:901,eq:"gerador",conj:"MCS",pos:"79",cod:"100068",desc:"Adaptador zincado macho 1/2\" BSPP-ED × fêmea 1/4\" BSPP série pesada",dwg:"2971000",prev:9,rec:8,status:"Pendente"},
+  {id:902,eq:"gerador",conj:"MCS",pos:"80",cod:"101839",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M8×30",dwg:"2971000",prev:32,rec:6,status:"Parcial"},
   {id:903,eq:"gerador",conj:"MCS",pos:"82",cod:"105567",desc:"Anel O-ring NBR 70 Shore A Ø34,52×Ø3,53 mm — Parker 2-220",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
   {id:904,eq:"gerador",conj:"MCS",pos:"83",cod:"103836",desc:"Anel O-ring NBR 70 Shore A Ø20,22×Ø3,53 mm — Parker 2-211",dwg:"2971000",prev:2,rec:0,status:"Pendente"},
-  {id:905,eq:"gerador",conj:"MCS",pos:"85",cod:"104970",desc:"Contraporca sext. inox AISI 304 150 LBS 1/2\" BSP",dwg:"2971000",prev:1,rec:0,status:"Pendente"},
-  {id:906,eq:"gerador",conj:"MCS",pos:"86",cod:"101795",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×40",dwg:"2971000",prev:4,rec:0,status:"Pendente"},
+  {id:905,eq:"gerador",conj:"MCS",pos:"85",cod:"104970",desc:"Contraporca sext. inox AISI 304 150 LBS 1/2\" BSP",dwg:"2971000",prev:1,rec:1,status:"Pendente"},
+  {id:906,eq:"gerador",conj:"MCS",pos:"86",cod:"101795",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M10×40",dwg:"2971000",prev:4,rec:19,status:"OK"},
   // ── Fabricados novos — lotes 2 e 3 ───────────────────────
   // Subconjunto Patim de Guia (DE-UGR-U1e2-GER-35 / 2971004)
-  {id:907,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972030",desc:"Patim de guia — chapa A36 100 mm, 240×200 mm, 33,18 kg. Metal Patente ASTM B23 L.2. DE-UGR-U1e2-GER-45",dwg:"2972030",prev:8,rec:0,status:"Pendente"},
-  {id:908,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972031",desc:"Bloco de apoio — patim guia — barra redonda SAE 8640 Ø101,60 mm, L=35 mm, 1,37 kg. T.T.: 50 HRC",dwg:"2972031",prev:8,rec:0,status:"Pendente"},
-  {id:909,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972032",desc:"Bucha isolante — bloco de apoio — barra redonda NEMA G11 Ø100 mm, L=20 mm, 0,03 kg",dwg:"2972032",prev:8,rec:0,status:"Pendente"},
-  {id:910,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972033",desc:"Arruela isolante — bloco de apoio — chapa NEMA G11 3 mm, 100×100 mm, 0,05 kg",dwg:"2972033",prev:8,rec:0,status:"Pendente"},
+  {id:907,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972030",desc:"Patim de guia — chapa A36 100 mm, 240×200 mm, 33,18 kg. Metal Patente ASTM B23 L.2. DE-UGR-U1e2-GER-45",dwg:"2972030",prev:8,rec:1,status:"Parcial"},
+  {id:908,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972031",desc:"Bloco de apoio — patim guia — barra redonda SAE 8640 Ø101,60 mm, L=35 mm, 1,37 kg. T.T.: 50 HRC",dwg:"2972031",prev:8,rec:1,status:"Parcial"},
+  {id:909,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972032",desc:"Bucha isolante — bloco de apoio — barra redonda NEMA G11 Ø100 mm, L=20 mm, 0,03 kg",dwg:"2972032",prev:8,rec:1,status:"Parcial"},
+  {id:910,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972033",desc:"Arruela isolante — bloco de apoio — chapa NEMA G11 3 mm, 100×100 mm, 0,05 kg",dwg:"2972033",prev:8,rec:1,status:"Parcial"},
   {id:911,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972028",desc:"Suporte do tubo — chapa ASTM A36 6,30 mm, 110×40 mm, 0,21 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
   {id:912,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972029",desc:"Flange isolante — chapa NEMA G11 12 mm, 100×100 mm, 0,13 kg",dwg:"2971000",prev:8,rec:0,status:"Pendente"},
   // Subconjunto Tampa de Fechamento Superior (2971012)
@@ -776,31 +958,115 @@ const DEFAULT_GERADOR_MCS = [
   {id:918,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972056",desc:"Chapa calandrada — chapa A36 9,50 mm, 1944×595 mm, Ø610/629, 86,27 kg",dwg:"2972056",prev:1,rec:0,status:"Pendente"},
   {id:919,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972058",desc:"Chapa traseira — chapa A36 4,75 mm, 900×100 mm dobrada, 3,28 kg",dwg:"2972058",prev:1,rec:0,status:"Pendente"},
   // Anel calandrado (dentro do conjunto cilindros equilibradores 2971003)
-  {id:920,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972040",desc:"Anel calandrado — chapa A36 9,50 mm, 4305×50 mm, 15,81 kg",dwg:"2972040",prev:1,rec:0,status:"Pendente"},
-  {id:921,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972042",desc:"Anel calandrado menor — chapa A36 19 mm, 4017×80 mm, 47,93 kg",dwg:"2972042",prev:1,rec:0,status:"Pendente"},
+  {id:920,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972040",desc:"Anel calandrado — chapa A36 9,50 mm, 4305×50 mm, 15,81 kg",dwg:"2972040",prev:1,rec:1,status:"OK"},
+  {id:921,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972042",desc:"Anel calandrado menor — chapa A36 19 mm, 4017×80 mm, 47,93 kg",dwg:"2972042",prev:1,rec:1,status:"OK"},
   // Selo flutuante (já referenciado como 2971014 no conjunto raiz — detalhe da peça)
-  {id:922,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972043",desc:"Selo flutuante Ø1050×15×10 — PTFE, bipartido, 0,92 kg",dwg:"2972043",prev:1,rec:0,status:"Pendente"},
+  {id:922,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972043",desc:"Selo flutuante Ø1050×15×10 — PTFE, bipartido, 0,92 kg",dwg:"2972043",prev:1,rec:2,status:"OK"},
   // Bucha guia (dentro do conjunto de cilindros equilibradores)
   {id:923,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972044",desc:"Bucha guia — barra redonda trefilada SAE 1045 Ø50 mm, L=60 mm, 0,24 kg",dwg:"2972044",prev:8,rec:0,status:"Pendente"},
   // Suporte sensor vibração axial (já referenciado como 2972060 — confirma prev=1)
   {id:924,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972062",desc:"Tarugo — injeção de óleo — barra redonda ASTM A36 Ø50,80 mm, L=150 mm, 2,21 kg",dwg:"2972062",prev:8,rec:0,status:"Pendente"},
-  {id:925,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972063",desc:"Bloco de injeção de alta pressão — barra quadrada Al 6351-T6 76,20 mm, L=80 mm, 1,10 kg",dwg:"2972063",prev:8,rec:0,status:"Pendente"},
+  {id:925,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972063",desc:"Bloco de injeção de alta pressão — barra quadrada Al 6351-T6 76,20 mm, L=80 mm, 1,10 kg",dwg:"2972063",prev:8,rec:1,status:"Parcial"},
   {id:926,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972064",desc:"Bucha isolante — barra redonda NEMA G11 Ø50 mm, L=30 mm, 0,02 kg",dwg:"2972064",prev:8,rec:0,status:"Pendente"},
   {id:927,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972066",desc:"Diafragma 0,50 mm — 1/8\" NPT — bujão zincado DIN 906 1/8\" NPTF modificado Ø0,50 mm",dwg:"2972066",prev:8,rec:0,status:"Pendente"},
   {id:928,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972067",desc:"Pino guia — barra redonda SAE 1045 Ø31,75 mm, L=50 mm, 0,25 kg",dwg:"2972067",prev:4,rec:0,status:"Pendente"},
-  {id:929,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972069",desc:"Suporte — chapa A36 12,50 mm, 120×80 mm, 0,82 kg",dwg:"2972069",prev:2,rec:0,status:"Pendente"},
-  {id:930,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972070",desc:"Suporte — chapa A36 12,50 mm, 122×50 mm dobrada, 0,53 kg",dwg:"2972070",prev:2,rec:0,status:"Pendente"},
+  {id:929,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972069",desc:"Suporte — chapa A36 12,50 mm, 120×80 mm, 0,82 kg",dwg:"2972069",prev:2,rec:8,status:"OK"},
+  {id:930,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972070",desc:"Suporte — chapa A36 12,50 mm, 122×50 mm dobrada, 0,53 kg",dwg:"2972070",prev:2,rec:8,status:"OK"},
   {id:931,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972075",desc:"Tampa bipartida aletada — fundida SAE 1020, 220×112×47 mm, 2,49 kg",dwg:"2972075",prev:2,rec:0,status:"Pendente"},
-  {id:932,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972077",desc:"Mola de tração Ø1 mm × Ø4 mm × 790 mm — aço mola SAE 1070, 0,51 kg",dwg:"2972077",prev:8,rec:0,status:"Pendente"},
+  {id:932,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972077",desc:"Mola de tração Ø1 mm × Ø4 mm × 790 mm — aço mola SAE 1070, 0,51 kg",dwg:"2972077",prev:8,rec:8,status:"OK"},
   {id:933,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972078",desc:"Tampa bipartida excêntrica-1 — chapa A36 50 mm, 230×120 mm, 3,12 kg",dwg:"2972078",prev:1,rec:0,status:"Pendente"},
   {id:934,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972079",desc:"Tampa bipartida excêntrica-2 — chapa A36 50 mm, 230×120 mm, 3,12 kg",dwg:"2972079",prev:1,rec:0,status:"Pendente"},
   {id:935,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972080",desc:"Suporte dobrado da haste — chapa A36 4,75 mm, 136×50 mm dobrada, 0,24 kg",dwg:"2972080",prev:8,rec:0,status:"Pendente"},
-  {id:936,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972081",desc:"Suporte do sensor de vibração radial 10° — chapa A36 6,30 mm, 146×120 mm dobrada, 0,81 kg",dwg:"2972081",prev:2,rec:0,status:"Pendente"},
+  {id:936,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2972081",desc:"Suporte do sensor de vibração radial 10° — chapa A36 6,30 mm, 146×120 mm dobrada, 0,81 kg",dwg:"2972081",prev:2,rec:2,status:"OK"},
   // Matéria-prima do colar de escora (desenho de fundição)
   {id:937,eq:"gerador",conj:"MCS",pos:"—",cod:"0147GSV1-2973001",desc:"Colar de escora — fundido SAE 1045, 2419,66 kg bruto (matéria-prima para 0147GSV1-2972001)",dwg:"2973001",prev:1,rec:0,status:"Pendente"},
 ];
 
-const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR, ...DEFAULT_GERADOR_ACP, ...DEFAULT_GERADOR_EIX, ...DEFAULT_GERADOR_CRZ, ...DEFAULT_GERADOR_CRI, ...DEFAULT_GERADOR_MFL, ...DEFAULT_GERADOR_PFL, ...DEFAULT_GERADOR_MCS];
+// ── MANCAL GUIA INFERIOR ─────────────────────────────────
+const DEFAULT_GERADOR_MGI = [
+  // ── CONJUNTO RAIZ 2981000 ──
+  {id:938,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981000",desc:"Mancal guia inferior — conjunto, 1855,00 kg (sem óleo)",dwg:"2981000",prev:1,rec:0,status:"Pendente"},
+  // ── 2981001 Tampa de vedação inferior ──
+  {id:939,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981001",desc:"Tampa de vedação inferior — ASTM A36, 158,68 kg líq.",dwg:"2981001",prev:1,rec:0,status:"Pendente"},
+  {id:940,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981008",desc:"Tampa de vedação inferior-segmento — chapa ASTM A36 19,00 mm, 660×540 mm calandrada, 110,93 kg líq.",dwg:"2981008",prev:2,rec:0,status:"Pendente"},
+  {id:941,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982020",desc:"Flange inferior — chapa ASTM A36 37,50 mm, 660×335 mm, 19,30 kg",dwg:"2982020",prev:1,rec:0,status:"Pendente"},
+  {id:942,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982021",desc:"Tubo calandrado — chapa ASTM A36 19,00 mm, 789×540 mm, 63,58 kg",dwg:"2982021",prev:1,rec:0,status:"Pendente"},
+  {id:943,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982022",desc:"Flange inferior — chapa ASTM A36 37,50 mm, 630×320 mm, 14,79 kg",dwg:"2982022",prev:1,rec:0,status:"Pendente"},
+  {id:944,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982023",desc:"Flange lateral — chapa ASTM A36 25,00 mm, 540×70 mm, 7,42 kg",dwg:"2982023",prev:2,rec:0,status:"Pendente"},
+  // ── 2981002 Tampa de fechamento inferior ──
+  {id:945,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981002",desc:"Tampa de fechamento inferior — ASTM A36, 291,28 kg líq.",dwg:"2981002",prev:1,rec:1,status:"OK"},
+  {id:946,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981003",desc:"Tampa inferior-segmento — chapa ASTM A36 37,50 mm, 909×460 mm, 83,55 kg líq.",dwg:"2981003",prev:4,rec:0,status:"Pendente"},
+  {id:947,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982031",desc:"Chapa — chapa ASTM A36 37,50 mm, 909×460 mm, 79,87 kg",dwg:"2982031",prev:1,rec:0,status:"Pendente"},
+  {id:948,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982032",desc:"Flange — chapa ASTM A36 37,50 mm, 220×60 mm, 3,84 kg",dwg:"2982032",prev:2,rec:0,status:"Pendente"},
+  {id:949,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982052",desc:"Trava do pino Ø16 — chapa SAE 1008/1010 1,20 mm, 40×20 mm, 0,01 kg",dwg:"2982052",prev:4,rec:0,status:"Pendente"},
+  // ── 2981003 Tampa inferior-segmento (subitem de 2981002) ──
+  // (já cadastrado acima como id:946)
+  // ── 2981004 Tampa distribuidora de óleo ──
+  {id:950,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981004",desc:"Tampa distribuidora de óleo — ASTM A36, 179,10 kg líq.",dwg:"2981004",prev:1,rec:1,status:"OK"},
+  {id:951,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981005",desc:"Tampa distribuidora-segmento — ASTM A36, 37,74 kg líq.",dwg:"2981005",prev:6,rec:0,status:"Pendente"},
+  {id:952,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982034",desc:"Flange lateral — chapa ASTM A36 25,00 mm, 194×85 mm, 3,24 kg",dwg:"2982034",prev:2,rec:0,status:"Pendente"},
+  {id:953,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982035",desc:"Flange superior — chapa ASTM A36 25,00 mm, 840×181 mm, 13,88 kg",dwg:"2982035",prev:1,rec:0,status:"Pendente"},
+  {id:954,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982037",desc:"Chapa conformada — chapa ASTM A36 8,00 mm, 805×150 mm, 7,36 kg",dwg:"2982037",prev:1,rec:0,status:"Pendente"},
+  {id:955,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982038",desc:"Flange inferior — chapa ASTM A36 19,00 mm, 840×181 mm, 10,55 kg",dwg:"2982038",prev:1,rec:0,status:"Pendente"},
+  {id:956,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982051",desc:"Orelha do pino guia — chapa ASTM A36 12,50 mm, 50×40 mm, 0,17 kg",dwg:"2982051",prev:3,rec:0,status:"Pendente"},
+  // ── 2981006 Tampa de fechamento superior ──
+  {id:957,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981006",desc:"Tampa de fechamento superior — ASTM A36, 265,94 kg líq.",dwg:"2981006",prev:1,rec:1,status:"OK"},
+  {id:958,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981007",desc:"Tampa superior-segmento — ASTM A36 19,00 mm, 889×471 mm, 50,63 kg líq.",dwg:"2981007",prev:6,rec:0,status:"Pendente"},
+  {id:959,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982015",desc:"Chapa — chapa ASTM A36 19,00 mm, 889×471 mm, 43,46 kg",dwg:"2982015",prev:1,rec:0,status:"Pendente"},
+  {id:960,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982036",desc:"Flange — chapa ASTM A36 25,00 mm, 300×50 mm, 2,91 kg",dwg:"2982036",prev:2,rec:0,status:"Pendente"},
+  {id:961,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982055",desc:"Chapa — chapa ASTM A36 19,00 mm, 107×540 mm, 3,25 kg",dwg:"2982055",prev:1,rec:0,status:"Pendente"},
+  // ── 2981009 Reservatório de nível ──
+  {id:962,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981009",desc:"Reservatório de nível — ASTM A36, 17,45 kg líq.",dwg:"2981009",prev:1,rec:1,status:"OK"},
+  {id:963,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982016",desc:"Chapa frontal — chapa ASTM A36 4,75 mm, 780×401 mm, 11,60 kg",dwg:"2982016",prev:1,rec:0,status:"Pendente"},
+  {id:964,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982017",desc:"Chapa traseira — chapa ASTM A36 4,75 mm, 870×100 mm, 3,21 kg",dwg:"2982017",prev:1,rec:0,status:"Pendente"},
+  {id:965,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982018",desc:"Flange — chapa ASTM A36 16,00 mm, 185×185 mm, 2,90 kg",dwg:"2982018",prev:1,rec:0,status:"Pendente"},
+  // ── 2981010 Tampa de vedação superior ──
+  {id:966,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981010",desc:"Tampa de vedação superior — ASTM A36, 83,50 kg líq.",dwg:"2981010",prev:1,rec:0,status:"Pendente"},
+  {id:967,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981011",desc:"Tampa de vedação superior-segmento — ASTM A36 88,90 mm, 871×283 mm, 52,15 kg líq.",dwg:"2981011",prev:3,rec:0,status:"Pendente"},
+  {id:968,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982010",desc:"Chapa — chapa ASTM A36 88,90 mm, 871×283 mm, 40,01 kg",dwg:"2982010",prev:1,rec:0,status:"Pendente"},
+  {id:969,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982039",desc:"Flange — chapa ASTM A36 25,00 mm, 958×304 mm, 10,89 kg",dwg:"2982039",prev:1,rec:0,status:"Pendente"},
+  {id:970,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982040",desc:"Aleta — chapa ASTM A36 25,00 mm, 65×50 mm, 0,63 kg",dwg:"2982040",prev:2,rec:0,status:"Pendente"},
+  // ── 2981012 Segmento da bacia de contenção ──
+  {id:971,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981012",desc:"Segmento da bacia de contenção — ASTM A36, 23,25 kg líq.",dwg:"2981012",prev:2,rec:0,status:"Pendente"},
+  {id:972,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982043",desc:"Flange — chapa ASTM A36 25,00 mm, 730×370 mm, 10,58 kg",dwg:"2982043",prev:1,rec:0,status:"Pendente"},
+  {id:973,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982044",desc:"Chapa calandrada — chapa ASTM A36 4,75 mm, 991×120 mm, 4,43 kg",dwg:"2982044",prev:1,rec:0,status:"Pendente"},
+  {id:974,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982045",desc:"Chapa — chapa ASTM A36 4,75 mm, 650×314 mm, 2,32 kg",dwg:"2982045",prev:1,rec:0,status:"Pendente"},
+  {id:975,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982046",desc:"Chapa calandrada menor — chapa ASTM A36 12,50 mm, 798×50 mm, 3,92 kg",dwg:"2982046",prev:1,rec:0,status:"Pendente"},
+  {id:976,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982047",desc:"Flange bipartido — chapa ASTM A36 16,00 mm, 160×110 mm, 1,60 kg",dwg:"2982047",prev:2,rec:0,status:"Pendente"},
+  // ── 2981013 Bacia inferior ──
+  {id:977,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981013",desc:"Bacia inferior — ASTM A36, 35,69 kg líq.",dwg:"2981013",prev:1,rec:1,status:"OK"},
+  // ── 2981015 Defletor de óleo ──
+  {id:978,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981015",desc:"Defletor de óleo — ASTM A36, 20,16 kg líq.",dwg:"2981015",prev:1,rec:1,status:"OK"},
+  {id:979,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982048",desc:"Chapa — chapa ASTM A36 37,50 mm, 620×315 mm, 16,21 kg",dwg:"2982048",prev:2,rec:0,status:"Pendente"},
+  // ── 2981016 Cjto selo flutuante ──
+  {id:980,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2981016",desc:"Cjto selo flutuante Ø900×15×10 — PTFE Ø930×Ø900×10 mm, 1,23 kg",dwg:"2981016",prev:2,rec:2,status:"OK"},
+  {id:981,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982011",desc:"Selo flutuante Ø900×15×10 — PTFE Ø930×Ø900×10 mm, 0,79 kg",dwg:"2982011",prev:1,rec:1,status:"OK"},
+  {id:982,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982056",desc:"Mola de tração Ø1mm×Ø4mm×900mm SAE 1070 — aço mola SAE 1070, 0,44 kg",dwg:"2982056",prev:3,rec:3,status:"OK"},
+  // ── Itens fabricados 2982xxx ──
+  {id:983,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982001",desc:"Patim de guia — chapa ASTM A36 152,40 mm, 350×300 mm, 96,56 kg líq.",dwg:"2982001",prev:6,rec:6,status:"OK"},
+  {id:984,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982002",desc:"Bloco de apoio do patim — barra redonda SAE 8640 Ø101,60 mm, 50 mm, 2,00 kg",dwg:"2982002",prev:6,rec:6,status:"OK"},
+  {id:985,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982003",desc:"Parafuso de ajuste do patim guia — barra redonda SAE 8640 Ø76,20 mm, 470 mm, 8,66 kg",dwg:"2982003",prev:6,rec:0,status:"Pendente"},
+  {id:986,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982004",desc:"Porca de apoio — barra redonda SAE 4140 Ø127,00 mm, 120 mm, 4,65 kg",dwg:"2982004",prev:6,rec:0,status:"Pendente"},
+  {id:987,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982005",desc:"Contra-porca especial — barra redonda SAE 4140 Ø127,00 mm, 120 mm, 5,34 kg",dwg:"2982005",prev:6,rec:0,status:"Pendente"},
+  {id:988,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982006",desc:"Prisioneiro M20 — barra roscada zincada cl.8.8 M20, 135 mm, 0,30 kg",dwg:"2982006",prev:24,rec:40,status:"OK"},
+  {id:989,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982007",desc:"Haste de encosto — barra roscada zincada cl.8.8 M20, 210 mm, 0,37 kg",dwg:"2982007",prev:4,rec:4,status:"OK"},
+  {id:990,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982008",desc:"Chapa de ajuste do patim — chapa ASTM A36 9,50 mm, 241×200 mm, 3,10 kg",dwg:"2982008",prev:6,rec:6,status:"OK"},
+  {id:991,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982009",desc:"Suporte do bloco de conexão — chapa ASTM A36 4,75 mm, 253×80 mm, 0,76 kg",dwg:"2982009",prev:6,rec:6,status:"OK"},
+  {id:992,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982012",desc:"Trava da porca tensionadora — barra quadrada ASTM A36 25,40 mm, 50 mm, 0,14 kg",dwg:"2982012",prev:6,rec:14,status:"OK"},
+  {id:993,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982014",desc:"Suporte do sensor de levantamento do rotor — chapa ASTM A36 6,30 mm, 400×80 mm, 1,55 kg",dwg:"2982014",prev:1,rec:0,status:"Pendente"},
+  {id:994,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982019",desc:"Tampa do reservatório de nível — chapa ASTM A36 25,00 mm, 185×185 mm, 5,19 kg",dwg:"2982019",prev:1,rec:3,status:"OK"},
+  {id:995,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982024",desc:"Tubo de alimentação de óleo — tubo trefilado ST37.4 Ø28×3 mm, 940 mm, 1,72 kg",dwg:"2982024",prev:5,rec:5,status:"OK"},
+  {id:996,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982025",desc:"Tubo de alimentação de óleo menor — tubo trefilado ST37.4 Ø28×3 mm, 470 mm, 0,86 kg",dwg:"2982025",prev:1,rec:0,status:"Pendente"},
+  {id:997,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982026",desc:"Bloco de conexão — barra quadrada alumínio 6351-T6 76,20 mm, 60 mm, 0,75 kg",dwg:"2982026",prev:6,rec:6,status:"OK"},
+  {id:998,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982028",desc:"Conexão 1/2\" BSP — barra redonda ASTM A36 Ø38,10 mm, 45 mm, 0,27 kg",dwg:"2982028",prev:3,rec:0,status:"Pendente"},
+  {id:999,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982029",desc:"Suporte do sensor de oscilação radial — chapa ASTM A36 4,75 mm, 90×75 mm, 0,20 kg",dwg:"2982029",prev:2,rec:2,status:"OK"},
+  {id:1000,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982030",desc:"Painel do termômetro a gás — chapa ASTM A36 4,75 mm, 650×200 mm, 4,78 kg",dwg:"2982030",prev:1,rec:1,status:"OK"},
+  {id:1001,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982041",desc:"Bloco de injeção — barra quadrada alumínio 6351-T6 101,6 mm, 125 mm, 2,74 kg",dwg:"2982041",prev:1,rec:1,status:"OK"},
+  {id:1002,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2982042",desc:"Suporte do bloco de conexão — chapa ASTM A36 4,75 mm, 200×80 mm, 0,59 kg",dwg:"2982042",prev:1,rec:1,status:"OK"},
+  {id:1003,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2983001",desc:"Patim de guia-matéria prima — chapa ASTM A36 152,40 mm, 350×300 mm, 125,62 kg bruto",dwg:"2983001",prev:6,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR, ...DEFAULT_GERADOR_ACP, ...DEFAULT_GERADOR_EIX, ...DEFAULT_GERADOR_CRZ, ...DEFAULT_GERADOR_CRI, ...DEFAULT_GERADOR_MFL, ...DEFAULT_GERADOR_PFL, ...DEFAULT_GERADOR_MCS, ...DEFAULT_GERADOR_MGI];
 
 let items=[], romaneios=[], nextItemId=500, nextRomId=1;
 let activeEquip='turbina', activeConj='all', editItemId=null, activeRomId=null, erroTipos=[], romItens=[];
@@ -849,12 +1115,25 @@ function showPage(p,el){
   el.classList.add('active');
 }
 
+// ── STICKY HEADER TOP RECALC ──────────────────────────────
+function recalcThTop(){
+  const topbar  = document.querySelector('.topbar');
+  const navtabs = document.querySelector('.nav-tabs');
+  const toolbar = document.querySelector('.toolbar');
+  if(!toolbar) return;
+  // Sum heights of all sticky elements above the table header
+  const h = (topbar  ? topbar.offsetHeight  : 0)
+          + (navtabs ? navtabs.offsetHeight : 0)
+          + (toolbar ? toolbar.offsetHeight  : 0);
+  document.documentElement.style.setProperty('--toolbar-bottom', h + 'px');
+}
+
 // ── EQUIP SWITCH ──────────────────────────────────────────
 function setEquip(eq){
   activeEquip=eq;activeConj='all';
   document.getElementById('eq-turbina').className='eq-tab'+(eq==='turbina'?' active-turbina':'');
   document.getElementById('eq-gerador').className='eq-tab'+(eq==='gerador'?' active-gerador':'');
-  buildConjTabs();renderControle();
+  buildConjTabs();renderControle();setTimeout(recalcThTop,10);
 }
 
 // ── CONJ TABS ─────────────────────────────────────────────
@@ -865,6 +1144,7 @@ function buildConjTabs(){
     Object.entries(conjs).map(([k,v])=>
       `<button class="ctab ${activeConj===k?'active':''}" onclick="setConj('${k}')">${k} – ${v}</button>`
     ).join('');
+  setTimeout(recalcThTop,10);
 }
 function setConj(c){activeConj=c;buildConjTabs();renderControle();}
 
@@ -875,9 +1155,10 @@ function pill(eq,c){
 }
 function statusBadge(s){
   if(s==="Pendente")return`<span class="badge b-pend">Pendente</span>`;
-  if(s==="Em andamento")return`<span class="badge b-and">Em andamento</span>`;
-  if(s==="Concluído")return`<span class="badge b-ok">Concluído</span>`;
-  return`<span class="badge b-nc">Não conformidade</span>`;
+  if(s==="Parcial")return`<span class="badge b-and">Parcial</span>`;
+  if(s==="OK"||s==="Concluído")return`<span class="badge b-ok">OK</span>`;
+  if(s==="Não conformidade")return`<span class="badge b-nc">Não conformidade</span>`;
+  return`<span class="badge b-pend">${s}</span>`;
 }
 
 // ── RENDER CONTROLE ───────────────────────────────────────
@@ -907,8 +1188,8 @@ function renderControle(){
 
   const scope=activeConj==='all'?items.filter(i=>i.eq===activeEquip):items.filter(i=>i.eq===activeEquip&&i.conj===activeConj);
   document.getElementById('s-total').textContent=scope.length;
-  document.getElementById('s-pend').textContent=scope.filter(i=>i.status==='Pendente').length;
-  document.getElementById('s-ok').textContent=scope.filter(i=>i.status==='Concluído').length;
+  document.getElementById('s-pend').textContent=scope.filter(i=>i.status==='Pendente'||i.status==='Parcial').length;
+  document.getElementById('s-ok').textContent=scope.filter(i=>i.status==='OK'||i.status==='Concluído').length;
   document.getElementById('s-nc').textContent=scope.filter(i=>i.status==='Não conformidade').length;
   const totalAll=items.length;
   document.getElementById('hdr-badge').textContent=`${totalAll} itens · ${romaneios.length} romaneios`;
@@ -1170,6 +1451,276 @@ function showNotif(msg,type='ok'){const n=document.getElementById('notif');n.tex
 document.getElementById('search-inp').addEventListener('input',renderControle);
 document.getElementById('fStatus').addEventListener('change',renderControle);
 loadData();buildConjTabs();renderControle();renderRomList();
+setTimeout(recalcThTop,10);
+window.addEventListener('resize',recalcThTop);
+
+
+
+// ══ MONTAGEM ══════════════════════════════════════════════════
+const MTASKS = [{"nome": "Tampas de acesso à Sucção (escotilhas)", "eq": "turbina", "conj": "425", "inicio": "2026-02-25", "fim": "2026-02-26", "pct": 100}, {"nome": "Acoplamento do Rotor Francis com o Eixo da Turbina", "eq": "turbina", "conj": "440", "inicio": "2026-06-01", "fim": "2026-06-03", "pct": 0}, {"nome": "Descida do Rotor e Eixo da Turbina", "eq": "turbina", "conj": "440", "inicio": "2026-06-04", "fim": "2026-06-04", "pct": 0}, {"nome": "Pista Inferior", "eq": "turbina", "conj": "428", "inicio": "2026-06-05", "fim": "2026-06-08", "pct": 0}, {"nome": "Palhetas Diretrizes", "eq": "turbina", "conj": "467", "inicio": "2026-06-09", "fim": "2026-06-11", "pct": 0}, {"nome": "Nivelamento e alinhamento do Rotor Francis", "eq": null, "conj": null, "inicio": "2026-06-12", "fim": "2026-06-15", "pct": 0}, {"nome": "Tampa Superior da Turbina + Aro Porta Buchas", "eq": "turbina", "conj": "425", "inicio": "2026-06-16", "fim": "2026-06-17", "pct": 0}, {"nome": "Ajustes e Pinagem da Tampa Superior da Turbina", "eq": "turbina", "conj": "425", "inicio": "2026-06-18", "fim": "2026-06-19", "pct": 0}, {"nome": "Buchas e vedações superiores das palhetas", "eq": "turbina", "conj": "467", "inicio": "2026-06-22", "fim": "2026-06-23", "pct": 0}, {"nome": "Mancal Guia da Turbina", "eq": "turbina", "conj": "495", "inicio": "2026-06-24", "fim": "2026-06-24", "pct": 0}, {"nome": "Vedação do eixo", "eq": "turbina", "conj": "509", "inicio": "2026-06-25", "fim": "2026-06-25", "pct": 0}, {"nome": "Anel de Regulação", "eq": "turbina", "conj": "470", "inicio": "2026-06-26", "fim": "2026-06-26", "pct": 0}, {"nome": "Servomotor", "eq": "turbina", "conj": "472", "inicio": "2026-06-29", "fim": "2026-06-29", "pct": 0}, {"nome": "Bielismo das palhetas", "eq": "turbina", "conj": "468", "inicio": "2026-06-30", "fim": "2026-07-02", "pct": 0}, {"nome": "Sistema de injeção de água do mancal", "eq": "turbina", "conj": "509", "inicio": "2026-07-03", "fim": "2026-07-03", "pct": 0}, {"nome": "Estator — Bobinagem da Emenda do Bi-partido", "eq": "gerador", "conj": "EST", "inicio": "2026-04-20", "fim": "2026-05-15", "pct": 0}, {"nome": "Estator — Montagem no poço", "eq": "gerador", "conj": "EST", "inicio": "2026-05-18", "fim": "2026-05-29", "pct": 0}, {"nome": "Cruzeta Inferior", "eq": "gerador", "conj": "CRI", "inicio": "2026-06-29", "fim": "2026-06-30", "pct": 0}, {"nome": "Lançamento do Rotor do Gerador", "eq": "gerador", "conj": "ROT", "inicio": "2026-07-07", "fim": "2026-07-08", "pct": 0}, {"nome": "Cruzeta Superior", "eq": "gerador", "conj": "CRZ", "inicio": "2026-07-09", "fim": "2026-07-09", "pct": 0}, {"nome": "Mancal Combinado", "eq": "gerador", "conj": "MCS", "inicio": "2026-07-10", "fim": "2026-07-16", "pct": 0}, {"nome": "Mancal Intermediário do Gerador", "eq": "gerador", "conj": "MGI", "inicio": "2026-07-17", "fim": "2026-07-21", "pct": 0}, {"nome": "Centralização do Rotor", "eq": null, "conj": null, "inicio": "2026-07-22", "fim": "2026-07-22", "pct": 0}, {"nome": "Acoplamento do Eixo Gerador e Eixo da Turbina", "eq": "gerador", "conj": "EIX", "inicio": "2026-07-23", "fim": "2026-07-23", "pct": 0}, {"nome": "Verticalização e Runout da linha de eixo", "eq": null, "conj": null, "inicio": "2026-07-24", "fim": "2026-07-27", "pct": 0}, {"nome": "Sistema de lubrificação e resfriamento dos mancais", "eq": "gerador", "conj": "MGI", "inicio": "2026-07-30", "fim": "2026-07-31", "pct": 0}];
+const MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+let mStart = null;
+let mActiveTab = 'gantt';
+
+function mSetTab(tab, el){
+  mActiveTab = tab;
+  document.querySelectorAll('.mont-stab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.mont-subpage').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('mpage-'+tab).classList.add('active');
+  // Show/hide nav controls - only relevant for gantt
+  const top = document.getElementById('montTop');
+  if(top) top.style.display = tab==='gantt' ? 'flex' : 'none';
+  if(tab==='missing') renderMissingPanel();
+}
+
+function mToday(){
+  const t = new Date(); 
+  mStart = new Date(t.getFullYear(), t.getMonth(), 1);
+  renderGantt();
+}
+
+function mShift(n){
+  if(!mStart) mToday();
+  mStart.setMonth(mStart.getMonth()+n);
+  renderGantt();
+}
+
+function mMatStatus(eq, conj){
+  if(!eq||!conj) return {total:0,ok:0,pct:100,missing:[]};
+  const scope = items.filter(i=>i.eq===eq&&i.conj===conj);
+  if(!scope.length) return {total:0,ok:0,pct:100,missing:[]};
+  const ok = scope.filter(i=>i.rec>=i.prev&&i.prev>0).length;
+  const missing = scope.filter(i=>!(i.rec>=i.prev&&i.prev>0));
+  return {total:scope.length, ok, pct:Math.round(ok/scope.length*100), missing};
+}
+
+function renderGantt(){
+  if(!mStart) mToday();
+  const today = new Date(); today.setHours(0,0,0,0);
+  
+  // Build 35 days from mStart
+  const days=[];
+  for(let i=0;i<35;i++){
+    const d=new Date(mStart); d.setDate(d.getDate()+i); days.push(d);
+  }
+  
+  // Period label
+  const d0=days[0], dN=days[34];
+  document.getElementById('mPeriod').textContent = 
+    d0.getMonth()===dN.getMonth()
+      ? MESES[d0.getMonth()]+' '+d0.getFullYear()
+      : MESES[d0.getMonth()]+'-'+MESES[dN.getMonth()]+' '+d0.getFullYear();
+
+  // Build table HTML
+  let t='<table class="g-tbl"><thead><tr>';
+  t+='<th style="width:260px;text-align:left;padding:5px 8px">Tarefa</th>';
+  t+='<th style="width:40px">%</th>';
+  
+  let lastM=-1;
+  days.forEach((d,i)=>{
+    const isNew = d.getMonth()!==lastM;
+    const isToday = d.getTime()===today.getTime();
+    const isWE = d.getDay()===0||d.getDay()===6;
+    let cls = isToday?'g-today-hdr':'';
+    let lbl = isNew ? MESES[d.getMonth()]+' '+d.getDate() : (isWE?'·':d.getDate());
+    t+=`<th class="${cls}" style="${isNew?'border-left:2px solid var(--border2)':''}">${lbl}</th>`;
+    lastM=d.getMonth();
+  });
+  t+='</tr></thead><tbody>';
+
+  MTASKS.forEach((task,ti)=>{
+    const tS=new Date(task.inicio+'T00:00:00'), tE=new Date(task.fim+'T00:00:00');
+    const mat=mMatStatus(task.eq,task.conj);
+    const dl=new Date(tS); dl.setDate(dl.getDate()-7);
+    const dDL=Math.round((dl-today)/864e5);
+  const dlColor=dDL<0?'var(--red)':dDL<14?'var(--amber)':'var(--green)';
+    
+    let barCls;
+    if(task.pct>=100) barCls='g-done';
+    else if(today>=tS&&today<=tE) barCls='g-active';
+    else if(mat.missing.length>0) barCls='g-crit';
+    else barCls='g-ok';
+    
+    const pctColor=task.pct>=100?'var(--green)':(task.pct>0?'var(--amber)':'var(--text3)');
+    const eqLbl=task.eq==='turbina'?'Turbina':'Gerador';
+    
+    t+=`<tr style="cursor:pointer" onclick="mShowDetail(${ti})">`;
+    t+=`<td class="g-lbl"><div class="g-lbl-eq">${task.eq?eqLbl+' · '+task.conj:''}</div><div class="g-lbl-nm" title="${task.nome}">${task.nome}</div></td>`;
+    t+=`<td class="g-pct-col" style="color:${pctColor}">${task.pct}%</td>`;
+    
+    days.forEach((d,i)=>{
+      const isWD=d.getDay()!==0&&d.getDay()!==6;
+      const inBar=d>=tS&&d<=tE&&isWD;
+      const isToday=d.getTime()===today.getTime();
+      const isWE=d.getDay()===0||d.getDay()===6;
+      const isNew=i>0&&d.getMonth()!==days[i-1].getMonth();
+      let cellStyle='';
+      if(isToday) cellStyle='background:rgba(88,166,255,.12)';
+      else if(isWE) cellStyle='background:rgba(255,255,255,.025)';
+      if(isNew) cellStyle+=(cellStyle?';':'')+'border-left:2px solid var(--border2)';
+      t+=`<td style="${cellStyle}">${inBar?`<div class="g-bar ${barCls}"></div>`:''}</td>`;
+    });
+    t+='</tr>';
+  });
+  
+  t+='</tbody></table>';
+  document.getElementById('gWrap').innerHTML=t;
+  renderMissingPanel();
+}
+
+function renderMissingPanel(){
+  const today=new Date(); today.setHours(0,0,0,0);
+  const filterEq=(document.getElementById('missFilterEq')||{}).value||'';
+  const filterLoc=(document.getElementById('missFilterLoc')||{}).value||'';
+  const search=((document.getElementById('missSearch')||{}).value||'').toLowerCase();
+
+  // Build unique conjuntos linked to tasks, sorted by start date
+  const seen=new Set();
+  const conjList=[];
+  MTASKS.filter(t=>t.eq&&t.conj).forEach(t=>{
+    const k=t.eq+'|'+t.conj;
+    if(!seen.has(k)){seen.add(k);conjList.push(t);}
+  });
+  conjList.sort((a,b)=>a.inicio.localeCompare(b.inicio));
+
+  let totalPend=0, totalCaminho=0, totalUsina=0, totalItems=0;
+  let html='';
+
+  conjList.forEach(task=>{
+    if(filterEq && task.eq!==filterEq) return;
+    const mat=mMatStatus(task.eq,task.conj);
+    if(mat.total===0) return;
+
+    const tS=new Date(task.inicio+'T00:00:00');
+    const dl=new Date(tS); dl.setDate(dl.getDate()-7);
+    const dDL=Math.round((dl-today)/864e5);
+    const dlStr=dl.toLocaleDateString('pt-BR');
+    const eqLbl=task.eq==='turbina'?'Turbina':'Gerador';
+
+    // Filter items
+    let filteredItems = mat.missing.filter(it=>{
+      const loc = it.locStatus||'missing';
+      if(filterLoc && loc!==filterLoc) return false;
+      if(search && !it.cod.toLowerCase().includes(search) && !it.desc.toLowerCase().includes(search)) return false;
+      return true;
+    });
+    // Also include "usina" and "caminho" items in count but check filter
+    if(filterLoc==='missing') filteredItems=filteredItems.filter(it=>!(it.locStatus==='caminho'||it.locStatus==='usina'));
+
+    if(filteredItems.length===0 && filterLoc) return;
+
+    // Skip if task done
+    if(task.pct>=100) return;
+
+    // Counts for stats
+    mat.missing.forEach(it=>{
+      totalItems++;
+      const loc=it.locStatus||'missing';
+      if(loc==='caminho') totalCaminho++;
+      else if(loc==='usina') totalUsina++;
+      else totalPend++;
+    });
+
+    let dlCls='ok', dlLbl='';
+    if(dDL<0){ dlCls='crit'; dlLbl=`⛔ Vencido ${dlStr}`; }
+    else if(dDL<=7){ dlCls='crit'; dlLbl=`🔴 Limite: ${dlStr} (${dDL}d)`; }
+    else if(dDL<=14){ dlCls='warn'; dlLbl=`⚠️ Limite: ${dlStr} (${dDL}d)`; }
+    else { dlCls='ok'; dlLbl=`📅 Limite: ${dlStr} (${dDL}d)`; }
+
+    const ti=MTASKS.findIndex(t2=>t2.eq===task.eq&&t2.conj===task.conj);
+    const shortName=task.nome.replace(/Montagem\/(Turbina|Gerador)\s*\(UG0[12]\)\s*-?\s*/i,'').trim();
+
+    html+=`<div class="miss-conj-block2">
+      <div class="miss-conj-hdr2" onclick="mShowDetail(${ti})">
+        <div class="miss-conj-info">
+          <span class="miss-conj-tag">${eqLbl} · ${task.conj}</span>
+          <span class="miss-conj-name2">${shortName}</span>
+        </div>
+        <div class="miss-conj-meta">
+          <span class="miss-conj-prog">${mat.ok}/${mat.total} itens OK</span>
+          <span class="miss-conj-dl ${dlCls}">${dlLbl}</span>
+        </div>
+      </div>
+      <table class="miss-tbl">
+        <thead><tr>
+          <th style="width:130px">Código</th>
+          <th>Descrição</th>
+          <th style="width:70px;text-align:center">Qtd</th>
+          <th style="width:120px;text-align:center">Localização</th>
+          <th style="width:160px;text-align:center">Ações</th>
+        </tr></thead>
+        <tbody>`;
+
+    filteredItems.forEach(it=>{
+      const loc=it.locStatus||'missing';
+      const falta=it.prev-it.rec;
+      const qtyColor=it.rec===0?'var(--red)':'var(--amber)';
+      let locTag='';
+      if(loc==='caminho') locTag=`<span class="miss-loc-tag caminho">🚚 A caminho${it.eta?' · '+it.eta:''}</span>`;
+      else if(loc==='usina') locTag=`<span class="miss-loc-tag usina">✅ Na usina${it.eta?' · '+it.eta:''}</span>`;
+      else locTag=`<span style="font-size:11px;color:var(--text3)">—</span>`;
+
+      html+=`<tr>
+        <td style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3)">${it.cod}</td>
+        <td style="color:var(--text)" title="${it.desc}">${it.desc}</td>
+        <td style="text-align:center;font-family:'IBM Plex Mono',monospace;font-weight:700;color:${qtyColor}">${it.rec}/${it.prev}</td>
+        <td style="text-align:center">${locTag}</td>
+        <td style="text-align:center">
+          <div style="display:flex;gap:4px;justify-content:center">
+            <button class="miss-status-btn ${loc==='caminho'?'caminho':''}" onclick="mSetLoc(event,${it.id},'caminho',${ti})">🚚 A caminho</button>
+            <button class="miss-status-btn ${loc==='usina'?'usina':''}" onclick="mSetLoc(event,${it.id},'usina',${ti})">📍 Na usina</button>
+          </div>
+        </td>
+      </tr>`;
+    });
+
+    html+=`</tbody></table></div>`;
+  });
+
+  if(html==='') html='<div class="miss-empty" style="padding:40px;text-align:center;color:var(--text3)">✅ Nenhum item faltante encontrado para os filtros selecionados.</div>';
+
+  document.getElementById('missingPanel').innerHTML=html;
+
+  // Stats strip
+  const statsEl=document.getElementById('missStats');
+  if(statsEl) statsEl.innerHTML=`
+    <div class="miss-stat-card"><span class="lbl">Total faltantes</span><span class="val" style="color:var(--accent)">${totalItems}</span></div>
+    <div class="miss-stat-card"><span class="lbl">Faltando chegar</span><span class="val" style="color:var(--red)">${totalPend}</span></div>
+    <div class="miss-stat-card"><span class="lbl">A caminho</span><span class="val" style="color:var(--amber)">${totalCaminho}</span></div>
+    <div class="miss-stat-card"><span class="lbl">Na usina</span><span class="val" style="color:var(--green)">${totalUsina}</span></div>`;
+}
+
+function mSetLoc(e, itemId, loc, ti){
+  e.stopPropagation();
+  const item=items.find(i=>i.id===itemId);
+  if(!item) return;
+  // Toggle: if already this loc, clear it
+  if(item.locStatus===loc){
+    item.locStatus='missing';
+    delete item.eta;
+    // If un-marking usina, revert rec to 0
+    if(loc==='usina') item.rec=0;
+  } else {
+    item.locStatus=loc;
+    if(loc==='caminho'){
+      const eta=prompt('Data prevista de chegada (dd/mm/aaaa):','');
+      if(eta) item.eta=eta;
+    } else if(loc==='usina'){
+      const eta=prompt('Data de chegada (dd/mm/aaaa):','');
+      if(eta) item.eta=eta;
+      // Opção A: marca rec = prev (item completo no estoque)
+      item.rec=item.prev;
+      // Recalculate status
+      item.status='OK';
+    }
+  }
+  saveData();
+  renderMissingPanel();
+  renderControle();
+}
+// ══ FIM MONTAGEM ═══════════════════════════════════════════════
+
 </script>
 </body>
 </html>
