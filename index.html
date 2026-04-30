@@ -313,9 +313,50 @@ tr:hover td{background:var(--bg2);}
 .rnc-field input:focus,.rnc-field select:focus,.rnc-field textarea:focus{border-color:var(--accent);}
 .rnc-field textarea{resize:vertical;min-height:70px;}
 .rnc-modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
+
+/* ── LOGIN ───────────────────────────────────────────────── */
+#login-screen{position:fixed;inset:0;background:#0d1117;z-index:9999;display:flex;align-items:center;justify-content:center;}
+.login-box{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:40px;width:380px;max-width:95vw;}
+.login-logo{text-align:center;margin-bottom:24px;}
+.login-logo h1{font-size:18px;font-weight:700;color:#e6edf3;margin-bottom:4px;}
+.login-logo p{font-size:12px;color:#8b949e;font-family:'IBM Plex Mono',monospace;}
+.login-field{margin-bottom:14px;}
+.login-field label{display:block;font-size:11px;color:#8b949e;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;}
+.login-field input{width:100%;background:#0d1117;border:1px solid #30363d;color:#e6edf3;padding:9px 12px;border-radius:6px;font-size:13px;outline:none;transition:border-color .15s;box-sizing:border-box;}
+.login-field input:focus{border-color:#388bfd;}
+.login-btn{width:100%;background:#238636;border:none;color:#fff;padding:10px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s;margin-top:6px;}
+.login-btn:hover{background:#2ea043;}
+.login-btn:disabled{background:#3d4450;cursor:not-allowed;}
+.login-error{color:#f85149;font-size:12px;text-align:center;margin-top:8px;min-height:18px;font-family:'IBM Plex Mono',monospace;}
+.login-loading{text-align:center;color:#8b949e;font-size:12px;margin-top:8px;}
 </style>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <h1>🏭 UHE Rasgão</h1>
+      <p>Controle de Montagem em Campo</p>
+    </div>
+    <div class="login-field">
+      <label>E-mail</label>
+      <input type="email" id="login-email" placeholder="seu@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="login-field">
+      <label>Senha</label>
+      <input type="password" id="login-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" id="login-btn" onclick="doLogin()">Entrar</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
 <div class="topbar">
   <div class="topbar-logo">UHE Rasgão</div>
   <div class="topbar-title"><strong>Controle de Montagem em Campo</strong> — Turbina Francis Vertical + Gerador Síncrono Vertical</div>
@@ -633,6 +674,158 @@ tr:hover td{background:var(--bg2);}
 </div>
 
 <script>
+
+// ══ FIREBASE CONFIG ═══════════════════════════════════════════
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAbzZUcdzl5RJg2n-0r8aeneZ_ykcEjCkA",
+  authDomain: "uhe-rasgao.firebaseapp.com",
+  projectId: "uhe-rasgao",
+  storageBucket: "uhe-rasgao.firebasestorage.app",
+  messagingSenderId: "291315472094",
+  appId: "1:291315472094:web:9f586c592b58ffe2fa544f"
+};
+
+firebase.initializeApp(FIREBASE_CONFIG);
+const auth = firebase.auth();
+const db   = firebase.firestore();
+
+// Session: 12h persistence
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+
+// ── AUTH STATE ────────────────────────────────────────────────
+auth.onAuthStateChanged(user => {
+  if(user){
+    // Check session age (12h)
+    const loginTime = parseInt(localStorage.getItem('uhe_login_time')||'0');
+    const elapsed   = Date.now() - loginTime;
+    if(loginTime && elapsed > 12 * 60 * 60 * 1000){
+      auth.signOut();
+      return;
+    }
+    // Show app
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('user-email').textContent = user.email;
+    // Load data from Firestore
+    loadDataFromFirestore();
+  } else {
+    document.getElementById('login-screen').style.display = 'flex';
+  }
+});
+
+// ── LOGIN ─────────────────────────────────────────────────────
+function doLogin(){
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-password').value;
+  const btn   = document.getElementById('login-btn');
+  const err   = document.getElementById('login-error');
+
+  if(!email || !pass){ err.textContent = 'Preencha e-mail e senha.'; return; }
+  btn.disabled = true;
+  btn.textContent = 'Entrando...';
+  err.textContent = '';
+
+  auth.signInWithEmailAndPassword(email, pass)
+    .then(() => {
+      localStorage.setItem('uhe_login_time', Date.now().toString());
+    })
+    .catch(e => {
+      btn.disabled = false;
+      btn.textContent = 'Entrar';
+      const msgs = {
+        'auth/user-not-found':    'Usuário não encontrado.',
+        'auth/wrong-password':    'Senha incorreta.',
+        'auth/invalid-email':     'E-mail inválido.',
+        'auth/too-many-requests': 'Muitas tentativas. Tente mais tarde.',
+        'auth/invalid-credential':'E-mail ou senha incorretos.',
+      };
+      err.textContent = msgs[e.code] || 'Erro ao fazer login: ' + e.message;
+    });
+}
+
+function doLogout(){
+  if(!confirm('Deseja sair?')) return;
+  auth.signOut();
+  localStorage.removeItem('uhe_login_time');
+}
+
+// ── FIRESTORE SYNC ────────────────────────────────────────────
+const FS_DOC = 'uhe_rasgao_v1';
+
+async function loadDataFromFirestore(){
+  const ind = document.getElementById('save-indicator');
+  if(ind){ ind.className='save-indicator saving'; ind.textContent='● Carregando...'; }
+  
+  try {
+    const doc = await db.collection('app_data').doc(FS_DOC).get();
+    
+    if(doc.exists){
+      const d = doc.data();
+      // Load items
+      if(d.items && d.items.length > 0){
+        items = d.items;
+        nextItemId = Math.max(...items.map(i=>i.id)) + 1;
+      } else {
+        // Firestore has empty items - reload defaults
+        items = [...DEFAULT_ITEMS];
+        nextItemId = Math.max(...items.map(i=>i.id)) + 1;
+      }
+      if(d.romaneios){ romaneios=d.romaneios; if(romaneios.length) nextRomId=Math.max(...romaneios.map(r=>r.id))+1; }
+      if(d.rncs && d.rncs.length){ rncs=d.rncs; nextRncId=Math.max(...rncs.map(r=>r.id))+1; }
+    } else {
+      // No document yet - use default data and save to Firestore
+      items = [...DEFAULT_ITEMS];
+      nextItemId = Math.max(...items.map(i=>i.id)) + 1;
+      romaneios = [];
+      rncs = [];
+      nextRncId = 1;
+      // Save async, don't wait
+      saveDataToFirestore();
+    }
+  } catch(e){
+    console.error('Firestore error:', e);
+    // Fallback: use default items
+    items = [...DEFAULT_ITEMS];
+    nextItemId = Math.max(...items.map(i=>i.id)) + 1;
+  }
+  
+  // NOW render with data loaded
+  buildConjTabs();
+  renderControle();
+  renderRomList();
+  loadRNCs_local();
+  renderRNC();
+  setTimeout(recalcThTop, 50);
+  
+  if(ind){ ind.className='save-indicator saved'; ind.textContent='● Salvo'; }
+}
+
+function saveDataToFirestore(){
+  const ind = document.getElementById('save-indicator');
+  if(ind){ ind.className='save-indicator saving'; ind.textContent='● Salvando...'; }
+  
+  // Only save fields that change frequently (not DEFAULT_ITEMS which are static)
+  // Save items as separate chunks if needed
+  const payload = {
+    items: items,
+    romaneios: romaneios,
+    rncs: rncs || [],
+    savedAt: new Date().toISOString()
+  };
+  
+  db.collection('app_data').doc(FS_DOC).set(payload)
+    .then(()=>{
+      if(ind){ ind.className='save-indicator saved'; ind.textContent='● Salvo'; }
+      // Also save to localStorage as backup
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({items, romaneios})); } catch(e){}
+    })
+    .catch(e=>{
+      console.error('Erro ao salvar no Firestore:', e);
+      if(ind){ ind.className='save-indicator'; ind.textContent='⚠ Erro ao salvar'; }
+      // Fallback to localStorage
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({items, romaneios})); } catch(ex){}
+    });
+}
+// ══ FIM FIREBASE ══════════════════════════════════════════════
 const STORAGE_KEY = 'uhe_rasgao_v9';
 
 const CONJUNTOS_TURBINA = {"425":"Tampa Superior","428":"Tampa Inferior","440":"Eixo","442":"Rotor Francis","467":"Palheta Diretriz","468":"Mec. Regulação","470":"Anel de Regulação","472":"Servomotor","495":"Mancal Guia","509":"Tubulação Reg.","540":"Disp. Montagem"};
@@ -1276,13 +1469,10 @@ function loadData(){
   items=JSON.parse(JSON.stringify(DEFAULT_ITEMS));
 }
 function saveData(){
-  const ind=document.getElementById('save-indicator');
-  ind.className='save-indicator saving';ind.textContent='● Salvando...';
-  try{
-    const now=new Date().toISOString();
-    localStorage.setItem(STORAGE_KEY,JSON.stringify({items,romaneios,savedAt:now}));
-    setTimeout(()=>{ind.className='save-indicator saved';ind.textContent='● Salvo';updateLastSaveLabel(now);},400);
-  }catch(e){ind.textContent='✗ Erro';}
+  // Save to localStorage as backup
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({items,romaneios})); } catch(e){}
+  // Save to Firestore (shared)
+  saveDataToFirestore();
 }
 function updateLastSaveLabel(iso){
   if(!iso)return;
@@ -1641,7 +1831,7 @@ function showNotif(msg,type='ok'){const n=document.getElementById('notif');n.tex
 // ── INIT ──────────────────────────────────────────────────
 document.getElementById('search-inp').addEventListener('input',renderControle);
 document.getElementById('fStatus').addEventListener('change',renderControle);
-loadData();buildConjTabs();renderControle();renderRomList();loadRNCs();
+// Init handled by Firebase auth state change
 setTimeout(recalcThTop,10);
 window.addEventListener('resize',recalcThTop);
 
@@ -1917,15 +2107,20 @@ let rncs = [];
 let nextRncId = 1;
 let editRncId = null;
 
-function loadRNCs(){
-  try{
-    const raw = localStorage.getItem('uhe_rasgao_rnc_v1');
-    if(raw){ const d=JSON.parse(raw); rncs=d.rncs||[]; nextRncId=d.nextId||1; }
-  } catch(e){ rncs=[]; nextRncId=1; }
+function loadRNCs_local(){
+  // RNCs are now loaded from Firestore in loadDataFromFirestore()
+  // This is kept as fallback only
+  if(rncs.length === 0){
+    try{
+      const raw = localStorage.getItem('uhe_rasgao_rnc_v1');
+      if(raw){ const d=JSON.parse(raw); rncs=d.rncs||[]; nextRncId=d.nextId||1; }
+    } catch(e){ rncs=[]; nextRncId=1; }
+  }
 }
 
 function saveRNCs(){
   localStorage.setItem('uhe_rasgao_rnc_v1', JSON.stringify({rncs, nextId:nextRncId}));
+  saveDataToFirestore();
 }
 
 function renderRNC(){
