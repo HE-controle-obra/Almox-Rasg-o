@@ -693,24 +693,35 @@ const db   = firebase.firestore();
 auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
 // ── AUTH STATE ────────────────────────────────────────────────
-auth.onAuthStateChanged(user => {
-  if(user){
-    // Check session age (12h)
-    const loginTime = parseInt(localStorage.getItem('uhe_login_time')||'0');
-    const elapsed   = Date.now() - loginTime;
-    if(loginTime && elapsed > 12 * 60 * 60 * 1000){
-      auth.signOut();
-      return;
+function initAuth(){
+  auth.onAuthStateChanged(user => {
+    const loginScreen = document.getElementById('login-screen');
+    const userEmail   = document.getElementById('user-email');
+    if(user){
+      // Check session age (12h)
+      const loginTime = parseInt(localStorage.getItem('uhe_login_time')||'0');
+      const elapsed   = Date.now() - loginTime;
+      if(loginTime && elapsed > 12 * 60 * 60 * 1000){
+        auth.signOut();
+        return;
+      }
+      // Show app
+      if(loginScreen) loginScreen.style.display = 'none';
+      if(userEmail)   userEmail.textContent = user.email;
+      // Load data from Firestore
+      loadDataFromFirestore();
+    } else {
+      if(loginScreen) loginScreen.style.display = 'flex';
     }
-    // Show app
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('user-email').textContent = user.email;
-    // Load data from Firestore
-    loadDataFromFirestore();
-  } else {
-    document.getElementById('login-screen').style.display = 'flex';
-  }
-});
+  });
+}
+
+// Wait for DOM before initializing auth
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initAuth);
+} else {
+  initAuth();
+}
 
 // ── LOGIN ─────────────────────────────────────────────────────
 function doLogin(){
@@ -801,10 +812,8 @@ async function loadDataFromFirestore(){
 
 function saveDataToFirestore(){
   const ind = document.getElementById('save-indicator');
-  if(ind){ ind.className='save-indicator saving'; ind.textContent='● Salvando...'; }
+  if(ind){ try{ ind.className='save-indicator saving'; ind.textContent='● Salvando...'; }catch(e){} }
   
-  // Only save fields that change frequently (not DEFAULT_ITEMS which are static)
-  // Save items as separate chunks if needed
   const payload = {
     items: items,
     romaneios: romaneios,
