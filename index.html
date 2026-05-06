@@ -65,7 +65,15 @@ tr:hover td{background:var(--bg2);}
 .cp-540{background:#0a1f0a;color:#56d364;}
 /* Conjunto pills - Gerador */
 .cp-EST{background:#1a1050;color:#b48eff;}.cp-ROT{background:#0d1a30;color:#58c4ff;}
-.cp-ACP{background:#0d2020;color:#2dd4bf;}.cp-EIX{background:#1a1200;color:#fbbf24;}.cp-CRZ{background:#1a0d20;color:#e879f9;}.cp-CRI{background:#1a1010;color:#fb923c;}.cp-MFL{background:#0d1a10;color:#4ade80;}.cp-PFL{background:#1a1520;color:#a78bfa;}.cp-MCS{background:#1a1000;color:#f59e0b;}.cp-MGI{background:#0d1520;color:#38bdf8;}
+.cp-ACP{background:#0d2020;color:#2dd4bf;}.cp-EIX{background:#1a1200;color:#fbbf24;}.cp-CRZ{background:#1a0d20;color:#e879f9;}.cp-CRI{background:#1a1010;color:#fb923c;}.cp-MFL{background:#0d1a10;color:#4ade80;}.cp-PFL{background:#1a1520;color:#a78bfa;}.cp-MCS{background:#1a1000;color:#f59e0b;}.cp-MGI{background:#0d1520;color:#38bdf8;}.cp-GAR{background:#0d1a1a;color:#34d399;}.cp-CTF{background:#1a1010;color:#ff9966;}.cp-EAT{background:#0d1a0d;color:#86efac;}.cp-ESC{background:#1a1020;color:#c084fc;}.cp-ARA{background:#1a0d00;color:#fb923c;}.cp-ANM{background:#0d1520;color:#60a5fa;}.cp-PFR{background:#1a1010;color:#f87171;}.cp-CVP{background:#1a1500;color:#fcd34d;}.cp-VNT{background:#0d1a14;color:#34d399;}.cp-NPC{background:#1a0d1a;color:#e879f9;}.cp-GAM{background:#0d1a1a;color:#22d3ee;}.cp-BPO{background:#1a0800;color:#fb923c;}.cp-LPO{background:#0d1a10;color:#4ade80;}.cp-POL{background:#1a1020;color:#a78bfa;}.cp-PDT{background:#1a1000;color:#facc15;}.cp-ANC{background:#0d1520;color:#7dd3fc;}.cp-FCG{background:#1a1520;color:#d8b4fe;}
+.cp-IAC{background:#0d1a15;color:#5eead4;}
+.cp-UHL{background:#1a1000;color:#fde68a;}
+.cp-CTE{background:#0d1015;color:#a5b4fc;}
+.cp-SRA{background:#0d1520;color:#67e8f9;}
+.cp-TOM{background:#1a0d00;color:#fdba74;}
+.cp-EVM{background:#0d1a08;color:#86efac;}
+.cp-RAQ{background:#1a0808;color:#fca5a5;}
+.cp-SRO{background:#120d1a;color:#c4b5fd;}
 .dwg-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:1px 6px;border-radius:3px;}
 .code-sm{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);}
 .qty-ok{color:var(--green);font-weight:600;font-family:'IBM Plex Mono',monospace;}
@@ -361,7 +369,7 @@ tr:hover td{background:var(--bg2);}
   <div class="topbar-logo">UHE Rasgão</div>
   <div class="topbar-title"><strong>Controle de Montagem em Campo</strong> — Turbina Francis Vertical + Gerador Síncrono Vertical</div>
   <div class="save-indicator saved" id="save-indicator">● Salvo</div>
-  <div class="topbar-badge" id="hdr-badge">535 itens</div>
+  <div class="topbar-badge" id="hdr-badge">649 itens</div>
 </div>
 <div class="nav-tabs">
   <div class="nav-tab active" onclick="showPage('controle',this)">📋 Controle de Itens</div>
@@ -838,10 +846,10 @@ function saveDataToFirestore(){
 const STORAGE_KEY = 'uhe_rasgao_v9';
 
 const CONJUNTOS_TURBINA = {"425":"Tampa Superior","428":"Tampa Inferior","440":"Eixo","442":"Rotor Francis","467":"Palheta Diretriz","468":"Mec. Regulação","470":"Anel de Regulação","472":"Servomotor","495":"Mancal Guia","509":"Tubulação Reg.","540":"Disp. Montagem"};
-const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor","ACP":"Acoplamento","EIX":"Eixo do Gerador","CRZ":"Cruzeta Superior","CRI":"Cruzeta Inferior","MFL":"Macaco Freio/Levant.","PFL":"Painel Frenagem/Levant.","MCS":"Mancal Comb. Superior","MGI":"Mancal Guia Inferior"};
+const CONJUNTOS_GERADOR = {"EST":"Estator","ROT":"Rotor","ACP":"Acoplamento","EIX":"Eixo do Gerador","CRZ":"Cruzeta Superior","CRI":"Cruzeta Inferior","MFL":"Macaco Freio/Levant.","PFL":"Painel Frenagem/Levant.","MCS":"Mancal Comb. Superior","MGI":"Mancal Guia Inferior","GAR":"Guias de Ar","CTF":"Caixa Terminais Força","EAT":"Escova de Aterramento","ESC":"Escovas de Excitação","ARA":"Aranha do Rotor","ANM":"Anel Magnético","PFR":"Pista de Frenagem","CVP":"Chaveta Polar","VNT":"Ventilador Centrífugo","NPC":"Núcleo Polar","GAM":"Gaiola Amortecedora","BPO":"Bobinas Polares","LPO":"Ligações Polares","POL":"Pólos Conjunto","PDT":"Pólos Detalhes","ANC":"Anéis Coletores","FCG":"Fechamento do Gerador","IAC":"Invólucro Anéis Coletores","UHL":"Unid. Hidráulica Lub./Inj.","CTE":"Caixa Terminais Excitação","SRA":"Sistema Resf. Água Mancais","TOM":"Tubulação Óleo Mancais","EVM":"Exaustor Vapores Óleo","RAQ":"Resistências Aquecimento","SRO":"Sensor de Rotação"};
 
 const PILL_CLS_TFV = {"425":"cp-425","428":"cp-428","440":"cp-440","442":"cp-442","467":"cp-467","468":"cp-468","470":"cp-470","472":"cp-472","495":"cp-495","509":"cp-509","540":"cp-540"};
-const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT","ACP":"cp-ACP","EIX":"cp-EIX","CRZ":"cp-CRZ","CRI":"cp-CRI","MFL":"cp-MFL","PFL":"cp-PFL","MCS":"cp-MCS","MGI":"cp-MGI"};
+const PILL_CLS_GSV = {"EST":"cp-EST","ROT":"cp-ROT","ACP":"cp-ACP","EIX":"cp-EIX","CRZ":"cp-CRZ","CRI":"cp-CRI","MFL":"cp-MFL","PFL":"cp-PFL","MCS":"cp-MCS","MGI":"cp-MGI","GAR":"cp-GAR","CTF":"cp-CTF","EAT":"cp-EAT","ESC":"cp-ESC","ARA":"cp-ARA","ANM":"cp-ANM","PFR":"cp-PFR","CVP":"cp-CVP","VNT":"cp-VNT","NPC":"cp-NPC","GAM":"cp-GAM","BPO":"cp-BPO","LPO":"cp-LPO","POL":"cp-POL","PDT":"cp-PDT","ANC":"cp-ANC","FCG":"cp-FCG","IAC":"cp-IAC","UHL":"cp-UHL","CTE":"cp-CTE","SRA":"cp-SRA","TOM":"cp-TOM","EVM":"cp-EVM","RAQ":"cp-RAQ","SRO":"cp-SRO"};
 
 // ── DADOS TURBINA ──────────────────────────────────────────
 const DEFAULT_TURBINA = [
@@ -955,7 +963,7 @@ const DEFAULT_TURBINA = [
 // ── DADOS GERADOR — ESTATOR ────────────────────────────────
 const DEFAULT_GERADOR = [
   {id:201,eq:"gerador",conj:"EST",pos:"1",cod:"0147GSV1-1511000",desc:"Núcleo estatórico",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
-  {id:202,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1601001",desc:"Bobina estatórica",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
+  {id:202,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1601001",desc:"Bobina estatórica — barra Roebel, 28 condutores, passo 6, classe F, 8,00 kg",dwg:"1601001",prev:408,rec:0,status:"Pendente"},
   {id:203,eq:"gerador",conj:"EST",pos:"3",cod:"103197",desc:"TVE DIM 3,00×14,00×685,00 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
   {id:204,eq:"gerador",conj:"EST",pos:"4",cod:"800006",desc:"Termoresistência P0K1.202.6W.A.010",dwg:"1201000",prev:12,rec:0,status:"Pendente"},
   {id:205,eq:"gerador",conj:"EST",pos:"5",cod:"103196",desc:"TVE G11 F882 0,50×15,20×685 mm",dwg:"1201000",prev:408,rec:0,status:"Pendente"},
@@ -975,7 +983,7 @@ const DEFAULT_GERADOR = [
   {id:219,eq:"gerador",conj:"EST",pos:"19",cod:"103603",desc:"Parafuso sext. zincado classe 8.8 DIN 931 MA M16×110",dwg:"1201000",prev:32,rec:0,status:"Pendente"},
   {id:220,eq:"gerador",conj:"EST",pos:"20",cod:"102656",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M30×120",dwg:"1201000",prev:8,rec:0,status:"Pendente"},
   {id:221,eq:"gerador",conj:"EST",pos:"21",cod:"104371",desc:"Parafuso Allen preto classe 10.9 DIN 912 MA M16×60",dwg:"1201000",prev:40,rec:0,status:"Pendente"},
-  {id:222,eq:"gerador",conj:"EST",pos:"22",cod:"0147GSV1-1621000",desc:"Enrolamento estatórico",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
+  {id:222,eq:"gerador",conj:"EST",pos:"22",cod:"0147GSV1-1621000",desc:"Enrolamento estatórico — conjunto conexões cobre C11000, 476,46 kg",dwg:"1621000",prev:1,rec:0,status:"Pendente"},
   {id:223,eq:"gerador",conj:"EST",pos:"23",cod:"0147GSV1-1202005",desc:"Fechamento das janelas auxiliares — chapa ASTM A36 3 mm, 400×400 mm",dwg:"1201000",prev:7,rec:0,status:"Pendente"},
   {id:224,eq:"gerador",conj:"EST",pos:"24",cod:"0147GSV1-1202013",desc:"Fechamento das janelas dos cabos — chapa ASTM A36 3 mm, 400×400 mm",dwg:"1201000",prev:1,rec:0,status:"Pendente"},
   {id:225,eq:"gerador",conj:"EST",pos:"25",cod:"0147GSV1-1202004",desc:"Fechamento da carcaça-fundação — chapa ASTM A36 3 mm, 1277×120 mm",dwg:"1201000",prev:16,rec:0,status:"Pendente"},
@@ -1459,7 +1467,449 @@ const DEFAULT_GERADOR_MGI = [
   {id:1003,eq:"gerador",conj:"MGI",pos:"—",cod:"0147GSV1-2983001",desc:"Patim de guia-matéria prima — chapa ASTM A36 152,40 mm, 350×300 mm, 125,62 kg bruto",dwg:"2983001",prev:6,rec:0,status:"Pendente"},
 ];
 
-const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR, ...DEFAULT_GERADOR_ACP, ...DEFAULT_GERADOR_EIX, ...DEFAULT_GERADOR_CRZ, ...DEFAULT_GERADOR_CRI, ...DEFAULT_GERADOR_MFL, ...DEFAULT_GERADOR_PFL, ...DEFAULT_GERADOR_MCS, ...DEFAULT_GERADOR_MGI];
+// ── DADOS GERADOR — CARCAÇA DO ESTATOR (EST) — subconjunto 1271000 ──
+const DEFAULT_GERADOR_EST2 = [
+  // Conjunto raiz (meia carcaça — fabricar 2 por gerador)
+  {id:1004,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1271000",desc:"Carcaça do estator — meia carcaça soldada ASTM A36, 4169,95 kg líq.",dwg:"1271000",prev:2,rec:0,status:"Pendente"},
+  // Subpeças fabricadas (pos. conforme lista do dwg 1271000)
+  {id:1005,eq:"gerador",conj:"EST",pos:"1",cod:"0147GSV1-1272001",desc:"Prateleira central — chapa A36 25,00 mm, 6525×3272,5 mm, 635,29 kg",dwg:"1272001",prev:1,rec:0,status:"Pendente"},
+  {id:1006,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1272002",desc:"Prateleira superior — chapa A36 19,00 mm, 6525×3272,5 mm, 468,21 kg",dwg:"1272002",prev:1,rec:0,status:"Pendente"},
+  {id:1007,eq:"gerador",conj:"EST",pos:"3",cod:"0147GSV1-1272003",desc:"Prateleira inferior — chapa A36 37,50 mm, 6550×3285 mm, 953,80 kg",dwg:"1272003",prev:1,rec:0,status:"Pendente"},
+  {id:1008,eq:"gerador",conj:"EST",pos:"4",cod:"0147GSV1-1272004",desc:"Chapa calandrada — chapa A36 12,50 mm, 10239×1200 mm, 851,95 kg",dwg:"1272004",prev:1,rec:0,status:"Pendente"},
+  {id:1009,eq:"gerador",conj:"EST",pos:"5",cod:"0147GSV1-1272005",desc:"Fechamento superior — chapa A36 12,50 mm, 6550×3260 mm, 220,01 kg",dwg:"1272005",prev:1,rec:0,status:"Pendente"},
+  {id:1010,eq:"gerador",conj:"EST",pos:"6",cod:"0147GSV1-1272006",desc:"Reforço da prateleira — chapa A36 25,00 mm, 290×235 mm, 10,50 kg",dwg:"1272006",prev:6,rec:0,status:"Pendente"},
+  {id:1011,eq:"gerador",conj:"EST",pos:"7",cod:"0147GSV1-1272007",desc:"Reforço — chapa A36 25,00 mm, 575×225 mm, 20,60 kg",dwg:"1272007",prev:3,rec:0,status:"Pendente"},
+  {id:1012,eq:"gerador",conj:"EST",pos:"8",cod:"0147GSV1-1272008",desc:"Barra redonda — barra redonda A36 Ø50,80 mm, L=290 mm, 4,61 kg",dwg:"1271000",prev:46,rec:0,status:"Pendente"},
+  {id:1013,eq:"gerador",conj:"EST",pos:"9",cod:"0147GSV1-1272009",desc:"Sapata da cruzeta superior — chapa A36 37,50 mm, 350×155 mm, 15,63 kg",dwg:"1272009",prev:4,rec:0,status:"Pendente"},
+  {id:1014,eq:"gerador",conj:"EST",pos:"10",cod:"0147GSV1-1272010",desc:"Sapata do estator — chapa A36 37,50 mm, 642×215 mm, 33,36 kg",dwg:"1272010",prev:4,rec:0,status:"Pendente"},
+  {id:1015,eq:"gerador",conj:"EST",pos:"11",cod:"0147GSV1-1272011",desc:"Calço — chapa A36 19,00 mm, 158×51 mm, 1,17 kg",dwg:"1272011",prev:23,rec:0,status:"Pendente"},
+  {id:1016,eq:"gerador",conj:"EST",pos:"12",cod:"0147GSV1-1272012",desc:"Flange — chapa A36 50,00 mm, 1237,5×300 mm, 102,02 kg",dwg:"1272012",prev:2,rec:0,status:"Pendente"},
+  {id:1017,eq:"gerador",conj:"EST",pos:"13",cod:"0147GSV1-1272013",desc:"Reforço da sapata — chapa A36 37,50 mm, 575×225 mm, 30,90 kg",dwg:"1272013",prev:4,rec:0,status:"Pendente"},
+  {id:1018,eq:"gerador",conj:"EST",pos:"14",cod:"0147GSV1-1272014",desc:"Coluna — chapa A36 12,50 mm, 290×275 mm, 7,78 kg",dwg:"1271000",prev:16,rec:0,status:"Pendente"},
+  {id:1019,eq:"gerador",conj:"EST",pos:"15",cod:"0147GSV1-1272015",desc:"Reforço — chapa A36 16,00 mm, 575×200 mm, 14,33 kg",dwg:"1271000",prev:8,rec:0,status:"Pendente"},
+  {id:1020,eq:"gerador",conj:"EST",pos:"16",cod:"0147GSV1-1272016",desc:"Meio calço — chapa A36 19,00 mm, 79×51 mm, 0,59 kg",dwg:"1272016",prev:2,rec:0,status:"Pendente"},
+  {id:1021,eq:"gerador",conj:"EST",pos:"17",cod:"0147GSV1-1272017",desc:"Tarugo centralizador — chapa A36 50,00 mm, 150×55 mm, 3,24 kg",dwg:"1271000",prev:2,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — GUIAS DE AR (GAR) — conjunto 1481000 ──────
+const DEFAULT_GERADOR_GAR = [
+  // Conjunto raiz
+  {id:1022,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1481000",desc:"Guias de ar — conjunto soldado ASTM A36, 701,50 kg",dwg:"1481000",prev:1,rec:0,status:"Pendente"},
+  // Subconjuntos nível 1
+  {id:1023,eq:"gerador",conj:"GAR",pos:"1",cod:"0147GSV1-1481001",desc:"Guia de ar superior — conj. soldado A36, 25,32 kg",dwg:"1481001",prev:8,rec:0,status:"Pendente"},
+  {id:1024,eq:"gerador",conj:"GAR",pos:"2",cod:"0147GSV1-1481002",desc:"Guia de ar superior-recorte — conj. soldado A36, 24,36 kg",dwg:"1481002",prev:8,rec:0,status:"Pendente"},
+  {id:1025,eq:"gerador",conj:"GAR",pos:"3",cod:"0147GSV1-1481003",desc:"Guia de ar inferior — conj. soldado A36, 18,91 kg",dwg:"1481003",prev:12,rec:0,status:"Pendente"},
+  {id:1026,eq:"gerador",conj:"GAR",pos:"4",cod:"0147GSV1-1481004",desc:"Fechamento inferior — conj. soldado A36, 10,13 kg",dwg:"1481004",prev:6,rec:0,status:"Pendente"},
+  // Fabricados — subpeças das guias superiores (1481001 e 1481002)
+  {id:1027,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482001",desc:"Chapa — chapa A36 2,00 mm, 1275×1127 mm, 18,70 kg",dwg:"1482001",prev:8,rec:0,status:"Pendente"},
+  {id:1028,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482002",desc:"Aleta — chapa A36 4,75 mm, 881×40 mm, 1,58 kg",dwg:"1481001",prev:16,rec:0,status:"Pendente"},
+  {id:1029,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482003",desc:"Chapa recorte — chapa A36 2,00 mm, 1275×1127 mm, 18,33 kg",dwg:"1482003",prev:8,rec:0,status:"Pendente"},
+  {id:1030,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482004",desc:"Anel externo — chapa A36 4,75 mm, 1205×42 mm, 1,89 kg",dwg:"1482004",prev:8,rec:0,status:"Pendente"},
+  {id:1031,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482006",desc:"Segmento anel externo — chapa A36 4,75 mm, 417×42 mm, 0,65 kg",dwg:"1482006",prev:16,rec:0,status:"Pendente"},
+  {id:1032,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482007",desc:"Anel interno — chapa A36 4,75 mm, 856×42 mm, 1,34 kg",dwg:"1482007",prev:16,rec:0,status:"Pendente"},
+  // Fabricados — subpeças da guia inferior (1481003)
+  {id:1033,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482009",desc:"Chapa — chapa A36 4,75 mm, 1258×90 mm, 4,03 kg",dwg:"1482009",prev:12,rec:0,status:"Pendente"},
+  {id:1034,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482010",desc:"Anel calandrado — chapa A36 4,75 mm, 971×60 mm, 2,17 kg",dwg:"1482010",prev:12,rec:0,status:"Pendente"},
+  {id:1035,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482011",desc:"Chapa conformada — chapa A36 2,00 mm, 1179×456 mm, 7,11 kg",dwg:"1482011",prev:12,rec:0,status:"Pendente"},
+  {id:1036,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482012",desc:"Aleta — chapa A36 4,75 mm, 344×299 mm, 0,68 kg",dwg:"1481003",prev:36,rec:0,status:"Pendente"},
+  // Fabricados — subpeças do fechamento inferior (1481004)
+  {id:1037,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482013",desc:"Anel calandrado menor — chapa A36 2,00 mm, 2000×100 mm, 3,13 kg",dwg:"1482013",prev:6,rec:0,status:"Pendente"},
+  {id:1038,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482014",desc:"Chapa — chapa A36 2,00 mm, 2092×382 mm, 5,23 kg",dwg:"1481004",prev:6,rec:0,status:"Pendente"},
+  {id:1039,eq:"gerador",conj:"GAR",pos:"—",cod:"0147GSV1-1482015",desc:"Anel calandrado — chapa A36 2,00 mm, 2167×80 mm, 2,72 kg",dwg:"1482015",prev:6,rec:0,status:"Pendente"},
+  // Fabricado — arruela especial (conj. raiz)
+  {id:1040,eq:"gerador",conj:"GAR",pos:"5",cod:"0147GSV1-1482005",desc:"Arruela M10 especial — chapa A36 2,00 mm, 35×35 mm, 0,01 kg",dwg:"1481000",prev:40,rec:0,status:"Pendente"},
+  // Comerciais novos do conjunto raiz
+  {id:1041,eq:"gerador",conj:"GAR",pos:"9",cod:"101969",desc:"Porca sext. zincada classe 8 DIN 934 MA M10",dwg:"1481000",prev:144,rec:0,status:"Pendente"},
+  {id:1042,eq:"gerador",conj:"GAR",pos:"11",cod:"103088",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×30",dwg:"1481000",prev:12,rec:0,status:"Pendente"},
+  {id:1043,eq:"gerador",conj:"GAR",pos:"12",cod:"101491",desc:"Lençol de borracha SBR 65/75 Shore A 4 mm, 17440×1675 mm, 3,52 kg",dwg:"1481000",prev:1,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — CHAPAS ESTATÓRICAS (EST) — conjunto 1501000 ─
+const DEFAULT_GERADOR_CHP = [
+  // Conjunto raiz (núcleo estatórico completo)
+  {id:1044,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1501000",desc:"Chapas estatóricas — núcleo estatórico completo, aço silício GNO E110 C3 0,50 mm, 12540,00 kg",dwg:"1501000",prev:1,rec:0,status:"Pendente"},
+  // Chapas nominais
+  {id:1045,eq:"gerador",conj:"EST",pos:"1",cod:"0147GSV1-1502001",desc:"Chapa estatórica — aço silício GNO E110 C3 0,50 mm, 756×225 mm, 0,48 kg",dwg:"1501000",prev:24012,rec:0,status:"Pendente"},
+  {id:1046,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1502002",desc:"Chapa estatórica-9 dedos — aço silício GNO E110 C3 0,50 mm, 400×225 mm, 0,25 kg",dwg:"1501000",prev:1044,rec:0,status:"Pendente"},
+  {id:1047,eq:"gerador",conj:"EST",pos:"3",cod:"0147GSV1-1502003",desc:"Chapa estatórica-8 dedos — aço silício GNO E110 C3 0,50 mm, 356×225 mm, 0,23 kg",dwg:"1501000",prev:1044,rec:0,status:"Pendente"},
+  // Chapas de recuo 1
+  {id:1048,eq:"gerador",conj:"EST",pos:"4",cod:"0147GSV1-1502004",desc:"Chapa estatórica de recuo — aço silício GNO E110 C3 0,50 mm, 756×217 mm, 0,47 kg",dwg:"1501000",prev:552,rec:0,status:"Pendente"},
+  {id:1049,eq:"gerador",conj:"EST",pos:"5",cod:"0147GSV1-1502005",desc:"Chapa estatórica de recuo-9 dedos — aço silício GNO E110 C3 0,50 mm, 400×217 mm, 0,25 kg",dwg:"1501000",prev:24,rec:0,status:"Pendente"},
+  {id:1050,eq:"gerador",conj:"EST",pos:"6",cod:"0147GSV1-1502006",desc:"Chapa estatórica de recuo-8 dedos — aço silício GNO E110 C3 0,50 mm, 356×217 mm, 0,22 kg",dwg:"1501000",prev:24,rec:0,status:"Pendente"},
+  // Chapas de recuo maior (recuo 2)
+  {id:1051,eq:"gerador",conj:"EST",pos:"7",cod:"0147GSV1-1502007",desc:"Chapa estatórica de recuo maior — aço silício GNO E110 C3 0,50 mm, 756×209 mm, 0,45 kg",dwg:"1501000",prev:552,rec:0,status:"Pendente"},
+  {id:1052,eq:"gerador",conj:"EST",pos:"8",cod:"0147GSV1-1502008",desc:"Chapa estatórica de recuo maior-9 dedos — aço silício GNO E110 C3 0,50 mm, 400×209 mm, 0,24 kg",dwg:"1501000",prev:24,rec:0,status:"Pendente"},
+  {id:1053,eq:"gerador",conj:"EST",pos:"9",cod:"0147GSV1-1502009",desc:"Chapa estatórica de recuo maior-8 dedos — aço silício GNO E110 C3 0,50 mm, 356×209 mm, 0,21 kg",dwg:"1501000",prev:24,rec:0,status:"Pendente"},
+  // Chapa cava alargada (detalhe núcleo)
+  {id:1054,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1502010",desc:"Chapa estatórica cava alargada — aço silício GNO E110 C3 0,50 mm, 756×222 mm, 0,44 kg",dwg:"1502010",prev:24,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — NÚCLEO ESTATÓRICO (EST) — conjunto 1511000 ─
+const DEFAULT_GERADOR_NUC = [
+  // Conjunto raiz (já cadastrado via 1501000/1511000 — usar como referência de montagem)
+  // Subconjuntos — placas de prensagem
+  {id:1055,eq:"gerador",conj:"EST",pos:"7",cod:"0147GSV1-1511001",desc:"Placa de prensagem LNA-8 dedos — conj. soldado A36/inox, 27,44 kg",dwg:"1511001",prev:24,rec:0,status:"Pendente"},
+  {id:1056,eq:"gerador",conj:"EST",pos:"8",cod:"0147GSV1-1511002",desc:"Placa de prensagem LNA-9 dedos — conj. soldado A36/inox, 31,02 kg",dwg:"1511002",prev:24,rec:0,status:"Pendente"},
+  {id:1057,eq:"gerador",conj:"EST",pos:"11",cod:"0147GSV1-1511003",desc:"Chapa de ventilação — conj. chapa silício + perfis inox, 1,11 kg",dwg:"1511003",prev:288,rec:0,status:"Pendente"},
+  {id:1058,eq:"gerador",conj:"EST",pos:"9",cod:"0147GSV1-1511004",desc:"Placa de prensagem LA-9 dedos — conj. soldado A36/inox, 30,94 kg",dwg:"1511004",prev:24,rec:0,status:"Pendente"},
+  {id:1059,eq:"gerador",conj:"EST",pos:"10",cod:"0147GSV1-1511005",desc:"Placa de prensagem LA-8 dedos — conj. soldado A36/inox, 27,37 kg",dwg:"1511005",prev:24,rec:0,status:"Pendente"},
+  // Fabricados — núcleo estatórico
+  {id:1060,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1512001",desc:"Barra guia — chapa A572 Gr50 50,00 mm, 700×75 mm, 18,10 kg",dwg:"1512001",prev:48,rec:0,status:"Pendente"},
+  {id:1061,eq:"gerador",conj:"EST",pos:"3",cod:"0147GSV1-1512002",desc:"Trava da barra — chapa A36 12,50 mm, 110×80 mm, 0,61 kg",dwg:"1511000",prev:96,rec:0,status:"Pendente"},
+  {id:1062,eq:"gerador",conj:"EST",pos:"4",cod:"0147GSV1-1512003",desc:"Bloco tensionador — barra quadrada A36 63,50 mm, L=60 mm, 1,52 kg",dwg:"1512003",prev:192,rec:0,status:"Pendente"},
+  {id:1063,eq:"gerador",conj:"EST",pos:"5",cod:"0147GSV1-1512004",desc:"Tirante M24 — barra roscada zincada cl.8.8 M24, L=200 mm, 0,71 kg",dwg:"1511000",prev:192,rec:0,status:"Pendente"},
+  {id:1064,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512005",desc:"Placa de prensagem LNA-8 dedos — chapa A36 37,50 mm, 362×235 mm, 22,50 kg",dwg:"1512005",prev:24,rec:0,status:"Pendente"},
+  {id:1065,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512006",desc:"Placa de prensagem LNA-9 dedos — chapa A36 37,50 mm, 409×235 mm, 25,50 kg",dwg:"1512006",prev:24,rec:0,status:"Pendente"},
+  {id:1066,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512007",desc:"Dedo de prensagem — barra chata inox AISI 304 31,75×12,70 mm, L=180 mm, 0,56 kg",dwg:"1512007",prev:576,rec:0,status:"Pendente"},
+  {id:1067,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512008",desc:"Dedo de prensagem-menor — barra chata inox AISI 304 31,75×12,70 mm, L=165 mm, 0,50 kg",dwg:"1512008",prev:192,rec:0,status:"Pendente"},
+  {id:1068,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512009",desc:"Perfil de ventilação — perfil I inox AISI 304 10×5 mm, L=195 mm, 0,04 kg",dwg:"1511003",prev:4032,rec:0,status:"Pendente"},
+  {id:1069,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512010",desc:"Perfil de ventilação menor — perfil I inox AISI 304 10×5 mm, L=180 mm, 0,04 kg",dwg:"1511003",prev:864,rec:0,status:"Pendente"},
+  {id:1070,eq:"gerador",conj:"EST",pos:"12",cod:"0147GSV1-1512011",desc:"Tirante de prensagem — barra redonda SAE 4140 Ø31,75 mm, L=950 mm, 5,77 kg",dwg:"1512011",prev:96,rec:0,status:"Pendente"},
+  {id:1071,eq:"gerador",conj:"EST",pos:"14",cod:"0147GSV1-1512012",desc:"Arruela especial — chapa A572 Gr50 9,50 mm, 120×120 mm, 0,69 kg",dwg:"1511000",prev:96,rec:0,status:"Pendente"},
+  {id:1072,eq:"gerador",conj:"EST",pos:"15",cod:"0147GSV1-1512013",desc:"Tirante M30 — barra roscada zincada cl.8.8 M30, L=180 mm, 0,99 kg",dwg:"1511000",prev:24,rec:0,status:"Pendente"},
+  {id:1073,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512014",desc:"Placa de prensagem LA-9 dedos — chapa A36 37,50 mm, 409×235 mm, 25,42 kg",dwg:"1512014",prev:24,rec:0,status:"Pendente"},
+  {id:1074,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512015",desc:"Placa de prensagem LA-8 dedos — chapa A36 37,50 mm, 362×235 mm, 22,43 kg",dwg:"1512015",prev:24,rec:0,status:"Pendente"},
+  {id:1075,eq:"gerador",conj:"EST",pos:"16",cod:"0147GSV1-1512016",desc:"Fechamento de ar — barra chata A36 50,80×3,17 mm, L=4753 mm, 6,01 kg",dwg:"1512016",prev:8,rec:0,status:"Pendente"},
+  {id:1076,eq:"gerador",conj:"EST",pos:"17",cod:"0147GSV1-1512017",desc:"Calço deslizante — chapa inox A240-304L 1,00 mm, 158×51 mm, 0,06 kg",dwg:"1511000",prev:92,rec:0,status:"Pendente"},
+  {id:1077,eq:"gerador",conj:"EST",pos:"18",cod:"0147GSV1-1512018",desc:"Meio calço deslizante — chapa inox A240-304L 1,00 mm, 79×51 mm, 0,03 kg",dwg:"1511000",prev:8,rec:0,status:"Pendente"},
+  {id:1078,eq:"gerador",conj:"EST",pos:"13",cod:"0147GSV1-1512019",desc:"Bucha guia — barra redonda SAE 4140 Ø76,20 mm, L=60 mm, 0,75 kg",dwg:"1512019",prev:96,rec:0,status:"Pendente"},
+  {id:1079,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1512020",desc:"Cunha do RTD — chapa NEMA G11 3,00 mm, 50×50 mm, 0,01 kg",dwg:"1512020",prev:408,rec:0,status:"Pendente"},
+  // Comerciais novos do núcleo estatórico
+  {id:1080,eq:"gerador",conj:"EST",pos:"25",cod:"101809",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M16×70",dwg:"1511000",prev:48,rec:0,status:"Pendente"},
+  {id:1081,eq:"gerador",conj:"EST",pos:"23",cod:"103184",desc:"Arruela mola prato fosfatizada SAE 6150 DIN 2093 A Ø100×Ø51×6 mm",dwg:"1511000",prev:576,rec:0,status:"Pendente"},
+  {id:1082,eq:"gerador",conj:"EST",pos:"28",cod:"102987",desc:"Porca sext. autotravante zincada classe 8 DIN 982 MA M24",dwg:"1511000",prev:192,rec:0,status:"Pendente"},
+  {id:1083,eq:"gerador",conj:"EST",pos:"27",cod:"103322",desc:"Porca sext. autotravante zincada classe 8 DIN 985 MA M30",dwg:"1511000",prev:96,rec:0,status:"Pendente"},
+  {id:1084,eq:"gerador",conj:"EST",pos:"21",cod:"100198",desc:"Arruela lisa zincada DIN 125A M24",dwg:"1511000",prev:384,rec:0,status:"Pendente"},
+  {id:1085,eq:"gerador",conj:"EST",pos:"20",cod:"101973",desc:"Porca sext. zincada classe 8 DIN 934 MA M24",dwg:"1511000",prev:384,rec:0,status:"Pendente"},
+  {id:1086,eq:"gerador",conj:"EST",pos:"4",cod:"101822",desc:"Parafuso sext. zincado classe 8.8 DIN 933 MA M24×80",dwg:"1511001",prev:48,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — MATERIAIS BOBINA ESTATÓRICA (EST) — dwg 1601001 ─
+const DEFAULT_GERADOR_BOB = [
+  // Materiais componentes da bobina estatórica (por conjunto de 408 bobinas)
+  {id:1087,eq:"gerador",conj:"EST",pos:"1",cod:"103176",desc:"Fio de cobre ASTM C11000 têmpera mole ER1 2,00×5,00 mm — L=89600 mm/bobina, 8,00 kg",dwg:"1601001",prev:408,rec:0,status:"Pendente"},
+  {id:1088,eq:"gerador",conj:"EST",pos:"2",cod:"103189",desc:"Tripreg N50 SB — 0,90×30×665 mm",dwg:"1601001",prev:816,rec:0,status:"Pendente"},
+  {id:1089,eq:"gerador",conj:"EST",pos:"3",cod:"103194",desc:"NMN — 0,47×9,00×18,00 mm",dwg:"1601001",prev:22848,rec:0,status:"Pendente"},
+  {id:1090,eq:"gerador",conj:"EST",pos:"4",cod:"103195",desc:"Kremkitt C — 2,00×11,00 mm, L=2320 mm/bobina",dwg:"1601001",prev:408,rec:0,status:"Pendente"},
+  {id:1091,eq:"gerador",conj:"EST",pos:"5",cod:"103190",desc:"Fita de mica DMI 1265M — 0,17×20,00 mm, L=200000 mm/bobina",dwg:"1601001",prev:408,rec:0,status:"Pendente"},
+  {id:1092,eq:"gerador",conj:"EST",pos:"6",cod:"103191",desc:"Fita de mica DMI 1230M — 0,12×20,00 mm, L=56000 mm/bobina",dwg:"1601001",prev:408,rec:0,status:"Pendente"},
+  {id:1093,eq:"gerador",conj:"EST",pos:"7",cod:"103188",desc:"Falso tecido condutivo 06ELR — 0,095×25,00 mm, L=8000 mm/bobina",dwg:"1601001",prev:408,rec:0,status:"Pendente"},
+];
+
+// ── DADOS GERADOR — ENROLAMENTO ESTATÓRICO (EST) — conexões 1621000 ─
+const DEFAULT_GERADOR_ENR = [
+  // Documento de referência (tabela de ligações)
+  {id:1094,eq:"gerador",conj:"EST",pos:"—",cod:"0147GSV1-1620001",desc:"Bobinagem do estator — tabela de ligações, 12222kVA 128rpm 6,6kV",dwg:"1620001",prev:1,rec:0,status:"Pendente"},
+  // Conexões de grupo e série (barra chata cobre C11000 31,75×4,76 mm)
+  {id:1095,eq:"gerador",conj:"EST",pos:"1",cod:"0147GSV1-1622001",desc:"Conexão 1-A — barra chata cobre C11000 31,75×4,76 mm, L=575 mm, 0,78 kg",dwg:"1622001",prev:29,rec:0,status:"Pendente"},
+  {id:1096,eq:"gerador",conj:"EST",pos:"2",cod:"0147GSV1-1622002",desc:"Conexão 1-A menor — barra chata cobre C11000 31,75×4,76 mm, L=560 mm, 0,76 kg",dwg:"1622002",prev:29,rec:0,status:"Pendente"},
+  {id:1097,eq:"gerador",conj:"EST",pos:"3",cod:"0147GSV1-1622003",desc:"Conexão 3-B — barra chata cobre C11000 31,75×4,76 mm, L=746 mm, 1,03 kg",dwg:"1622003",prev:12,rec:0,status:"Pendente"},
+  {id:1098,eq:"gerador",conj:"EST",pos:"4",cod:"0147GSV1-1622004",desc:"Conexão 3-B menor — barra chata cobre C11000 31,75×4,76 mm, L=731 mm, 1,01 kg",dwg:"1622004",prev:12,rec:0,status:"Pendente"},
+  {id:1099,eq:"gerador",conj:"EST",pos:"5",cod:"0147GSV1-1622005",desc:"Conexão 3-A — barra chata cobre C11000 31,75×4,76 mm, L=702 mm, 0,97 kg",dwg:"1622005",prev:28,rec:0,status:"Pendente"},
+  {id:1100,eq:"gerador",conj:"EST",pos:"6",cod:"0147GSV1-1622006",desc:"Conexão 3-A menor — barra chata cobre C11000 31,75×4,76 mm, L=688 mm, 0,95 kg",dwg:"1622006",prev:28,rec:0,status:"Pendente"},
+  {id:1101,eq:"gerador",conj:"EST",pos:"7",cod:"0147GSV1-1622007",desc:"Conexão 2-A — barra chata cobre C11000 31,75×4,76 mm, L=466 mm, 0,63 kg",dwg:"1622007",prev:30,rec:0,status:"Pendente"},
+  {id:1102,eq:"gerador",conj:"EST",pos:"8",cod:"0147GSV1-1622008",desc:"Conexão 2-A menor — barra chata cobre C11000 31,75×4,76 mm, L=451 mm, 0,61 kg",dwg:"1622008",prev:30,rec:0,status:"Pendente"},
+  {id:1103,eq:"gerador",conj:"EST",pos:"9",cod:"0147GSV1-1622009",desc:"Conexão 4-B — barra chata cobre C11000 31,75×4,76 mm, L=624 mm, 0,84 kg",dwg:"1622009",prev:12,rec:0,status:"Pendente"},
+  {id:1104,eq:"gerador",conj:"EST",pos:"10",cod:"0147GSV1-1622010",desc:"Conexão 4-B menor — barra chata cobre C11000 31,75×4,76 mm, L=610 mm, 0,83 kg",dwg:"1622010",prev:12,rec:0,status:"Pendente"},
+  {id:1105,eq:"gerador",conj:"EST",pos:"11",cod:"0147GSV1-1622011",desc:"Conexão 4-A — barra chata cobre C11000 31,75×4,76 mm, L=622 mm, 0,84 kg",dwg:"1622011",prev:30,rec:0,status:"Pendente"},
+  {id:1106,eq:"gerador",conj:"EST",pos:"12",cod:"0147GSV1-1622012",desc:"Conexão 4-A menor — barra chata cobre C11000 31,75×4,76 mm, L=568 mm, 0,77 kg",dwg:"1622012",prev:30,rec:0,status:"Pendente"},
+  {id:1107,eq:"gerador",conj:"EST",pos:"13",cod:"0147GSV1-1622013",desc:"Conexão 2-B — barra chata cobre C11000 31,75×4,76 mm, L=509 mm, 0,69 kg",dwg:"1622013",prev:12,rec:0,status:"Pendente"},
+  {id:1108,eq:"gerador",conj:"EST",pos:"14",cod:"0147GSV1-1622014",desc:"Conexão 2-B menor — barra chata cobre C11000 31,75×4,76 mm, L=493 mm, 0,67 kg",dwg:"1622014",prev:12,rec:0,status:"Pendente"},
+  {id:1109,eq:"gerador",conj:"EST",pos:"15",cod:"0147GSV1-1622015",desc:"Conexão 1-B — barra chata cobre C11000 31,75×4,76 mm, L=617 mm, 0,83 kg",dwg:"1622015",prev:12,rec:0,status:"Pendente"},
+  {id:1110,eq:"gerador",conj:"EST",pos:"16",cod:"0147GSV1-1622016",desc:"Conexão 1-B menor — barra chata cobre C11000 31,75×4,76 mm, L=605 mm, 0,82 kg",dwg:"1622016",prev:12,rec:0,status:"Pendente"},
+  {id:1111,eq:"gerador",conj:"EST",pos:"17",cod:"0147GSV1-1622017",desc:"Conexão série — barra chata cobre C11000 44,45×4,76 mm, L=86 mm, 0,16 kg",dwg:"1622017",prev:1298,rec:0,status:"Pendente"},
+  {id:1112,eq:"gerador",conj:"EST",pos:"18",cod:"0147GSV1-1622018",desc:"Terminal — barra chata cobre C11000 31,75×4,76 mm, L=278 mm, 0,38 kg",dwg:"1622018",prev:4,rec:0,status:"Pendente"},
+  {id:1113,eq:"gerador",conj:"EST",pos:"19",cod:"0147GSV1-1622019",desc:"Terminal especial — barra chata cobre C11000 31,75×4,76 mm, L=272 mm, 0,37 kg",dwg:"1622019",prev:4,rec:0,status:"Pendente"},
+  {id:1114,eq:"gerador",conj:"EST",pos:"20",cod:"0147GSV1-1622020",desc:"Terminal maior — barra chata cobre C11000 31,75×4,76 mm, L=363 mm, 0,50 kg",dwg:"1622020",prev:2,rec:0,status:"Pendente"},
+  {id:1115,eq:"gerador",conj:"EST",pos:"21",cod:"0147GSV1-1622021",desc:"Terminal especial maior — barra chata cobre C11000 31,75×4,76 mm, L=358 mm, 0,49 kg",dwg:"1622021",prev:2,rec:0,status:"Pendente"},
+  // Materiais comerciais novos
+  {id:1116,eq:"gerador",conj:"EST",pos:"—",cod:"104510",desc:"Barra chata cobre C11000 31,75×4,76 mm — matéria-prima conexões grupo",dwg:"1621000",prev:1,rec:0,status:"Pendente"},
+  {id:1117,eq:"gerador",conj:"EST",pos:"—",cod:"104509",desc:"Barra chata cobre C11000 44,45×4,76 mm — matéria-prima conexão série",dwg:"1621000",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_CTF = [
+  // Conjunto CTF — Caixa dos Terminais de Força — 0147GSV1-1661000
+  // IDs 1118–1135
+  {id:1118,eq:"gerador",conj:"CTF",pos:"1",cod:"0147GSV1-1661001",desc:"Suporte dos Terminais — chapa laminada ASTM A36 6,30 mm, 553×793 mm, 47,97 kg",dwg:"1661001",prev:1,rec:0,status:"Pendente"},
+  {id:1119,eq:"gerador",conj:"CTF",pos:"2",cod:"0147GSV1-1661002",desc:"Proteção dos Terminais — chapa laminada ASTM A36 4,75 mm, 930×1189,5 mm, 75,33 kg",dwg:"1661002",prev:1,rec:0,status:"Pendente"},
+  {id:1120,eq:"gerador",conj:"CTF",pos:"—",cod:"0147GSV1-1662001",desc:"Chapa — chapa laminada ASTM A36 3,00 mm, 500×250 mm, 2,94 kg",dwg:"1661001",prev:4,rec:0,status:"Pendente"},
+  {id:1121,eq:"gerador",conj:"CTF",pos:"3",cod:"0147GSV1-1662002",desc:"Suporte dos Terminais — chapa laminada ASTM A36 6,30 mm, 1468×500 mm, 36,19 kg",dwg:"1662002",prev:1,rec:0,status:"Pendente"},
+  {id:1122,eq:"gerador",conj:"CTF",pos:"4",cod:"0147GSV1-1662003",desc:"Chapa Dobrada — chapa laminada ASTM A36 4,75 mm, 2117×664 mm, 46,23 kg",dwg:"1662003",prev:1,rec:0,status:"Pendente"},
+  {id:1123,eq:"gerador",conj:"CTF",pos:"5",cod:"0147GSV1-1662004",desc:"Fechamento Lateral - Lado A — chapa laminada ASTM A36 4,75 mm, 640×425 mm, 4,52 kg",dwg:"1662004",prev:1,rec:0,status:"Pendente"},
+  {id:1124,eq:"gerador",conj:"CTF",pos:"6",cod:"0147GSV1-1662005",desc:"Fechamento Lateral - Lado B — chapa laminada ASTM A36 4,75 mm, 640×425 mm, 4,52 kg",dwg:"1662005",prev:1,rec:0,status:"Pendente"},
+  {id:1125,eq:"gerador",conj:"CTF",pos:"7",cod:"0147GSV1-1662007",desc:"Tampa — chapa laminada ASTM A36 4,75 mm, 850×640 mm, 19,24 kg",dwg:"1662007",prev:1,rec:0,status:"Pendente"},
+  {id:1126,eq:"gerador",conj:"CTF",pos:"8",cod:"0147GSV1-1662008",desc:"Terminal de Fase/Neutro — barra chata cobre C11000 50,80×9,53 mm, L=280 mm, 1,13 kg",dwg:"1662008",prev:6,rec:0,status:"Pendente"},
+  {id:1127,eq:"gerador",conj:"CTF",pos:"9",cod:"0147GSV1-1662009",desc:"Placa Isolante — placa DME 34C 10,0 mm, 500×370 mm, 3,36 kg",dwg:"1662009",prev:2,rec:0,status:"Pendente"},
+  {id:1128,eq:"gerador",conj:"CTF",pos:"10",cod:"0147GSV1-1662010",desc:"Tirante dos Isoladores — barra roscada zincada cl. 8.8 UNC 1/2\u2033, L=50 mm, 0,05 kg",dwg:"1662010",prev:6,rec:0,status:"Pendente"},
+  {id:1129,eq:"gerador",conj:"CTF",pos:"11",cod:"0147GSV1-1662011",desc:"Fechamento do Barril - Força — chapa laminada ASTM A36 6,30 mm, 930×312,5 mm, 13,63 kg",dwg:"1662011",prev:2,rec:0,status:"Pendente"},
+  {id:1130,eq:"gerador",conj:"CTF",pos:"12",cod:"0147GSV1-1662012",desc:"Fechamento do Barril - Sinal — chapa laminada ASTM A36 6,30 mm, 850×327,5 mm, 13,02 kg",dwg:"1662012",prev:2,rec:0,status:"Pendente"},
+  {id:1131,eq:"gerador",conj:"CTF",pos:"13",cod:"0147GSV1-1662013",desc:"Tampa Auxiliar — placa DME 34C 10,0 mm, 180×160 mm, 0,70 kg",dwg:"1662013",prev:4,rec:0,status:"Pendente"},
+  {id:1132,eq:"gerador",conj:"CTF",pos:"14",cod:"0147GSV1-1662014",desc:"Suporte do Cabeamento — chapa laminada ASTM A36 6,30 mm, 986×50 mm, 2,43 kg",dwg:"1662014",prev:1,rec:0,status:"Pendente"},
+  {id:1133,eq:"gerador",conj:"CTF",pos:"15",cod:"0147GSV1-1662015",desc:"Tala Isolante — placa DME 34C 10,0 mm, 340×50 mm, 0,41 kg",dwg:"1662015",prev:1,rec:0,status:"Pendente"},
+  {id:1134,eq:"gerador",conj:"CTF",pos:"16",cod:"0147GSV1-1662016",desc:"Plaqueta de Identificação CTF1/CTF2 — aço inox 304, 200×50 mm, 0,16 kg",dwg:"1662016",prev:2,rec:0,status:"Pendente"},
+  {id:1135,eq:"gerador",conj:"CTF",pos:"17",cod:"0147GSV1-1662017",desc:"Tampa Lateral — placa DME 34C 5,0 mm, 460×310 mm, 1,18 kg",dwg:"1662017",prev:2,rec:0,status:"Pendente"},
+  {id:1136,eq:"gerador",conj:"CTF",pos:"18",cod:"0147GSV1-1662018",desc:"Janela de Ventilação — chapa laminada ASTM A36 2,00 mm, 480×345 mm, 2,49 kg",dwg:"1662018",prev:3,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_EAT = [
+  // Conjunto EAT — Escova de Aterramento do Eixo — 0147GSV1-1751000
+  // IDs 1137–1148
+  {id:1137,eq:"gerador",conj:"EAT",pos:"1",cod:"0147GSV1-1751001",desc:"Suporte do Porta Escovas — chapa ASTM A36 9,50 mm, conjunto soldado, 2,68 kg",dwg:"1751001",prev:1,rec:0,status:"Pendente"},
+  {id:1138,eq:"gerador",conj:"EAT",pos:"—",cod:"0147GSV1-1752001",desc:"Chapa Base — chapa laminada ASTM A36 9,50 mm, 100×100 mm, 0,70 kg",dwg:"1751001",prev:1,rec:0,status:"Pendente"},
+  {id:1139,eq:"gerador",conj:"EAT",pos:"—",cod:"0147GSV1-1752002",desc:"Tubo — tubo quadrado ASTM A36 50×50×3,00 mm, L=180 mm, 0,76 kg",dwg:"1751001",prev:1,rec:0,status:"Pendente"},
+  {id:1140,eq:"gerador",conj:"EAT",pos:"—",cod:"0147GSV1-1752003",desc:"Chapa — chapa laminada ASTM A36 9,50 mm, 200×70 mm, 0,99 kg",dwg:"1752003",prev:1,rec:0,status:"Pendente"},
+  {id:1141,eq:"gerador",conj:"EAT",pos:"—",cod:"0147GSV1-1752004",desc:"Reforço — chapa laminada ASTM A36 9,50 mm, 70×70 mm, 0,23 kg",dwg:"1751001",prev:1,rec:0,status:"Pendente"},
+  {id:1142,eq:"gerador",conj:"EAT",pos:"2",cod:"0147GSV1-1752005",desc:"Haste — barra redonda trefilada SAE 1045 Ø16,00 mm, L=100 mm, 0,13 kg",dwg:"1752005",prev:1,rec:0,status:"Pendente"},
+  {id:1143,eq:"gerador",conj:"EAT",pos:"3",cod:"0147GSV1-1752006",desc:"Bucha Isolante — barra redonda NEMA G11 Ø25,00 mm, L=60 mm, 0,02 kg",dwg:"1752006",prev:1,rec:0,status:"Pendente"},
+  {id:1144,eq:"gerador",conj:"EAT",pos:"4",cod:"0147GSV1-1752007",desc:"Arruela Especial — chapa laminada ASTM A36 4,75 mm, 40×40 mm, 0,04 kg",dwg:"1751000",prev:1,rec:0,status:"Pendente"},
+  {id:1145,eq:"gerador",conj:"EAT",pos:"5",cod:"P002BAT0001000",desc:"Bloco de Aterramento 60×25,40×12,70 mm",dwg:"1751000",prev:1,rec:0,status:"Pendente"},
+  {id:1146,eq:"gerador",conj:"EAT",pos:"6",cod:"101985",desc:"Porta Escova 22×30 mm — ref. 6500-30531, 0,54 kg",dwg:"1751000",prev:2,rec:0,status:"Pendente"},
+  {id:1147,eq:"gerador",conj:"EAT",pos:"7",cod:"101316",desc:"Escova Eletrográfica 22×30×40 mm² ADT12 Eletrografite, 0,05 kg",dwg:"1751000",prev:2,rec:0,status:"Pendente"},
+  {id:1148,eq:"gerador",conj:"EAT",pos:"11",cod:"100658",desc:"Cabo de cobre flexível 0,6/1kV HEPR 90°C 35 mm², L=100 mm, 0,10 kg",dwg:"1751000",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_ESC = [
+  // Conjunto ESC — Escovas de Excitação — 0147GSV1-1761000
+  // IDs 1149–1154
+  {id:1149,eq:"gerador",conj:"ESC",pos:"1",cod:"0147GSV1-1762001",desc:"Haste das Escovas — barra roscada zincada cl. 8.8 MA M20, L=400 mm, 0,84 kg",dwg:"1762001",prev:4,rec:0,status:"Pendente"},
+  {id:1150,eq:"gerador",conj:"ESC",pos:"2",cod:"0147GSV1-1762002",desc:"Bucha Isolante — barra redonda NEMA G11 Ø25,00 mm, L=200 mm, 0,07 kg",dwg:"1762002",prev:4,rec:0,status:"Pendente"},
+  {id:1151,eq:"gerador",conj:"ESC",pos:"3",cod:"0147GSV1-1762003",desc:"Arruela Especial — chapa laminada ASTM A36 9,50 mm, 70×70 mm, 0,26 kg",dwg:"1762003",prev:8,rec:0,status:"Pendente"},
+  {id:1152,eq:"gerador",conj:"ESC",pos:"4",cod:"101985",desc:"Porta Escova 22×30 mm — ref. 6500-3053, 0,54 kg",dwg:"1761000",prev:8,rec:0,status:"Pendente"},
+  {id:1153,eq:"gerador",conj:"ESC",pos:"5",cod:"101316",desc:"Escova Eletrогрáfica 22×30×40 mm² ADT12 Eletrografite, 0,05 kg",dwg:"1761000",prev:16,rec:0,status:"Pendente"},
+  {id:1154,eq:"gerador",conj:"ESC",pos:"6",cod:"101972",desc:"Porca Sextavada Zincada Classe 8 DIN 934 MA M20, 0,07 kg",dwg:"1761000",prev:8,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_ARA = [
+  // Conjunto ARA — Aranha do Rotor — 0147GSV1-1971000
+  // IDs 1155–1172
+  {id:1155,eq:"gerador",conj:"ARA",pos:"1",cod:"0147GSV1-1972017",desc:"Cubo da Aranha — aço carbono fundido ASTM A148 gr.80-50, usinado, 4069,01 kg",dwg:"1972017",prev:1,rec:0,status:"Pendente"},
+  {id:1156,eq:"gerador",conj:"ARA",pos:"2",cod:"0147GSV1-1972015",desc:"Apoio da Perna — chapa ASTM A36 50,00 mm, 1820×1820 mm, 270,45 kg",dwg:"1972015",prev:1,rec:0,status:"Pendente"},
+  {id:1157,eq:"gerador",conj:"ARA",pos:"3",cod:"0147GSV1-1971002",desc:"Perna da Aranha — ASTM A572 gr.50, conjunto soldado, 454,83 kg",dwg:"1971002",prev:14,rec:0,status:"Pendente"},
+  {id:1158,eq:"gerador",conj:"ARA",pos:"4",cod:"0147GSV1-1972012",desc:"Pino Guia da Perna da Aranha — barra redonda SAE 1045 Ø31,75 mm, L=210 mm, 1,10 kg",dwg:"1972012",prev:14,rec:0,status:"Pendente"},
+  {id:1159,eq:"gerador",conj:"ARA",pos:"6",cod:"0147GSV1-1972014",desc:"Chaveta do Anel Magnético — barra quadrada trefilada SAE 1045 50,80 mm, L=740 mm, 13,02 kg",dwg:"1972014",prev:14,rec:0,status:"Pendente"},
+  {id:1160,eq:"gerador",conj:"ARA",pos:"15",cod:"0147GSV1-1972021",desc:"Trava da Chaveta/Cunhas — chapa laminada ASTM A36 12,50 mm, 90×80 mm, 0,67 kg",dwg:"1972021",prev:14,rec:0,status:"Pendente"},
+  {id:1161,eq:"gerador",conj:"ARA",pos:"17",cod:"0147GSV1-1973017",desc:"Cubo da Aranha-Fundido (bruto) — aço carbono fundido ASTM A148 gr.80-50, 4833,75 kg",dwg:"1973017",prev:1,rec:0,status:"Pendente"},
+  {id:1162,eq:"gerador",conj:"ARA",pos:"18",cod:"0147GSV1-1972018",desc:"Cunha do Anel Magnético — barra quadrada trefilada SAE 1045 25,40 mm, L=740 mm, 1,34 kg",dwg:"1972018",prev:28,rec:0,status:"Pendente"},
+  {id:1163,eq:"gerador",conj:"ARA",pos:"19",cod:"0147GSV1-1972019",desc:"Cunha do Anel Magnético Passante — barra quadrada trefilada SAE 1045 25,40 mm, L=840 mm, 1,52 kg",dwg:"1972019",prev:28,rec:0,status:"Pendente"},
+  // Subcomponentes da Perna da Aranha (0147GSV1-1971002)
+  {id:1164,eq:"gerador",conj:"ARA",pos:"—",cod:"0147GSV1-1972006",desc:"Flange do Cubo — chapa ASTM A572 gr.50 50,00 mm, 520×350 mm, 68,69 kg",dwg:"1972006",prev:1,rec:0,status:"Pendente"},
+  {id:1165,eq:"gerador",conj:"ARA",pos:"—",cod:"0147GSV1-1972009",desc:"Chapa da Cunha — chapa ASTM A572 gr.50 100,00 mm, 760×150 mm, 87,14 kg",dwg:"1972009",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_ANM = [
+  // Conjunto ANM — Anel Magnético do Rotor
+  // IDs 1166–1169
+  {id:1166,eq:"gerador",conj:"ANM",pos:"8",cod:"0147GSV1-1982001",desc:"Chapa do Anel Magnético — chapa laminada S355JR 4,75 mm, 1110×353 mm, 10,74 kg",dwg:"1982001",prev:2063,rec:0,status:"Pendente"},
+  {id:1167,eq:"gerador",conj:"ANM",pos:"7",cod:"0147GSV1-1982002",desc:"Chapa de Prensagem do Anel Magnético LA — chapa ASTM A36 19,00 mm, 1107×346 mm, 40,84 kg",dwg:"1982002",prev:28,rec:0,status:"Pendente"},
+  {id:1168,eq:"gerador",conj:"ANM",pos:"9",cod:"0147GSV1-1982003",desc:"Tirante do Anel Magnético — barra redonda trefilada SAE 1045 Ø30,00 mm, L=820 mm, 4,50 kg",dwg:"1982003",prev:224,rec:0,status:"Pendente"},
+  {id:1169,eq:"gerador",conj:"ANM",pos:"14",cod:"0147GSV1-1982005",desc:"Barra Guia — barra redonda trefilada SAE 1045 Ø30,00 mm, L=765 mm, 4,19 kg",dwg:"1982005",prev:28,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_PFR = [
+  // Conjunto PFR — Pista de Frenagem
+  // IDs 1170–1170
+  {id:1170,eq:"gerador",conj:"PFR",pos:"1",cod:"0147GSV1-2032001",desc:"Pista de Frenagem — chapa laminada ASTM A36 44,45 mm, 941×303 mm, 68,14 kg (setor 30°)",dwg:"2032001",prev:12,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_CVP = [
+  // Conjunto CVP — Chaveta Polar
+  // IDs 1171–1173
+  {id:1171,eq:"gerador",conj:"CVP",pos:"1",cod:"0147GSV1-2072001",desc:"Cunha do Pólo — barra quadrada trefilada SAE 1045 15,88 mm, L=790 mm, 0,76 kg",dwg:"2072001",prev:54,rec:0,status:"Pendente"},
+  {id:1172,eq:"gerador",conj:"CVP",pos:"2",cod:"0147GSV1-2072002",desc:"Trava da Cunha Polar-LA — chapa laminada ASTM A36 16,00 mm, 130×55 mm, 0,67 kg",dwg:"2072002",prev:54,rec:0,status:"Pendente"},
+  {id:1173,eq:"gerador",conj:"CVP",pos:"3",cod:"0147GSV1-2072003",desc:"Trava da Cunha Polar-LNA — chapa laminada ASTM A36 16,00 mm, 130×40 mm, 0,58 kg",dwg:"2072003",prev:54,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_VNT = [
+  // Conjunto VNT — Ventilador Centrífugo — 0147GSV1-2121000
+  // IDs 1174–1178
+  {id:1174,eq:"gerador",conj:"VNT",pos:"1",cod:"0147GSV1-2122001",desc:"Chapa Superior — chapa laminada ASTM A36 50,00 mm, 3720×3720 mm, 1528,40 kg",dwg:"2121000",prev:1,rec:0,status:"Pendente"},
+  {id:1175,eq:"gerador",conj:"VNT",pos:"2",cod:"0147GSV1-2122002",desc:"Pá — chapa laminada ASTM A36 19,00 mm, 610×150 mm, 13,65 kg",dwg:"2121000",prev:28,rec:0,status:"Pendente"},
+  {id:1176,eq:"gerador",conj:"VNT",pos:"3",cod:"0147GSV1-2122003",desc:"Chapa Inferior — chapa laminada ASTM A36 50,00 mm, 3720×3720 mm, 1491,53 kg",dwg:"2121000",prev:1,rec:0,status:"Pendente"},
+  {id:1177,eq:"gerador",conj:"VNT",pos:"—",cod:"0147GSV1-2122007",desc:"Pá Superior — chapa ASTM A572 gr.50 4,75 mm, 430×226 mm, 3,37 kg",dwg:"2122007",prev:1,rec:0,status:"Pendente"},
+  {id:1178,eq:"gerador",conj:"VNT",pos:"—",cod:"0147GSV1-2122008",desc:"Pá Inferior — chapa ASTM A572 gr.50 4,75 mm, 430×226 mm, 3,26 kg",dwg:"2122008",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_NPC = [
+  // Conjunto NPC — Núcleo Polar — 0147GSV1-2301000 (56 conjuntos/gerador)
+  // IDs 1179–1183
+  {id:1179,eq:"gerador",conj:"NPC",pos:"1",cod:"0147GSV1-2282001",desc:"Chapa Polar — chapa laminada ASTM A36 2,00 mm, 246×212 mm, 0,43 kg (243 chapas/conj, 56 conj/gerador)",dwg:"2282001",prev:13608,rec:0,status:"Pendente"},
+  {id:1180,eq:"gerador",conj:"NPC",pos:"2",cod:"0147GSV1-2282002",desc:"Chapa Polar-Recuo — chapa laminada ASTM A36 2,00 mm, 246×212 mm, 0,43 kg (52 chapas/conj)",dwg:"2282002",prev:2912,rec:0,status:"Pendente"},
+  {id:1181,eq:"gerador",conj:"NPC",pos:"3",cod:"0147GSV1-2292001",desc:"Chapa de Prensagem do Núcleo Polar — aço SAE 1025 normalizado, fundida, 246×212×105 mm, 10,11 kg",dwg:"2292001",prev:112,rec:0,status:"Pendente"},
+  {id:1182,eq:"gerador",conj:"NPC",pos:"4",cod:"0147GSV1-2302001",desc:"Tirante Polar — barra redonda trefilada SAE 1045 Ø25,00 mm, L=735 mm, 2,78 kg",dwg:"2302001",prev:112,rec:0,status:"Pendente"},
+  {id:1183,eq:"gerador",conj:"NPC",pos:"—",cod:"0147GSV1-2293001",desc:"Chapa de Prensagem do Núcleo Polar-Fundida (bruto) — aço SAE 1025 normalizado, 12,25 kg",dwg:"2293001",prev:112,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_GAM = [
+  // Conjunto GAM — Gaiola Amortecedora
+  // IDs 1184–1185
+  {id:1184,eq:"gerador",conj:"GAM",pos:"5",cod:"0147GSV1-2352001",desc:"Barra Amortecedora — barra redonda trefilada cobre C11000 Ø9,52 mm, L=625 mm, 0,40 kg",dwg:"2352001",prev:224,rec:0,status:"Pendente"},
+  {id:1185,eq:"gerador",conj:"GAM",pos:"6",cod:"0147GSV1-2352002",desc:"Chapa da Gaiola Amortecedora — barra chata cobre C11000 19,05×9,52 mm, L=126 mm, 0,16 kg",dwg:"2352002",prev:112,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_BPO = [
+  // Conjunto BPO — Bobinas Polares
+  // IDs 1186–1191
+  {id:1186,eq:"gerador",conj:"BPO",pos:"1",cod:"0147GSV1-2371001",desc:"Bobina Polar A — barra chata cobre C11000 40×4 mm, L=52780 mm, 76,91 kg (bobinagem horária, 29 espiras)",dwg:"2371001",prev:27,rec:0,status:"Pendente"},
+  {id:1187,eq:"gerador",conj:"BPO",pos:"2",cod:"0147GSV1-2371002",desc:"Bobina Polar B — barra chata cobre C11000 40×4 mm, L=52780 mm, 76,91 kg (bobinagem horária, 29 espiras)",dwg:"2371002",prev:27,rec:0,status:"Pendente"},
+  {id:1188,eq:"gerador",conj:"BPO",pos:"3",cod:"0147GSV1-2371003",desc:"Bobina Polar C (Coletor) — barra chata cobre C11000 40×4 mm, L=52780 mm, 77,12 kg",dwg:"2371003",prev:1,rec:0,status:"Pendente"},
+  {id:1189,eq:"gerador",conj:"BPO",pos:"4",cod:"0147GSV1-2371004",desc:"Bobina Polar D (Coletor) — barra chata cobre C11000 40×4 mm, L=52780 mm, 77,12 kg",dwg:"2371004",prev:1,rec:0,status:"Pendente"},
+  {id:1190,eq:"gerador",conj:"BPO",pos:"5",cod:"0147GSV1-2371005",desc:"Bobina Polar Universal (Coletor) — barra chata cobre C11000 40×4 mm, L=52780 mm, 77,12 kg (serve 2 geradores)",dwg:"2371005",prev:1,rec:0,status:"Pendente"},
+  {id:1191,eq:"gerador",conj:"BPO",pos:"—",cod:"0147GSV1-2372003",desc:"Ligação Polar — barra chata cobre C11000 40×4 mm, L=20 mm, 0,03 kg",dwg:"2372003",prev:212,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_LPO = [
+  // Conjunto LPO — Ligações Polares
+  // IDs 1192–1195
+  {id:1192,eq:"gerador",conj:"LPO",pos:"1",cod:"0147GSV1-2382001",desc:"Ligação Polar Superior 1 — barra chata cobre C11000 38,10×1,58 mm, L=53 mm, 0,03 kg",dwg:"2382001",prev:1,rec:0,status:"Pendente"},
+  {id:1193,eq:"gerador",conj:"LPO",pos:"2",cod:"0147GSV1-2382002",desc:"Ligação Polar Superior 2 — barra chata cobre C11000 38,10×1,58 mm, L=53 mm, 0,03 kg",dwg:"2382002",prev:1,rec:0,status:"Pendente"},
+  {id:1194,eq:"gerador",conj:"LPO",pos:"5",cod:"0147GSV1-2382005",desc:"Trava do Cabeamento 185MM² — barra chata ASTM A36 76,20×25,40 mm, L=50 mm, 0,55 kg",dwg:"2382005",prev:1,rec:0,status:"Pendente"},
+  {id:1195,eq:"gerador",conj:"LPO",pos:"6",cod:"0147GSV1-2382006",desc:"Trava Superior do Cabeamento 185MM² — barra chata ASTM A36 76,20×25,40 mm, L=30 mm, 0,23 kg",dwg:"2382006",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_POL = [
+  // Conjunto POL — Pólos (Conjuntos Montados)
+  // IDs 1196–1199
+  {id:1196,eq:"gerador",conj:"POL",pos:"1",cod:"0147GSV1-2391001",desc:"Pólo A — núcleo polar + bobina polar A + quadros isolantes, 246,00 kg (27 conj./gerador)",dwg:"2391001",prev:27,rec:0,status:"Pendente"},
+  {id:1197,eq:"gerador",conj:"POL",pos:"2",cod:"0147GSV1-2391002",desc:"Pólo B — núcleo polar + bobina polar B + quadros isolantes, 246,00 kg (27 conj./gerador)",dwg:"2391002",prev:27,rec:0,status:"Pendente"},
+  {id:1206,eq:"gerador",conj:"POL",pos:"3",cod:"0147GSV1-2391003",desc:"Pólo C (Coletor) — núcleo polar + bobina polar C + quadros isolantes, 246,00 kg",dwg:"2391003",prev:1,rec:0,status:"Pendente"},
+  {id:1198,eq:"gerador",conj:"POL",pos:"4",cod:"0147GSV1-2391004",desc:"Pólo D (Coletor) — núcleo polar + bobina polar D + quadros isolantes, 246,00 kg",dwg:"2391004",prev:1,rec:0,status:"Pendente"},
+  {id:1199,eq:"gerador",conj:"POL",pos:"5",cod:"0147GSV1-2391005",desc:"Pólo Universal (Coletor) — núcleo polar + bobina polar universal + quadros isolantes, 246,00 kg (serve 2 geradores)",dwg:"2391005",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_PDT = [
+  // Conjunto PDT — Pólos Detalhes (subcomponentes isolantes e metálicos)
+  // IDs 1200–1205
+  {id:1200,eq:"gerador",conj:"PDT",pos:"2",cod:"0147GSV1-2392001",desc:"Quadro Isolante Superior — placa DME 34C 5,00 mm, 812×222 mm, 0,80 kg",dwg:"2392001",prev:56,rec:0,status:"Pendente"},
+  {id:1201,eq:"gerador",conj:"PDT",pos:"7",cod:"0147GSV1-2392002",desc:"Quadro Isolante Inferior — placa DME 34C 5,00 mm, 812×222 mm, 0,48 kg",dwg:"2392002",prev:56,rec:0,status:"Pendente"},
+  {id:1202,eq:"gerador",conj:"PDT",pos:"5",cod:"0147GSV1-2392003",desc:"Enchimento Lateral — placa DME 34C 3,0 mm, 125×80 mm, 0,07 kg",dwg:"2392003",prev:336,rec:0,status:"Pendente"},
+  {id:1203,eq:"gerador",conj:"PDT",pos:"6",cod:"0147GSV1-2392004",desc:"Enchimento — placa DME 34C 3,0 mm, 125×20 mm, 0,02 kg",dwg:"2392004",prev:112,rec:0,status:"Pendente"},
+  {id:1204,eq:"gerador",conj:"PDT",pos:"8",cod:"0147GSV1-2392005",desc:"Quadro Metálico — chapa laminada ASTM A36 3,00 mm, 807×217 mm, 1,56 kg",dwg:"2392005",prev:56,rec:0,status:"Pendente"},
+  {id:1205,eq:"gerador",conj:"PDT",pos:"10",cod:"0147GSV1-2392006",desc:"Calço do Quadro Metálico — chapa laminada ASTM A36 6,30 mm, 23×18 mm, 0,01 kg (8/polo)",dwg:"2391001",prev:448,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_ANC = [
+  // Conjunto ANC — Anéis Coletores — 0147GSV1-2551000
+  // IDs 1207–1213
+  {id:1207,eq:"gerador",conj:"ANC",pos:"1",cod:"0147GSV1-2552001",desc:"Acoplamento dos Anéis — fundido ASTM A36, 580×580×265 mm, 118,59 kg",dwg:"2552001",prev:1,rec:0,status:"Pendente"},
+  {id:1208,eq:"gerador",conj:"ANC",pos:"2",cod:"0147GSV1-2552002",desc:"Bucha dos Anéis Coletores — NEMA G11, 540×540×170 mm, 9,20 kg",dwg:"2552002",prev:1,rec:0,status:"Pendente"},
+  {id:1209,eq:"gerador",conj:"ANC",pos:"3",cod:"0147GSV1-2552003",desc:"Anel Coletor Menor — aço inox 304 fundido, Ø602×Ø542×80 mm, 31,55 kg",dwg:"2552003",prev:1,rec:0,status:"Pendente"},
+  {id:1210,eq:"gerador",conj:"ANC",pos:"4",cod:"0147GSV1-2552004",desc:"Anel Coletor Maior — aço inox 304 fundido, Ø602×Ø542×80 mm, 30,79 kg",dwg:"2552004",prev:1,rec:0,status:"Pendente"},
+  // Blanks fundidos
+  {id:1211,eq:"gerador",conj:"ANC",pos:"—",cod:"0147GSV1-2553001",desc:"Acoplamento Fundido (bruto) — ASTM A36, 580×580×265 mm, 256,00 kg",dwg:"2552001",prev:1,rec:0,status:"Pendente"},
+  {id:1212,eq:"gerador",conj:"ANC",pos:"—",cod:"0147GSV1-2553002",desc:"Bucha Bruta NEMA G11 (bruto) — 540×540×170 mm, 26,06 kg",dwg:"2552002",prev:1,rec:0,status:"Pendente"},
+  {id:1213,eq:"gerador",conj:"ANC",pos:"—",cod:"0147GSV1-2553003",desc:"Anel Fundido Inox 304 (bruto) — 625×625×80 mm, 78,00 kg (serve 2552003 e 2552004)",dwg:"2552003",prev:2,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_FCG = [
+  // Conjunto FCG — Fechamento do Gerador (Cobertura) — 0147GSV1-3131000
+  // IDs 1214–1227
+  // Subconjuntos montados
+  {id:1214,eq:"gerador",conj:"FCG",pos:"1",cod:"0147GSV1-3131001",desc:"Fechamento Superior — conjunto soldado, 89,55 kg",dwg:"3131001",prev:8,rec:0,status:"Pendente"},
+  {id:1215,eq:"gerador",conj:"FCG",pos:"2",cod:"0147GSV1-3131002",desc:"Fechamento Frontal — conjunto soldado, 56,45 kg",dwg:"3131002",prev:8,rec:0,status:"Pendente"},
+  // Componentes fabricados do Fechamento Superior
+  {id:1216,eq:"gerador",conj:"FCG",pos:"—",cod:"0147GSV1-3132001",desc:"Chapa — chapa laminada ASTM A36 6,30 mm, 2449×1993 mm, 77,28 kg",dwg:"3131001",prev:8,rec:0,status:"Pendente"},
+  {id:1217,eq:"gerador",conj:"FCG",pos:"—",cod:"0147GSV1-3132002",desc:"Reforço Central — barra chata ASTM A36 38,10×6,35 mm, L=1760 mm, 3,31 kg",dwg:"3131001",prev:8,rec:0,status:"Pendente"},
+  {id:1218,eq:"gerador",conj:"FCG",pos:"—",cod:"0147GSV1-3132003",desc:"Reforço — barra chata ASTM A36 38,10×6,35 mm, L=990 mm, 1,86 kg",dwg:"3131001",prev:16,rec:0,status:"Pendente"},
+  {id:1219,eq:"gerador",conj:"FCG",pos:"—",cod:"0147GSV1-3132008",desc:"Reforço — barra chata ASTM A36 38,10×6,35 mm, L=590 mm, 1,11 kg",dwg:"3131001",prev:16,rec:0,status:"Pendente"},
+  {id:1220,eq:"gerador",conj:"FCG",pos:"—",cod:"0147GSV1-3132014",desc:"Reforço — barra chata ASTM A36 38,10×6,35 mm, L=790 mm, 1,49 kg",dwg:"3131001",prev:16,rec:0,status:"Pendente"},
+  // Componentes do Fechamento Frontal
+  {id:1221,eq:"gerador",conj:"FCG",pos:"5",cod:"0147GSV1-3132006",desc:"Tampa Frontal — chapa laminada ASTM A36 6,30 mm, 2350×891 mm, 54,77 kg",dwg:"3132006",prev:8,rec:0,status:"Pendente"},
+  {id:1222,eq:"gerador",conj:"FCG",pos:"—",cod:"0147GSV1-3132007",desc:"Reforço — barra chata ASTM A36 38,10×6,35 mm, L=740 mm, 1,05 kg",dwg:"3131002",prev:8,rec:0,status:"Pendente"},
+  // Componentes do conjunto geral (montagem em campo)
+  {id:1223,eq:"gerador",conj:"FCG",pos:"4",cod:"0147GSV1-3132005",desc:"Tala Superior do Filtro — chapa laminada ASTM A36 3,00 mm, 1221×1991 mm, 12,49 kg",dwg:"3132005",prev:16,rec:0,status:"Pendente"},
+  {id:1224,eq:"gerador",conj:"FCG",pos:"6",cod:"0147GSV1-3132010",desc:"Tala Frontal do Filtro — chapa laminada ASTM A36 3,00 mm, 2290×730 mm, 9,54 kg",dwg:"3132010",prev:8,rec:0,status:"Pendente"},
+  {id:1225,eq:"gerador",conj:"FCG",pos:"7",cod:"0147GSV1-3132011",desc:"Fechamento da Perna — chapa laminada ASTM A36 6,30 mm, 1151×301 mm, 15,51 kg",dwg:"3132011",prev:8,rec:0,status:"Pendente"},
+  {id:1226,eq:"gerador",conj:"FCG",pos:"8",cod:"0147GSV1-3132012",desc:"Fechamento do Piso — chapa xadrez ASTM A36 6,30 mm, 1428×623 mm, 37,05 kg",dwg:"3132012",prev:8,rec:0,status:"Pendente"},
+  {id:1227,eq:"gerador",conj:"FCG",pos:"9",cod:"0147GSV1-3132013",desc:"Fechamento do Piso-Perna — chapa xadrez ASTM A36 6,30 mm, 1428×623 mm, 34,94 kg",dwg:"3132013",prev:8,rec:0,status:"Pendente"},
+  {id:1228,eq:"gerador",conj:"FCG",pos:"16",cod:"0147GSV1-3132018",desc:"Suporte do Piso de Fechamento — chapa laminada ASTM A36 6,30 mm, 1445×365 mm, 26,14 kg",dwg:"3132018",prev:16,rec:0,status:"Pendente"},
+];
+
+
+
+const DEFAULT_GERADOR_IAC = [
+  // Conjunto IAC — Invólucro dos Anéis Coletores — 0147GSV1-3351000
+  // IDs 1229–1237
+  {id:1229,eq:"gerador",conj:"IAC",pos:"1",cod:"0147GSV1-3351000",desc:"Invólucro dos anéis coletores — conjunto completo, massa líquida 313,14 kg",dwg:"3351000",prev:1,rec:0,status:"Pendente"},
+  {id:1230,eq:"gerador",conj:"IAC",pos:"2",cod:"0147GSV1-3351001",desc:"Fechamento dos coletores — chapa ASTM A36, anéis Ø1000/1130 mm, massa líquida 69,33 kg",dwg:"3351001",prev:1,rec:0,status:"Pendente"},
+  {id:1231,eq:"gerador",conj:"IAC",pos:"3",cod:"0147GSV1-3351002",desc:"Tampa dos coletores — chapa ASTM A36 4,75 mm, Ø1120 mm, massa líquida 23,69 kg",dwg:"3351002",prev:1,rec:0,status:"Pendente"},
+  {id:1232,eq:"gerador",conj:"IAC",pos:"4",cod:"0147GSV1-3351003",desc:"Base — chapa ASTM A36, Ø1080/1420 mm, massa líquida 204,96 kg",dwg:"3351003",prev:1,rec:0,status:"Pendente"},
+  {id:1233,eq:"gerador",conj:"IAC",pos:"5",cod:"0147GSV1-3351004",desc:"Segmento base — chapa ASTM A36 16 mm, Ø1440 mm, massa líquida 106,39 kg",dwg:"3351004",prev:2,rec:0,status:"Pendente"},
+  {id:1234,eq:"gerador",conj:"IAC",pos:"6",cod:"0147GSV1-3351005",desc:"Pedestal — cantoneira ASTM A36 50,80×6,35 mm, L=208 mm, massa líquida 1,96 kg",dwg:"3351005",prev:6,rec:0,status:"Pendente"},
+  {id:1235,eq:"gerador",conj:"IAC",pos:"7",cod:"0147GSV1-3352002",desc:"Chapa calandrada — chapa ASTM A36 4,75 mm, 3206×340 mm, massa líquida 38,15 kg",dwg:"3352002",prev:1,rec:0,status:"Pendente"},
+  {id:1236,eq:"gerador",conj:"IAC",pos:"8",cod:"0147GSV1-3352007",desc:"Anel calandrado menor — chapa ASTM A36 9,50 mm, 724×65 mm, massa líquida 3,51 kg",dwg:"3352007",prev:1,rec:0,status:"Pendente"},
+  {id:1237,eq:"gerador",conj:"IAC",pos:"9",cod:"0147GSV1-3352011",desc:"Anel calandrado — chapa ASTM A36 9,50 mm, 1910×45 mm, massa líquida 6,41 kg",dwg:"3352011",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_UHL = [
+  // Conjunto UHL — Unidade Hidráulica de Lubrificação e Injeção de Alta Pressão
+  // IDs 1238–1239
+  {id:1238,eq:"gerador",conj:"UHL",pos:"1",cod:"0147GSV1-3401000",desc:"Unidade hidráulica de lubrificação e injeção de alta pressão — conjunto HYDAC, Q=170 l/min, P=12 bar, motor 10 CV, reservatório 2500 L",dwg:"3401000",prev:1,rec:0,status:"Pendente"},
+  {id:1239,eq:"gerador",conj:"UHL",pos:"—",cod:"0147GSV1-3400001",desc:"Diagrama hidráulico (P&ID) da unidade hidráulica de lubrificação e injeção de alta pressão",dwg:"3400001",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_CTE = [
+  // Conjunto CTE — Caixa dos Terminais de Excitação — 0147GSV1-3511000
+  // IDs 1240–1251
+  {id:1240,eq:"gerador",conj:"CTE",pos:"1",cod:"0147GSV1-3511000",desc:"Caixa dos terminais de excitação — conjunto completo, massa líquida 62,00 kg",dwg:"3511000",prev:2,rec:0,status:"Pendente"},
+  {id:1241,eq:"gerador",conj:"CTE",pos:"2",cod:"0147GSV1-3511001",desc:"Tampa — chapa ASTM A36 3,00 mm, 503×393 mm, massa líquida 5,11 kg",dwg:"3511001",prev:2,rec:0,status:"Pendente"},
+  {id:1242,eq:"gerador",conj:"CTE",pos:"3",cod:"0147GSV1-3511002",desc:"Caixa soldada — chapa ASTM A36 4,75 mm, 1388×462 mm, massa líquida 24,85 kg",dwg:"3511002",prev:2,rec:0,status:"Pendente"},
+  {id:1243,eq:"gerador",conj:"CTE",pos:"4",cod:"0147GSV1-3511003",desc:"Adaptador soldado — chapa ASTM A36 4,75/6,30 mm, massa líquida 8,74 kg",dwg:"3511003",prev:2,rec:0,status:"Pendente"},
+  {id:1244,eq:"gerador",conj:"CTE",pos:"5",cod:"0147GSV1-3502001",desc:"Terminal de excitação — barra chata cobre C11000 38,10×9,52 mm, L=338 mm, massa líquida 1,05 kg",dwg:"3502001",prev:4,rec:0,status:"Pendente"},
+  {id:1245,eq:"gerador",conj:"CTE",pos:"6",cod:"0147GSV1-3512002",desc:"Plaqueta de identificação — aço inox 304, 160×35 mm, massa líquida 0,09 kg",dwg:"3512002",prev:2,rec:0,status:"Pendente"},
+  {id:1246,eq:"gerador",conj:"CTE",pos:"7",cod:"0147GSV1-3512003",desc:"Caixa dobrada (caixa soldada) — chapa ASTM A36 4,75 mm, 1388×462 mm, massa líquida 22,68 kg",dwg:"3512003",prev:2,rec:0,status:"Pendente"},
+  {id:1247,eq:"gerador",conj:"CTE",pos:"8",cod:"0147GSV1-3512006",desc:"Placa DME das escovas — placa DME 34C 5,0 mm, 340×190 mm, massa líquida 0,74 kg",dwg:"3512006",prev:2,rec:0,status:"Pendente"},
+  {id:1248,eq:"gerador",conj:"CTE",pos:"9",cod:"0147GSV1-3512007",desc:"Flange calandrado — chapa ASTM A36 6,30 mm, 435×260 mm, massa líquida 2,02 kg",dwg:"3512007",prev:2,rec:0,status:"Pendente"},
+  {id:1249,eq:"gerador",conj:"CTE",pos:"10",cod:"0147GSV1-3512008",desc:"Caixa dobrada (tampa) — chapa ASTM A36 3,00 mm, 503×393 mm, massa líquida 4,60 kg",dwg:"3512008",prev:2,rec:0,status:"Pendente"},
+  {id:1250,eq:"gerador",conj:"CTE",pos:"11",cod:"0147GSV1-3512009",desc:"Placa DME inferior — placa DME 34C 5,0 mm, 295×155 mm, massa líquida 0,48 kg",dwg:"3512009",prev:2,rec:0,status:"Pendente"},
+  {id:1251,eq:"gerador",conj:"CTE",pos:"12",cod:"0147GSV1-3512010",desc:"Caixa dobrada (adaptador) — chapa ASTM A36 4,75 mm, 1429×124 mm, massa líquida 4,64 kg",dwg:"3512010",prev:2,rec:0,status:"Pendente"},
+  {id:1252,eq:"gerador",conj:"CTE",pos:"13",cod:"0147GSV1-3512011",desc:"Suporte do bloco de aterramento — chapa ASTM A36 12,50 mm, 50×20 mm, massa líquida 0,09 kg",dwg:"3512011",prev:2,rec:0,status:"Pendente"},
+];
+
+
+const DEFAULT_GERADOR_SRA = [
+  // Conjunto SRA — Sistema de Circulação de Água dos Mancais — 0147GSV1-3651000
+  // IDs 1253–1261
+  {id:1253,eq:"gerador",conj:"SRA",pos:"—",cod:"0147GSV1-3650001",desc:"Diagrama (P&ID) do sistema de circulação de água dos mancais",dwg:"3650001",prev:1,rec:0,status:"Pendente"},
+  {id:1254,eq:"gerador",conj:"SRA",pos:"1",cod:"0147GSV1-3651000",desc:"Sistema de circulação de água dos mancais — conjunto, massa líquida 8653,02 kg",dwg:"3651000",prev:1,rec:0,status:"Pendente"},
+  {id:1255,eq:"gerador",conj:"SRA",pos:"2",cod:"0147GSV1-3651001",desc:"Suporte do motor + bomba — chapa ASTM A36 4,75 mm, 699×600 mm, massa líquida 17,30 kg",dwg:"3651001",prev:2,rec:0,status:"Pendente"},
+  {id:1256,eq:"gerador",conj:"SRA",pos:"3",cod:"0147GSV1-3651002",desc:"Suporte para tubo de 2" — chapa ASTM A36 4,75 mm, 390×82 mm, massa líquida 0,80 kg",dwg:"3651002",prev:2,rec:0,status:"Pendente"},
+  {id:1257,eq:"gerador",conj:"SRA",pos:"4",cod:"0147GSV1-3652001",desc:"Suporte — chapa ASTM A36 4,75 mm, 699×600 mm, massa líquida 15,62 kg",dwg:"3652001",prev:2,rec:0,status:"Pendente"},
+  {id:1258,eq:"gerador",conj:"SRA",pos:"5",cod:"0147GSV1-3652002",desc:"Prisioneiro M16 — barra roscada inox AISI 304 A2-70 MA M16, L=140 mm, 0,22 kg",dwg:"3652002",prev:16,rec:0,status:"Pendente"},
+  {id:1259,eq:"gerador",conj:"SRA",pos:"6",cod:"0147GSV1-3652003",desc:"Suporte do motor — chapa ASTM A36 4,75 mm, 249×182 mm, massa líquida 1,68 kg",dwg:"3652003",prev:2,rec:0,status:"Pendente"},
+  {id:1260,eq:"gerador",conj:"SRA",pos:"7",cod:"0147GSV1-3652004",desc:"Chapa — chapa ASTM A36 4,75 mm, 390×82 mm, massa líquida 1,11 kg",dwg:"3652004",prev:18,rec:0,status:"Pendente"},
+  {id:1261,eq:"gerador",conj:"SRA",pos:"8",cod:"0147GSV1-3652005",desc:"Adaptador especial fêmea 2" BSP × fêmea 1" NPT — barra redonda inox AISI 304 Ø76,20 mm, L=65 mm",dwg:"3652005",prev:1,rec:0,status:"Pendente"},
+  {id:1262,eq:"gerador",conj:"SRA",pos:"9",cod:"0147GSV1-3652006",desc:"Chapa diafragma — chapa inox ASTM A240-304L 6,30 mm, 181×181 mm, massa líquida 0,88 kg",dwg:"3652006",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_TOM = [
+  // Conjunto TOM — Tubulação de Óleo dos Mancais — 0147GSV1-3661000
+  // IDs 1263
+  {id:1263,eq:"gerador",conj:"TOM",pos:"1",cod:"0147GSV1-3661000",desc:"Tubulação de óleo dos mancais — conjunto, massa líquida 4178,00 kg",dwg:"3661000",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_EVM = [
+  // Conjunto EVM — Sistema de Exaustão de Vapores de Óleo dos Mancais — 0147GSV1-3671000
+  // IDs 1264
+  {id:1264,eq:"gerador",conj:"EVM",pos:"1",cod:"0147GSV1-3671000",desc:"Sistema de exaustão de vapores de óleo dos mancais — conjunto, massa líquida 613,41 kg",dwg:"3671000",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_RAQ = [
+  // Conjunto RAQ — Resistências de Aquecimento — 0147GSV1-3731000
+  // IDs 1265–1266
+  {id:1265,eq:"gerador",conj:"RAQ",pos:"1",cod:"0147GSV1-3731000",desc:"Conjunto de resistências de aquecimento — massa líquida 21,92 kg",dwg:"3731000",prev:1,rec:0,status:"Pendente"},
+  {id:1266,eq:"gerador",conj:"RAQ",pos:"2",cod:"0147GSV1-3732001",desc:"Suporte da resistência 560W — chapa ASTM A36 3,00 mm, 591×60 mm, 0,82 kg",dwg:"3732001",prev:12,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_GERADOR_SRO = [
+  // Conjunto SRO — Sensor de Rotação — 0147GSV1-3861000
+  // IDs 1267–1269
+  {id:1267,eq:"gerador",conj:"SRO",pos:"1",cod:"0147GSV1-3861000",desc:"Sensor de rotação — conjunto, massa líquida 1,04 kg",dwg:"3861000",prev:1,rec:0,status:"Pendente"},
+  {id:1268,eq:"gerador",conj:"SRO",pos:"2",cod:"0147GSV1-3861001",desc:"Suporte soldado — chapa ASTM A36 4,75 mm, 183×100 mm, massa líquida 0,92 kg",dwg:"3861001",prev:1,rec:0,status:"Pendente"},
+  {id:1269,eq:"gerador",conj:"SRO",pos:"3",cod:"0147GSV1-3862001",desc:"Roda dentada bipartida Z=36 — chapa ASTM A36 12,50 mm, Ø620 mm, massa líquida 7,81 kg",dwg:"3862001",prev:1,rec:0,status:"Pendente"},
+  {id:1270,eq:"gerador",conj:"SRO",pos:"4",cod:"0147GSV1-3862002",desc:"Chapa calandrada — chapa ASTM A36 4,75 mm, 183×100 mm, massa líquida 0,60 kg",dwg:"3862002",prev:1,rec:0,status:"Pendente"},
+];
+
+const DEFAULT_ITEMS = [...DEFAULT_TURBINA, ...DEFAULT_GERADOR, ...DEFAULT_GERADOR_ACP, ...DEFAULT_GERADOR_EIX, ...DEFAULT_GERADOR_CRZ, ...DEFAULT_GERADOR_CRI, ...DEFAULT_GERADOR_MFL, ...DEFAULT_GERADOR_PFL, ...DEFAULT_GERADOR_MCS, ...DEFAULT_GERADOR_MGI, ...DEFAULT_GERADOR_EST2, ...DEFAULT_GERADOR_GAR, ...DEFAULT_GERADOR_CHP, ...DEFAULT_GERADOR_NUC, ...DEFAULT_GERADOR_BOB, ...DEFAULT_GERADOR_ENR, ...DEFAULT_GERADOR_CTF, ...DEFAULT_GERADOR_EAT, ...DEFAULT_GERADOR_ESC, ...DEFAULT_GERADOR_ARA, ...DEFAULT_GERADOR_ANM, ...DEFAULT_GERADOR_PFR, ...DEFAULT_GERADOR_CVP, ...DEFAULT_GERADOR_VNT, ...DEFAULT_GERADOR_NPC, ...DEFAULT_GERADOR_GAM, ...DEFAULT_GERADOR_BPO, ...DEFAULT_GERADOR_LPO, ...DEFAULT_GERADOR_POL, ...DEFAULT_GERADOR_PDT, ...DEFAULT_GERADOR_ANC, ...DEFAULT_GERADOR_FCG, ...DEFAULT_GERADOR_IAC, ...DEFAULT_GERADOR_UHL, ...DEFAULT_GERADOR_CTE, ...DEFAULT_GERADOR_SRA, ...DEFAULT_GERADOR_TOM, ...DEFAULT_GERADOR_EVM, ...DEFAULT_GERADOR_RAQ, ...DEFAULT_GERADOR_SRO];
 
 let items=[], romaneios=[], nextItemId=500, nextRomId=1;
 let activeEquip='turbina', activeConj='all', editItemId=null, activeRomId=null, erroTipos=[], romItens=[];
