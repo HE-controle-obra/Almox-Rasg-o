@@ -398,8 +398,8 @@ tr:hover td{background:var(--bg2);}
       <option value="">Todos os status</option>
       <option value="Pendente">Pendente</option>
       <option value="Em andamento">Em andamento</option>
-      <option value="Concluído">Concluído</option>
-      <option value="Não conformidade">Não conformidade</option>
+      <option value="Concluido">Concluido</option>
+      <option value="Nao conformidade">Nao conformidade</option>
     </select>
     <div class="btn-row">
       <button class="btn-danger" onclick="resetData()">↺ Resetar</button>
@@ -666,7 +666,7 @@ tr:hover td{background:var(--bg2);}
       <div class="field"><label>Qtd. recebida</label><input id="f-rec" type="number" min="0"></div>
     </div>
     <div class="field"><label>Status</label>
-      <select id="f-status"><option>Pendente</option><option>Em andamento</option><option>Concluído</option><option>Não conformidade</option></select>
+      <select id="f-status"><option>Pendente</option><option>Em andamento</option><option>Concluido</option><option>Nao conformidade</option></select>
     </div>
     <div class="modal-actions">
       <button class="btn-sec" onclick="closeItemModal()">Cancelar</button>
@@ -2168,8 +2168,8 @@ function pill(eq,c){
 function statusBadge(s){
   if(s==="Pendente")return`<span class="badge b-pend">Pendente</span>`;
   if(s==="Parcial")return`<span class="badge b-and">Parcial</span>`;
-  if(s==="OK"||s==="Concluido")return`<span class="badge b-ok">OK</span>`;
-  if(s==="Nao conformidade")return`<span class="badge b-nc">Nao conformidade</span>`;
+  if(s==="OK"||s==="Concluido"||s==="Concluído")return`<span class="badge b-ok">OK</span>`;
+  if(s==="Nao conformidade"||s==="Não conformidade")return`<span class="badge b-nc">Nao conformidade</span>`;
   return`<span class="badge b-pend">${s}</span>`;
 }
 
@@ -2201,8 +2201,8 @@ function renderControle(){
   const scope=activeConj==='all'?items.filter(i=>i.eq===activeEquip):items.filter(i=>i.eq===activeEquip&&i.conj===activeConj);
   document.getElementById('s-total').textContent=scope.length;
   document.getElementById('s-pend').textContent=scope.filter(i=>i.status==='Pendente'||i.status==='Parcial').length;
-  document.getElementById('s-ok').textContent=scope.filter(i=>i.status==='OK'||i.status==='Concluido').length;
-  document.getElementById('s-nc').textContent=scope.filter(i=>i.status==='Nao conformidade').length;
+  document.getElementById('s-ok').textContent=scope.filter(i=>i.status==='OK'||i.status==='Concluido'||i.status==='Concluído').length;
+  document.getElementById('s-nc').textContent=scope.filter(i=>i.status==='Nao conformidade'||i.status==='Não conformidade').length;
   const totalAll=items.length;
   document.getElementById('hdr-badge').textContent=`${totalAll} itens · ${romaneios.length} romaneios`;
 }
